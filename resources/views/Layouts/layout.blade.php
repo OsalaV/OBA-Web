@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
 
         <!--Bootstrap -->
@@ -20,7 +20,7 @@
 
     <!--JS-->
     <script src="../Resources/js/jquery-1.11.2.js"></script>
-    <script src="../Resources/js/rd-smoothscroll.min.js"></script>
+<!--    <script src="../Resources/js/rd-smoothscroll.min.js"></script>-->
 
     
     <script src="../Resources/js/bootstrap.min.js"></script>
@@ -82,9 +82,9 @@
             </div> 
     </header>
 
-        <div class="container">
+<!--        <div class="container">-->
             @yield('content')
-        </div>
+<!--        </div>-->
 
      <footer class="footer-container">
         <section class="footer-section">
@@ -107,11 +107,36 @@
         </section>    
     </footer>
    </div>
+        
+   <!--Bootstrap -->
+    <link href="../Resources/css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="../Resources/css/common/animate.css" rel="stylesheet">
+    <link href="../Resources/css/common/animatetime.css" rel="stylesheet"> 
+    <link href="../Resources/css/common/jquery.bxslider.css" rel="stylesheet"> 
+      
+    
+      
+    <!--Links -->
+    <link rel="stylesheet" href="../Resources/css/customs/fonts.css">
+    <link rel="stylesheet" href="../Resources/css/customs/template.css">
+    <link rel="stylesheet" href="../Resources/css/customs/listo.css">
+      
+    <!--Fonts and Icons -->
+    <link rel="stylesheet" href="../Resources/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
 
+
+    <!--JS-->
+    <script src="../Resources/js/jquery-1.11.2.js"></script>
+<!--    <script src="../Resources/js/rd-smoothscroll.min.js"></script>-->
+
+    
+    <script src="../Resources/js/bootstrap.min.js"></script>
+    <script src="../Resources/js/header.js"></script>
+    <script src="../Resources/js/jquery.waypoints.min.js"></script>  
+    <script src="../Resources/js/jquery.animations.js"></script> 
+    <script src="../Resources/js/jquery.bxslider.min.js"></script>  
+        
 </body>
-
-
-   
 </html>
 
 

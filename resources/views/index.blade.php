@@ -1,18 +1,16 @@
 @extends('Layouts.layout')
 
 
-
 @section('content')
-   <script>
-
-$(document).ready(function(){
-  $('.bxslider').bxSlider({
-      mode:'fade'
-  });
-});
     
+    <script>
+        $(document).ready(function(){
+          $('.bxslider').bxSlider({
+              mode:'fade'
+          });
+        });  
+    </script>
     
-</script>
 	<main>        
 		<section class="well slider-section background-white">
 		<div class="container no-padding">
