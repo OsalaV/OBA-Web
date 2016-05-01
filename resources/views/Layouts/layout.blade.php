@@ -1,8 +1,14 @@
 <html>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <head>
 
         <!--Bootstrap -->
-    <link href="../Resources/css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="../Resources/css/common/animate.css" rel="stylesheet">
     <link href="../Resources/css/common/animatetime.css" rel="stylesheet"> 
     <link href="../Resources/css/common/jquery.bxslider.css" rel="stylesheet"> 
@@ -17,17 +23,10 @@
     <!--Fonts and Icons -->
     <link rel="stylesheet" href="../Resources/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
 
-
-    <!--JS-->
-    <script src="../Resources/js/jquery-1.11.2.js"></script>
-    <script src="../Resources/js/rd-smoothscroll.min.js"></script>
-
+     <script src="../Resources/js/jquery-1.11.2.js"></script>
     
-    <script src="../Resources/js/bootstrap.min.js"></script>
-    <script src="../Resources/js/header.js"></script>
-    <script src="../Resources/js/jquery.waypoints.min.js"></script>  
-    <script src="../Resources/js/jquery.animations.js"></script> 
-    <script src="../Resources/js/jquery.bxslider.min.js"></script> 
+
+
     
 
     <title> @yield('Title')</title>
@@ -42,9 +41,9 @@
                             
                     <div class="col-md-4 col-sm-4 header-logo-container">
 
-                    <div class="navbar-header header-brand-container background-yellow text-center">
-                        <div class="navbar-brand header-brand">
-                        <a href=""><img class="header-logo" src="../Resources/images/logo.png" style="height:25%;"></a>
+                    <div class="navbar-header header-brand-container background-yellow text-center" >
+                        <div class="navbar-brand header-brand" >
+                        <a href=""><img class="header-logo" src="../Resources/images/logo.png"></a>
                         </div>
                     </div>
 
@@ -82,9 +81,9 @@
             </div> 
     </header>
 
-        <div class="container">
+       
             @yield('content')
-        </div>
+       
 
      <footer class="footer-container">
         <section class="footer-section">
@@ -110,6 +109,15 @@
 
 </body>
 
+<!--JS-->
+   
+    <script src="../Resources/js/rd-smoothscroll.min.js"></script>
+
+    <script src="../Resources/js/bootstrap.min.js"></script>
+    <script src="../Resources/js/header.js"></script>
+    <script src="../Resources/js/jquery.waypoints.min.js"></script>  
+    <script src="../Resources/js/jquery.animations.js"></script> 
+    <script src="../Resources/js/jquery.bxslider.min.js"></script>
 
    
 </html>
