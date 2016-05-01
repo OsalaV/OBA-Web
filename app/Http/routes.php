@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::get('parade', ['uses' => 'IndexController@parade']);
 
- Route::get('projects', ['uses' => 'IndexController@project']);
+ Route::get('projects', ['uses' => 'IndexController@projects']);
 
  Route::get('presidents', ['uses' => 'IndexController@presidents']);
 

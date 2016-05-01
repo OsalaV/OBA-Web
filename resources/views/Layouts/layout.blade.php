@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="format-detection" content="telephone=no"/>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../Resources/images/favicon.ico" type="image/x-icon">
     <head>
 
         <!--Bootstrap -->
@@ -28,10 +28,6 @@
      <script src="../Resources/js/jquery-1.11.2.js"></script>
     
 
-    <!--JS-->
-    <script src="../Resources/js/jquery-1.11.2.js"></script>
-<!--    <script src="../Resources/js/rd-smoothscroll.min.js"></script>-->
-
 
     <title> @yield('Title')</title>
     
@@ -47,7 +43,7 @@
 
                     <div class="navbar-header header-brand-container background-yellow text-center" >
                         <div class="navbar-brand header-brand" style="height:initial;">
-                        <a href=""><img class="header-logo" src="../Resources/images/logo.png"></a>
+                        <a href=""><img class="header-logo" src="../Resources/images/logo.png" style="height:25%;"></a>
                         </div>
                     </div>
 
@@ -110,27 +106,7 @@
     </footer>
    </div>
         
-   <!--Bootstrap -->
-    <link href="../Resources/css/common/bootstrap.min.css" rel="stylesheet">
-    <link href="../Resources/css/common/animate.css" rel="stylesheet">
-    <link href="../Resources/css/common/animatetime.css" rel="stylesheet"> 
-    <link href="../Resources/css/common/jquery.bxslider.css" rel="stylesheet"> 
-      
-    
-      
-    <!--Links -->
-    <link rel="stylesheet" href="../Resources/css/customs/fonts.css">
-    <link rel="stylesheet" href="../Resources/css/customs/template.css">
-    <link rel="stylesheet" href="../Resources/css/customs/listo.css">
-      
-    <!--Fonts and Icons -->
-    <link rel="stylesheet" href="../Resources/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
-
-
-    <!--JS-->
-    <script src="../Resources/js/jquery-1.11.2.js"></script>
-<!--    <script src="../Resources/js/rd-smoothscroll.min.js"></script>-->
-
+  
     
     <script src="../Resources/js/bootstrap.min.js"></script>
     <script src="../Resources/js/header.js"></script>
