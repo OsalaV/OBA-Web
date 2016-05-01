@@ -2,7 +2,6 @@
 
 
 @section('content')
-    
     <script>
         $(document).ready(function(){
           $('.bxslider').bxSlider({
@@ -10,7 +9,6 @@
           });
         });  
     </script>
-    
 	<main>        
 		<section class="well slider-section background-white">
 		<div class="container no-padding">
@@ -187,6 +185,12 @@
 		    
 </main>
 
-
+   <script>
+		$(document).ready(function(){
+		  $('.bxslider').bxSlider({
+		      mode:'fade'
+		  });
+		});
+  </script>
 
 @stop
