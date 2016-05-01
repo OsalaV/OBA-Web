@@ -21,3 +21,18 @@ Route::group(['middleware' => ['web']], function () {
    });
 
  Route::get('/', ['uses' => 'IndexController@index']);
+
+ Route::get('events', ['uses' => 'IndexController@events']);
+
+ Route::get('members', ['uses' => 'IndexController@members']);
+
+ Route::get('membership', ['uses' => 'IndexController@membership']);
+
+ Route::get('parade', ['uses' => 'IndexController@parade']);
+
+ Route::get('projects', ['uses' => 'IndexController@project']);
+
+ Route::get('presidents', ['uses' => 'IndexController@presidents']);
+
+ Route::get('contact', ['uses' => 'IndexController@contact']);
+

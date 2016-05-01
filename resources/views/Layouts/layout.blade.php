@@ -42,7 +42,7 @@
                     <div class="col-md-4 col-sm-4 header-logo-container">
 
                     <div class="navbar-header header-brand-container background-yellow text-center" >
-                        <div class="navbar-brand header-brand" >
+                        <div class="navbar-brand header-brand" style="height:initial;">
                         <a href=""><img class="header-logo" src="../Resources/images/logo.png"></a>
                         </div>
                     </div>
@@ -64,18 +64,18 @@
             <div class="header-nav-container text-left">
                 <div class="header-menu">
                 <ul class="header-nav">
-                    <li class="active"><a href="index.html"><span>Home</span></a></li>
-                    <li><a href="events.html"><span>Events</span></a></li>
-                    <li><a href="parade.html"><span>Psycho Parade</span></a></li>
-                    <li><a href="projects.html"><span>Projects</span></a></li>
-                    <li><a href="members.html"><span>Committee</span></a>
+                    <li class="active"><a href="/"><span>Home</span></a></li>
+                    <li><a href="events"><span>Events</span></a></li>
+                    <li><a href="parade"><span>Psycho Parade</span></a></li>
+                    <li><a href="projects"><span>Projects</span></a></li>
+                    <li><a href="members"><span>Committee</span></a>
                       <ul class="top-ul">
-                         <li><a href="members.html"><span>Members</span></a></li>
-                         <li><a href="presidents.html"><span>Past Presidents</span></a></li>
+                         <li><a href="members"><span>Members</span></a></li>
+                         <li><a href="presidents"><span>Past Presidents</span></a></li>
                       </ul>            
                     </li>
-                    <li><a href="membership.html"><span>Membership</span></a></li>
-                    <li><a href="contactus.html"><span>Contact Us</span></a></li>           
+                    <li><a href="membership"><span>Membership</span></a></li>
+                    <li><a href="contact"><span>Contact Us</span></a></li>           
                 </ul>
                 </div>
             </div> 
