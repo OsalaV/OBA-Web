@@ -1,0 +1,20 @@
+/* vendor = moz or webkit or o*/
+
+#sec-1 {
+  -moz-animation-duration: 2s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s;
+/*  -vendor-animation-iteration-count: infinite;*/
+
+}
+
+#para-1 {
+  -moz-animation-duration: 1s;
+  -moz-animation-delay: 0s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+/*  -vendor-animation-iteration-count: infinite;*/
+
+}
+

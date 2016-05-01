@@ -1,0 +1,118 @@
+/*@import url(//fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100);*/
+/*@import "animate.css";*/
+.font-header-large{    
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.11111111;
+  margin: 0;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.font-header-large small{    
+  font-weight: 300;
+  font-size: inherit;    
+}
+
+.font-footer{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (min-width: 260px){
+    .font-header-large{ 
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 480px){
+    .font-header-large{ 
+        font-size: 45px;
+    }
+}
+
+@media (min-width: 768px){
+    .font-header-large{ 
+        font-size: 54px;
+    }
+}
+
+.font-sub-16{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px; 
+    font-weight: 600;  
+}
+
+.font-sub-22{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px; 
+    font-weight: 600; 
+    text-transform: uppercase;
+}
+
+.font-para-15{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;    
+}
+
+.font-para-14{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;    
+}
+
+.font-para-14-bold{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 800;    
+}
+
+.color-darkblue{
+    color: #222533;
+}
+
+.color-lightblue{
+    color: #21c2f8;
+}
+
+.color-black{
+    color: #000000;
+}
+
+
+.color-white{
+    color: #ffffff;
+}
+
+.color-yellow{
+    color: #FCB812;
+}
+
+.background-ash{
+    background: #f2f2f2;
+}
+
+.background-white{
+    background: #ffffff;
+}
+
+.background-yellow{
+    background: #FCB812;
+}
+
+.background-yellow-alpha {
+  background: rgba(252, 184, 18, 0.8);
+}
+
+.background-darkblue-alpha{
+    background: rgba(34, 37, 51, 0.8);
+}
