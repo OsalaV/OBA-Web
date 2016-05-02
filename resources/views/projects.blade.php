@@ -17,7 +17,7 @@
   <div class="thumbnail port-thumb thumb-shadow">
     <img src="../Resources/images/projects/1.jpg" alt="">
     <div class="port-caption background-yellow-alpha port-cap-hover">
-      <h3 class="font-sub-22">tumelit</h3>
+      <h3 class="font-sub-22">DS SMASHES 2015 </h3>
       <div class="wrap">
         <p class="font-para-14">
           Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.
@@ -44,7 +44,7 @@
   <div class="thumbnail port-thumb thumb-shadow">
     <img src="../Resources/images/projects/2.jpg" alt="">
     <div class="port-caption background-yellow-alpha port-cap-hover">
-      <h3 class="font-sub-22">tumelit</h3>
+      <h3 class="font-sub-22">49th birthday Celebration of D. S. Senanayake College </h3>
       <div class="wrap">
         <p class="font-para-14">
           Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.

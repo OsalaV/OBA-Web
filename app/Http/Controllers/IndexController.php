@@ -29,9 +29,9 @@ class IndexController extends Controller
           return View::make('parade', array('Title' => 'Parade'));;
     }
 
-    public function project()
+    public function projects()
     {
-          return View::make('projects', array('Title' => 'Members'));;
+          return View::make('projects', array('Title' => 'Projects'));;
     }
 
     public function committe()
