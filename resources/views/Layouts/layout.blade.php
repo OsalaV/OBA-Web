@@ -14,14 +14,15 @@
     <link href="../Resources/css/common/animate.css" rel="stylesheet">
     <link href="../Resources/css/common/animatetime.css" rel="stylesheet"> 
     <link href="../Resources/css/common/jquery.bxslider.css" rel="stylesheet"> 
-      
+    
     
       
     <!--Links -->
     <link rel="stylesheet" href="../Resources/css/customs/fonts.css">
     <link rel="stylesheet" href="../Resources/css/customs/template.css">
     <link rel="stylesheet" href="../Resources/css/customs/listo.css">
-      
+    <link rel="stylesheet" href="../Resources/css/customs/form.css">
+        
     <!--Fonts and Icons -->
     <link rel="stylesheet" href="../Resources/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
 
