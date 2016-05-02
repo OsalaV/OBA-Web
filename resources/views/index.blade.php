@@ -2,6 +2,7 @@
 
 
 @section('content')
+<!--
     <script>
         $(document).ready(function(){
           $('.bxslider').bxSlider({
@@ -9,6 +10,7 @@
           });
         });  
     </script>
+-->
 	<main>        
 		<section class="well slider-section background-white">
 		<div class="container no-padding">
@@ -32,12 +34,13 @@
 		<div class="row">
 		    <div class="col-md-6 col-sm-12">
 		      <p id="para-2" class="font-para-15 color-darkblue animated">
-		        Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		        D.S. Senanayake College, situated in Colombo 07 (Cinnamon Gardens) is one of the premiere educational institutes in Sri Lanka. With the short span of history it has been able to gain many achievements of excellence both in the academic and non academic fields , locally and internationally to be proud as a truly multi-ethnic, multi-religious College which has proudly created unblemished and prestigious record of excellence in academia , sport and community leadership culminating being an institute of highly innovative and patriotic individuals to the motherland. School has current enrollment of over 6000 students with an academic staff over 275. It is among the most sought after schools in Colombo. The school is listed among theNational Schools, which come under the administration of the Ministry of Education, thus has direct funding from the ministry.
 		      </p>
 		    </div>
 		    <div class="col-md-6 col-sm-12">
 		      <p id="para-3" class="font-para-15 color-darkblue animated">
-		        Ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.        
+		        D.S Senanayake College provides education to students from Grade 1 to 13 in Sinhala, Tamil & English Mediums. It also provides Mathematics, Science, Commerce & Arts fields for the Advance Level Examinations. The School is fully equipped with Modern Classrooms, Multiple Science Laboratories and Computer Laboratories, Ground & Sports Complex for sports activities. It also has more than 35 Clubs, Societies & Associations engaged in all types of co-curricular activities. There are wide range of sporting activities, be it the track, field or water.
+But the most wonderful side of this tale is the success of D.S Senanayake College is that the rapid growth of this establishment in such a short period of 45 years. It was the sole commitment of the administration of the school, teachers, parents and students & the past pupils working together to achieve a common goal. Their path was always not cleared. It was a harsh climb to the top, with a lot of sweat, blood & tears in the path that we walked by. Because as our founding Principal Mr. R. I. T. Alles says ” D.S was not built of the pocket of the rich man, but of the hand of the humble poor man.”      
 		      </p>
 		    </div>
 		</div>
@@ -141,8 +144,8 @@
 		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
 		      </p>
 		      <cite class="color-lightblue">
-		        Edna Barton,<br />
-		        Principal
+		        Susantha Dissanayake<br />
+		        President
 		      </cite>
 		    </div>
 		</blockquote>
@@ -156,8 +159,8 @@
 		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
 		      </p>
 		      <cite class="color-lightblue">
-		        Edna Barton,<br />
-		        Principal
+		        Shiraj Inimankada<br />
+		        General Secretary
 		      </cite>
 		    </div>
 		</blockquote>
@@ -171,8 +174,8 @@
 		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
 		      </p>
 		      <cite class="color-lightblue">
-		        Edna Barton,<br />
-		        Principal
+		        Pasad Weerasekera<br />
+		        Treasurer
 		      </cite>
 		    </div>
 		</blockquote>
