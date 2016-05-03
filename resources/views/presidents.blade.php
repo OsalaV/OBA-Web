@@ -20,15 +20,18 @@
   <img class="" src="../Resources/images/presidents/1.jpg" alt="">
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-22">Ut enim ad minim veniam quis</p>
+  <p class="font-sub-22">Susantha Dissanayake</p>
+<!--
   <p class="font-para-14">
     Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.
   </p>    
+-->
 </div>
 </div>
     
     
 <div class="col-md-6 col-sm-6 col-xs-12">   
+<!--
 <div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
   <img class="" src="../Resources/images/presidents/2.jpg" alt="">
 </div>
@@ -39,10 +42,12 @@
   </p>    
 </div>
 </div>
+-->
 </div>   
   
 <div class="row">
 
+<!--
 <div class="col-md-6 col-sm-6 col-xs-12">   
 <div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
   <img class="" src="../Resources/images/presidents/3.jpg" alt="">
@@ -54,8 +59,10 @@
   </p>    
 </div>
 </div>
+-->
     
     
+<!--
 <div class="col-md-6 col-sm-6 col-xs-12">   
 <div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
   <img class="" src="../Resources/images/presidents/4.jpg" alt="">
@@ -67,6 +74,7 @@
   </p>    
 </div>
 </div>
+-->
 </div>   
     
     

@@ -134,7 +134,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		</div>
 		    
 		<div class="col-md-6 col-sm-6 col-xs-12">
-		<h2 class="font-header-large color-black">testimonial</h2>
+<!--		<h2 class="font-header-large color-black">testimonial</h2>-->
 		<blockquote class="media offs3">   
 		    <div class="media-left media-rp-left">
 		      <img class="img-circle" src="../Resources/images/testimonial/1.jpg" alt="">
