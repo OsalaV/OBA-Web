@@ -21,8 +21,10 @@ a:hover {
   outline: 0px;
   border-radius: 0px;
   margin-bottom: 0px;
-  padding-bottom: 0px;
-  padding-top: 50px;
+/*  padding-bottom: 0px;*/
+/*  padding-top: 50px;*/
+/*  padding-top: 0px;*/
+  padding: 0;
 }
 
 .temp-section{
@@ -40,7 +42,7 @@ a:hover {
 
 .header-image{
     width: 100%;
-/*    height: 100%;*/
+    height: 100%;
     max-width: 100%; 
 }
 
@@ -85,7 +87,8 @@ a:hover {
 }
 
 .header-container{
-    padding: 0px;
+/*    padding: 0px;*/
+    background-color: #D9A111;
 }
 
 .header-logo-container{
@@ -113,58 +116,82 @@ a:hover {
 }
 
 .header-flag-yellow{
-    background-color:#FCB812;
+    background-color:#D9A111;
     height:35px;
     margin: 0px;
     margin-bottom:5px;
 }
 
 .header-flag-black{
+/*
     background-color:#000000;
     margin: 0px;
     margin-bottom:5px;
+*/
 }
 
 .header-flag-text{
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 5px;
-    line-height: 1.27272727;
-    font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
+    color: #000;
+    font-size: 40px;
+/*    font-weight: bold;*/
+/*    padding: 5px;*/
+/*    line-height: 1.27272727;*/
+    font-family: Old English Text MT;
+/*    text-transform: uppercase;*/
     margin: 0px;
+/*
+    text-align: center;
+    padding-top: 60px;
+*/
 }
 
 @media (min-width: 260px){
     .header-flag-yellow{
-        background-color:#FCB812;
+/*        background-color:#D9A111;*/
         height:35px;
-        margin-top: 5px;
-        margin-bottom:5px;
+/*        margin-top: 5px;*/
+/*        margin-bottom:5px;*/
     }
+    
+    .header-logo-container{
+        padding: 0px;
+    }
+    
 }
 
 @media (min-width: 768px){
     .header-flag-container{
         padding: 0px; 
-        padding-left: 20px;
+/*        padding-left: 20px;*/
     }
 
     .header-flag-yellow{
-        background-color:#FCB812;
-        height:35px;
-        margin: 0px;
-        margin-top: 0px;
-        margin-bottom:5px;
+/*        background-color:#D9A111;*/
+        height:48px;
+/*        margin: 0px;*/
+/*        margin-top: 0px;*/
+/*        margin-bottom:5px;*/
     }
     
     .header-logo{
         width:42%;
         height:42%;
         max-width:100%;
+        padding-top: 40px;
     }
     
+}
+
+@media (min-width: 970px){
+    .header-logo{
+        width:35%;
+        height:35%;
+        max-width:100%;
+        padding-top: 15px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
 }
 
 @media (min-width: 1200px){
@@ -172,13 +199,16 @@ a:hover {
         width:35%;
         height:35%;
         max-width:100%;
+        padding: 0;
     }
 }
 
 /*Navigation*/
 .header-nav-container {
+/*
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
+*/
   background: #ffffff;
 }
 
@@ -194,10 +224,12 @@ a:hover {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
   font-weight: 800;
+/*
   margin-left: 90px;
   margin-right: 90px;
   margin-top: 5px;
   margin-bottom: 20px;
+*/
 }
 .header-menu ul {
   list-style: none;
@@ -246,7 +278,7 @@ a:hover {
   -ms-transition: max-height 0.4s ease-out;
   -o-transition: max-height 0.4s ease-out;
   transition: max-height 0.4s ease-out;
-  background: #EF9B0F;
+  background: #D9A111;
 }
 .header-menu ul li ul li.has-sub:after {
   display: block;
@@ -347,7 +379,7 @@ a:hover {
   height: 0;
   top: 0;
   z-index: 0;
-  background: #EF9B0F;;
+  background: #D9A111;;
   -webkit-transition: height .2s;
   -moz-transition: height .2s;
   -ms-transition: height .2s;
@@ -445,8 +477,10 @@ a:hover {
       font-family: 'Raleway', sans-serif;
       font-size: 15px;
       font-weight: 600; 
+/*
       margin-top: 5px;
       margin-bottom: 5px;
+*/
     }
     
     
@@ -554,11 +588,11 @@ a:hover {
   }
 
   .header-menu > ul > li a:hover {  
-    color: #EF9B0F;
+    color: #D9A111;
   }
 
   .header-menu > ul > li ul li a:hover {  
-    color: #EF9B0F;
+    color: #D9A111;
   }
     
   .header-menu #menu-button {
@@ -625,7 +659,7 @@ a:hover {
   font-family: 'Raleway', sans-serif;
 }
 .footer-privacy:hover {
-  color: #FCB812;
+  color: #D9A111;
 }
 
 /*social icons*/
@@ -673,19 +707,25 @@ a:hover {
 
 
 .fa-facebook:hover { 
-    background-color: #FCB812;
+    background-color: #D9A111;
 }
 
 .fa-twitter:hover { 
-    background-color: #FCB812;
+    background-color: #D9A111;
 }
 
 .fa-google-plus:hover { 
-    background-color: #FCB812;
+    background-color: #D9A111;
 }
 
 .fa-instagram:hover { 
-    background-color: #FCB812;
+    background-color: #D9A111;
+}
+
+
+/*Re-editing*/
+.container{
+    width: 100%;
 }
 
 

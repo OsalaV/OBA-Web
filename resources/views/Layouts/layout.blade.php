@@ -52,9 +52,9 @@
                                 
                     <div class="col-md-8 col-sm-8 header-flag-container">
                         <div class="header-flag-yellow"></div>
-                        <div class="header-flag-black text-center">
-                        <h5 class ="header-flag-text">D.S.Senanayake College OBA</h5>
-                        </div>
+                            <div class="header-flag-black text-left">
+                                <h5 class ="header-flag-text">D.S.Senanayake College OBA</h5>
+                            </div>
                         <div class="header-flag-yellow"></div>
                     </div>
 

@@ -16,9 +16,9 @@
 		<div class="container no-padding">
 
 		<ul class="bxslider" style="padding:0px !important;">
-		  <li><img src="../Resources/images/slider/1.jpg" title="Funky roots" /></li>
-		  <li><img src="../Resources/images/slider/2.jpg" title="The long and winding road" /></li>
-		  <li><img src="../Resources/images/slider/3.jpg" title="Happy trees" /></li>
+		  <li><img src="../Resources/images/slider/1.jpg"  /></li>
+		  <li><img src="../Resources/images/slider/2.jpg"  /></li>
+		  <li><img src="../Resources/images/slider/3.jpg"  /></li>
 		</ul>    
 
 		    
