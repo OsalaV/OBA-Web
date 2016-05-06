@@ -36,7 +36,7 @@
     <body>
         <div class="temp-body">
         <header>  
-            <div class="container header-wrapper">
+            <div class="container-fluid header-wrapper">
 
                 <div class="col-md-12 col-sm-12 header-container">
                             
@@ -87,7 +87,7 @@
        
      <footer class="footer-container">
         <section class="footer-section">
-            <div class="container"> 
+            <div class="container-fluid"> 
                 <div class="col-md-6 col-sm-12 col-xs-12 footer-text-container">
                     <p class="font-footer color-white footer-text">
                     D.S.SENANAYAKE COLLEGE &#169; <span class="footer-year">2016</span>
