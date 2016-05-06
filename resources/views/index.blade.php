@@ -13,7 +13,7 @@
 -->
 	<main>        
 		<section class="well slider-section background-white">
-		<div class="container no-padding">
+		<div class="container-fluid no-padding">
 
 		<ul class="bxslider" style="padding:0px !important;">
 		  <li><img src="../Resources/images/slider/1.jpg"  /></li>
