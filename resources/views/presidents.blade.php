@@ -21,6 +21,12 @@
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">             
   <p class="font-sub-22">Susantha Dissanayake</p>
+    
+  <div id="div-sociali" class="sociali animated">
+              <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
+              <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
+              <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
+  </div>
 <!--
   <p class="font-para-14">
     Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.

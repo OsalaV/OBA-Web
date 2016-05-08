@@ -90,7 +90,7 @@
             <div class="container-fluid"> 
                 <div class="col-md-6 col-sm-12 col-xs-12 footer-text-container">
                     <p class="font-footer color-white footer-text">
-                    D.S.SENANAYAKE COLLEGE &#169; <span class="footer-year">2016</span>
+                    Developed by 2011 batch &#169; <span class="footer-year">2016</span>
                     <a class="footer-privacy" href="">Privacy Policy</a>
                     </p> 
                 </div>

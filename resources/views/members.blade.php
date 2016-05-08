@@ -16,11 +16,13 @@
     <div class="thumbnail port-thumb">
     <img class="" src="../Resources/images/members/1.jpg" alt="">
     <div>
-    <h2 class="font-sub-22"><a class="color-lightblue" href="#">Susantha Dissanayake </a></h2>
+    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Susantha Dissanayake <br /><br /> President</a></a></h4>
     <!--<h4 class="font-sub-22"><a class="color-lightblue" href="#">President </a></h4>-->
-    <p class="font-para-14 color-darkblue">
-    Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-    </p>
+        <div id="div-sociali" class="sociali animated">
+              <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
+              <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
+              <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
+        </div> 
     </div>  
     </div>
 </div>
@@ -127,27 +129,30 @@
  
 <ul class="bxslider">
     <li>
-    <div class="thumbnail port-thumb">
-    <img class="" src="../Resources/images/members/1.jpg" alt="">
-    <div class="hidden-xs">
-<!--    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Inga North</a></h4>-->
-    <p class="font-para-14 color-darkblue">
-    Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-    </p>
-    </div>  
-    </div>
+        <div class="thumbnail port-thumb">
+            <img class="" src="../Resources/images/members/1.jpg" alt="">
+            <div class="hidden-xs">
+                <h4 class="font-sub-22"><a class="color-lightblue" href="#">Susantha Dissanayake </a></h4>
+
+            </div>  
+        </div>
+        <div id="div-sociali" class="sociali animated">
+              <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
+              <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
+              <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
+        </div> 
     </li>
     
     <li>
-    <div class="thumbnail port-thumb">
-    <img class="" src="../Resources/images/members/2.jpg" alt="">
-    <div class="hidden-xs">
-<!--    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Inga North</a></h4>-->
-    <p class="font-para-14 color-darkblue">
-    Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-    </p>
-    </div>  
-    </div>
+        <div class="thumbnail port-thumb">
+            <img class="" src="../Resources/images/members/2.jpg" alt="">
+        <div class="hidden-xs">
+    <!--    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Inga North</a></h4>-->
+        <p class="font-para-14 color-darkblue">
+        Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
+        </p>
+        </div>  
+        </div>
     </li>
     
     <li>
