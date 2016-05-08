@@ -14,7 +14,7 @@
 
 <div class="row">
 <div class="col-md-4 col-sm-12 col-xs-12">
-  <div class="thumbnail port-thumb thumb-shadow">
+  <div class="thumbnail port-thumb">
     <img src="../Resources/images/projects/1.jpg" alt="">
     <div class="port-caption background-yellow-alpha port-cap-hover">
       <h3 class="font-sub-22">DS SMASHES 2015 </h3>
@@ -41,7 +41,7 @@
     
 <div class="row">
 <div class="col-md-4 col-sm-12 col-xs-12">
-  <div class="thumbnail port-thumb thumb-shadow">
+  <div class="thumbnail port-thumb">
     <img src="../Resources/images/projects/2.jpg" alt="">
     <div class="port-caption background-yellow-alpha port-cap-hover">
       <h3 class="font-sub-22">49th birthday Celebration of D. S. Senanayake College </h3>
