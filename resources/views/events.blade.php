@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="thumbnail port-thumb">
-                    <img src="../Resources/images/events/2.jpg" alt="">
+                    <img src="../images/events/2.jpg" alt="">
                     <div class="port-caption background-yellow-alpha port-cap-hover">      
                       <div class="wrap">
                       <h3 class="font-sub-22">Prefects Guide</h3>
@@ -95,7 +95,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="thumbnail port-thumb">
-                    <img src="../Resources/images/events/2.jpg" alt="">
+                    <img src="../images/events/2.jpg" alt="">
                     <div class="port-caption background-yellow-alpha port-cap-hover">      
                       <div class="wrap">
                       <h3 class="font-sub-22">Prefects Guide</h3>

@@ -10,24 +10,26 @@
     <head>
 
         <!--Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="../Resources/css/common/animate.css" rel="stylesheet">
-    <link href="../Resources/css/common/animatetime.css" rel="stylesheet"> 
-    <link href="../Resources/css/common/jquery.bxslider.css" rel="stylesheet"> 
-    
-    
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/common/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/common/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/common/animatetime.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.bxslider.css') }}">
       
     <!--Links -->
-    <link rel="stylesheet" href="../Resources/css/customs/fonts.css">
-    <link rel="stylesheet" href="../Resources/css/customs/template.css">
-    <link rel="stylesheet" href="../Resources/css/customs/listo.css">
-    <link rel="stylesheet" href="../Resources/css/customs/form.css">
-        
-    <!--Fonts and Icons -->
-    <link rel="stylesheet" href="../Resources/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
 
-     <script src="../Resources/js/jquery-1.11.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/customs/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/customs/template.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/customs/listo.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/customs/form.css') }}">
     
+    <!--Fonts and Icons -->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.4.0/css/font-awesome.min.css') }}">
+
+
+    <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
+<!--     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>-->
+
 
 
     <title> @yield('Title')</title>
@@ -36,18 +38,17 @@
     <body>
         <div class="temp-body">
         <header>  
+            
             <div class="container-fluid header-wrapper">
-
+                
                 <div class="col-md-12 col-sm-12 header-container">
                             
                     <div class="col-md-4 col-sm-4 header-logo-container">
-
-                    <div class="navbar-header header-brand-container background-yellow text-center" >
-                        <div class="navbar-brand header-brand" style="height:initial;">
-                        <a href=""><img class="header-logo" src="../Resources/images/logo.png" style="height:25%;"></a>
+                        <div class="navbar-header header-brand-container background-yellow text-center" >
+                            <div class="navbar-brand header-brand" style="height:initial;">
+                                <a href=""><img class="header-logo" src="../images/logo.png" style="height:25%;"></a>
+                            </div>
                         </div>
-                    </div>
-
                     </div>
                                 
                     <div class="col-md-8 col-sm-8 header-flag-container">
@@ -108,12 +109,11 @@
    </div>
         
   
-    
-    <script src="../Resources/js/bootstrap.min.js"></script>
-    <script src="../Resources/js/header.js"></script>
-    <script src="../Resources/js/jquery.waypoints.min.js"></script>  
-    <script src="../Resources/js/jquery.animations.js"></script> 
-    <script src="../Resources/js/jquery.bxslider.min.js"></script>  
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.animations.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
         
 </body>
 </html>

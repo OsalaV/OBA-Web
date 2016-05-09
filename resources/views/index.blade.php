@@ -16,9 +16,9 @@
 		<div class="container-fluid no-padding">
 
 		<ul class="bxslider" style="padding:0px !important;">
-		  <li><img src="../Resources/images/slider/1.jpg"  /></li>
-		  <li><img src="../Resources/images/slider/2.jpg"  /></li>
-		  <li><img src="../Resources/images/slider/3.jpg"  /></li>
+		  <li><img src="../images/slider/1.jpg"  /></li>
+		  <li><img src="../images/slider/2.jpg"  /></li>
+		  <li><img src="../images/slider/3.jpg"  /></li>
 		</ul>    
 
 		    
@@ -137,7 +137,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 <!--		<h2 class="font-header-large color-black">testimonial</h2>-->
 		<blockquote class="media offs3">   
 		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../Resources/images/testimonial/1.jpg" alt="">
+		      <img class="img-circle" src="../images/testimonial/1.jpg" alt="">
 		    </div>             
 		    <div class="media-body media-rp-body">              
 		      <p class="font-para-14 color-darkblue">       
@@ -152,7 +152,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		    
 		<blockquote class="media offs3">   
 		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../Resources/images/testimonial/2.jpg" alt="">
+		      <img class="img-circle" src="../images/testimonial/2.jpg" alt="">
 		    </div>             
 		    <div class="media-body media-rp-body">              
 		      <p class="font-para-14 color-darkblue">       
@@ -167,7 +167,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		    
 		<blockquote class="media offs3">   
 		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../Resources/images/testimonial/3.jpg" alt="">
+		      <img class="img-circle" src="../images/testimonial/3.jpg" alt="">
 		    </div>             
 		    <div class="media-body media-rp-body">              
 		      <p class="font-para-14 color-darkblue">       

@@ -17,7 +17,7 @@
 
 <div class="col-md-6 col-sm-6 col-xs-12">   
 <div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-  <img class="" src="../Resources/images/presidents/1.jpg" alt="">
+  <img class="" src="../images/presidents/1.jpg" alt="">
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">             
   <p class="font-sub-22">Susantha Dissanayake</p>
