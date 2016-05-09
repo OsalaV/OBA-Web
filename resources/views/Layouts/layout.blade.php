@@ -46,7 +46,7 @@
                     <div class="col-md-4 col-sm-4 header-logo-container">
                         <div class="navbar-header header-brand-container background-yellow text-center" >
                             <div class="navbar-brand header-brand" style="height:initial;">
-                                <a href=""><img class="header-logo" src="../images/logo.png" style="height:25%;"></a>
+                                <a href=""><img class="header-logo" src="../images/logo.png" style="height:auto;"></a>
                             </div>
                         </div>
                     </div>

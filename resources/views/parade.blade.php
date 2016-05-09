@@ -12,7 +12,7 @@
 <div class="row">    
 <h2 class="font-header-large color-black">PSYCHO <small class="color-yellow">PARADE</small></h2>
 
-<img class="header-image" src="../images/parade/banner.jpg">
+<img class="header-image" src="../images/parade/banner.jpg" style="height:auto;">
 </div>
 
 <div class="row"> 
@@ -22,15 +22,15 @@
 
 <ul class="bar-list wow fadeInLeft" data-wow-duration='3s'>
     <li>
-    <a href="#"><img class="thumb-img" src="../images/parade/1.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/2.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/3.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/4.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/5.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/6.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/7.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/8.jpg"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/9.jpg"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/1.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/2.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/3.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/4.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/5.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/6.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/7.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/8.jpg" style="height:auto;"></a>
+    <a href="#"><img class="thumb-img" src="../images/parade/9.jpg" style="height:auto;"></a>
     </li>
   </ul>
 </div>
