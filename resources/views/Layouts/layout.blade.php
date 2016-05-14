@@ -22,12 +22,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/customs/template.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/customs/listo.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/customs/form.css') }}">
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('css/customs/flipclock.css') }}">
+        
     <!--Fonts and Icons -->
     <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.4.0/css/font-awesome.min.css') }}">
 
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/flipclock.js') }}"></script>
 <!--     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>-->
 
 
