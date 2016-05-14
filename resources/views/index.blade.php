@@ -54,7 +54,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
                 <h2 class="font-header-large color-black">50th Aniversary</h2>
                 <div class="row">
 
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-9 col-sm-12 col-xs-12">
 
                         <div class="clock-builder-output"></div>
                     <style text="text/css">body .flip-clock-wrapper ul li a div div.inn, body .flip-clock-small-wrapper ul li a div div.inn { color: #CCCCCC; background-color: #333333; align-items: center } body .flip-clock-dot, body .flip-clock-small-wrapper .flip-clock-dot { background: #323434; } body .flip-clock-wrapper .flip-clock-meridium a, body .flip-clock-small-wrapper .flip-clock-meridium a { color: #323434; }</style>
@@ -72,13 +72,15 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
                             });
                             </script>
                     </div>
-            <!--
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+            
+<!--
+                    <div class="col-md-3 col-sm-12 col-xs-12">
 
-                        <img class="fifty-logo" src="images/50th.jpg" style="height:auto; "></a>
+                        <img class="fifty-logo" src="../images/50th.jpg" style="height:auto; "></a>
 
                     </div>    
-            -->
+-->
+            
                 </div>
             </div>
         </section>
