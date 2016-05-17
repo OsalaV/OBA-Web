@@ -1,0 +1,562 @@
+body{
+    overflow-x: hidden;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+a:active {
+  background: transparent;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+
+/*===========================================================================================*/
+/*HEADER*/
+/*===========================================================================================*/
+
+
+.ws-header-panel{
+    padding: 0px;
+    margin:0px;  
+}
+
+.ws-brand-container{
+    height: 65px;
+    padding: 0px;
+}
+
+.ws-brand{
+    padding: 18px 10px;
+    height: 100%;
+}
+
+.ws-header-img{
+    width: 60px;
+    height: 60px;
+
+}
+
+.ws-header-title{
+    line-height: 1.73333333;
+    font-family: Old English Text MT;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+
+@media only screen and (max-width : 1320px) {
+    
+    .ws-brand{
+        padding: 10px 12px;
+    }
+    
+}
+
+@media only screen and (max-width : 991px) {
+
+    .ws-brand{
+        padding: 18px 12px;
+    }
+    
+}
+
+.ws-nav-container{
+    height: 65px;
+    padding-left:20px;
+    padding-right:20px;   
+    color: #FFFFFF;
+}
+
+.ws-navpanel-left{
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.ws-navpanel-right{		
+    height: 65px;  
+    padding: 18px 0px;
+}
+
+.ws-navpanel-user-ul{
+     list-style-type: none;
+}
+
+.ws-header-uimage{
+    width: 30px;
+    height: 30px;
+}
+
+.ws-header-dp{
+    margin-right: 20px;
+    background: rgb(252, 184, 18);
+}
+
+.ws-header-dp li a{
+    font-family: 'MoPFserrat','Open Sans', sans-serif;
+    line-height: 1.73333333;
+    font-weight: 600;
+    font-size: 14px;  
+}
+
+.ws-header-dp li a:hover{
+    background: rgb(252, 184, 18);
+    color: #000;
+}
+
+
+
+/*===========================================================================================*/
+/*BODY*/
+/*===========================================================================================*/
+
+
+
+.ws-body-panel{
+    margin: 0px;
+    margin-top: 65px;
+    padding: 0px;
+    position: relative;
+    
+}
+
+@media only screen and (max-width : 991px) {
+    .ws-body-panel{
+        margin-top: 130px;
+    }
+}
+
+.ws-body-left{
+    width: 16.7%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    left: 0px;
+    z-index: 1;
+}
+
+.ws-body-sidepanel{
+    height: 100vh;
+    overflow: auto;
+}
+
+.ws-body-sidepanel::-webkit-scrollbar{
+    display: none;
+}
+
+
+.ws-body-sidepanel::-webkit-scrollbar {
+	width: 8px;
+}
+.ws-body-sidepanel::-webkit-scrollbar-button {
+	width: 8px;
+	height:5px;
+}
+.ws-body-sidepanel::-webkit-scrollbar-track {
+	background:#eee;
+	border: thin solid lightgray;
+	box-shadow: 0px 0px 3px #dfdfdf inset;
+	border-radius:10px;
+}
+.ws-body-sidepanel::-webkit-scrollbar-thumb {
+	background:#999;
+	border: thin solid gray;
+	border-radius:10px;
+}
+.ws-body-sidepanel::-webkit-scrollbar-thumb:hover {
+	background:#7d7d7d;
+}	
+
+.ws-body-sidepanel-ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.ws-body-sidepanel-ul li{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #484848;
+  color: #F4EFEF;
+  background-color: #3C3C3C;
+}
+
+.ws-body-sidepanel-ul li:hover{
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.ws-body-sidepanel-ul li a{
+    width: 100%;
+    height: 50px; 
+}
+
+.ws-body-list-title{
+    width: 80%;
+    height: 50px;
+    padding: 15px 10px;  
+}
+
+.ws-body-list-icon{
+    width: 20%;
+    height: 50px;
+    padding: 15px 5px;  
+}
+
+@media only screen and (max-width : 1320px) {
+    
+    .ws-body-list-title{
+        width: 75%; 
+    }
+    
+    .ws-body-list-icon{
+        width: 25%;
+    }   
+    
+}
+
+@media only screen and (max-width : 991px) {
+    
+    .ws-body-list-title{
+        width: 100%; 
+    }
+    
+    .ws-body-list-icon{
+        width: 100%;        
+    }
+    
+}
+
+.ws-body-right{
+    padding: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 83.33333333%;
+}
+
+.ws-body-mainpanel{
+    padding: 15px 50px;
+    
+}
+
+@media only screen and (max-width : 480px) {
+    .ws-body-mainpanel{
+        padding: 15px 25px;
+
+    }
+    
+}
+
+
+
+
+/*====================================================================================*/
+/*Table CSS*/
+/*====================================================================================*/
+
+
+.ws-table-container{
+	margin-top: 25px;	
+    
+}
+
+.ws-tablebox-container{
+    margin-bottom: 50px;
+}
+
+.ws-table{
+	background-color: #f0f1f4;
+}
+
+.ws-table-img{
+    width: 30px;
+    height: 30px;
+}
+
+.ws-table-img-200px{
+     width: 150px;
+    height: 100px;
+}
+
+.ws-table-head{
+	background-color: #D8DCE3;
+	color: #696c74;
+}
+
+.ws-table-body{
+
+}
+
+.ws-table-body tr{
+	height: 50px;
+}
+
+.ws-table-pagiation-container{
+    margin-bottom: 20px;
+}
+
+.ws-tablepage-action-btn{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: relative;
+    top: -3px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+
+}
+
+.ws-tablepage-action-btn:hover {
+    background: #0073aa;
+}
+
+.ws-fonts-15px-darkblue{
+	color: #262B36;
+	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
+	word-wrap: break-all;
+	white-space:normal;
+	font-weight: bold;
+}
+
+.ws-fonts-15px-red{
+	color: #ED1625;
+	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
+	word-wrap: break-all;
+	white-space:normal;
+	font-weight: bold;
+}
+
+
+.ws-table-options {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.ws-table-options li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.ws-table-options a {
+    line-height: 2;
+    padding: .2em;
+    text-decoration: none;
+}
+
+.ws-table-options a:hover {
+    color: #0073aa;
+}
+
+
+/*====================================================================================*/
+/*Form CSS*/
+/*====================================================================================*/
+
+.ws-form-container{
+    margin-top: 0px;
+    padding: 0px;
+    margin-bottom: 30px;
+}
+
+.ws-form-action-btn{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: relative;
+    top: -3px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+
+}
+
+.ws-form-action-btn-red{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: relative;
+    top: -3px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+}
+
+.ws-form-inside-btn{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+}
+
+.ws-formpanel-container{
+    margin-top: 0px;
+    padding: 70px 0px 0px 50px;
+    margin-bottom: 30px;    
+}
+
+@media only screen and (max-width : 991px) {
+    .ws-formpanel-container{
+        margin-top: 0px;
+        padding: 0px;
+        margin-bottom: 30px;
+    }
+}
+
+.ws-formpanel-heading{
+    color: #262B36;	
+	font-size: 15px;
+	word-wrap: break-all;
+	white-space:normal;
+	font-weight: bold;
+	font-family: 'Montserrat','Open Sans', sans-serif;
+}
+
+.ws-formpanel-body{
+    padding: 20px 30px;
+}
+
+.ws-form-span{
+    width: 80%;
+}
+.ws-form-check{
+    width: 20%;
+}
+
+.ws-form-inputcheck{
+    width: 18px;
+    height: 18px;
+}
+
+.ws-form-action-btn:hover {
+    background: #0073aa;
+    color: #fff;
+}
+
+.ws-form-action-btn-red:hover {
+    background: rgb(237,14,30);
+    color: #fff;
+}
+
+.ws-form-inside-btn:hover{
+    background: #208F5C;
+    color: #fff;
+}
+
+.ws-form{ 
+    margin-top:15px;
+}
+
+.ws-form .textarea{ 
+    min-height: 150px; 
+    resize:none;
+}
+
+.form-control{ 
+    box-shadow:none; 
+    border-color: rgb(122,122,122); 
+    height: 45px; 
+    border-radius:0px;    
+    font-family: 'MoPFserrat','Open Sans', sans-serif;
+    line-height: 1.73333333;
+    color: #555;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-control:focus{ 
+    box-shadow:none; 
+    border-color:rgb(0,119,181);
+}
+
+.form-control-feedback{ 
+    line-height:50px;
+}
+
+.form-control-feedback {
+    line-height: 50px;
+    top: 0px;
+}
+
+
+/*====================================================================================*/
+/*Settings Page CSS*/
+/*====================================================================================*/
+
+
+
+.ws-settings-box-container{
+    padding: 20px;
+}
+
+.ws-settings-box{
+    background: #222533;
+    height: 175px;
+    width: 175px;
+    padding: 50px;
+    margin-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.ws-settings-box:hover{
+    background: #FCB812;
+}
+
+.ws-settings-i{
+   color: #fff; 
+}
+
+
+
+
+
+
+
+
+
+
+
+

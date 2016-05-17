@@ -20,6 +20,33 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
    });
 
+
+// backend routes
+
+ Route::get('dashboard-view', ['uses' => 'DashboardController@index']);
+ 
+ //routs-posts
+ Route::get('posts-view', ['uses' => 'PostController@index']);
+ Route::get('posts-add', ['uses' => 'EventController@create']); 
+
+
+ //routs-events
+ Route::get('events-view', ['uses' => 'EventController@index']);
+ Route::get('events-add', ['uses' => 'EventController@create']);
+ Route::post('events-add-save', ['uses' => 'EventController@store']);   
+ Route::get('events-edit/{id}', ['uses' => 'EventController@edit']); 
+ Route::post('events-edit-save/{id}', ['uses' => 'EventController@update']); 
+ Route::get('events-delete/{id}', ['uses' => 'EventController@destroy']); 
+ Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
+ Route::get('events-published', ['uses' => 'EventController@getpublished']); 
+ Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
+
+ 
+
+
+
+
+
  Route::get('/', ['uses' => 'IndexController@index']);
 
  Route::get('events', ['uses' => 'IndexController@events']);

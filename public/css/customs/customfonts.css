@@ -1,0 +1,167 @@
+/*fonts*/
+.font-main{
+    font-family: 'MoPFserrat','Open Sans', sans-serif;
+    line-height: 1.73333333;
+}
+
+.font-uppercase{
+    text-transform: uppercase;
+}
+
+.font-45px-900{      
+  font-weight: 900;
+  font-size: 45px;  
+}
+
+.font-36px-500{      
+  font-weight: 500;
+  font-size: 36px;  
+}
+
+.font-25px-900{      
+  font-weight: 900;
+  font-size: 25px;  
+}
+
+.font-25px-600{
+  font-weight: 600;
+  font-size: 25px;  
+}
+
+.font-20px-600{      
+  font-weight: 600;
+  font-size: 20px;  
+}
+
+.font-18px-500{      
+  font-weight: 500;
+  font-size: 18px;  
+}
+
+.font-15px-800{   
+    font-size: 15px;
+    font-weight: 800; 
+}
+
+.font-15px-600{   
+    font-size: 15px;
+    font-weight: 600; 
+}
+
+.font-15px-400{
+    font-size: 15px;
+    font-weight: 400;    
+}
+
+.font-14px-600{    
+    font-size: 14px; 
+    font-weight: 600;  
+}
+
+.font-13px-600{    
+    font-size: 13px; 
+    font-weight: 600;  
+}
+
+.font-12px-600{    
+    font-size: 12px; 
+    font-weight: 600;  
+}
+
+
+.font-inherit-300{    
+  font-weight: 300;
+  font-size: inherit;    
+}
+
+
+
+.font-margin-0{
+    margin: 0;
+}
+
+.font-margin-t10{
+    margin-top: 10px;
+}
+
+.font-margin-b10{
+    margin-bottom: 10px;
+}
+
+.font-margin-b20{
+    margin-bottom: 20px;
+}
+
+.font-margin-tb10{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+/*colors*/
+
+.color-darkblue{
+    color: #222533;
+}
+
+.color-ashblue{
+    color: #73879C;
+}
+
+.color-lightblue{
+    color: #21c2f8;
+}
+
+.color-black{
+    color: #000000;
+}
+
+.color-darkash{
+    color: rgb(25,22,21);
+}
+
+.color-white{
+    color: #ffffff;
+}
+
+.color-yellow{
+    color: #FCB812;
+}
+
+.color-green{
+    color: #208F5C;
+}
+
+.background-ash{
+    background: #f2f2f2;
+}
+
+.background-white{
+    background: #ffffff;
+}
+
+.background-yellow{
+    background: #FCB812;
+}
+
+.background-yellow-alpha {
+  background: rgba(252, 184, 18, 0.8);
+}
+
+.background-darkblue-alpha{
+    background: rgba(34, 37, 51, 0.8);
+}
+
+.background-black{
+    background: #000000;
+}
+
+.backgound-skyblue{
+    background: rgb(0,119,181);
+}
+
+.backgound-skyblue-alpha{
+    background: rgba(0,119,181,0.8);
+}
+
+/*colors*/
