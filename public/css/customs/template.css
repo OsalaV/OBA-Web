@@ -632,6 +632,55 @@ a:hover {
   }
 }
 
+/*================    Link list     =================*/
+.link-list li {
+  padding: 21px 52px 26px 27px;
+  background: #D9A111;
+  font-size: 24px;
+  line-height: 33px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  margin-left: -40px;
+}
+.link-list li .btn-link {
+  color: #ffffff;
+  position: absolute;
+  right: 43px;
+  top: 47%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.link-list li .btn-link:before {
+  left: 0;
+  top: -3px;
+}
+.link-list li:hover {
+  background: #222533;
+}
+.link-list li:hover a:hover {
+  color: #D9A111;
+}
+.link-list li:hover a:hover:before {
+  color: #D9A111;
+}
+@media (max-width: 1199px) {
+  .link-list li {
+    font-size: 18px;
+  }
+}
+.link-list li + li {
+  margin-top: 10px;
+}
+
 
 /*Footer Section Styles*/
 .footer-container{
