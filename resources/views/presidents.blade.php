@@ -20,7 +20,7 @@
   <img class="" src="../images/presidents/1.jpg" alt="">
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-22">Susantha Dissanayake</p>
+  <p class="font-sub-16">Susantha Dissanayake</p>
     
   <div id="div-sociali" class="sociali animated">
               <a class="fa fa-facebook" title="" target="_blank" href="#"></a>

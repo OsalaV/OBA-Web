@@ -16,7 +16,7 @@
     <div class="thumbnail port-thumb">
     <img class="" src="../images/members/1.jpg" alt="">
     <div>
-    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Susantha Dissanayake <br /><br /> President</a></a></h4>
+    <h4 class="font-sub-16"><a class="color-lightblue" href="#">Susantha Dissanayake <br /><br /> President</a></a></h4>
     <!--<h4 class="font-sub-22"><a class="color-lightblue" href="#">President </a></h4>-->
         <div id="div-sociali" class="sociali animated">
               <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
@@ -31,7 +31,7 @@
     <div class="thumbnail port-thumb">
     <img class="" src="../images/members/2.jpg" alt="">
     <div>
-    <h4 class="font-sub-22"><a class="color-lightblue" href="#">Pasad Weerasekera</a></h4>
+    <h4 class="font-sub-16"><a class="color-lightblue" href="#">Pasad Weerasekera</a></h4>
     <p class="font-para-14 color-darkblue">
     Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
     </p>
@@ -132,7 +132,7 @@
         <div class="thumbnail port-thumb">
             <img class="" src="../images/members/1.jpg" alt="">
             <div class="hidden-xs">
-                <h4 class="font-sub-22"><a class="color-lightblue" href="#">Susantha Dissanayake </a></h4>
+                <h4 class="font-sub-16"><a class="color-lightblue" href="#">Susantha Dissanayake </a></h4>
 
             </div>  
         </div>
