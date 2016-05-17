@@ -3,15 +3,16 @@
 @section('content')
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Projects
-<a href="" class="ws-tablepage-action-btn">Add New</a>    
+<a href="{{ URL::to('projects-add') }}" class="ws-tablepage-action-btn">Add New</a>    
 <a href="" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
     
 <div class="clearfix hidden-xs">
 <div class="pull-left">
 <ul class="ws-table-options">
-  <li><a href="">All <span>(11)</span></a> |</li>
-  <li><a href="">Published <span>(1)</span></a></li>
+  <li><a href="{{ URL::to('projects-view') }}">All <span>(11)</span></a> |</li>
+  <li><a href="{{ URL::to('projects-published') }}">Published <span>(1)</span>  |</a></li>
+  <li><a href="">Unpublished <span>(1)</span></a></li>
 </ul>  
 </div> 
 <div class="pull-right">
@@ -33,7 +34,7 @@
 <th class="text-center">Image</th>  
 <th class="text-left">Title</th>
 <th class="text-center">Description</th>
-<th class="text-center">Last Updated</th>
+<!--<th class="text-center">Last Updated</th>-->
 <th></th>
 <th></th>
 </tr>
@@ -41,17 +42,18 @@
 
 <tbody class="ws-table-body">
 
+<?php foreach ($projects as $project) { ?>
 <tr>
-<td class="text-center">1</td>
-<td class="text-center"><img class="ws-table-img" src="images/user.png"></td>
-<td class="text-left">Croods</td>
-<td class="text-center">17-sep-15</td>
-<td class="text-center">10.30 AM</td>
+<td class="text-center">{{$project->id}}</td>
+<td class="text-center"><img class="ws-table-img" src="<?php echo $project->projectimage ?>"></td>
+<td class="text-left">{{$project->title}}</td>
+<td class="text-center">{{$project->description}}</td>
+<!--<td class="text-center">10.30 AM</td>-->
 
 
 
 <td class="text-center">
-<a href="">
+<a href="{{ URL::to('projects-edit/'.$project->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -60,7 +62,7 @@
 
 
 <td class="text-center">
-<a href="">
+<a href="{{ URL::to('projects-delete/'.$project->id) }}">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -68,35 +70,7 @@
 </td>
 
 </tr>
-
-<tr>
-<td class="text-center">1</td>
-<td class="text-center"><img class="ws-table-img" src="images/user.png"></td>
-<td class="text-left">Croods</td>
-<td class="text-center">17-sep-15</td>
-<td class="text-center">10.30 AM</td>
-
-
-
-<td class="text-center">
-<a href="">
-<span class="ws-fonts-15px-darkblue ws-span-small">
-<i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
-</span> 
-</a>
-</td>
-
-
-<td class="text-center">
-<a href="">
-<span class="ws-fonts-15px-red ws-span-small">
-<i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
-</span> 
-</a>
-</td>
-
-</tr>
-
+<?php } ?>
 
 
 </tbody>

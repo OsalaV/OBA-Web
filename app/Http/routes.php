@@ -27,7 +27,13 @@ Route::group(['middleware' => ['web']], function () {
  
  //routs-posts
  Route::get('posts-view', ['uses' => 'PostController@index']);
- Route::get('posts-add', ['uses' => 'EventController@create']); 
+ Route::get('posts-add', ['uses' => 'PostController@create']); 
+ Route::post('posts-add-save', ['uses' => 'PostController@store']); 
+ Route::get('posts-edit/{id}', ['uses' => 'PostController@edit']);
+ Route::post('posts-edit-save/{id}', ['uses' => 'PostController@update']); 
+ Route::get('posts-delete/{id}', ['uses' => 'PostController@destroy']);
+ Route::post('posts-edit-status/{id}', ['uses' => 'PostController@updatestatus']); 
+ Route::get('posts-published', ['uses' => 'PostController@getpublished']);
 
 
  //routs-events
@@ -42,8 +48,26 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
 
  
+ //routs-projects
+ Route::get('projects-view', ['uses' => 'ProjectController@index']);
+ Route::get('projects-add', ['uses' => 'ProjectController@create']); 
+ Route::post('projects-add-save', ['uses' => 'ProjectController@store']); 
+ Route::get('projects-edit/{id}', ['uses' => 'ProjectController@edit']);
+ Route::post('projects-edit-save/{id}', ['uses' => 'ProjectController@update']); 
+ Route::get('projects-delete/{id}', ['uses' => 'ProjectController@destroy']); 
+ Route::post('projects-edit-status/{id}', ['uses' => 'ProjectController@updatestatus']);
+ Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
 
 
+ //routs-members
+ Route::get('members-view', ['uses' => 'MemberController@index']);
+ Route::get('members-add', ['uses' => 'MemberController@create']);
+ Route::post('members-add-save', ['uses' => 'MemberController@store']);
+ Route::get('members-edit/{id}', ['uses' => 'MemberController@edit']);
+ Route::post('members-edit-save/{id}', ['uses' => 'MemberController@update']);
+ Route::get('members-delete/{id}', ['uses' => 'MemberController@destroy']); 
+ Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
+ Route::get('members-published', ['uses' => 'MemberController@getpublished']); 
 
 
 

@@ -96,14 +96,14 @@
 </li>
 
 <li>
-<a href="#">
+<a href="{{ URL::to('projects-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Projects</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Projects"><i class="fa fa-folder-open-o fa-lg"></i></span>	
 </a>
 </li>
 
 <li>
-<a href="#">
+<a href="{{ URL::to('members-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Committee</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Committee"><i class="fa fa-users fa-lg"></i></span>	
 </a>

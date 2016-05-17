@@ -4,7 +4,7 @@
 
 <div class="col-md-8 ws-form-container">
 
-<form role="form" class="ws-form">
+<form role="form" action="{{ URL::to('posts-add-save') }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Add New Post
 <button type="submit" class="ws-form-action-btn">Save Post</button>
