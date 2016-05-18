@@ -53,7 +53,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <label class="font-main font-15px-600">Member Image (width*height 270*290px)</label>
+        <label class="font-main font-15px-600">Member Image (width = 270,height = 290px)</label>
         <input type="file" class="form-control" name="memberimage" placeholder="Member Image" required>       
     </div>
 </div>
