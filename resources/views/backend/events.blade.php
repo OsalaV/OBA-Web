@@ -10,14 +10,14 @@
 <div class="clearfix hidden-xs">
 <div class="pull-left">
 <ul class="ws-table-options">
-  <li><a href="{{ URL::to('events-view') }}">All <span>(11)</span></a> |</li>
-  <li><a href="{{ URL::to('events-published') }}">Published <span>(1)</span></a> |</li>
-  <li><a href="{{ URL::to('events-unpublished') }}">Unpublished <span>(1)</span></a></li>
+  <li><a href="{{ URL::to('events-view') }}">All <span>({{$count_all}})</span></a> |</li>
+  <li><a href="{{ URL::to('events-published') }}">Published <span>({{$count_active}})</span></a> |</li>
+  <li><a href="{{ URL::to('events-unpublished') }}">Unpublished <span>({{$count_inactive}})</span></a></li>
 </ul>  
 </div> 
 <div class="pull-right">
-<form>
-<input class="form-search-control" type="text"> 
+<form role="form" action="{{ URL::to('events-search') }}" method="post" enctype="multipart/form-data">
+<input class="form-search-control" type="text" name="searchkey" required> 
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
 </form>  
 </div>

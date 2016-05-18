@@ -24,9 +24,12 @@ class EventController extends Controller
     
     public function index()
     {
-          $events = Event::all();          
+          $events = Event::all(); 
+          $allcount    = Event::all()->count(); 
+          $activecount = Event::where('status','=','on')->count(); 
+          $inactivecount = Event::whereNull('status')->count(); 
           
-          return View::make('backend/events', array('title' => 'Events','events' => $events));
+          return View::make('backend/events', array('title' => 'Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
@@ -37,14 +40,13 @@ class EventController extends Controller
     public function store()
     {
         
-           $imagefile = Input::file('coverimage');
-           $imagedestinationPath = 'uploads/events/images/';
-           $imagefilename  = rand(11111,99999).'.'.$imagefile->getClientOriginalExtension(); 
+           $file = Input::file('coverimage');
+           $destinationPath = 'uploads/events/images/';
         
-           $imageupload = UploadController::upload($imagefile,$imagedestinationPath,$imagefilename);
+           $result = UploadController::singleUpload($file,$destinationPath);
         
-           if($imageupload){
-               
+           if($result['upload']){
+                   
                  $event = new Event;
         
                  $event->title        = Input::get('title'); 
@@ -52,7 +54,7 @@ class EventController extends Controller
                  $event->time         = Input::get('time');
                  $event->location     = Input::get('location');                  
                  $event->description  = Input::get('description');   
-                 $event->eventimage   = $imagedestinationPath.$imagefilename;
+                 $event->eventimage   = $result['filepath'];
                
                  if($event->save()){
                     return Redirect::to('events-add?save=success==true');    
@@ -64,6 +66,7 @@ class EventController extends Controller
                
            }
            else{
+               
                return Redirect::to('/events-add?upload=success==false');
            }
 
@@ -146,21 +149,41 @@ class EventController extends Controller
     
     public function getpublished(){
         
-         $events = Event::where('status' , '=', 'on')->get(); 
-         
-         return View::make('backend/events', array('title' => 'Events | Published','events' => $events));
+         $events = Event::where('status','=','on')->get();          
+        
+         $allcount    = Event::all()->count(); 
+         $activecount = Event::where('status','=','on')->count(); 
+         $inactivecount = Event::whereNull('status')->count(); 
+          
+         return View::make('backend/events', array('title' => 'Events | Published','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
     
     public function getunpublished(){
         
-         $events = Event::where('status' , '=', "")->get(); 
+         $events = Event::whereNull('status')->get(); 
          
-         return View::make('backend/events', array('title' => 'Events | Unpublished','events' => $events));
+         $allcount    = Event::all()->count(); 
+         $activecount = Event::where('status','=','on')->count(); 
+         $inactivecount = Event::whereNull('status')->count(); 
+          
+         return View::make('backend/events', array('title' => 'Events | Unpublished','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
     
-    
+    public function search(){
+         
+         $searchkey = Input::get('searchkey'); 
+         
+         $events = Event::where('title','=',$searchkey)->orWhere('date','=',$searchkey)->get();          
+        
+         $allcount    = Event::all()->count(); 
+         $activecount = Event::where('status','=','on')->count(); 
+         $inactivecount = Event::whereNull('status')->count(); 
+          
+         return View::make('backend/events', array('title' => 'Events','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
     
     
     

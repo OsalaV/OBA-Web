@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
  Route::get('events-published', ['uses' => 'EventController@getpublished']); 
  Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
-
+ Route::post('events-search', ['uses' => 'EventController@search']);
  
  //routs-projects
  Route::get('projects-view', ['uses' => 'ProjectController@index']);
@@ -90,4 +90,12 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('presidents', ['uses' => 'IndexController@presidents']);
 
  Route::get('contact', ['uses' => 'IndexController@contact']);
+
+ //routes settings 
+ Route::get('settings-view', ['uses' => 'SettingController@index']);
+
+ 
+ //routes slider 
+ Route::get('slidersettings', ['uses' => 'SliderController@index']);
+ Route::get('slidersettings-save', ['uses' => 'SliderController@store']);
 

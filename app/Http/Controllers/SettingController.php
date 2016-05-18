@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 
 use View;
 
-class DashboardController extends Controller
+class SettingController extends Controller
 {
     
     public function index()
     {
-          return View::make('backend/dashboard', array('title' => 'Dashboard'));
+          return View::make('backend/settings', array('title' => 'DS OBA | Settings'));
     }
     
     
