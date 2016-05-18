@@ -23,9 +23,12 @@ class ProjectController extends Controller
 {
     public function index()
     {
-          $projects = Project::all();          
+          $projects      = Project::all(); 
+          $allcount      = Project::all()->count(); 
+          $activecount   = Project::where('status','=','on')->count(); 
+          $inactivecount = Project::whereNull('status')->count(); 
           
-          return View::make('backend/projects', array('title' => 'Projects','projects' => $projects));
+          return View::make('backend/projects', array('title' => 'Projects','projects' => $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
@@ -136,9 +139,25 @@ class ProjectController extends Controller
     
     public function getpublished(){
         
-         $projects = Project::where('status' , '=', 'on')->get(); 
+         $projects      = Project::where('status','=','on')->get();          
+        
+         $allcount      = Project::all()->count(); 
+         $activecount   = Project::where('status','=','on')->count(); 
+         $inactivecount = Project::whereNull('status')->count(); 
+          
+         return View::make('backend/projects', array('title' => 'Projects | Published','projects' =>  $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
+    
+    public function getunpublished(){
+        
+         $projects      = Project::whereNull('status')->get(); 
          
-         return View::make('backend/projects', array('title' => 'Projects | Published','projects' => $projects));
+         $allcount      = Project::all()->count(); 
+         $activecount   = Project::where('status','=','on')->count(); 
+         $inactivecount = Project::whereNull('status')->count(); 
+          
+         return View::make('backend/projects', array('title' => 'Projects | Unpublished','projects' =>  $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
     

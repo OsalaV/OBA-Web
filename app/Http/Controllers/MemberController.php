@@ -24,9 +24,12 @@ class MemberController extends Controller
     
     public function index()
     {
-          $members = Member::all();          
+          $members       = Member::all(); 
+          $allcount      = Member::all()->count(); 
+          $activecount   = Member::where('status','=','on')->count(); 
+          $inactivecount = Member::whereNull('status')->count(); 
           
-          return View::make('backend/members', array('title' => 'Members','members' => $members));
+          return View::make('backend/members', array('title' => 'Members','members' => $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
@@ -157,9 +160,25 @@ class MemberController extends Controller
     
     public function getpublished(){
         
-         $members = Member::where('status' , '=', 'on')->get(); 
+         $members       = Member::where('status','=','on')->get();          
+        
+         $allcount      = Member::all()->count(); 
+         $activecount   = Member::where('status','=','on')->count(); 
+         $inactivecount = Member::whereNull('status')->count(); 
+          
+         return View::make('backend/members', array('title' => 'Members | Published','members' =>  $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
+    
+    public function getunpublished(){
+        
+         $members       = Member::whereNull('status')->get(); 
          
-         return View::make('backend/members', array('title' => 'Members | Published','members' => $members));
+         $allcount      = Member::all()->count(); 
+         $activecount   = Member::where('status','=','on')->count(); 
+         $inactivecount = Member::whereNull('status')->count(); 
+          
+         return View::make('backend/members', array('title' => 'Members | Unpublished','members' =>  $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
 
