@@ -67,7 +67,11 @@ Route::group(['middleware' => ['web']], function () {
  Route::post('members-edit-save/{id}', ['uses' => 'MemberController@update']);
  Route::get('members-delete/{id}', ['uses' => 'MemberController@destroy']); 
  Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
- Route::get('members-published', ['uses' => 'MemberController@getpublished']); 
+ Route::get('members-published', ['uses' => 'MemberController@getpublished']);
+
+
+ //routs-members
+ Route::get('users-view', ['uses' => 'UserController@index']);
 
 
 

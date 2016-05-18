@@ -112,7 +112,7 @@
 
 
 <li>
-<a href="#">
+<a href="{{ URL::to('users-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Users</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Users"><i class="fa fa-user fa-lg"></i></span>	
 </a>
