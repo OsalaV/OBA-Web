@@ -29,7 +29,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <label class="font-main font-15px-600 pull-right">Add Photo/Video</label>
+        <label class="font-main font-15px-600 pull-right">Add Photo/Video (width = 960,height = 370px)</label>
     </div>
 </div>
 <div class="col-md-6">
