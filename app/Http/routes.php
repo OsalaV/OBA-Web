@@ -39,14 +39,22 @@ Route::group(['middleware' => ['web']], function () {
  //routs-events
  Route::get('events-view', ['uses' => 'EventController@index']);
  Route::get('events-add', ['uses' => 'EventController@create']);
- Route::post('events-add-save', ['uses' => 'EventController@store']);   
+ Route::post('events-add-details', ['uses' => 'EventController@store']);   
  Route::get('events-edit/{id}', ['uses' => 'EventController@edit']); 
- Route::post('events-edit-save/{id}', ['uses' => 'EventController@update']); 
- Route::get('events-delete/{id}', ['uses' => 'EventController@destroy']); 
+ 
+ Route::post('events-edit-details/{id}', ['uses' => 'EventController@update']);
  Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
+ Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
+ Route::post('events-edit-resource/{id}', ['uses' => 'EventController@updateresource']); 
+
+ Route::get('events-delete-details/{id}', ['uses' => 'EventController@destroy']); 
+ Route::get('events-delete-image/{id}', ['uses' => 'EventController@destroyimge']);
+ Route::get('events-delete-resource/{id}', ['uses' => 'EventController@destroyresource']);
+
  Route::get('events-published', ['uses' => 'EventController@getpublished']); 
  Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
  Route::post('events-search', ['uses' => 'EventController@search']);
+ //routs-events end
  
  //routs-projects
  Route::get('projects-view', ['uses' => 'ProjectController@index']);
@@ -97,5 +105,5 @@ Route::group(['middleware' => ['web']], function () {
  
  //routes slider 
  Route::get('slidersettings', ['uses' => 'SliderController@index']);
- Route::get('slidersettings-save', ['uses' => 'SliderController@store']);
+ Route::post('slidersettings-save', ['uses' => 'SliderController@store']);
 

@@ -8,100 +8,77 @@ use Illuminate\Http\Request;
 use Input;
 use Validator;
 use Redirect;
+use File;
 
 class UploadController extends Controller {
-
-//	public static function upload($file,$destinationPath,$filename){
-//        
-//        $uplodedfile = array('file' => $file);        
-//        
-//        $rules = array('file' => 'required',);
-//        
-//        $validator = Validator::make($uplodedfile, $rules);
-//        
-//        if ($validator->fails()) {
-//            return false;
-//        }         
-//        else {            
-//            if ($file->isValid()) {
-//              
-//              $file->move($destinationPath, $filename); 
-//                
-//              return true;
-//          
-//            }
-//            else {              
-//              return false;
-//            }
-//        
-//       }
-//        
-//    }
-    
-    public static function singleUpload($file,$destinationPath){
         
-        $rules = array('file' => 'required');  //'required|mimes:png,gif,jpeg,txt,pdf,doc'
-        $validator = Validator::make(array('file'=> $file), $rules);
+    public static function upload($files,$destinationPath){
 
-        if($validator->passes()){     
-            $filename = rand(11111,99999).'.'.$file->getClientOriginalExtension();
-            $upload_success = $file->move($destinationPath, $filename);
+        $file_count = count($files);
+        
+        $uploadcount = 0;
+        $uploaded    = array();
+        
+        for($i=0; $i<$file_count;$i++){
             
-            if($upload_success){                
-                $result = array('upload' => true ,'filepath' => $destinationPath.$filename);
-                return $result;                
+            $rules = array('file' => 'required');  //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+            $validator = Validator::make(array('file'=> $files[$i]), $rules);
+            
+            if($validator->passes()){     
+                $filename = rand(11111,99999).'.'.$files[$i]->getClientOriginalExtension();
+                $upload_success = $files[$i]->move($destinationPath, $filename);
+                
+                if($upload_success){
+                $uploaded[] = $destinationPath.$filename;
+                $uploadcount++;
+                }
+                else{
+                    break;
+                }
+                
             }
             else{
-                $result = array('upload' => false ,'error' => "This file cannot be uploaded");
-                return $result;
+                break;
             }
             
+            
+        }
+        
+        if($uploadcount == $file_count){
+            $result = array('upload' => true ,'filepaths' => $uploaded);
+            return $result;
         }
         else{
-            $result = array('upload' => false ,'error' => "This file has validation erors");
+            $uploaded_count = count($uploaded);
+            for($i=0; $i<$uploaded_count;$i++){
+                if (File::exists($uploaded[$i]))
+                {                     
+                    File::delete($uploaded[$i]);
+                }
+            }
+            
+            $result = array('upload' => false ,'error' => "These files cannot be uploaded");
             return $result;
+                
         }
         
         
     }
     
-    
-    
-    
-    
-    
-    public static function multipleUpload($files,$destinationPath){
+    public static function delete_file($filepath){
         
-        // Making counting of uploaded files
-        $file_count = count($files);
-        // start count how many uploaded
-        $uploadcount = 0;
-        
-        foreach($files as $file) {
-            
-            $rules = array('file' => 'required');  //'required|mimes:png,gif,jpeg,txt,pdf,doc'
-            $validator = Validator::make(array('file'=> $file), $rules);
-            
-            if($validator->passes()){     
-                $filename = rand(11111,99999).'.'.$file->getClientOriginalExtension();
-                $upload_success = $file->move($destinationPath, $filename);
-                $uploadcount++;
-                echo "ok here";
-            }
-            else{
-                echo "error here";
-            }
-            
-            
+        if (File::exists($filepath))
+        {           
+           if(File::delete($filepath)){
+               return true;
+           }
+           else{
+               return false;
+           }
         }
-        
-//        if($uploadcount == $file_count){
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-        
+        else{
+            return false;
+        }
         
     }
     

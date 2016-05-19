@@ -2,12 +2,17 @@
 
 @section('content')
 
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Info!</strong> Indicates a neutral informative change or action.
+</div>
+
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Image Slider 
 <a href="" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
     
 <div class="clearfix hidden-xs">
-<form role="form" action="{{ URL::to('slider-save') }}" method="post" class="ws-form" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('slidersettings-save') }}" method="post" class="ws-form" enctype="multipart/form-data">
 <div class="form-group">
 <label class="font-main font-15px-600">Add New Image
 <button type="submit" class="ws-form-action-btn">Save</button>    

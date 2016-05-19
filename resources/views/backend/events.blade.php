@@ -48,7 +48,7 @@
 <?php foreach ($events as $event) { ?>
 <tr>
 <td class="text-center">{{$event->id}}</td>
-<td class="text-center"><img class="ws-table-img" src="<?php echo $event->eventimage ?>"></td>
+<td class="text-center"><img class="ws-table-img" src="{{ asset($event->imagepath) }}"></td>
 <td class="text-left">{{$event->title}}</td>
 <td class="text-center">{{$event->date}}</td>
 <td class="text-center">{{$event->time}}</td>
