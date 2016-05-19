@@ -10,9 +10,9 @@
 <div class="clearfix hidden-xs">
 <div class="pull-left">
 <ul class="ws-table-options">
-  <li><a href="{{ URL::to('projects-view') }}">All <span>(11)</span></a> |</li>
-  <li><a href="{{ URL::to('projects-published') }}">Published <span>(1)</span>  |</a></li>
-  <li><a href="">Unpublished <span>(1)</span></a></li>
+  <li><a href="{{ URL::to('projects-view') }}">All <span>({{$count_all}})</span></a> |</li>
+  <li><a href="{{ URL::to('projects-published') }}">Published <span>({{$count_active}})</span>  |</a></li>
+  <li><a href="{{ URL::to('projects-unpublished') }}">Unpublished <span>({{$count_inactive}})</span></a></li>
 </ul>  
 </div> 
 <div class="pull-right">

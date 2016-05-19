@@ -23,7 +23,11 @@ class PostController extends Controller
     public function index()
     {
           $posts = Post::all(); 
-          return View::make('backend/posts', array('title' => 'Posts','posts' => $posts));;
+          $allcount    = Post::all()->count(); 
+          $activecount = Post::where('status','=','on')->count(); 
+          $inactivecount = Post::whereNull('status')->count(); 
+          
+          return View::make('backend/posts', array('title' => 'posts','posts' => $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
@@ -135,9 +139,25 @@ class PostController extends Controller
     
     public function getpublished(){
         
-         $posts = Post::where('status' , '=', 'on')->get(); 
+         $posts = Post::where('status','=','on')->get();          
+        
+         $allcount    = Post::all()->count(); 
+         $activecount = Post::where('status','=','on')->count(); 
+         $inactivecount = Post::whereNull('status')->count(); 
+          
+         return View::make('backend/posts', array('title' => 'Posts | Published','posts' =>  $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
+    
+    public function getunpublished(){
+        
+         $posts = Post::whereNull('status')->get(); 
          
-         return View::make('backend/posts', array('title' => 'Posts | Published','posts' => $posts));
+         $allcount    = Post::all()->count(); 
+         $activecount = Post::where('status','=','on')->count(); 
+         $inactivecount = Post::whereNull('status')->count(); 
+          
+         return View::make('backend/posts', array('title' => 'Posts | Unpublished','posts' =>  $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
     

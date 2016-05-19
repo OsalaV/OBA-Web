@@ -30,7 +30,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <label class="font-main font-15px-600">Project Image</label>
+        <label class="font-main font-15px-600">Project Image (width = 370,height = 370px)</label>
         <input type="file" class="form-control" name="projectimage" required>
     </div>
 </div>

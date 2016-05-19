@@ -34,6 +34,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('posts-delete/{id}', ['uses' => 'PostController@destroy']);
  Route::post('posts-edit-status/{id}', ['uses' => 'PostController@updatestatus']); 
  Route::get('posts-published', ['uses' => 'PostController@getpublished']);
+ Route::get('posts-unpublished', ['uses' => 'PostController@getunpublished']);
 
 
  //routs-events
@@ -65,6 +66,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('projects-delete/{id}', ['uses' => 'ProjectController@destroy']); 
  Route::post('projects-edit-status/{id}', ['uses' => 'ProjectController@updatestatus']);
  Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
+ Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
 
 
  //routs-members
@@ -76,6 +78,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('members-delete/{id}', ['uses' => 'MemberController@destroy']); 
  Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
  Route::get('members-published', ['uses' => 'MemberController@getpublished']);
+ Route::get('members-unpublished', ['uses' => 'MemberController@getunpublished']);
 
 
  //routs-members
