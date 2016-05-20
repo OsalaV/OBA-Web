@@ -45,7 +45,7 @@
 <?php foreach ($posts as $post) { ?>
 <tr>
 <td class="text-center">{{$post->id}}</td>
-<td class="text-center"><img class="ws-table-img" src="<?php echo $post->postimage ?>"></td>
+<td class="text-center"><img class="ws-table-img" src="{{ asset($post->mediapath) }}"></td>
 <td class="text-left">{{$post->title}}</td>
 <td class="text-center">{{$post->description}}</td>
 <!--<td class="text-center">10.30 AM</td>-->
@@ -62,7 +62,7 @@
 
 
 <td class="text-center">
-<a href="{{ URL::to('posts-delete/'.$post->id) }}">
+<a href="{{ URL::to('posts-delete-details/'.$post->id) }}">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 

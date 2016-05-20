@@ -45,7 +45,7 @@
 <?php foreach ($projects as $project) { ?>
 <tr>
 <td class="text-center">{{$project->id}}</td>
-<td class="text-center"><img class="ws-table-img" src="<?php echo $project->projectimage ?>"></td>
+<td class="text-center"><img class="ws-table-img" src="{{ asset($project->imagepath) }}"></td>
 <td class="text-left">{{$project->title}}</td>
 <td class="text-center">{{$project->description}}</td>
 <!--<td class="text-center">10.30 AM</td>-->
@@ -62,7 +62,7 @@
 
 
 <td class="text-center">
-<a href="{{ URL::to('projects-delete/'.$project->id) }}">
+<a href="{{ URL::to('projects-delete-details/'.$project->id) }}">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
