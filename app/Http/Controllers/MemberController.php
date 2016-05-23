@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //use App\Http\Requests\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ActivityController;
+
 
 use Illuminate\Support\Facades\Request;
 
@@ -18,6 +20,7 @@ use Validator;
 use Response;
 use Auth;
 use File;
+use URL;
 
 class MemberController extends Controller
 {
@@ -37,44 +40,62 @@ class MemberController extends Controller
           return View::make('backend/addmember', array('title' => 'Add Member'));
     }
     
+    public function uploadImage(){
+        
+        $imageUploadPath = 'uploads/members/images/';
+        $imagepath       = "";
+        $files           = Input::file('image');
+        
+        $images_result = UploadController::upload($files,$imageUploadPath);
+        
+        if($images_result['upload']){
+            $imageFiles  =  $images_result['filepaths'];
+            $imagepath   =  end($imageFiles);
+            return array('imagestate' => 'true' ,'imagepath' => $imagepath);
+        }
+        else{  
+            $imageErrors = $images_result['error'];
+            return array('imagestate' => 'false' ,'imagepath' => $imageErrors);
+        }
+        
+    }
+    
     public function store()
     {
         
-           $imagefile = Input::file('memberimage');
-           $imagedestinationPath = 'uploads/members/images/';
-           $imagefilename  = rand(11111,99999).'.'.$imagefile->getClientOriginalExtension(); 
+         $image_upload_result;
         
-           $imageupload = UploadController::upload($imagefile,$imagedestinationPath,$imagefilename);
+         $member = new Member;
+               
         
-           if($imageupload){
+         $member->fullname     = Input::get('fulname'); 
+         $member->post         = Input::get('post'); 
+         $member->year         = Input::get('year');
+         $member->message      = Input::get('message');
+         $member->type         = Input::get('type');  
+         $member->email        = Input::get('email');                    
+         $member->contact      = Input::get('contact'); 
+         $member->facebook     = Input::get('facebook');
+         $member->twitter      = Input::get('twitter');                  
+         $member->linkedin     = Input::get('linkedin');
+         $member->google       = Input::get('google');
                
-                 $member = new Member;
+         if(Input::hasFile('image')){
+            $image_upload_result = $this->uploadImage();
+            $member->imagepath    = $image_upload_result['imagepath'];
+            $member->imagestate   = $image_upload_result['imagestate'];
+         } 
         
-                 $member->fullname     = Input::get('fulname'); 
-                 $member->post         = Input::get('post'); 
-                 $member->year         = Input::get('year');
-                 $member->memberimage  = $imagedestinationPath.$imagefilename;
-                 $member->message      = Input::get('message');
-                 $member->type         = Input::get('type');  
-                 $member->email        = Input::get('email');                    
-                 $member->contact      = Input::get('contact'); 
-                 $member->facebook     = Input::get('facebook');
-                 $member->twitter      = Input::get('twitter');                  
-                 $member->linkedin     = Input::get('linkedin');
-                 $member->google       = Input::get('google');
-               
-                 if($member->save()){
-                    return Redirect::to('members-add?save=success==true');    
-                 }
-                 else{
-                    return Redirect::to('/members-add?save=success==false');
-                 }
-               
-               
-           }
-           else{
-               return Redirect::to('/members-add?upload=success==false');
-           }
+         if($member->save()){
+            $activity_task = "Member : ".$member->title." has been added";
+            $activity_id = ActivityController::store($activity_task);
+            $member->activities_id = $activity_id;
+            $member->save();
+            return redirect('members-add?save=success==true')->with('success', 'Member was successfully added');
+         }
+         else{
+            return redirect('members-add?save=success==false')->with('success', 'Member was not successfully added');
+         }
 
     }
     
@@ -89,55 +110,31 @@ class MemberController extends Controller
     
     public function update($id){
         
-        $member = Member::where('id' , '=', $id)->first(); 
+         $member = Member::where('id' , '=', $id)->first(); 
         
-                 $member->fullname     = Input::get('fulname'); 
-                 $member->post         = Input::get('post'); 
-                 $member->year         = Input::get('year');
-//                 $member->memberimage  = $imagedestinationPath.$imagefilename;
-                 $member->message      = Input::get('message');
-                 $member->type         = Input::get('type');  
-                 $member->email        = Input::get('email');                    
-                 $member->contact      = Input::get('contact'); 
-                 $member->facebook     = Input::get('facebook');
-                 $member->twitter      = Input::get('twitter');                  
-                 $member->linkedin     = Input::get('linkedin');
-                 $member->google       = Input::get('google');
+         $member->fullname     = Input::get('fulname'); 
+         $member->post         = Input::get('post'); 
+         $member->year         = Input::get('year');
+         $member->message      = Input::get('message');
+         $member->type         = Input::get('type');  
+         $member->email        = Input::get('email');                    
+         $member->contact      = Input::get('contact'); 
+         $member->facebook     = Input::get('facebook');
+         $member->twitter      = Input::get('twitter');                  
+         $member->linkedin     = Input::get('linkedin');
+         $member->google       = Input::get('google');
         
         if($member->save()){
-            return Redirect::to('members-view?edit=success==true');    
+            $activity_task = "Member : ".$member->title." details has been changed";
+            $activity_id = ActivityController::store($activity_task);
+            $member->activities_id = $activity_id;
+            $member->save();
+            return redirect(URL::to('members-edit/'.$id.'?edit=success==true'))->with('success', 'Member was successfully edited');  
         }
         else{
-            return Redirect::to('/members-view?edit=success==false');
-        }        
+            return redirect(URL::to('members-edit/'.$id.'?edit=success==false'))->with('success', 'Member was not successfully edited');
+        }          
         
-    }
-    
-    public function destroy($id){
-        
-        $member = Member::where('id' , '=', $id)->first(); 
-        
-        if (File::exists($member->memberimage))
-        {           
-           if(File::delete($member->memberimage)){
-               if ($member->delete()){
-                   return Redirect::to('members-view?delete=success==true');    
-               }
-               else{
-                   return Redirect::to('members-view?delete=success==false');    
-               }
-           }
-           else{
-               return Redirect::to('members-view?file=delete==false');
-           }
-            
-           
-
-        }
-        else{
-            return Redirect::to('members-view?file=exists==false');    
-        }
-              
     }
     
     public function updatestatus($id){
@@ -148,13 +145,86 @@ class MemberController extends Controller
         $member->status  = Input::get('status');
         
         if($member->save()){
-            return Redirect::to('members-edit/'.$id);   
-         
+            $activity_task = "Member : ".$member->title." status has been changed";
+            $activity_id = ActivityController::store($activity_task);
+            $member->activities_id = $activity_id;
+            $member->save();
+            return redirect(URL::to('members-edit/'.$id.'?status=changes==true'))->with('success', 'Member status was successfully edited');
         }
         else{
-            return Redirect::to('members-edit/'.$id);
-           
-        }        
+            return redirect(URL::to('members-edit/'.$id.'?status=changes==false'))->with('error', 'Member status was not successfully edited');           
+        }       
+        
+    }
+    
+    public function updateimage($id){
+        
+        $member = Member::where('id' , '=', $id)->first(); 
+        
+        $image_upload_result;
+        
+        if(Input::hasFile('image')){
+            $image_upload_result = $this->uploadImage();
+            $member->imagepath    = $image_upload_result['imagepath'];
+            $member->imagestate   = $image_upload_result['imagestate'];
+            
+            if($member->save()){
+                $activity_task = "Member : ".$member->title." image has been added";
+                $activity_id = ActivityController::store($activity_task);
+                $member->activities_id = $activity_id;
+                $member->save();
+                return redirect(URL::to('members-edit/'.$id.'?image=changes==true'))->with('success', 'Member image was successfully edited');
+            }
+            else{
+                return redirect(URL::to('members-edit/'.$id.'?image=changes==false'))->with('error', 'Member image was not successfully edited');           
+            } 
+        } 
+        else{
+            return redirect(URL::to('members-edit/'.$id.'?image=found==false'))->with('error', 'Please select an image to upload');           
+        }
+         
+    }
+    
+    public function destroy($id){
+        
+        $member = Member::where('id' , '=', $id)->first(); 
+        
+        $imagepath = $member->imagepath;
+        
+        if(UploadController::delete_file($imagepath)){
+            
+            if ($member->delete()){
+              $activity_task = "Member : ".$member->title." has been deleted";
+              $activity_id = ActivityController::store($activity_task);              
+              return redirect(URL::to('members-view?member=deleted==true'))->with('success', 'Member was successfully deleted');
+            }
+            else{
+              return redirect(URL::to('members-view?member=deleted==false'))->with('success', 'Member was not successfully deleted');    
+            }            
+        }
+              
+    }
+    
+    public function destroyimge($id){
+        $member = Member::where('id' , '=', $id)->first(); 
+        
+        $imagepath = $member->imagepath;
+        
+        if(UploadController::delete_file($imagepath)){
+            $member->imagepath  = "Image has been deleted";
+            $member->imagestate = "false";
+
+            if($member->save()){
+                $activity_task = "Member : ".$member->title." image has been deleted";
+                $activity_id = ActivityController::store($activity_task);
+                $member->activities_id = $activity_id;
+                $member->save();
+                return redirect(URL::to('members-edit/'.$id.'?image=deleted==true'))->with('success', 'Member image was successfully deleted');
+            }
+            else{
+                return redirect(URL::to('members-edit/'.$id.'?image=deleted==false'))->with('error', 'Member image was not successfully deleted');
+            }
+        }
         
     }
     

@@ -50,7 +50,7 @@
 <?php foreach ($members as $member) { ?>
 <tr>
 <td class="text-center">{{$member->id}}</td>
-<td class="text-center"><img class="ws-table-img" src="<?php echo $member->memberimage ?>"></td>
+<td class="text-center"><img class="ws-table-img" src="{{ asset($member->imagepath) }}"></td>
 <td class="text-left">{{$member->fullname}}</td>
 <td class="text-center">{{$member->post}}</td>
 <td class="text-center">{{$member->year}}</td>
@@ -68,7 +68,7 @@
 
 
 <td class="text-right">
-<a href="{{ URL::to('members-delete/'.$member->id) }}">
+<a href="{{ URL::to('members-delete-details/'.$member->id) }}">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
