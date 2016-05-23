@@ -10,7 +10,8 @@
   
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Member
-<button type="submit" class="ws-form-action-btn">Save Member</button>
+<a href="" class="ws-form-action-btn hidden-xs">Preview</a>
+<a href="{{ URL::to('activity-log-last/'.'member'.'/'.$member->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
 </h2>
     
 <div class="row">
@@ -113,8 +114,7 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
-<a href="" class="ws-form-action-btn pull-right">Preview</a>
-<a href="{{ URL::to('members-delete-details/'.$member->id) }}" class="ws-form-action-btn-red pull-right">Delete</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('members-delete-details/'.$member->id) }}" data-message = "Are you sure you want to delete this member?" data-toggle="modal" data-target="#meesageModel">Delete</a>
 </div>
     
 <div class="panel-body ws-formpanel-body">
@@ -153,7 +153,7 @@
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
 @if ($member->imagestate == "true")
-<a href="{{ URL::to('members-delete-image/'.$member->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Image</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('members-delete-image/'.$member->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>
 @endif
 
 </div>
@@ -171,7 +171,7 @@
 @endif
 
     
-@if ($member->imagestate == "false")
+@if ($member->imagestate == "false" || $member->imagestate == NULL)
 <form action="{{ URL::to('members-edit-image/'.$member->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">

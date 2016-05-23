@@ -61,7 +61,6 @@ class PostController extends Controller
     public function store()
     {
         
-        $resource_upload_result;
         $image_upload_result;   
                
         $post = new Post;
@@ -76,10 +75,13 @@ class PostController extends Controller
         } 
         
         if($post->save()){
+            //save activity
             $activity_task = "Post : ".$post->title." has been added";
-            $activity_id = ActivityController::store($activity_task);
-            $post->activities_id = $activity_id;
-            $post->save();
+            $activity_type = "post";
+            $connection_id = $post->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect('posts-add?save=success==true')->with('success', 'Post was successfully added');
         }
         else{
@@ -106,10 +108,13 @@ class PostController extends Controller
         $post->description  = Input::get('description');
         
         if($post->save()){
+            //save activity
             $activity_task = "Post : ".$post->title." details has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $post->activities_id = $activity_id;
-            $post->save();
+            $activity_type = "post";
+            $connection_id = $post->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('posts-edit/'.$id.'?edit=success==true'))->with('success', 'Post was successfully edited');  
         }
         else{
@@ -126,10 +131,13 @@ class PostController extends Controller
         $post->status  = Input::get('status');
         
         if($post->save()){
+            //save activity
             $activity_task = "Post : ".$post->title." status has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $post->activities_id = $activity_id;
-            $post->save();
+            $activity_type = "post";
+            $connection_id = $post->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('posts-edit/'.$id.'?status=changes==true'))->with('success', 'Post status was successfully edited');
         }
         else{
@@ -150,10 +158,13 @@ class PostController extends Controller
             $post->mediastate   = $image_upload_result['imagestate'];
             
             if($post->save()){
-                $activity_task = "Post : ".$post->title." image has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $post->activities_id = $activity_id;
-                $post->save();
+                //save activity
+                $activity_task = "Post : ".$post->title." image has been changed";
+                $activity_type = "post";
+                $connection_id = $post->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('posts-edit/'.$id.'?image=changes==true'))->with('success', 'Post image was successfully edited');
             }
             else{
@@ -170,20 +181,28 @@ class PostController extends Controller
         
         $post = Post::where('id' , '=', $id)->first(); 
         
+        $imagestate = $post->mediastate;
         $imagepath = $post->mediapath;
         
-        if(UploadController::delete_file($imagepath)){
-            
-            if ($post->delete()){
-              $activity_task = "Post : ".$post->title." has been deleted";
-              $activity_id = ActivityController::store($activity_task);              
-              return redirect(URL::to('posts-view?post=deleted==true'))->with('success', 'Post was successfully deleted');
-            }
-            else{
-              return redirect(URL::to('posts-view?post=deleted==false'))->with('success', 'Post was not successfully deleted');    
-            }            
+        if($imagestate == "true"){
+            UploadController::delete_file($imagepath);
         }
         
+         
+        if ($post->delete()){
+          //save activity
+          $activity_task = "Post : ".$post->title." has been deleted";
+          $activity_type = NULL;
+          $connection_id = NULL;
+          ActivityController::store($activity_task,$activity_type,$connection_id);
+          //save activity
+            
+          return redirect(URL::to('posts-view?post=deleted==true'))->with('success', 'Post was successfully deleted');
+        }
+        else{
+          return redirect(URL::to('posts-view?post=deleted==false'))->with('success', 'Post was not successfully deleted');    
+        }            
+       
     }
     
     public function destroyimge($id){
@@ -196,10 +215,13 @@ class PostController extends Controller
             $post->mediastate = "false";
 
             if($post->save()){
+                //save activity
                 $activity_task = "Post : ".$post->title." image has been deleted";
-                $activity_id = ActivityController::store($activity_task);
-                $post->activities_id = $activity_id;
-                $post->save();
+                $activity_type = "post";
+                $connection_id = $post->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('posts-edit/'.$id.'?image=deleted==true'))->with('success', 'Post image was successfully deleted');
             }
             else{

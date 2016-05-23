@@ -7,7 +7,8 @@
 <form role="form" action="{{ URL::to('projects-edit-details/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Project
-<button type="submit" class="ws-form-action-btn">Save Project</button>
+<a href="" class="ws-form-action-btn hidden-xs">Preview</a>
+<a href="{{ URL::to('activity-log-last/'.'project'.'/'.$project->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
 </h2>
     
 <div class="row">
@@ -43,8 +44,7 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
-<a href="" class="ws-form-action-btn pull-right">Preview</a>
-<a href="{{ URL::to('projects-delete-details/'.$project->id) }}" class="ws-form-action-btn-red pull-right">Delete</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('projects-delete-details/'.$project->id) }}" data-message = "Are you sure you want to delete this project?" data-toggle="modal" data-target="#meesageModel">Delete</a>
 </div>
     
 <div class="panel-body ws-formpanel-body">
@@ -83,7 +83,7 @@
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
 @if ($project->imagestate == "true")
-<a href="{{ URL::to('projects-delete-image/'.$project->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Image</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('projects-delete-image/'.$project->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>
 @endif
 
 </div>
@@ -101,7 +101,7 @@
 @endif
 
     
-@if ($project->imagestate == "false")
+@if ($project->imagestate == "false" || $project->imagestate == NULL)
 <form action="{{ URL::to('projects-edit-image/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">
@@ -148,7 +148,7 @@
 @endif
 
     
-@if ($project->resourcestate == "false")
+@if ($project->resourcestate == "false" || $project->resourcestate == NULL)
 <form action="{{ URL::to('projects-edit-resource/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">

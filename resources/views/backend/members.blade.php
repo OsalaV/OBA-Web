@@ -38,6 +38,7 @@
 <th class="text-center">Type</th>
 <th class="text-center">Contact</th>
 <th class="text-center">Email</th>
+<th class="text-center">Published</th>
 
 
 <th></th>
@@ -47,7 +48,7 @@
 
 <tbody class="ws-table-body">
 
-<?php foreach ($members as $member) { ?>
+@foreach($members as $member)
 <tr>
 <td class="text-center">{{$member->id}}</td>
 <td class="text-center"><img class="ws-table-img" src="{{ asset($member->imagepath) }}"></td>
@@ -57,6 +58,11 @@
 <td class="text-celeftnter">{{$member->type}}</td>
 <td class="text-left">{{$member->contact}}</td>
 <td class="text-left">{{$member->email}}</td>
+@if($member->status == "on")    
+<td class="text-center">Yes</td>
+@else
+<td class="text-center">No</td>
+@endif
 
 <td class="text-right">
 <a href="{{ URL::to('members-edit/'.$member->id) }}">
@@ -68,7 +74,7 @@
 
 
 <td class="text-right">
-<a href="{{ URL::to('members-delete-details/'.$member->id) }}">
+<a class="ws-open-msg" data-url="{{ URL::to('members-delete-details/'.$member->id) }}" data-message = "Are you sure you want to delete this member?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -76,7 +82,7 @@
 </td>
 
 </tr>
-<?php } ?>
+@endforeach
 
 
 </tbody>

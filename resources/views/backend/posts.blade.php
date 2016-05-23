@@ -34,6 +34,7 @@
 <th class="text-center">Image</th>  
 <th class="text-left">Title</th>
 <th class="text-center">Description</th>
+<th class="text-center">Published</th>
 <!--<th class="text-center">Last Updated</th>-->
 <th></th>
 <th></th>
@@ -42,14 +43,17 @@
 
 <tbody class="ws-table-body">
     
-<?php foreach ($posts as $post) { ?>
+@foreach($posts as $post)
 <tr>
 <td class="text-center">{{$post->id}}</td>
 <td class="text-center"><img class="ws-table-img" src="{{ asset($post->mediapath) }}"></td>
 <td class="text-left">{{$post->title}}</td>
 <td class="text-center">{{$post->description}}</td>
-<!--<td class="text-center">10.30 AM</td>-->
-
+@if($post->status == "on")    
+<td class="text-center">Yes</td>
+@else
+<td class="text-center">No</td>
+@endif
 
 
 <td class="text-center">
@@ -62,7 +66,7 @@
 
 
 <td class="text-center">
-<a href="{{ URL::to('posts-delete-details/'.$post->id) }}">
+<a class="ws-open-msg" data-url="{{ URL::to('posts-delete-details/'.$post->id) }}" data-message = "Are you sure you want to delete this post?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -70,7 +74,7 @@
 </td>
 
 </tr>
-<?php } ?>
+@endforeach
 
 </tbody>
 </table>

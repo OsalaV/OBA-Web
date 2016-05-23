@@ -87,10 +87,13 @@ class MemberController extends Controller
          } 
         
          if($member->save()){
-            $activity_task = "Member : ".$member->title." has been added";
-            $activity_id = ActivityController::store($activity_task);
-            $member->activities_id = $activity_id;
-            $member->save();
+            //save activity
+            $activity_task = "Member : ".$member->fullname." has been added";
+            $activity_type = "member";
+            $connection_id = $member->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+             
             return redirect('members-add?save=success==true')->with('success', 'Member was successfully added');
          }
          else{
@@ -125,10 +128,13 @@ class MemberController extends Controller
          $member->google       = Input::get('google');
         
         if($member->save()){
-            $activity_task = "Member : ".$member->title." details has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $member->activities_id = $activity_id;
-            $member->save();
+            //save activity
+            $activity_task = "Member : ".$member->fullname." details has been changed";
+            $activity_type = "member";
+            $connection_id = $member->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('members-edit/'.$id.'?edit=success==true'))->with('success', 'Member was successfully edited');  
         }
         else{
@@ -145,10 +151,13 @@ class MemberController extends Controller
         $member->status  = Input::get('status');
         
         if($member->save()){
-            $activity_task = "Member : ".$member->title." status has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $member->activities_id = $activity_id;
-            $member->save();
+            //save activity
+            $activity_task = "Member : ".$member->fullname." status has been changed";
+            $activity_type = "member";
+            $connection_id = $member->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('members-edit/'.$id.'?status=changes==true'))->with('success', 'Member status was successfully edited');
         }
         else{
@@ -169,10 +178,13 @@ class MemberController extends Controller
             $member->imagestate   = $image_upload_result['imagestate'];
             
             if($member->save()){
-                $activity_task = "Member : ".$member->title." image has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $member->activities_id = $activity_id;
-                $member->save();
+                //save activity
+                $activity_task = "Member : ".$member->fullname." image has been added";
+                $activity_type = "member";
+                $connection_id = $member->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('members-edit/'.$id.'?image=changes==true'))->with('success', 'Member image was successfully edited');
             }
             else{
@@ -189,19 +201,28 @@ class MemberController extends Controller
         
         $member = Member::where('id' , '=', $id)->first(); 
         
+        $imagestate = $member->imagestate;
         $imagepath = $member->imagepath;
         
-        if(UploadController::delete_file($imagepath)){
-            
-            if ($member->delete()){
-              $activity_task = "Member : ".$member->title." has been deleted";
-              $activity_id = ActivityController::store($activity_task);              
-              return redirect(URL::to('members-view?member=deleted==true'))->with('success', 'Member was successfully deleted');
-            }
-            else{
-              return redirect(URL::to('members-view?member=deleted==false'))->with('success', 'Member was not successfully deleted');    
-            }            
+        if($imagestate == "true"){
+            UploadController::delete_file($imagepath);
         }
+        
+        
+        if ($member->delete()){
+          //save activity
+          $activity_task = "Member : ".$member->fullname." has been deleted";
+          $activity_type = NULL;
+          $connection_id = NULL;
+          ActivityController::store($activity_task,$activity_type,$connection_id);
+          //save activity
+             
+          return redirect(URL::to('members-view?member=deleted==true'))->with('success', 'Member was successfully deleted');
+        }
+        else{
+          return redirect(URL::to('members-view?member=deleted==false'))->with('success', 'Member was not successfully deleted');    
+        }            
+        
               
     }
     
@@ -215,10 +236,13 @@ class MemberController extends Controller
             $member->imagestate = "false";
 
             if($member->save()){
-                $activity_task = "Member : ".$member->title." image has been deleted";
-                $activity_id = ActivityController::store($activity_task);
-                $member->activities_id = $activity_id;
-                $member->save();
+                //save activity
+                $activity_task = "Member : ".$member->fullname." image has been deleted";
+                $activity_type = "member";
+                $connection_id = $member->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('members-edit/'.$id.'?image=deleted==true'))->with('success', 'Member image was successfully deleted');
             }
             else{

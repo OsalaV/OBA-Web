@@ -82,6 +82,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
  Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
+ Route::get('projects-download-resource/{id}', ['uses' => 'ProjectController@downloadresource']);
  //routs-projects end
 
 

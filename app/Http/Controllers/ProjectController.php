@@ -104,10 +104,13 @@ class ProjectController extends Controller
          
 
         if($project->save()){
+            //save activity
             $activity_task = "Project : ".$project->title." has been added";
-            $activity_id = ActivityController::store($activity_task);
-            $project->activities_id = $activity_id;
-            $project->save();
+            $activity_type = "project";
+            $connection_id = $project->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect('projects-add?save=success==true')->with('success', 'Project was successfully added');
         }
         else{
@@ -133,10 +136,13 @@ class ProjectController extends Controller
         $project->description  = Input::get('description');
         
         if($project->save()){
+            //save activity
             $activity_task = "Project : ".$project->title." details has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $project->activities_id = $activity_id;
-            $project->save();
+            $activity_type = "project";
+            $connection_id = $project->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('projects-edit/'.$id.'?edit=success==true'))->with('success', 'Project was successfully edited');  
         }
         else{
@@ -153,10 +159,13 @@ class ProjectController extends Controller
         $project->status  = Input::get('status');
         
         if($project->save()){
+            //save activity
             $activity_task = "Project : ".$project->title." status has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $project->activities_id = $activity_id;
-            $project->save();
+            $activity_type = "project";
+            $connection_id = $project->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('projects-edit/'.$id.'?status=changes==true'))->with('success', 'Project status was successfully edited');
         }
         else{
@@ -177,10 +186,13 @@ class ProjectController extends Controller
             $project->imagestate   = $image_upload_result['imagestate'];
             
             if($project->save()){
-                $activity_task = "Project : ".$project->title." image has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $project->activities_id = $activity_id;
-                $project->save();
+                //save activity
+                $activity_task = "Project : ".$project->title." image has been changed";
+                $activity_type = "project";
+                $connection_id = $project->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('projects-edit/'.$id.'?image=changes==true'))->with('success', 'Project image was successfully edited');
             }
             else{
@@ -205,10 +217,13 @@ class ProjectController extends Controller
             $project->resourcestate = $resource_upload_result['resourcestate'];        
             
             if($project->save()){
-                $activity_task = "Project : ".$project->title." resource file has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $project->activities_id = $activity_id;
-                $project->save();
+                //save activity
+                $activity_task = "Project : ".$project->title." resourrce file has been changed";
+                $activity_type = "project";
+                $connection_id = $project->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('projects-edit/'.$id.'?resource=changes==true'))->with('success', 'Project resource file was successfully edited');
             }
             else{
@@ -225,20 +240,34 @@ class ProjectController extends Controller
         
         $project = Project::where('id' , '=', $id)->first(); 
         
-        $imagepath = $project->imagepath;
+        $imagestate = $project->imagestate;
+        $imagepath  = $project->imagepath;
+                
+        $resourcestate = $project->resourcestate;
         $resourcepath = $project->resourcepath;
         
-        if(UploadController::delete_file($imagepath) && UploadController::delete_file($resourcepath)){
-            
-            if ($project->delete()){
-              $activity_task = "Project : ".$project->title." has been deleted";
-              $activity_id = ActivityController::store($activity_task);              
-              return redirect(URL::to('projects-view?project=deleted==true'))->with('success', 'Project was successfully deleted');
-            }
-            else{
-              return redirect(URL::to('projects-view?project=deleted==false'))->with('success', 'Project was not successfully deleted');    
-            }            
+        if($imagestate == "true"){
+        UploadController::delete_file($imagepath);
         }
+        if($resourcestate == "true"){
+        UploadController::delete_file($resourcepath);
+        }
+        
+    
+        if ($project->delete()){
+          //save activity
+          $activity_task = "Project : ".$project->title." has been deleted";
+          $activity_type = NULL;
+          $connection_id = NULL;
+          ActivityController::store($activity_task,$activity_type,$connection_id);
+          //save activity   
+
+          return redirect(URL::to('projects-view?project=deleted==true'))->with('success', 'Project was successfully deleted');
+        }
+        else{
+          return redirect(URL::to('projects-view?project=deleted==false'))->with('success', 'Project was not successfully deleted');    
+        }            
+      
                   
     }
     
@@ -252,10 +281,13 @@ class ProjectController extends Controller
             $project->imagestate = "false";
 
             if($project->save()){
+                //save activity
                 $activity_task = "Project : ".$project->title." image has been deleted";
-                $activity_id = ActivityController::store($activity_task);
-                $project->activities_id = $activity_id;
-                $project->save();
+                $activity_type = "project";
+                $connection_id = $project->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('projects-edit/'.$id.'?image=deleted==true'))->with('success', 'Project image was successfully deleted');
             }
             else{
@@ -276,10 +308,13 @@ class ProjectController extends Controller
           $project->resourcestate = "false";
 
           if($project->save()){
-              $activity_task = "Project : ".$project->title." resource file has been deleted";
-              $activity_id = ActivityController::store($activity_task);
-              $project->activities_id = $activity_id;
-              $project->save();
+              //save activity
+                $activity_task = "Project : ".$project->title." resource file has been deleted";
+                $activity_type = "project";
+                $connection_id = $project->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
               return redirect(URL::to('projects-edit/'.$id.'?resource=deleted==true'))->with('success', 'Project resource file was successfully deleted');
           }
           else{
@@ -310,6 +345,15 @@ class ProjectController extends Controller
          $inactivecount = Project::whereNull('status')->count(); 
           
          return View::make('backend/projects', array('title' => 'Projects | Unpublished','projects' =>  $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
+    
+    public function downloadresource($id){
+        
+        $project = Project::where('id' , '=', $id)->first(); 
+        
+        $resourcepath = $project->resourcepath;
+        return response()->download($resourcepath);
         
     }
     
