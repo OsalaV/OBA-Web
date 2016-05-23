@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <meta name="description" content="WS Admin Template Theme by Samu">
+    <meta name="author" content="Samu Abeynayake(WS)">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +21,7 @@
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
    
-<!--     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>-->    
+    <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>    
 </head>
     
 <body>
@@ -49,7 +50,7 @@
 </div><!-- ws-navpanel-left -->    
 <div class="pull-right ws-navpanel-right">
 <a data-toggle="dropdown" href="#" class="dropdown-toggle font-main font-15px-600 color-white">Howdy, admin &nbsp;
-<img class="ws-header-uimage" src="../images/icons/user.png">
+<img class="ws-header-uimage" src="{{asset('images/icons/user.png')}}">
 </a>
 <ul class="dropdown-menu dropdown-menu-right ws-header-dp">
   <li><a href="#">Activity Log</a></li>
@@ -128,7 +129,7 @@
 </li>
     
 <li>
-<a href="#">
+<a href="{{ URL::to('activities-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Activities</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="News"><i class="fa fa-tasks fa-lg"></i></span>	
 </a>
@@ -193,7 +194,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/ws-sidebar.js') }}"></script>   
 <script type="text/javascript" src="{{ asset('js/ws-pagination.js') }}"></script>     
-
+<script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script> 
     
     
     

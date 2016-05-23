@@ -26,17 +26,17 @@ class EventController extends Controller
     
     public function index()
     {
-          $events = Event::all(); 
+          $events = Event::all()->sortByDesc("id"); 
           $allcount    = Event::all()->count(); 
           $activecount = Event::where('status','=','on')->count(); 
           $inactivecount = Event::whereNull('status')->count(); 
           
-          return View::make('backend/events', array('title' => 'Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          return View::make('backend/events', array('title' => 'DS OBA | Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
     {
-          return View::make('backend/addevent', array('title' => 'Add Event'));
+          return View::make('backend/addevent', array('title' => 'DS OBA | Add Event'));
     }
     
     public function uploadResource(){
@@ -107,14 +107,17 @@ class EventController extends Controller
          
 
         if($event->save()){
+            //save activity
             $activity_task = "Event : ".$event->title." has been added";
-            $activity_id = ActivityController::store($activity_task);
-            $event->activities_id = $activity_id;
-            $event->save();
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect('events-add?save=success==true')->with('success', 'Event was successfully added');
         }
         else{
-            return redirect('events-add?save=success==false')->with('success', 'Event was not successfully added');
+            return redirect('events-add?save=success==false')->with('error', 'Event was not successfully added');
         }
         
     }
@@ -123,7 +126,7 @@ class EventController extends Controller
         
         $event = Event::where('id' , '=', $id)->first();  
         
-        return View::make('backend/editevent', array('title' => 'Edit Event','event' => $event));
+        return View::make('backend/editevent', array('title' => 'DS OBA | Edit Event','event' => $event));
         
         
     }
@@ -139,14 +142,17 @@ class EventController extends Controller
         $event->description  = Input::get('description');
         
         if($event->save()){
+            //save activity
             $activity_task = "Event : ".$event->title." details has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $event->activities_id = $activity_id;
-            $event->save();
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity            
+            
             return redirect(URL::to('events-edit/'.$id.'?edit=success==true'))->with('success', 'Event was successfully edited');  
         }
         else{
-            return redirect(URL::to('events-edit/'.$id.'?edit=success==false'))->with('success', 'Event was not successfully edited');
+            return redirect(URL::to('events-edit/'.$id.'?edit=success==false'))->with('error', 'Event was not successfully edited');
         }        
         
     }       
@@ -159,10 +165,13 @@ class EventController extends Controller
         $event->status  = Input::get('status');
         
         if($event->save()){
+            //save activity
             $activity_task = "Event : ".$event->title." status has been changed";
-            $activity_id = ActivityController::store($activity_task);
-            $event->activities_id = $activity_id;
-            $event->save();
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
             return redirect(URL::to('events-edit/'.$id.'?status=changes==true'))->with('success', 'Event status was successfully edited');
         }
         else{
@@ -183,10 +192,13 @@ class EventController extends Controller
             $event->imagestate   = $image_upload_result['imagestate'];
             
             if($event->save()){
+                //save activity
                 $activity_task = "Event : ".$event->title." image has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $event->activities_id = $activity_id;
-                $event->save();
+                $activity_type = "event";
+                $connection_id = $event->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('events-edit/'.$id.'?image=changes==true'))->with('success', 'Event image was successfully edited');
             }
             else{
@@ -211,10 +223,14 @@ class EventController extends Controller
             $event->resourcestate = $resource_upload_result['resourcestate'];        
             
             if($event->save()){
+                //save activity
                 $activity_task = "Event : ".$event->title." resourrce file has been added";
-                $activity_id = ActivityController::store($activity_task);
-                $event->activities_id = $activity_id;
-                $event->save();
+                $activity_type = "event";
+                $connection_id = $event->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
+                
                 return redirect(URL::to('events-edit/'.$id.'?resource=changes==true'))->with('success', 'Event resource file was successfully edited');
             }
             else{
@@ -232,20 +248,33 @@ class EventController extends Controller
         
         $event = Event::where('id' , '=', $id)->first(); 
         
-        $imagepath = $event->imagepath;
+        $imagestate = $event->imagestate;
+        $imagepath  = $event->imagepath;
+                
+        $resourcestate = $event->resourcestate;
         $resourcepath = $event->resourcepath;
         
-        if(UploadController::delete_file($imagepath) && UploadController::delete_file($resourcepath)){
-            
-            if ($event->delete()){
-              $activity_task = "Event : ".$event->title." has been deleted";
-              $activity_id = ActivityController::store($activity_task);              
-              return redirect(URL::to('events-view?event=deleted==true'))->with('success', 'Event was successfully deleted');
-            }
-            else{
-              return redirect(URL::to('events-view?event=deleted==false'))->with('success', 'Event was not successfully deleted');    
-            }            
+        if($imagestate == "true"){
+        UploadController::delete_file($imagepath);
         }
+        if($resourcestate == "true"){
+        UploadController::delete_file($resourcepath);
+        }
+            
+        if ($event->delete()){
+          //save activity
+          $activity_task = "Event : ".$event->title." has been deleted";
+          $activity_type = NULL;
+          $connection_id = NULL;
+          ActivityController::store($activity_task,$activity_type,$connection_id);
+          //save activity
+
+          return redirect(URL::to('events-view?event=deleted==true'))->with('success', 'Event was successfully deleted');
+        }
+        else{
+          return redirect(URL::to('events-view?event=deleted==false'))->with('error', 'Event was not successfully deleted');    
+        }            
+        
     }   
         
     public function destroyimge($id){
@@ -258,10 +287,13 @@ class EventController extends Controller
             $event->imagestate = "false";
 
             if($event->save()){
+                //save activity
                 $activity_task = "Event : ".$event->title." image has been deleted";
-                $activity_id = ActivityController::store($activity_task);
-                $event->activities_id = $activity_id;
-                $event->save();
+                $activity_type = "event";
+                $connection_id = $event->id;
+                ActivityController::store($activity_task,$activity_type,$connection_id);
+                //save activity
+                
                 return redirect(URL::to('events-edit/'.$id.'?image=deleted==true'))->with('success', 'Event image was successfully deleted');
             }
             else{
@@ -282,10 +314,14 @@ class EventController extends Controller
           $event->resourcestate = "false";
 
           if($event->save()){
+              //save activity
               $activity_task = "Event : ".$event->title." resource file has been deleted";
-              $activity_id = ActivityController::store($activity_task);
-              $event->activities_id = $activity_id;
-              $event->save();
+              $activity_type = "event";
+              $connection_id = $event->id;
+              ActivityController::store($activity_task,$activity_type,$connection_id);
+              //save activity
+              
+              
               return redirect(URL::to('events-edit/'.$id.'?resource=deleted==true'))->with('success', 'Event resource file was successfully deleted');
           }
           else{
@@ -297,7 +333,7 @@ class EventController extends Controller
     
     public function getpublished(){
         
-         $events = Event::where('status','=','on')->get();          
+         $events = Event::where('status','=','on')->get()->sortByDesc("id"); ;          
         
          $allcount    = Event::all()->count(); 
          $activecount = Event::where('status','=','on')->count(); 
@@ -309,7 +345,7 @@ class EventController extends Controller
     
     public function getunpublished(){
         
-         $events = Event::whereNull('status')->get(); 
+         $events = Event::whereNull('status')->get()->sortByDesc("id"); 
          
          $allcount    = Event::all()->count(); 
          $activecount = Event::where('status','=','on')->count(); 
@@ -333,6 +369,14 @@ class EventController extends Controller
         
     }
     
+    public function downloadresource($id){
+        
+        $event = Event::where('id' , '=', $id)->first(); 
+        
+        $resourcepath = $event->resourcepath;
+        return response()->download($resourcepath);
+        
+    }
     
     
     

@@ -30,13 +30,12 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
 <th class="text-center">Image</th>  
 <th class="text-left">Title</th>
 <th class="text-center">Date</th>
 <th class="text-center">Time</th>
 <th class="text-center">Location</th>
-<th class="text-center">Description</th>
+<th class="text-center">Published</th>
 
 <th></th>
 <th></th>
@@ -45,15 +44,18 @@
 
 <tbody class="ws-table-body">
 
-<?php foreach ($events as $event) { ?>
+@foreach($events as $event)
 <tr>
-<td class="text-center">{{$event->id}}</td>
 <td class="text-center"><img class="ws-table-img" src="{{ asset($event->imagepath) }}"></td>
 <td class="text-left">{{$event->title}}</td>
 <td class="text-center">{{$event->date}}</td>
 <td class="text-center">{{$event->time}}</td>
 <td class="text-center">{{$event->location}}</td>
-<td class="text-center">{{$event->description}}</td>
+@if($event->status == "on")    
+<td class="text-center">Yes</td>
+@else
+<td class="text-center">No</td>
+@endif
 
 <td class="text-center">
 <a href="{{ URL::to('events-edit/'.$event->id) }}">
@@ -65,7 +67,7 @@
 
 
 <td class="text-center">
-<a href="{{ URL::to('events-delete/'.$event->id) }}">
+<a class="ws-open-msg" data-url="{{ URL::to('events-delete-details/'.$event->id) }}" data-message = "Are you sure you want to delete this event?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -73,7 +75,7 @@
 </td>
 
 </tr>
-<?php } ?>
+@endforeach
 
 
 </tbody>

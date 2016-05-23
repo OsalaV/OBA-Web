@@ -11,6 +11,7 @@
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Event
 <a href="" class="ws-form-action-btn hidden-xs">Preview</a>
+<a href="{{ URL::to('activity-log-last/'.'event'.'/'.$event->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
 </h2>
     
 <div class="row">
@@ -69,8 +70,9 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
-<a href="{{ URL::to('events-delete-details/'.$event->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-details/'.$event->id) }}" data-message = "Are you sure you want to delete this event?" data-toggle="modal" data-target="#meesageModel">Delete</a>
 </div>
+  
     
 <div class="panel-body ws-formpanel-body">
 
@@ -108,7 +110,7 @@
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
 @if ($event->imagestate == "true")
-<a href="{{ URL::to('events-delete-image/'.$event->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Image</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-image/'.$event->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>
 @endif
 
 </div>
@@ -126,7 +128,7 @@
 @endif
 
     
-@if ($event->imagestate == "false")
+@if ($event->imagestate == "false" || $event->imagestate == NULL)
 <form action="{{ URL::to('events-edit-image/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">
@@ -155,7 +157,7 @@
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Resource Settings</span>
 @if ($event->resourcestate == "true")
-<a href="{{ URL::to('events-delete-resource/'.$event->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Resource</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-resource/'.$event->id) }}" data-message = "Are you sure you want to delete this resource file?" data-toggle="modal" data-target="#meesageModel">Delete Resource</a>
 @endif
 
 </div>
@@ -163,7 +165,7 @@
 <div class="panel-body ws-formpanel-body">
 @if ($event->resourcestate == "true")
 <div class="row">
-<a href="" class="ws-form-action-btn-green pull-right hidden-xs">Download Resource Files</a>
+<a href="{{ URL::to('events-download-resource/'.$event->id) }}" class="ws-form-action-btn-green pull-right hidden-xs">Download Resource Files</a>
 </div>
 @else
 <div class="alert alert-warning fade in">
@@ -173,7 +175,7 @@
 @endif
 
     
-@if ($event->resourcestate == "false")
+@if ($event->resourcestate == "false" || $event->resourcestate == NULL)
 <form action="{{ URL::to('events-edit-resource/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">

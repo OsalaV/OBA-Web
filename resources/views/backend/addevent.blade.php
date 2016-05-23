@@ -2,14 +2,6 @@
 
 @section('content')
 
-@if (session('alert-success'))
-    <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Success!</strong> {{ session('alert-success') }}
-    </div>
-@endif
-
-
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Info!</strong> Indicates a neutral informative change or action.

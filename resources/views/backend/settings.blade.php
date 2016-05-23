@@ -19,7 +19,7 @@
     
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
-<a href="{{ URL::to('slidersettings') }}">
+<a href="{{ URL::to('imageslider') }}">
 <div class="ws-settings-box">
 <i class="fa fa-picture-o fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>
@@ -41,12 +41,23 @@
     
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
-<a href="#">
+<a href="{{ URL::to('admins-view') }}">
+<div class="ws-settings-box">
+<i class="fa fa-user fa-5x ws-settings-i" aria-hidden="true"></i>  
+</div>
+</a>
+<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Administrators</span>
+</center>
+</div>
+    
+<div class="col-md-3 col-lg-3 ws-settings-box-container">
+<center>
+<a href="{{ URL::to('permissions-view') }}">
 <div class="ws-settings-box">
 <i class="fa fa-lock fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>
 </a>
-<span class="font-main font-15px-600 color-darkblue ws-settings-titile">User Permissions</span>
+<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Admin Permissions</span>
 </center>
 </div>
     

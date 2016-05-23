@@ -1,3 +1,11 @@
+/**
+ * WS Admin Template Theme
+ * 
+ * Copyright 2016, Samu Abeynayake(WS)
+ *
+ */
+
+
 body{
     overflow-x: hidden;
 }
@@ -278,8 +286,8 @@ a:hover {
 }
 
 .ws-table-img{
-    width: 30px;
-    height: 30px;
+    width: 150px;
+    height: 100px;
 }
 
 .ws-table-img-200px{
@@ -287,17 +295,32 @@ a:hover {
     height: 100px;
 }
 
+.ws-table-img-30px{
+    width: 30px;
+    height: 30px;
+}
+
 .ws-table-head{
 	background-color: #D8DCE3;
 	color: #696c74;
 }
 
-.ws-table-body{
-
+.ws-table-log>thead>tr>th{
+    padding: 0px;
 }
+
+.ws-table-log>.ws-table-log-body>tr>td{
+    border: none;
+    padding-left: 0px;
+}
+
 
 .ws-table-body tr{
 	height: 50px;
+}
+
+.ws-table>.ws-table-body>tr>td{
+    vertical-align: middle;
 }
 
 .ws-table-pagiation-container{
@@ -345,6 +368,16 @@ a:hover {
 	font-weight: bold;
 }
 
+.ws-fonts-15px-yellow{
+	color: #FCB812;
+	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
+	word-wrap: break-all;
+	white-space:normal;
+	font-weight: bold;
+}
+
 
 .ws-table-options {
     list-style: none;
@@ -369,6 +402,10 @@ a:hover {
 
 .ws-table-options a:hover {
     color: #0073aa;
+}
+
+.ws-table-td-middle{
+    vertical-align: middle;
 }
 
 
@@ -578,8 +615,22 @@ a:hover {
 
 
 
+/*====================================================================================*/
+/*Message Modal CSS*/
+/*====================================================================================*/
 
+.ws-open-msg{
+    cursor: pointer;
+}
 
+.ws-msgmodal-header{
+    border: none;
+}
+
+.ws-msgmodal-body{
+    padding-top: 10px;
+    margin-bottom: 25px;
+}
 
 
 

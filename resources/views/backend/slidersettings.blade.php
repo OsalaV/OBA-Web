@@ -8,11 +8,12 @@
 </div>
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Image Slider 
-<a href="" class="ws-tablepage-action-btn">Preview</a>      
+<a href="" class="ws-tablepage-action-btn">Preview</a>   
 </h2>
+
     
 <div class="clearfix hidden-xs">
-<form role="form" action="{{ URL::to('slidersettings-save') }}" method="post" class="ws-form" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('imageslider-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
 <div class="form-group">
 <label class="font-main font-15px-600">Add New Image
 <button type="submit" class="ws-form-action-btn">Save</button>    
@@ -21,7 +22,7 @@
 </div>    
 </form>
 </div>
-    
+  
 <div class="ws-tablebox-container">
     
 <div class="table-responsive ws-table-container">
@@ -29,82 +30,51 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
 <th class="text-center">Image</th>  
 <th class="text-left">Created at</th> 
-<th class="text-center">Uploaded by</th> 
-<th class="text-center">Publish</th> 
+<th class="text-left">Last Updated</th>
+<th class="text-center">Publish</th>
+<th class="text-center"></th>
+ 
 <th></th>
 
 </tr>
 </thead>
 
 <tbody class="ws-table-body">
+@foreach ($sliders as $slider)
 <tr>
-<td class="text-center">1</td>
-<td class="text-center"><img class="ws-table-img-200px" src="images/slider/1.jpg"></td>    
-<td class="text-left">2016-05-15 22:07:31</td>
-<td class="text-center">admin</td>
+<td class="text-center"><img class="ws-table-img-200px" src="{{ asset($slider->imagepath) }}"></td>    
+<td class="text-left">{{$slider->created_at}}</td>
+<td class="text-left">{{$slider->updated_at}}</td>
     
 <td class="text-center">
-<form role="form" class="">
-<input class="ws-form-inputcheck" type="checkbox" />    
-<h2><button type="submit" class="ws-form-action-btn">Save</button></h2>     
+<form action="{{ URL::to('imageslider-edit-status/'.$slider->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($slider->status == "on")
+<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+<button type="submit" class="ws-form-action-btn">Save</button>
 </form>    
 </td>
     
-<td>
-<a href="">
+<td class="text-center">
+<form role="form" class="form-inline">    
+<a href="{{ URL::to('activity-log-last/'.'slider'.'/'.$slider->id) }}" class="ws-tablepage-action-btn">Log Details</a> 
+</form>        
+</td>
+    
+<td class="text-center">
+<a class="ws-open-msg" data-url="{{ URL::to('imageslider-delete-details/'.$slider->id) }}" data-message = "Are you sure you want to delete the selected record?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
 </a>    
 </td>
 </tr>
- 
-<tr>
-<td class="text-center">2</td>
-<td class="text-center"><img class="ws-table-img-200px" src="images/slider/2.jpg"></td>    
-<td class="text-left">2016-05-15 22:07:31</td>
-<td class="text-center">admin</td>
-    
-<td class="text-center">
-<form role="form" class="">
-<input class="ws-form-inputcheck" type="checkbox" />    
-<h2><button type="submit" class="ws-form-action-btn">Save</button></h2>     
-</form>    
-</td>
-    
-<td>
-<a href="">
-<span class="ws-fonts-15px-red ws-span-small">
-<i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
-</span> 
-</a>    
-</td>
-</tr>
-    
-<tr>
-<td class="text-center">3</td>
-<td class="text-center"><img class="ws-table-img-200px" src="images/slider/3.jpg"></td>    
-<td class="text-left">2016-05-15 22:07:31</td>
-<td class="text-center">admin</td>
-    
-<td class="text-center">
-<form role="form" class="">
-<input class="ws-form-inputcheck" type="checkbox" />    
-<h2><button type="submit" class="ws-form-action-btn">Save</button></h2>     
-</form>    
-</td>
-    
-<td>
-<a href="">
-<span class="ws-fonts-15px-red ws-span-small">
-<i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
-</span> 
-</a>    
-</td>
-</tr>
+@endforeach
+
     
     
 </tbody>
@@ -116,6 +86,8 @@
     
     
 </div>
+
+
 
 
 

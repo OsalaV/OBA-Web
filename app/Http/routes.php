@@ -41,8 +41,8 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('events-view', ['uses' => 'EventController@index']);
  Route::get('events-add', ['uses' => 'EventController@create']);
  Route::post('events-add-details', ['uses' => 'EventController@store']);   
- Route::get('events-edit/{id}', ['uses' => 'EventController@edit']); 
- 
+
+ Route::get('events-edit/{id}', ['uses' => 'EventController@edit']);
  Route::post('events-edit-details/{id}', ['uses' => 'EventController@update']);
  Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
  Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
@@ -55,6 +55,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('events-published', ['uses' => 'EventController@getpublished']); 
  Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
  Route::post('events-search', ['uses' => 'EventController@search']);
+ Route::get('events-download-resource/{id}', ['uses' => 'EventController@downloadresource']);
  //routs-events end
  
  //routs-projects
@@ -107,6 +108,35 @@ Route::group(['middleware' => ['web']], function () {
 
  
  //routes slider 
- Route::get('slidersettings', ['uses' => 'SliderController@index']);
- Route::post('slidersettings-save', ['uses' => 'SliderController@store']);
+ Route::get('imageslider', ['uses' => 'SliderController@index']);
+ Route::post('imageslider-add-details', ['uses' => 'SliderController@store']);
+ Route::post('imageslider-edit-status/{id}', ['uses' => 'SliderController@updatestatus']);
+ Route::get('imageslider-delete-details/{id}', ['uses' => 'SliderController@destroy']);
+
+
+
+
+ //routes activity logs
+ Route::get('activities-view', ['uses' => 'ActivityController@index']);
+ Route::get('activity-log-all/{type}/{id}', ['uses' => 'ActivityController@viewlogall']);
+ Route::get('activity-log-last/{type}/{id}', ['uses' => 'ActivityController@viewloglast']);
+
+
+
+ //routes administrators
+ Route::get('admins-view', ['uses' => 'AdminController@index']); 
+ Route::get('admins-add', ['uses' => 'AdminController@create']);  
+ Route::post('admins-add-details', ['uses' => 'AdminController@store']); 
+ Route::get('admins-edit/{id}', ['uses' => 'AdminController@edit']);  
+ Route::post('admins-edit-details/{id}', ['uses' => 'AdminController@update']);  
+ Route::get('admins-delete-details/{id}', ['uses' => 'AdminController@destroy']);
+
+
+
+ //routes permissions
+ Route::get('permissions-view', ['uses' => 'PermissionController@index']); 
+ Route::post('permissions-add-details', ['uses' => 'PermissionController@store']); 
+ Route::get('permissions-delete/{id}', ['uses' => 'PermissionController@destroy']); 
+
+
 
