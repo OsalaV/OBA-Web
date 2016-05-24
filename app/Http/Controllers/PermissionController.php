@@ -35,7 +35,7 @@ class PermissionController extends Controller
         $permission = new Permission;
         
         $permission->permission      = Input::get('permission');
-        $permission->prioritylevel   = Input::get('prioritylevel');        
+        $permission->priority   = Input::get('priority');        
         
         
         if($permission->save()){            
@@ -64,12 +64,18 @@ class PermissionController extends Controller
     
     public static function getdefaultpermissions(){
         
-        $permission = Permission::where('prioritylevel' , '=', 'default')->get(); 
+        $permissions = Permission::where('priority' , '=', 'default')->get(); 
         
-        return $permission;
+        return $permissions;
         
     }
     
-    
+    public static function getpermissions(){
+        
+        $permissions = Permission::all(); 
+        
+        return $permissions;
+        
+    }
     
 }

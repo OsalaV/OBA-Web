@@ -17,7 +17,6 @@
 <th class="text-left">Email</th>
 <th class="text-center">Contact Number</th>
 <th class="text-center">Role</th>
-<th class="text-center">Access Level</th>
 <th class="text-center">Status</th>
 <th></th>
 <th></th>
@@ -33,7 +32,6 @@
 <td class="text-left">{{$admin->email}}</td>
 <td class="text-center">{{$admin->contact}}</td>
 <td class="text-center">{{$admin->role}}</td>
-<td class="text-center">{{$admin->accesslevel}}</td>
 @if($admin->status == "on")    
 <td class="text-center">Active</td>
 @else

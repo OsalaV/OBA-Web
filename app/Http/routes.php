@@ -112,6 +112,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('/', ['uses' => 'IndexController@index']);
 
  Route::get('events', ['uses' => 'IndexController@events']);
+ Route::get('event/{id}', ['uses' => 'IndexController@showevent']);
 
  Route::get('members', ['uses' => 'IndexController@members']);
 
@@ -151,6 +152,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::post('admins-add-details', ['uses' => 'AdminController@store']); 
  Route::get('admins-edit/{id}', ['uses' => 'AdminController@edit']);  
  Route::post('admins-edit-details/{id}', ['uses' => 'AdminController@update']);  
+ Route::post('admin-edit-permissions/{id}', ['uses' => 'AdminController@updatepermissions']);  
  Route::get('admins-delete-details/{id}', ['uses' => 'AdminController@destroy']);
 
 

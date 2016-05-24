@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminPermissionController;
 
 use App\Admin;
 
@@ -45,11 +46,18 @@ class AdminController extends Controller
         $admin->email            = Input::get('email'); 
         $admin->password         = Hash::make(Input::get('password'));
         $admin->contact          = Input::get('contact'); 
-        $admin->role             = Input::get('role');  
-        $admin->accesslevel      = Input::get('accesslevel');  
-        $admin->status           = Input::get('status');            
+        $admin->role             = Input::get('role');   
+        $admin->status           = Input::get('status');         
+        
+        $default_permissions     = Input::get('permissions'); 
         
         if($admin->save()){ 
+            $adminid = $admin->id;
+            
+            if($default_permissions == "on"){
+                AdminPermissionController::setdefaultpermissions($adminid);       
+            }
+            
             return redirect('admins-add?save=success==true')->with('success', 'Admin was successfully added');
         }
         else{
@@ -61,8 +69,9 @@ class AdminController extends Controller
     public function edit($id){
         
         $admin = Admin::where('id' , '=', $id)->first();  
+        $adminpermissions = AdminPermissionController::getadminpermissions($id);       
         
-        return View::make('backend/editadmin', array('title' => 'DS OBA | Edit Admin','admin' => $admin));
+        return View::make('backend/editadmin', array('title' => 'DS OBA | Edit Admin','admin' => $admin, 'adminpermissions' => $adminpermissions));
         
         
     }
@@ -86,6 +95,21 @@ class AdminController extends Controller
         }        
         
     } 
+    
+    public function updatepermissions($id){
+        
+        $permissions = Input::get('status');
+            
+        $result = AdminPermissionController::updateadminpermissions($id,$permissions);   
+            
+//        if($result){
+//            return redirect(URL::to('admins-edit/'.$id.'?edit=permissions==true'))->with('success', 'Admin permissions was successfully edited');   
+//        }
+//        else{
+//            return redirect(URL::to('admins-edit/'.$id.'?edit=permissions==false'))->with('error', 'Admin permissions was not successfully edited');   
+//        }
+        
+    }
     
     public function destroy($id){
         

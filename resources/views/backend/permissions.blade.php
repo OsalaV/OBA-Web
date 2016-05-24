@@ -2,6 +2,14 @@
 
 @section('content')
 
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>  
+  <p>READ   Permissions allows VIEW privileges.</p>
+  <p>WRITE  Permissions allows ADD and EDIT privileges.</p>
+  <p>DELETE Permissions allows DELETE privileges.</p>
+</div>
+
+
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Admin Permissions       
 </h2>
 
@@ -20,7 +28,7 @@
     
 <div class="col-md-6">
 <div class="form-group">
-<select class="form-control" name="prioritylevel" required>
+<select class="form-control" name="priority" required>
 <option value="" disabled selected>Select Priority Level</option>
 <option value="default">Default</option> 
 <option value="medium">Medium</option> 
@@ -56,11 +64,11 @@
 @foreach ($permissions as $permission)
 <tr>
 <td class="text-center">{{$permission->id}}</td>
-@if($permission->prioritylevel == "high")
+@if($permission->priority == "high")
 <td class="text-center"><span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-lock fa-lg ws-icon-Xsmall"></i>
 </span></td>
-@elseif($permission->prioritylevel == "medium")
+@elseif($permission->priority == "medium")
 <td class="text-center"><span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-lock fa-lg ws-icon-Xsmall"></i>
 </span></td>
@@ -70,7 +78,7 @@
 </span></td>
 @endif
 <td class="text-left">{{$permission->permission}}</td>
-<td class="text-left">{{$permission->prioritylevel}}</td>
+<td class="text-left">{{$permission->priority}}</td>
 <td class="text-left">{{$permission->created_at}}</td>
 <td class="text-left">{{$permission->updated_at}}</td>
 

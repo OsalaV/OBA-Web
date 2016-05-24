@@ -16,7 +16,7 @@
     <div class="thumbnail port-thumb">
     <img class="" src="../images/members/1.jpg" alt="">
     <div>
-    <h4 class="font-sub-16"><a class="color-lightblue" href="#">Susantha Dissanayake <br /><br /> President</a></a></h4>
+    <h4 class="font-sub-16"><a class="color-lightblue" href="#">Susantha Dissanayake <br /><br /> President</a></h4>
     <!--<h4 class="font-sub-22"><a class="color-lightblue" href="#">President </a></h4>-->
         <div id="div-sociali" class="sociali animated">
               <a class="fa fa-facebook" title="" target="_blank" href="#"></a>

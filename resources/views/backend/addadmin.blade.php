@@ -49,7 +49,7 @@
     
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-12">
 <div class="form-group">
 <select class="form-control" name="role" required>
 <option value="" disabled selected>Select Admin Role</option>
@@ -60,28 +60,25 @@
 </div> 
 </div>
     
-<div class="col-md-6">
-<div class="form-group">
-<select class="form-control" name="accesslevel" required>
-<option value="" disabled selected>Select Access Level</option>
-<option value="default">Default</option> 
-<option value="medium">Medium</option> 
-<option value="high">High</option> 
-</select>
-    
-</div> 
-</div>
-    
 </div>
     
     
 <div class="row">
     
-<div class="col-md-12">
+<div class="col-md-6">
+<div class="form-group">
+
+<span class="font-main font-13px-600 color-darkblue">Set default permissions to this admin &nbsp;</span> 
+<input type="checkbox" name="permissions" checked/>
+
+</div> 
+</div>
+    
+<div class="col-md-6">
 <div class="form-group">
 
 <span class="font-main font-13px-600 color-darkblue">Set admin status as active &nbsp;</span> 
-<input type="checkbox" name="status"/>
+<input type="checkbox" name="status" checked/>
 
 </div> 
 </div>

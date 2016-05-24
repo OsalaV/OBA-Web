@@ -38,7 +38,7 @@
     
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-12">
 <div class="form-group">
 <select class="form-control" name="role" required>
 <option value="" disabled selected>Select Admin Role</option>
@@ -57,49 +57,6 @@
 </div> 
 </div>
     
-<div class="col-md-6">
-<div class="form-group">
-<select class="form-control" name="accesslevel" required>
-<option value="" disabled selected>Select Access Level</option>
-@if($admin->accesslevel == "default")
-<option value="default" selected="selected">Default</option> 
-<option value="medium">Medium</option> 
-<option value="high">High</option>    
-@elseif($admin->accesslevel == "medium")
-<option value="default">Default</option> 
-<option value="medium" selected="selected">Medium</option> 
-<option value="high">High</option> 
-@elseif($admin->accesslevel == "high")
-<option value="default">Default</option> 
-<option value="medium">Medium</option> 
-<option value="high" selected="selected">High</option> 
-@else
-<option value="default">Default</option> 
-<option value="medium">Medium</option> 
-<option value="high">High</option>     
-@endif
-</select>
-    
-</div> 
-</div>
-    
-</div>
-    
-    
-<div class="row">
-    
-<div class="col-md-12">
-<div class="form-group">
-
-<span class="font-main font-13px-600 color-darkblue">Set admin status as active &nbsp;</span> 
-@if($admin->status == "on")
-<input type="checkbox" name="status" checked/>
-@else
-<input type="checkbox" name="status"/>   
-@endif
-</div> 
-</div>
-    
 </div>
 
     
@@ -113,7 +70,115 @@
     
 </form>
     
+<div class="panel panel-default" style="margin-top:25px;">
+<div class="panel-heading ws-formpanel-heading clearfix">
+<span class="pull-left">Permissions</span>
+<!--<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('admin-delete-details/'.$admin->id) }}" data-message = "Are you sure you want to delete this admin?" data-toggle="modal" data-target="#meesageModel">Delete</a>-->
 </div>
+  
+    
+<div class="panel-body ws-formpanel-body">
+
+
+<form action="{{ URL::to('admin-edit-permissions/'.$admin->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
+
+@foreach($adminpermissions as $adminpermission)
+<div class="row">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">{{$adminpermission->permission}} </span> </div>
+<div class="pull-right ws-form-check text-center">
+@if($adminpermission->status == "on")
+<input type="checkbox" name="status[]" checked value="{{$adminpermission->permissions_id}}" />
+@else
+<input type="checkbox" name="status[]" value="{{$adminpermission->permissions_id}}"/>
+@endif
+</div>
+</div>    
+</div>
+@endforeach
+    
+<div class="row">
+<div class="form-group">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+
+</div>
+</div>
+    
+    
+    
+    
+</div>
+
+
+
+<div class="col-md-4 ws-formpanel-container">
+    
+<div class="panel panel-default">
+<div class="panel-heading ws-formpanel-heading clearfix">
+<span class="pull-left">Options</span>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('admin-delete-details/'.$admin->id) }}" data-message = "Are you sure you want to delete this admin?" data-toggle="modal" data-target="#meesageModel">Delete</a>
+</div>
+  
+    
+<div class="panel-body ws-formpanel-body">
+
+
+<form action="{{ URL::to('admin-edit-status/'.$admin->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
+ 
+<div class="row">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">Set admin status as active </span> </div>
+<div class="pull-right ws-form-check text-center">
+@if($admin->status == "on")
+<input type="checkbox" name="status" checked/>
+@else
+<input type="checkbox" name="status"/>
+@endif
+</div>
+</div>    
+</div>
+    
+<div class="row">
+<div class="form-group">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+
+</div>
+</div>
+   
+    
+
+    
+    
+  
+
+    
+    
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+
+
 
 
 @stop
