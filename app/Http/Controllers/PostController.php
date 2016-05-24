@@ -19,6 +19,7 @@ use Response;
 use Auth;
 use File;
 use URL;
+use DB;
 
 class PostController extends Controller
 {

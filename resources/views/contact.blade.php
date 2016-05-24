@@ -12,75 +12,24 @@
 <h2 class="font-header-large color-black">OUR <small class="color-yellow">BRANCHES</small></h2>
 
 <div class="row">
-    
+@foreach($branches as $branch)    
 <div class="col-md-3 col-sm-6 col-xs-12">
 <div class="thumbnail port-thumb">
 <div>
-<h4 class="font-sub-22"><a class="color-lightblue" href="#">Head Office</a></h4>
+<h4 class="font-sub-22"><a class="color-lightblue" href="#">{{$branch->branch}}</a></h4>
 <p class="font-para-14 color-darkblue">
-Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
+{{$branch->description}}
 </p>
 <p class="font-para-14-bold color-black">
-62 R G Senanayake Mawatha, Colombo 00700
+{{$branch->address_line1}} {{$branch->address_line2}}{{$branch->address_line3}}
 </p>
 <p class="font-para-14-bold color-black">
-011 2 698253
+{{$branch->email}} <br /> {{$branch->contact}}
 </p>
 </div>  
 </div>
 </div>
-    
-<div class="col-md-3 col-sm-6 col-xs-12">
-<div class="thumbnail port-thumb">
-<div>
-<h4 class="font-sub-22"><a class="color-lightblue" href="#">USA Branch</a></h4>
-<p class="font-para-14 color-darkblue">
-Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-</p>
-<p class="font-para-14-bold color-black">
-62 R G Senanayake Mawatha, Colombo 00700
-</p>
-<p class="font-para-14-bold color-black">
-011 2 698253
-</p>
-</div>  
-</div>
-</div>
-    
-<div class="col-md-3 col-sm-6 col-xs-12">
-<div class="thumbnail port-thumb">
-<div>
-<h4 class="font-sub-22"><a class="color-lightblue" href="#">Australia Branch</a></h4>
-<p class="font-para-14 color-darkblue">
-Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-</p>
-<p class="font-para-14-bold color-black">
-62 R G Senanayake Mawatha, Colombo 00700
-</p>
-<p class="font-para-14-bold color-black">
-011 2 698253
-</p>
-</div>  
-</div>
-</div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-<div class="thumbnail port-thumb">
-<div>
-<h4 class="font-sub-22"><a class="color-lightblue" href="#">UK Branch</a></h4>
-<p class="font-para-14 color-darkblue">
-Quisque in metus nibh. In hac habit asse platea dictumst. Curabitur eu lor em ac lacus laoreet auctor. 
-</p>
-<p class="font-para-14-bold color-black">
-62 R G Senanayake Mawatha, Colombo 00700
-</p>
-<p class="font-para-14-bold color-black">
-011 2 698253
-</p>
-</div>  
-</div>
-</div>
-   
+@endforeach   
 </div>
  
 </div>

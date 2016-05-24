@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Events
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Members
 <a href="{{ URL::to('members-add') }}" class="ws-tablepage-action-btn">Add New</a>    
 <a href="" class="ws-tablepage-action-btn">Preview</a>      
 </h2>

@@ -107,7 +107,7 @@
 <div class="col-md-12">
     <div class="form-group">
         <label class="font-main font-15px-600">Add new image</label>
-        <input type="file" class="form-control" name="image[]" multiple="" required>
+        <input type="file" class="form-control" name="image[]" multiple="">
     </div>
 </div>    
 </div>

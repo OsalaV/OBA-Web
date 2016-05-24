@@ -30,7 +30,7 @@
     
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
-<a href="#">
+<a href="{{ URL::to('branches-view') }}">
 <div class="ws-settings-box">
 <i class="fa fa-university fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>

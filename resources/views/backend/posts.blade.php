@@ -83,14 +83,15 @@
 
     
 <div class="ws-table-pagiation-container">
-<ul class="pagination ws-pagination-ul">
+<ul class="pagination ws-pagination-ul"> 
   <li class="active"><a href="#">1</a></li>
   <li><a href="#">2</a></li>
   <li><a href="#">3</a></li>
   <li><a href="#">4</a></li>
   <li><a href="#">5</a></li>
 </ul>      
-</div>  
+</div> 
+
 
 
 @stop

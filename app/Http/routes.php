@@ -42,6 +42,22 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('posts-unpublished', ['uses' => 'PostController@getunpublished']);
  //routs-posts end
 
+ 
+ //routs-branches
+ Route::get('branches-view', ['uses' => 'BranchController@index']);
+ Route::get('branches-add', ['uses' => 'BranchController@create']); 
+ Route::post('branches-add-details', ['uses' => 'BranchController@store']); 
+ Route::get('branches-edit/{id}', ['uses' => 'BranchController@edit']);
+
+ Route::post('branches-edit-details/{id}', ['uses' => 'BranchController@update']); 
+ Route::post('branches-edit-status/{id}', ['uses' => 'BranchController@updatestatus']);
+ 
+ Route::get('branches-delete-details/{id}', ['uses' => 'BranchController@destroy']);
+
+ Route::get('branches-published', ['uses' => 'BranchController@getpublished']);
+ Route::get('branches-unpublished', ['uses' => 'BranchController@getunpublished']);
+ //routs-branches end
+
 
  //routs-events
  Route::get('events-view', ['uses' => 'EventController@index']);
@@ -110,6 +126,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
  Route::get('/', ['uses' => 'IndexController@index']);
+ Route::get('post/{id}', ['uses' => 'IndexController@showpost']);
 
  Route::get('events', ['uses' => 'IndexController@events']);
  Route::get('event/{id}', ['uses' => 'IndexController@showevent']);
@@ -121,6 +138,7 @@ Route::group(['middleware' => ['web']], function () {
  Route::get('parade', ['uses' => 'IndexController@parade']);
 
  Route::get('projects', ['uses' => 'IndexController@projects']);
+ Route::get('project/{id}', ['uses' => 'IndexController@showproject']);
 
  Route::get('presidents', ['uses' => 'IndexController@presidents']);
 

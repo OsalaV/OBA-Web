@@ -30,7 +30,7 @@
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/flipclock.js') }}"></script>
-     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>
+<!--     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>-->
 
 
 
@@ -55,8 +55,8 @@
                                 
                     <div class="col-md-8 col-sm-8 header-flag-container">
                         <div class="header-flag-yellow"></div>
-                            <div class="header-flag-black text-left">
-                                <h5 class ="header-flag-text">D.S.Senanayake College OBA</h5>
+                            <div class="header-flag-black text-center">
+                                <h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
                             </div>
                         <div class="header-flag-yellow"></div>
                     </div>
