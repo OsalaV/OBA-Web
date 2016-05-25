@@ -127,6 +127,29 @@ class BranchController extends Controller
         
     }
     
+    public function publishstatus($id){
+        
+        $branch = Branch::where('id' , '=', $id)->first(); 
+        
+                
+        $branch->status  = Input::get('status');
+        
+        if($branch->save()){
+            //save activity
+            $activity_task = "Branch : ".$branch->branch." status has been changed";
+            $activity_type = "branch";
+            $connection_id = $branch->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('branches-view?status=changes==true'))->with('success', 'Branch status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('branches-view?status=changes==false'))->with('error', 'Branch status was not successfully edited');           
+        }        
+        
+    }
+    
     public function destroy($id){
         
         $branch = Branch::where('id' , '=', $id)->first(); 

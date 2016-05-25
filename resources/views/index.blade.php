@@ -49,7 +49,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		<!--end of welcome section-->   
 		    
 
-        <section class="well banner-section background-white">
+        <section class="hidden-xs hidden-sm well banner-section background-white">
             <div class="container no-padding">
                 <h2 class="font-header-large color-black">50th Aniversary</h2>
                 <div class="row">

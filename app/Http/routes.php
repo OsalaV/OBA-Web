@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::post('posts-edit-details/{id}', ['uses' => 'PostController@update']); 
  Route::post('posts-edit-status/{id}', ['uses' => 'PostController@updatestatus']);
+ Route::post('posts-status-publish/{id}', ['uses' => 'PostController@publishstatus']);
  Route::post('posts-edit-image/{id}', ['uses' => 'PostController@updateimage']); 
 
  Route::get('posts-delete-details/{id}', ['uses' => 'PostController@destroy']);
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::post('branches-edit-details/{id}', ['uses' => 'BranchController@update']); 
  Route::post('branches-edit-status/{id}', ['uses' => 'BranchController@updatestatus']);
+ Route::post('branches-status-publish/{id}', ['uses' => 'BranchController@publishstatus']);
  
  Route::get('branches-delete-details/{id}', ['uses' => 'BranchController@destroy']);
 
@@ -89,6 +91,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::post('projects-edit-details/{id}', ['uses' => 'ProjectController@update']); 
  Route::post('projects-edit-status/{id}', ['uses' => 'ProjectController@updatestatus']);
+ Route::post('projects-status-publish/{id}', ['uses' => 'ProjectController@publishstatus']);
  Route::post('projects-edit-image/{id}', ['uses' => 'ProjectController@updateimage']); 
  Route::post('projects-edit-resource/{id}', ['uses' => 'ProjectController@updateresource']); 
 
@@ -110,6 +113,7 @@ Route::group(['middleware' => ['web']], function () {
 
  Route::post('members-edit-details/{id}', ['uses' => 'MemberController@update']);
  Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
+ Route::post('members-status-publish/{id}', ['uses' => 'MemberController@publishstatus']);
  Route::post('members-edit-image/{id}', ['uses' => 'MemberController@updateimage']);
 
  Route::get('members-delete-details/{id}', ['uses' => 'MemberController@destroy']); 

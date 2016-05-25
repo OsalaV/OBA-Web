@@ -58,11 +58,17 @@
 <td class="text-celeftnter">{{$member->type}}</td>
 <td class="text-left">{{$member->contact}}</td>
 <td class="text-left">{{$member->email}}</td>
+    
+<td class="text-center">
+<form action="{{ URL::to('members-status-publish/'.$member->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
 @if($member->status == "on")    
-<td class="text-center">Yes</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<td class="text-center">No</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
+<button type="submit" class="ws-form-action-btn">Save</button>
+</form>    
+</td>
 
 <td class="text-right">
 <a href="{{ URL::to('members-edit/'.$member->id) }}">

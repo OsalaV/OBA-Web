@@ -54,11 +54,17 @@
 <td class="text-center">{{$branch->address_line3}}</td>
 <td class="text-center">{{$branch->email}}</td>
 <td class="text-center">{{$branch->contact}}</td>
+    
+<td class="text-center">
+<form action="{{ URL::to('branches-status-publish/'.$branch->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
 @if($branch->status == "on")    
-<td class="text-center">Yes</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<td class="text-center">No</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
+<button type="submit" class="ws-form-action-btn">Save</button>
+</form>    
+</td>
 
 <td class="text-center">
 <a href="{{ URL::to('branches-edit/'.$branch->id) }}">

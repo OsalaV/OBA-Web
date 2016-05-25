@@ -25,7 +25,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-          $projects      = Project::all(); 
+          $projects      = Project::all()->sortByDesc("id"); ; 
           $allcount      = Project::all()->count(); 
           $activecount   = Project::where('status','=','on')->count(); 
           $inactivecount = Project::whereNull('status')->count(); 
@@ -170,6 +170,29 @@ class ProjectController extends Controller
         }
         else{
             return redirect(URL::to('projects-edit/'.$id.'?status=changes==false'))->with('error', 'Project status was not successfully edited');           
+        }            
+        
+    }
+    
+    public function publishstatus($id){
+        
+        $project = Project::where('id' , '=', $id)->first(); 
+        
+                
+        $project->status  = Input::get('status');
+        
+        if($project->save()){
+            //save activity
+            $activity_task = "Project : ".$project->title." status has been changed";
+            $activity_type = "project";
+            $connection_id = $project->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('projects-view?status=changes==true'))->with('success', 'Project status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('projects-view?status=changes==false'))->with('error', 'Project status was not successfully edited');           
         }            
         
     }
@@ -326,7 +349,7 @@ class ProjectController extends Controller
     
     public function getpublished(){
         
-         $projects      = Project::where('status','=','on')->get();          
+         $projects      = Project::where('status','=','on')->get()->sortByDesc("id");          
         
          $allcount      = Project::all()->count(); 
          $activecount   = Project::where('status','=','on')->count(); 
@@ -338,7 +361,7 @@ class ProjectController extends Controller
     
     public function getunpublished(){
         
-         $projects      = Project::whereNull('status')->get(); 
+         $projects      = Project::whereNull('status')->get()->sortByDesc("id"); 
          
          $allcount      = Project::all()->count(); 
          $activecount   = Project::where('status','=','on')->count(); 
