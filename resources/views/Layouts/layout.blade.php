@@ -45,7 +45,7 @@
                 
                 <div class="col-md-12 col-sm-12 header-container">
                             
-                    <div class="col-md-4 col-sm-4 header-logo-container">
+                    <div class="col-md-3 col-sm-3 header-logo-container">
                         <div class="navbar-header header-brand-container background-yellow text-center" >
                             <div class="navbar-brand header-brand" style="height:initial;">
                                 <a href=""><img class="header-logo" src="../images/logo.png" style="height:auto;"></a>
@@ -53,19 +53,39 @@
                         </div>
                     </div>
                                 
-                    <div class="col-md-8 col-sm-8 header-flag-container">
-                        <div class="header-flag-yellow"></div>
+                    <div class="col-md-9 col-sm-9 header-flag-container">
+                        <div class="header-flag-yelloww"></div>
                             <div class="header-flag-black text-center">
                                 <h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
                             </div>
-                        <div class="header-flag-yellow"></div>
+<!--                        <div class="header-flag-yellow"></div>-->
+                        
+                        <div class="hidden-xs hidden-sm header-nav-container text-left">
+                            <div class="header-menu">
+                            <ul class="header-nav">
+                                <li class="active"><a href="/"><span>Home</span></a></li>
+                                <li><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
+                                <li><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
+                                <li><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
+                                <li><a href="{{ URL::to('members') }}"><span>Committee</span></a>
+                                  <ul class="top-ul">
+                                     <li><a href="{{ URL::to('members') }}"><span>Members</span></a></li>
+                                     <li><a href="{{ URL::to('presidents') }}"><span>Past Presidents</span></a></li>
+                                  </ul>            
+                                </li>
+                                <li><a href="{{ URL::to('membership') }}"><span>Membership</span></a></li>
+                                <li><a href="{{ URL::to('contact') }}"><span>Contact Us</span></a></li>           
+                            </ul>
+                            </div>
+                        </div> 
+                        
                     </div>
 
                 </div>
 
             </div>
 
-            <div class="header-nav-container text-left">
+            <div class=" hidden-md hidden-lg hidden-xl header-nav-container text-left">
                 <div class="header-menu">
                 <ul class="header-nav">
                     <li class="active"><a href="/"><span>Home</span></a></li>
