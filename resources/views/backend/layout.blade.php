@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $title ?></title>
+    <title>{{$title}}</title>
 
     <!--Bootstrap -->
 
@@ -49,14 +49,16 @@
     
 </div><!-- ws-navpanel-left -->    
 <div class="pull-right ws-navpanel-right">
-<a data-toggle="dropdown" href="#" class="dropdown-toggle font-main font-15px-600 color-white">Howdy, admin &nbsp;
+<a data-toggle="dropdown" href="#" class="dropdown-toggle font-main font-15px-600 color-white">{{"Howdy, ".Session::get('user')->role."&nbsp;"}}
 <img class="ws-header-uimage" src="{{asset('images/icons/user.png')}}">
 </a>
 <ul class="dropdown-menu dropdown-menu-right ws-header-dp">
+<!--
   <li><a href="#">Activity Log</a></li>
   <li><a href="#">Edit My Profile</a></li>
   <li class="divider"></li>
-  <li><a href="#">Log Out</a></li>
+-->
+  <li><a href="{{ URL::to('auth/logout') }}">Log Out</a></li>
 </ul>
 </div><!-- ws-navpanel-right -->     
 </div><!-- ws-nav-container -->
@@ -75,50 +77,63 @@
  
 <ul class="ws-body-sidepanel-ul">
 
+@if(Session::get('DASHBOARD') == "on")
 <li>
 <a href="{{ URL::to('dashboard-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Dashboard</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Dashboard"><i class="fa fa-tachometer fa-lg"></i></span>	
 </a>
 </li>
+@endif
     
+@if(Session::get('POSTS') == "on")    
 <li>
 <a href="{{ URL::to('posts-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Posts</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="News"><i class="fa fa-rss fa-lg"></i></span>	
 </a>
 </li>
-
+@endif
+    
+@if(Session::get('EVENTS') == "on")
 <li>
 <a href="{{ URL::to('events-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Events</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Events"><i class="fa fa-calendar fa-lg "></i></span>	
 </a>
 </li>
-
+@endif
+    
+@if(Session::get('PROJECTS') == "on")
 <li>
 <a href="{{ URL::to('projects-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Projects</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Projects"><i class="fa fa-folder-open-o fa-lg"></i></span>	
 </a>
 </li>
+@endif
 
+@if(Session::get('COMMITTEE') == "on")
 <li>
 <a href="{{ URL::to('members-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Committee</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Committee"><i class="fa fa-users fa-lg"></i></span>	
 </a>
 </li>
+@endif
 
 
-
+@if(Session::get('USERS') == "on")  
 <li>
 <a href="{{ URL::to('users-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Users</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Users"><i class="fa fa-user fa-lg"></i></span>	
 </a>
 </li>
+@endif
+    
 
+@if(Session::get('MESSAGES') == "on")
 <li>
 <a href="#">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Messages</span>
@@ -127,26 +142,33 @@
 </span>	
 </a>
 </li>
-    
+@endif
+  
+@if(Session::get('ACTIVITIES') == "on")
 <li>
 <a href="{{ URL::to('activities-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Activities</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="News"><i class="fa fa-tasks fa-lg"></i></span>	
 </a>
 </li>
+@endif    
     
+@if(Session::get('SETTINGS') == "on")    
 <li>
 <a href="{{ URL::to('settings-view') }}">
 <span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Settings</span>
 <span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Settings"><i class="fa fa-cogs fa-lg"></i></span>	
 </a>
 </li>
+@endif
+    
     
 <li></li>
 <li></li>
 <li></li>
 <li></li>
-
+<li></li>
+<li></li>
 </ul>
     
     
@@ -195,7 +217,7 @@
 <script type="text/javascript" src="{{ asset('js/ws-sidebar.js') }}"></script>   
 <script type="text/javascript" src="{{ asset('js/ws-pagination.js') }}"></script>     
 <script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script> 
-    
+<script type="text/javascript" src="{{ asset('js/ws-cbox.js') }}"></script>    
     
     
     

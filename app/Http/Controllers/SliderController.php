@@ -23,6 +23,12 @@ use URL;
 class SliderController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
           $slider = Slider::all()->sortByDesc("id");     

@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PermissionController;
 
-use App\AdminPermission;
+use App\UserPermission;
 
 use Session;
 use View;
@@ -21,27 +21,32 @@ use File;
 use URL;
 use DB;
 
-class AdminPermissionController extends Controller
+class UserPermissionController extends Controller
 {
     
-    public static function setdefaultpermissions($adminid){
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    public static function setdefaultpermissions($userid){
         
         $permissions = PermissionController::getpermissions();
         $permission_count = count($permissions);
         
         for($i=0;$i<$permission_count;$i++){
             
-            $permission = new AdminPermission;
+            $permission = new UserPermission;
             
             if($permissions[$i]->priority == "default"){
                 
-                $permission->admins_id      = $adminid;
+                $permission->users_id       = $userid;
                 $permission->permissions_id = $permissions[$i]->id;
                 $permission->status         = "on";
                 
             }
             else{
-                $permission->admins_id      = $adminid;
+                $permission->users_id       = $userid;
                 $permission->permissions_id = $permissions[$i]->id;
             }
             
@@ -51,30 +56,29 @@ class AdminPermissionController extends Controller
         
     }
     
-    public static function getadminpermissions($adminid){
+    public static function getuserpermissions($userid){
         
-        $permissions = DB::table('admin_permissions')
-                      ->join('admins', 'admin_permissions.admins_id', '=', 'admins.id')
-                      ->join('permissions', 'admin_permissions.permissions_id', '=', 'permissions.id')
-                      ->where('admin_permissions.admins_id' , '=', $adminid)
-                      ->select('permissions.permission', 'admin_permissions.status', 'admin_permissions.permissions_id')->get();
+        $permissions = DB::table('user_permissions')
+                      ->join('users', 'user_permissions.users_id', '=', 'users.id')
+                      ->join('permissions', 'user_permissions.permissions_id', '=', 'permissions.id')
+                      ->where('user_permissions.users_id' , '=', $userid)
+                      ->select('permissions.permission', 'user_permissions.status', 'user_permissions.permissions_id')->get();
         
         return $permissions;
     }
     
-    public static function updateadminpermissions($adminid,$permissions){
+    public static function updateuserpermissions($userid,$permissions){
         
         $permission_count  = count($permissions);
-        $success_count = 0;
         $found = false;
         
-        $admin_permissions = AdminPermission::where('admins_id' , '=', $adminid)->get();
+        $user_permissions = UserPermission::where('users_id' , '=', $userid)->get();
         
-        $all_permissions_count = count($admin_permissions);
+        $all_permissions_count = count($user_permissions);
         
         for($i=0;$i<$all_permissions_count;$i++){
             
-            $permission_id = $admin_permissions[$i]->permissions_id;
+            $permission_id = $user_permissions[$i]->permissions_id;
             
             for($j=0;$j<$permission_count;$j++){
                 $selected_id = $permissions[$j];
@@ -84,21 +88,17 @@ class AdminPermissionController extends Controller
                 }
             }
             
-            if($found){  
-                
-                DB::table('admin_permissions')->where('admins_id', $adminid)->where('permissions_id', $permission_id)->update(['status' => "on"]);
+            if($found){ 
+                DB::table('user_permissions')->where('users_id', $userid)->where('permissions_id', $permission_id)->update(['status' => "on"]);
 
                 $found = false;
             }
             else{
-                DB::table('admin_permissions')->where('admins_id', $adminid)->where('permissions_id', $permission_id)->update(['status' => NULL]);
+                DB::table('user_permissions')->where('users_id', $userid)->where('permissions_id', $permission_id)->update(['status' => NULL]);
             }
-            
-            
-                
-       
-            
         }
+        
+        return true;
         
     }
     

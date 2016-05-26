@@ -38,18 +38,21 @@
 <span class="font-main font-15px-600 color-darkblue ws-settings-titile">Branches</span>
 </center>
 </div>
-    
+ 
+@if(Session::get('USERS') == "on")
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
-<a href="{{ URL::to('admins-view') }}">
+<a href="{{ URL::to('users-view') }}">
 <div class="ws-settings-box">
 <i class="fa fa-user fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>
 </a>
-<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Administrators</span>
+<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Users</span>
 </center>
 </div>
+@endif
     
+@if(Session::get('USER PERMISSIONS') == "on")    
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
 <a href="{{ URL::to('permissions-view') }}">
@@ -57,9 +60,10 @@
 <i class="fa fa-lock fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>
 </a>
-<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Admin Permissions</span>
+<span class="font-main font-15px-600 color-darkblue ws-settings-titile">User Permissions</span>
 </center>
 </div>
+@endif
     
 </div>
 

@@ -10,7 +10,7 @@
 </div>
 
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Admin Permissions       
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">User Permissions       
 </h2>
 
 <div class="clearfix hidden-xs">

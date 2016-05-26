@@ -30,7 +30,7 @@
 <div class="col-md-6">
     <div class="form-group">
         <!-- <label class="font-main font-15px-600">Event Date</label> -->
-        <input type="text" class="form-control" name="date" placeholder="Event Date" required>
+        <input type="date" class="form-control" name="date" placeholder="Event Date" required>
     </div>
 </div>
 <div class="col-md-6">
@@ -74,6 +74,8 @@
     </div>
 </div>
 </div>
+    
+{{ csrf_field() }}
     
 <div class="row">
 <div class="col-md-12">

@@ -3,26 +3,8 @@
 @section('content')
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Users
-<a href="" class="ws-tablepage-action-btn">Add New</a>    
-<a href="" class="ws-tablepage-action-btn">Preview</a>      
+<a href="{{ URL::to('users-add') }}" class="ws-tablepage-action-btn">Add New</a>        
 </h2>
-    
-<div class="clearfix hidden-xs">
-<div class="pull-left">
-<ul class="ws-table-options">
-  <li><a href="">All <span>(11)</span></a> |</li>
-  <li><a href="">Published <span>(1)</span></a> |</li>
-  <li><a href="">Unpublished <span>(1)</span></a></li>
-</ul>  
-</div> 
-<div class="pull-right">
-<form>
-<input class="form-search-control" type="text"> 
-<input type="submit" id="search-submit" class="button form-search-btn" value="Search">
-</form>  
-</div>
-</div>
-    
 
 
 <div class="table-responsive ws-table-container">
@@ -30,29 +12,34 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
-<th class="text-center">Full Name</th>  
+<th class="text-center"></th>  
+<th class="text-left">Name</th>
 <th class="text-left">Email</th>
-<th class="text-center">Type</th>
-<!--<th class="text-center">Last Updated</th>-->
+<th class="text-center">Contact Number</th>
+<th class="text-center">Role</th>
+<th class="text-center">Status</th>
 <th></th>
 <th></th>
 </tr>
 </thead>
 
 <tbody class="ws-table-body">
-    
-<?php foreach ($users as $user) { ?>
+
+@foreach ($users as $user)
 <tr>
-<td class="text-center">{{$user->id}}</td>
+<td class="text-center"><img class="ws-table-img-30px" src="{{ asset('images/icons/user.png') }}"></td>
 <td class="text-left">{{$user->fullname}}</td>
-<td class="text-center">{{$user->email}}</td>
-<td class="text-center">{{$user->type}}</td>
-
-
+<td class="text-left">{{$user->email}}</td>
+<td class="text-center">{{$user->contact}}</td>
+<td class="text-center">{{$user->role}}</td>
+@if($user->status == "on")    
+<td class="text-center">Active</td>
+@else
+<td class="text-center">Inactive</td>
+@endif
 
 <td class="text-center">
-<a href="">
+<a href="{{ URL::to('users-edit/'.$user->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -61,7 +48,7 @@
 
 
 <td class="text-center">
-<a href="">
+<a class="ws-open-msg" data-url="{{ URL::to('users-delete-details/'.$user->id) }}" data-message = "Are you sure you want to delete this user?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -69,23 +56,13 @@
 </td>
 
 </tr>
-<?php } ?>
+@endforeach
+
 
 </tbody>
 </table>
 
 </div><!-- ws-table-container -->
-
-    
-<div class="ws-table-pagiation-container">
-<ul class="pagination ws-pagination-ul">
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-</ul>      
-</div>  
 
 
 @stop

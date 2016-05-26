@@ -19,7 +19,8 @@
 <button type="submit" class="ws-form-action-btn">Save</button>    
 </label>
 <input type="file" class="form-control" name="sliderimages[]" multiple="" required>
-</div>    
+</div> 
+{{ csrf_field() }} 
 </form>
 </div>
   
@@ -48,23 +49,30 @@
 <td class="text-left">{{$slider->created_at}}</td>
 <td class="text-left">{{$slider->updated_at}}</td>
     
+    
 <td class="text-center">
-<form action="{{ URL::to('imageslider-edit-status/'.$slider->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+<form id="{{'checkform'.$slider->id}}" action="{{ URL::to('imageslider-edit-status/'.$slider->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
 @if($slider->status == "on")
-<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+<input id="status" data-id="{{$slider->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+<input id="status" data-id="{{$slider->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
-<button type="submit" class="ws-form-action-btn">Save</button>
+{{ csrf_field() }}
 </form>    
-</td>
+</td>    
+    
+    
+    
+    
+    
     
 <td class="text-center">
 <form role="form" class="form-inline">    
 <a href="{{ URL::to('activity-log-last/'.'slider'.'/'.$slider->id) }}" class="ws-tablepage-action-btn">Log Details</a> 
 </form>        
 </td>
-    
+
+@if(Session::get('DELETE') == "on")
 <td class="text-center">
 <a class="ws-open-msg" data-url="{{ URL::to('imageslider-delete-details/'.$slider->id) }}" data-message = "Are you sure you want to delete the selected record?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -72,6 +80,9 @@
 </span> 
 </a>    
 </td>
+@endif    
+    
+    
 </tr>
 @endforeach
 

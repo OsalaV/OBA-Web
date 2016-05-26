@@ -5,14 +5,14 @@
 
 <div class="col-md-8 ws-form-container">
 
-<form role="form" action="{{ URL::to('admins-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('users-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 
   
     
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Add New Admin
-<button type="submit" class="ws-form-action-btn">Save Admin</button>
-<a href="{{ URL::to('admins-view') }}" class="ws-tablepage-action-btn">Administrators</a>  
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Add New User
+<button type="submit" class="ws-form-action-btn">Save User</button>
+<a href="{{ URL::to('users-view') }}" class="ws-tablepage-action-btn">Users</a>  
 </h2>
     
 <div class="row">
@@ -52,7 +52,7 @@
 <div class="col-md-12">
 <div class="form-group">
 <select class="form-control" name="role" required>
-<option value="" disabled selected>Select Admin Role</option>
+<option value="" disabled selected>Select User Role</option>
 <option value="admin">admin</option> 
 <option value="superadmin">superadmin</option> 
 </select>
@@ -68,7 +68,7 @@
 <div class="col-md-6">
 <div class="form-group">
 
-<span class="font-main font-13px-600 color-darkblue">Set default permissions to this admin &nbsp;</span> 
+<span class="font-main font-13px-600 color-darkblue">Set default permissions to this user &nbsp;</span> 
 <input type="checkbox" name="permissions" checked/>
 
 </div> 
@@ -77,7 +77,7 @@
 <div class="col-md-6">
 <div class="form-group">
 
-<span class="font-main font-13px-600 color-darkblue">Set admin status as active &nbsp;</span> 
+<span class="font-main font-13px-600 color-darkblue">Set user status as active &nbsp;</span> 
 <input type="checkbox" name="status" checked/>
 
 </div> 
@@ -85,10 +85,11 @@
     
 </div>
 
+{{ csrf_field() }}
     
 <div class="row">
 <div class="col-md-12">
-<button type="submit" class="ws-form-action-btn pull-right">Save Admin</button>
+<button type="submit" class="ws-form-action-btn pull-right">Save User</button>
 </div>
 </div>
 

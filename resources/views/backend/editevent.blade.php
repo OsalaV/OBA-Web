@@ -53,6 +53,8 @@
 </div>
 </div>
     
+{{ csrf_field() }}
+    
 <div class="row">
 <div class="col-md-12">
 <button type="submit" class="ws-form-action-btn pull-right">Save Event</button>
@@ -70,38 +72,33 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
+@if(Session::get('DELETE') == "on")
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-details/'.$event->id) }}" data-message = "Are you sure you want to delete this event?" data-toggle="modal" data-target="#meesageModel">Delete</a>
-</div>
-  
+@endif
+</div>  
     
 <div class="panel-body ws-formpanel-body">
-
-
-<form action="{{ URL::to('events-edit-status/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
- 
+<form id="{{'checkform'.$event->id}}" action="{{ URL::to('events-edit-status/'.$event->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+    
 <div class="row">
 <div class="form-group clearfix">
 <div class="pull-left ws-form-span">
 <span class="font-main font-13px-600 color-darkblue">Do you want to publish this event?</span> </div>
+    
 <div class="pull-right ws-form-check text-center">
-<?php if($event->status == "on") { ?>
-<input type="checkbox" name="status" checked/>
-<?php } else { ?>
-<input type="checkbox" name="status"/>
-<?php } ?>
+@if($event->status == "on")
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+{{ csrf_field() }}   
 </div>
+    
+    
 </div>    
-</div>
-    
-<div class="row">
-<div class="form-group">
-<button type="submit" class="ws-form-action-btn pull-right">Save</button>
-</div>
-</div>
-    
-</form>
-    
-
+</div>  
+   
+</form>  
 </div>
 </div>
    
@@ -139,6 +136,8 @@
     </div>
 </div>    
 </div>
+
+{{ csrf_field() }} 
     
 <div class="row">
 <div class="form-group">
@@ -186,6 +185,8 @@
     </div>
 </div>    
 </div>
+ 
+{{ csrf_field() }} 
     
 <div class="row">
 <div class="form-group">
@@ -198,13 +199,7 @@
 
 </div>
 </div>    
-
-    
-    
-    
-    
-    
-    
+   
 </div>
 
 

@@ -24,6 +24,12 @@ use URL;
 class EventController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
           $events = Event::all()->sortByDesc("id"); 
@@ -177,6 +183,29 @@ class EventController extends Controller
         else{
             return redirect(URL::to('events-edit/'.$id.'?status=changes==false'))->with('error', 'Event status was not successfully edited');           
         }        
+        
+    }
+    
+    public function setstatus($id){
+        
+        $event = Event::where('id' , '=', $id)->first(); 
+        
+                
+        $event->status  = Input::get('status');
+        
+        if($event->save()){
+            //save activity
+            $activity_task = "Event : ".$event->title." status has been changed";
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('events-view?status=changes==true'))->with('success', 'Event status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('events-view?status=changes==false'))->with('error', 'Event status was not successfully edited');           
+        }
         
     }
     
@@ -377,9 +406,5 @@ class EventController extends Controller
         return response()->download($resourcepath);
         
     }
-    
-    
-    
-    
     
 }

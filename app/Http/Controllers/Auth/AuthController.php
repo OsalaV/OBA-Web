@@ -5,8 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserPermissionController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+
+
+use Session;
+use View;
+use Input;
+use Redirect;
+use Response;
+use Auth;
+use File;
+use URL;
+use Hash;
+
 
 class AuthController extends Controller
 {
@@ -28,17 +42,20 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+//    protected $redirectTo = 'dashboard-view';
+    
+    
+    
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+//    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -69,4 +86,46 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    
+    
+    public function authenticate()
+    {
+        $email    = Input::get('email');
+        $password = Input::get('password');
+        
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            
+            $user = Auth::user();           
+            
+            if(($user->role == "admin" && $user->status == "on") || ($user->role == "superadmin")){
+                Session::put('user',$user);    
+                $this->setpermissionstosession($user->id);
+                return redirect()->intended('dashboard-view');        
+            }
+            else{                 
+                return redirect('auth/login?auth=attempt==failed');
+            }
+            
+        }
+        else{
+            return redirect('auth/login?auth=attempt==failed');
+        }
+    }
+    
+    
+    public function logout(){
+        Auth::logout();
+        Session::flush();
+        return redirect('auth/login?logout=success==true');
+    }
+    
+    private function setpermissionstosession($userid){
+        
+        $userpermissions = UserPermissionController::getuserpermissions($userid);             
+        foreach($userpermissions as $userpermission){
+        Session::put($userpermission->permission, $userpermission->status);   
+        }        
+    }
+    
+    
 }

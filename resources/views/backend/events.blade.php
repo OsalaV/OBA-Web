@@ -51,11 +51,18 @@
 <td class="text-center">{{$event->date}}</td>
 <td class="text-center">{{$event->time}}</td>
 <td class="text-center">{{$event->location}}</td>
-@if($event->status == "on")    
-<td class="text-center">Yes</td>
+
+<td class="text-center">
+<form id="{{'checkform'.$event->id}}" action="{{ URL::to('events-set-status/'.$event->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($event->status == "on")
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<td class="text-center">No</td>
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
+{{ csrf_field() }}
+</form>    
+</td>
+
 
 <td class="text-center">
 <a href="{{ URL::to('events-edit/'.$event->id) }}">
@@ -66,6 +73,7 @@
 </td>
 
 
+@if(Session::get('DELETE') == "on")
 <td class="text-center">
 <a class="ws-open-msg" data-url="{{ URL::to('events-delete-details/'.$event->id) }}" data-message = "Are you sure you want to delete this event?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -73,6 +81,7 @@
 </span> 
 </a>
 </td>
+@endif
 
 </tr>
 @endforeach
