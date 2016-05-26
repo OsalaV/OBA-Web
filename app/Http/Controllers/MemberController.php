@@ -27,7 +27,7 @@ class MemberController extends Controller
     
     public function index()
     {
-          $members       = Member::all(); 
+          $members       = Member::all()->sortByDesc("id"); ; 
           $allcount      = Member::all()->count(); 
           $activecount   = Member::where('status','=','on')->count(); 
           $inactivecount = Member::whereNull('status')->count(); 
@@ -166,6 +166,29 @@ class MemberController extends Controller
         
     }
     
+    public function publishstatus($id){
+        
+        $member = Member::where('id' , '=', $id)->first(); 
+        
+                
+        $member->status  = Input::get('status');
+        
+        if($member->save()){
+            //save activity
+            $activity_task = "Member : ".$member->fullname." status has been changed";
+            $activity_type = "member";
+            $connection_id = $member->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('members-view?status=changes==true'))->with('success', 'Member status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('members-view?status=changes==false'))->with('error', 'Member status was not successfully edited');           
+        }       
+        
+    }
+    
     public function updateimage($id){
         
         $member = Member::where('id' , '=', $id)->first(); 
@@ -254,7 +277,7 @@ class MemberController extends Controller
     
     public function getpublished(){
         
-         $members       = Member::where('status','=','on')->get();          
+         $members       = Member::where('status','=','on')->get()->sortByDesc("id");          
         
          $allcount      = Member::all()->count(); 
          $activecount   = Member::where('status','=','on')->count(); 
@@ -266,7 +289,7 @@ class MemberController extends Controller
     
     public function getunpublished(){
         
-         $members       = Member::whereNull('status')->get(); 
+         $members       = Member::whereNull('status')->get()->sortByDesc("id"); 
          
          $allcount      = Member::all()->count(); 
          $activecount   = Member::where('status','=','on')->count(); 

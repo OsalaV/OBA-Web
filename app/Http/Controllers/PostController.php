@@ -19,13 +19,14 @@ use Response;
 use Auth;
 use File;
 use URL;
+use DB;
 
 class PostController extends Controller
 {
     
     public function index()
     {
-          $posts = Post::all(); 
+          $posts = Post::all()->sortByDesc("id"); ; 
           $allcount    = Post::all()->count(); 
           $activecount = Post::where('status','=','on')->count(); 
           $inactivecount = Post::whereNull('status')->count(); 
@@ -146,6 +147,29 @@ class PostController extends Controller
         
     }
     
+    public function publishstatus($id){
+        
+        $post = Post::where('id' , '=', $id)->first(); 
+        
+                
+        $post->status  = Input::get('status');
+        
+        if($post->save()){
+            //save activity
+            $activity_task = "Post : ".$post->title." status has been changed";
+            $activity_type = "post";
+            $connection_id = $post->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('posts-view?status=changes==true'))->with('success', 'Post status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('posts-view?status=changes==false'))->with('error', 'Post status was not successfully edited');           
+        }        
+        
+    }
+    
     public function updateimage($id){
         
         $post = Post::where('id' , '=', $id)->first(); 
@@ -233,7 +257,7 @@ class PostController extends Controller
     
     public function getpublished(){
         
-         $posts = Post::where('status','=','on')->get();          
+         $posts = Post::where('status','=','on')->get()->sortByDesc("id");          
         
          $allcount    = Post::all()->count(); 
          $activecount = Post::where('status','=','on')->count(); 
@@ -245,7 +269,7 @@ class PostController extends Controller
     
     public function getunpublished(){
         
-         $posts = Post::whereNull('status')->get(); 
+         $posts = Post::whereNull('status')->get()->sortByDesc("id"); 
          
          $allcount    = Post::all()->count(); 
          $activecount = Post::where('status','=','on')->count(); 

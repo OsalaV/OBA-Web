@@ -87,7 +87,7 @@ a:hover {
 }
 
 .header-container{
-/*    padding: 0px;*/
+    padding: 5px 0px;
     background-color: #D9A111;
 }
 
@@ -138,7 +138,7 @@ a:hover {
 /*    line-height: 1.27272727;*/
     font-family: Old English Text MT;
 /*    text-transform: uppercase;*/
-    margin: 0px;
+/*    margin: 0px;*/
 /*
     text-align: center;
     padding-top: 60px;
@@ -174,20 +174,20 @@ a:hover {
     }
     
     .header-logo{
-        width:42%;
+        width:52%;
         height:42%;
         max-width:100%;
-        padding-top: 40px;
+/*        padding-top: 40px;*/
     }
     
 }
 
 @media (min-width: 970px){
     .header-logo{
-        width:35%;
+        width:45%;
         height:35%;
         max-width:100%;
-        padding-top: 15px;
+        padding-top: 0px;
         padding-right: 0px;
         padding-bottom: 0px;
         padding-left: 0px;
@@ -200,6 +200,39 @@ a:hover {
         height:35%;
         max-width:100%;
         padding: 0;
+    }
+    
+}
+
+@media (min-width: 1900px){
+    .header-logo{
+        width:35%;
+        height:35%;
+        max-width:100%;
+        padding: 0;
+    }
+    .header-flag-yelloww{
+        background-color:#D9A111;
+        height:35px;
+        margin: 0px;
+        margin-bottom:5px;
+    }
+    .header-menu {
+        background: #000000;
+/*        margin: 0;*/
+        width: auto;
+        padding: 0;
+/*        line-height: 1;*/
+        display: block;
+        position: relative;
+        line-height: 1.73333333;
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+/*        margin-left: 90px;*/
+/*        margin-right: 90px;*/
+        margin-top: 30px;
+/*        margin-bottom: 20px;*/
     }
 }
 

@@ -49,12 +49,17 @@
 <td class="text-center"><img class="ws-table-img" src="{{ asset($post->mediapath) }}"></td>
 <td class="text-left">{{$post->title}}</td>
 <td class="text-center">{{$post->description}}</td>
-@if($post->status == "on")    
-<td class="text-center">Yes</td>
-@else
-<td class="text-center">No</td>
-@endif
 
+<td class="text-center">
+<form action="{{ URL::to('posts-status-publish/'.$post->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($post->status == "on")    
+<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+<button type="submit" class="ws-form-action-btn">Save</button>
+</form>    
+</td>
 
 <td class="text-center">
 <a href="{{ URL::to('posts-edit/'.$post->id) }}">
@@ -83,14 +88,15 @@
 
     
 <div class="ws-table-pagiation-container">
-<ul class="pagination ws-pagination-ul">
+<ul class="pagination ws-pagination-ul"> 
   <li class="active"><a href="#">1</a></li>
   <li><a href="#">2</a></li>
   <li><a href="#">3</a></li>
   <li><a href="#">4</a></li>
   <li><a href="#">5</a></li>
 </ul>      
-</div>  
+</div> 
+
 
 
 @stop

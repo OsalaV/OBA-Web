@@ -14,78 +14,27 @@
 
 
 <div class="row">
-
+@foreach($presidents as $president)
 <div class="col-md-6 col-sm-6 col-xs-12">   
 <div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-  <img class="" src="../images/presidents/1.jpg" alt="">
+  <img class="" src="{{asset($president->imagepath)}}" alt="">
 </div>
 <div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-16">Susantha Dissanayake</p>
+  <p class="font-sub-16">{{$president->fullname}}</p>
+
+  <p class="font-para-14 color-darkblue"> {{$president->year}} <br /> {{$president->email}} <br /> {{$president->contact}} </p>
     
   <div id="div-sociali" class="sociali animated">
-              <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
-              <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
-              <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
+              <a class="fa fa-facebook" title="" target="_blank" href="{{$president->facebook}}"></a>
+              <a class="fa fa-google-plus" title="" target="_blank" href="{{$president->google}}"></a>
+              <a class="fa fa-linkedin" title="" target="_blank" href="{{$president->linkedin}}"></a>
+              <a class="fa fa-twitter" title="" target="_blank" href="{{$president->twitter}}"></a>
   </div>
-<!--
-  <p class="font-para-14">
-    Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.
-  </p>    
--->
 </div>
+</div>
+@endforeach      
 </div>
     
-    
-<div class="col-md-6 col-sm-6 col-xs-12">   
-<!--
-<div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-  <img class="" src="../Resources/images/presidents/2.jpg" alt="">
-</div>
-<div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-22">Ut enim ad minim veniam quis</p>
-  <p class="font-para-14">
-    Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.
-  </p>    
-</div>
-</div>
--->
-</div>   
-  
-<div class="row">
-
-<!--
-<div class="col-md-6 col-sm-6 col-xs-12">   
-<div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-  <img class="" src="../Resources/images/presidents/3.jpg" alt="">
-</div>
-<div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-22">Ut enim ad minim veniam quis</p>
-  <p class="font-para-14">
-    Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.
-  </p>    
-</div>
-</div>
--->
-    
-    
-<!--
-<div class="col-md-6 col-sm-6 col-xs-12">   
-<div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-  <img class="" src="../Resources/images/presidents/4.jpg" alt="">
-</div>
-<div class="col-md-6 col-sm-6 col-xs-12">             
-  <p class="font-sub-22">Ut enim ad minim veniam quis</p>
-  <p class="font-para-14">
-    Suspendisse sit.Amet vehicula nisl, nec faucibus nisl. Proin ac ferme ntum orci, non semper metus.
-  </p>    
-</div>
-</div>
--->
-</div>   
-    
-    
-    
-</div>
 </div>
 </section>
     

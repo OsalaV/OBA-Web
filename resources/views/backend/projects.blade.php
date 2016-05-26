@@ -49,11 +49,17 @@
 <td class="text-center"><img class="ws-table-img" src="{{ asset($project->imagepath) }}"></td>
 <td class="text-left">{{$project->title}}</td>
 <td class="text-center">{{$project->description}}</td>
+
+<td class="text-center">
+<form action="{{ URL::to('projects-status-publish/'.$project->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
 @if($project->status == "on")    
-<td class="text-center">Yes</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<td class="text-center">No</td>
+<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
+<button type="submit" class="ws-form-action-btn">Save</button>
+</form>    
+</td>
 
 
 <td class="text-center">

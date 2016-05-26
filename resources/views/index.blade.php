@@ -49,7 +49,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		<!--end of welcome section-->   
 		    
 
-        <section class="well banner-section background-white">
+        <section class="hidden-xs hidden-sm well banner-section background-white">
             <div class="container no-padding">
                 <h2 class="font-header-large color-black">50th Aniversary</h2>
                 <div class="row">
@@ -93,47 +93,12 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		<div class="col-md-12 col-sm-12 col-xs-12">
 		  <h2 class="font-header-large color-black">NEWS</h2>
 		  <ul id="ul-news" class="news-list list-inline animated">
+            @foreach($posts as $post)
 		    <li>
-		      <div class="news-icon-box text-center">01.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
+		      <div class="news-icon-box text-center"></div>
+		      <a href="{{ URL::to('post/'.$post->id) }}" class="news-title">{{$post->title}}</a>
 		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">02.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">03.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">04.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">05.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		      
-		    <li>
-		      <div class="news-icon-box text-center">06.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">07.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">08.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">09.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
-		    <li>
-		      <div class="news-icon-box text-center">10.</div>
-		      <a href="" class="news-title">Saoreet auctor fusce vitae orci nec velit.</a>
-		    </li>
+            @endforeach
 		  </ul> 
 		  
 		</div>    
@@ -178,7 +143,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 		    </div>             
 		    <div class="media-body media-rp-body">              
 		      <p class="font-para-14 color-darkblue">       
-		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
+		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul      
 		      </p>
 		      <cite class="color-lightblue">
 		        Susantha Dissanayake<br />

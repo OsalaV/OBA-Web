@@ -45,7 +45,16 @@
 </div>
 <div class="col-md-6">
     <div class="form-group">
-        <select class="form-control" name="type" value="{{$member->type}}" > <option>Committee Member</option><option>Batch Representer</option><option>Past President</option> </select>
+        <select class="form-control" name="type" required>
+            <option value="" disabled selected>Select Member Type</option>
+            @if($member->type == "Committee Member")
+            <option value="Committee Member" selected="selected">Committee Member</option> 
+            @elseif($member->type == "Batch Representer")
+            <option value="Batch Representer" selected="selected">Batch Representer</option> 
+            @else
+            <option value="Past President" selected="selected">Past President</option> 
+            @endif
+        </select>
     </div>
 </div>
 </div>
