@@ -84,7 +84,9 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
+@if(Session::get('DELETE') == "on")  
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('branches-delete-details/'.$branch->id) }}" data-message = "Are you sure you want to delete this branch?" data-toggle="modal" data-target="#meesageModel">Delete</a>
+@endif
 </div>
   
     

@@ -106,7 +106,7 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
-@if ($event->imagestate == "true")
+@if ($event->imagestate == "true" && Session::get('DELETE') == "on")
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-image/'.$event->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>
 @endif
 
@@ -155,7 +155,7 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Resource Settings</span>
-@if ($event->resourcestate == "true")
+@if ($event->resourcestate == "true" && Session::get('DELETE') == "on")
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('events-delete-resource/'.$event->id) }}" data-message = "Are you sure you want to delete this resource file?" data-toggle="modal" data-target="#meesageModel">Delete Resource</a>
 @endif
 
