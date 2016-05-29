@@ -6,6 +6,10 @@
 
 
 <main>        
+    
+    <script type="text/javascript">      
+            var page='Parade';
+        </script>
 
 <section class="well temp-section background-white">
 <div class="container">

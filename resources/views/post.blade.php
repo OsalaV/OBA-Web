@@ -5,7 +5,11 @@
 @section('content')
 
 <!--*************************CONTENT*****************************-->  
-<main>        
+<main>    
+    
+    <script type="text/javascript">      
+            var page='Post';
+        </script>
 
 <section class="well temp-section background-white">
 <div class="container">

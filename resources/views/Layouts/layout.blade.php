@@ -1,6 +1,8 @@
 <html lang="en">
 
 <html>
+    
+    
  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +34,9 @@
     <script type="text/javascript" src="{{ asset('js/flipclock.js') }}"></script>
 <!--     <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>-->
 
+        <script type="text/javascript">      
+            var page='Home';
+        </script>
 
 
     <title>{{$title}}</title>
@@ -59,27 +64,7 @@
                                 <h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
                             </div>
 <!--                        <div class="header-flag-yellow"></div>-->
-                        
-<!--
-                        <div class="hidden-xs hidden-sm header-nav-container text-left">
-                            <div class="header-menu">
-                            <ul class="header-nav">
-                                <li class="active"><a href="/"><span>Home</span></a></li>
-                                <li><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
-                                <li><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
-                                <li><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
-                                <li><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
-                                  <ul class="top-ul">
-                                     <li><a href="{{ URL::to('committee-members') }}"><span>Members</span></a></li>
-                                     <li><a href="{{ URL::to('past-presidents') }}"><span>Past Presidents</span></a></li>
-                                  </ul>            
-                                </li>
-                                <li><a href="{{ URL::to('membership') }}"><span>Membership</span></a></li>
-                                <li><a href="{{ URL::to('contact') }}"><span>Contact Us</span></a></li>           
-                            </ul>
-                            </div>
-                        </div> 
--->
+
                         
                     </div>
 
@@ -90,18 +75,18 @@
             <div class=" header-nav-container text-left">
                 <div class="header-menu">
                 <ul class="header-nav">
-                    <li class="active"><a href="/"><span>Home</span></a></li>
-                    <li><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
-                    <li><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
-                    <li><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
-                    <li><a href="{{ URL::to('members') }}"><span>Committee</span></a>
+                    <li id="Home" class=""><a href="/"><span>Home</span></a></li>
+                    <li id="Events" class=""><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
+                    <li id="Parade" class=""><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
+                    <li id="Projects" class=""><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
+                    <li id="Member" class=""><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
                       <ul class="top-ul">
-                         <li><a href="{{ URL::to('members') }}"><span>Members</span></a></li>
-                         <li><a href="{{ URL::to('presidents') }}"><span>Past Presidents</span></a></li>
+                         <li><a href="{{ URL::to('committee-members') }}"><span>Members</span></a></li>
+                         <li><a href="{{ URL::to('past-presidents') }}"><span>Past Presidents</span></a></li>
                       </ul>            
                     </li>
-                    <li><a href="{{ URL::to('membership') }}"><span>Membership</span></a></li>
-                    <li><a href="{{ URL::to('contact') }}"><span>Contact Us</span></a></li>           
+                    <li id="Membership" class=""><a href="{{ URL::to('membership') }}"><span>Membership</span></a></li>
+                    <li id="Contact" class=""><a href="{{ URL::to('contact') }}"><span>Contact Us</span></a></li>
                 </ul>
                 </div>
             </div> 

@@ -3,7 +3,12 @@
 
 @section('content')
 
-	<main>        
+	<main> 
+        
+        <script type="text/javascript">      
+            var page='Home';
+        </script>
+        
 		<section class="well slider-section background-white">
 		<div class="container-fluid no-padding">
 

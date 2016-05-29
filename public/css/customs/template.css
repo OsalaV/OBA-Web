@@ -413,12 +413,17 @@ a:hover {
   height: 0;
   top: 0;
   z-index: 0;
-  background: #D9A111;;
+  background: #D9A111;
   -webkit-transition: height .2s;
   -moz-transition: height .2s;
   -ms-transition: height .2s;
   -o-transition: height .2s;
   transition: height .2s;
+}
+
+.nav-active{
+    background: #D9A111;
+    color:#000;
 }
 
 .header-menu > ul > li.has-sub > a {
@@ -460,6 +465,7 @@ a:hover {
 .header-menu > ul > li:hover:after,
 .header-menu > ul > li.active:after {
   height: 100%;
+
 }
 .header-menu > ul > li:hover > a,
 .header-menu > ul > li.active > a {

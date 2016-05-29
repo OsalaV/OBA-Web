@@ -4,7 +4,11 @@
 
 @section('content')
 
-<main>        
+<main>      
+    
+    <script type="text/javascript">      
+            var page='Membership';
+        </script>
 
 <section class="well temp-section background-white">
 <div class="container">
