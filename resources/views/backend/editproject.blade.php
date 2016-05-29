@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="col-md-8 ws-form-container">
+    
+<a href="{{ URL::to('projects-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Projects</a>
 
 <form role="form" action="{{ URL::to('projects-edit-details/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Project
 <a href="" class="ws-form-action-btn hidden-xs">Preview</a>
-<a href="{{ URL::to('activity-log-last/'.'project'.'/'.$project->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
 </h2>
     
 <div class="row">
@@ -27,6 +28,7 @@
 </div>
 </div>
 
+{{ csrf_field() }} 
     
 <div class="row">
 <div class="col-md-12">
@@ -44,35 +46,35 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Options</span>
+@if(Session::get('DELETE') == "on")
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('projects-delete-details/'.$project->id) }}" data-message = "Are you sure you want to delete this project?" data-toggle="modal" data-target="#meesageModel">Delete</a>
+@endif
 </div>
     
 <div class="panel-body ws-formpanel-body">
 
-
-<form action="{{ URL::to('projects-edit-status/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
- 
+<form id="{{'checkform'.$project->id}}" action="{{ URL::to('projects-edit-status/'.$project->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+    
 <div class="row">
 <div class="form-group clearfix">
 <div class="pull-left ws-form-span">
 <span class="font-main font-13px-600 color-darkblue">Do you want to publish this project?</span> </div>
+    
 <div class="pull-right ws-form-check text-center">
-<?php if($project->status == "on") { ?>
-<input type="checkbox" name="status" checked/>
-<?php } else { ?>
-<input type="checkbox" name="status"/>
-<?php } ?>   
+@if($project->status == "on")
+<input id="status" data-id="{{$project->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" data-id="{{$project->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+{{ csrf_field() }}   
 </div>
+    
+    
 </div>    
-</div>
-    
-<div class="row">
-<div class="form-group">
-<button type="submit" class="ws-form-action-btn pull-right">Save</button>
-</div>
-</div>
-    
-</form>
+</div>  
+   
+</form> 
+
     
 
 </div>
@@ -82,7 +84,7 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
-@if ($project->imagestate == "true")
+@if ($project->imagestate == "true" && Session::get('DELETE') == "on")
 <a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('projects-delete-image/'.$project->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>
 @endif
 
@@ -113,6 +115,8 @@
 </div>    
 </div>
     
+{{ csrf_field() }} 
+    
 <div class="row">
 <div class="form-group">
 <button type="submit" class="ws-form-action-btn pull-right">Save</button>
@@ -129,8 +133,8 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Resource Settings</span>
-@if ($project->resourcestate == "true")
-<a href="{{ URL::to('projects-delete-resource/'.$project->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Resource</a>
+@if ($project->resourcestate == "true" && Session::get('DELETE') == "on")    
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('projects-delete-resource/'.$project->id) }}" data-message = "Are you sure you want to delete this resource?" data-toggle="modal" data-target="#meesageModel">Delete Resource</a>    
 @endif
 
 </div>
@@ -138,7 +142,7 @@
 <div class="panel-body ws-formpanel-body">
 @if ($project->resourcestate == "true")
 <div class="row">
-<a href="" class="ws-form-action-btn-green pull-right hidden-xs">Download Resource Files</a>
+<a href="{{ URL::to('projects-download-resource/'.$project->id) }}" class="ws-form-action-btn-green pull-right hidden-xs">Download Resource Files</a>
 </div>
 @else
 <div class="alert alert-warning fade in">
@@ -159,6 +163,8 @@
     </div>
 </div>    
 </div>
+    
+{{ csrf_field() }} 
     
 <div class="row">
 <div class="form-group">

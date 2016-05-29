@@ -24,6 +24,12 @@ use DB;
 class PostController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
           $posts = Post::all()->sortByDesc("id"); ; 
@@ -31,12 +37,12 @@ class PostController extends Controller
           $activecount = Post::where('status','=','on')->count(); 
           $inactivecount = Post::whereNull('status')->count(); 
           
-          return View::make('backend/posts', array('title' => 'posts','posts' => $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          return View::make('backend/posts', array('title' => 'Posts','posts' => $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
     {
-          return View::make('backend/addpost', array('title' => 'Add Post'));
+          return View::make('backend/addpost', array('title' => 'Posts | Add Post'));
     }
     
     public function uploadImage(){
@@ -75,6 +81,8 @@ class PostController extends Controller
            $post->mediastate   = $image_upload_result['imagestate'];
         } 
         
+        $post->status  = Input::get('status');   
+        
         if($post->save()){
             //save activity
             $activity_task = "Post : ".$post->title." has been added";
@@ -83,20 +91,21 @@ class PostController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
             
-            return redirect('posts-add?save=success==true')->with('success', 'Post was successfully added');
+            return redirect('posts-view?save=success==true')->with('success', 'Post was successfully added');
         }
         else{
-            return redirect('posts-add?save=success==false')->with('success', 'Post was not successfully added');
+            return redirect('posts-view?save=success==false')->with('success', 'Post was not successfully added');
         }
                   
 
     }
     
+    
     public function edit($id){
         
         $post = Post::where('id' , '=', $id)->first();  
         
-        return View::make('backend/editpost', array('title' => 'Edit Post','post' => $post));
+        return View::make('backend/editpost', array('title' => 'Posts | Edit Post','post' => $post));
         
         
     }
@@ -147,7 +156,7 @@ class PostController extends Controller
         
     }
     
-    public function publishstatus($id){
+    public function setstatus($id){
         
         $post = Post::where('id' , '=', $id)->first(); 
         
@@ -276,6 +285,14 @@ class PostController extends Controller
          $inactivecount = Post::whereNull('status')->count(); 
           
          return View::make('backend/posts', array('title' => 'Posts | Unpublished','posts' =>  $posts,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+        
+    }
+    
+    public static function getposts(){
+        
+         $posts = Post::where('status' , '=', 'on')->get(); 
+        
+         return $posts;
         
     }
     

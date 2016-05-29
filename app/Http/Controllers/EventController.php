@@ -37,12 +37,12 @@ class EventController extends Controller
           $activecount = Event::where('status','=','on')->count(); 
           $inactivecount = Event::whereNull('status')->count(); 
           
-          return View::make('backend/events', array('title' => 'DS OBA | Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          return View::make('backend/events', array('title' => 'Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
     {
-          return View::make('backend/addevent', array('title' => 'DS OBA | Add Event'));
+          return View::make('backend/addevent', array('title' => 'Events | Add Event'));
     }
     
     public function uploadResource(){
@@ -120,10 +120,10 @@ class EventController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
             
-            return redirect('events-add?save=success==true')->with('success', 'Event was successfully added');
+            return redirect('events-view?save=success==true')->with('success', 'Event was successfully added');
         }
         else{
-            return redirect('events-add?save=success==false')->with('error', 'Event was not successfully added');
+            return redirect('events-view?save=success==false')->with('error', 'Event was not successfully added');
         }
         
     }
@@ -132,7 +132,7 @@ class EventController extends Controller
         
         $event = Event::where('id' , '=', $id)->first();  
         
-        return View::make('backend/editevent', array('title' => 'DS OBA | Edit Event','event' => $event));
+        return View::make('backend/editevent', array('title' => 'Events | Edit Event','event' => $event));
         
         
     }
@@ -406,5 +406,22 @@ class EventController extends Controller
         return response()->download($resourcepath);
         
     }
+    
+    public static function getevents(){
+        
+         $events = Event::where('status' , '=', 'on')->get(); 
+        
+         return $events;
+        
+    }
+    
+    public static function getevent($id){
+        
+         $event = Event::where('id' , '=', $id)->first(); 
+        
+         return $event;
+        
+    }
+    
     
 }

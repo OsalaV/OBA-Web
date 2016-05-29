@@ -300,6 +300,21 @@ a:hover {
     height: 30px;
 }
 
+.ws-table-img-40px{
+    width: 40px;
+    height: 40px;
+}
+
+.ws-table-img-50px{
+    width: 50px;
+    height: 50px;
+}
+
+.ws-table-img-60px{
+    width: 60px;
+    height: 60px;
+}
+
 .ws-table-head{
 	background-color: #D8DCE3;
 	color: #696c74;
@@ -633,3 +648,62 @@ a:hover {
 }
 
 
+
+/*====================================================================================*/
+/*Dashboard CSS*/
+/*====================================================================================*/
+
+
+.ws-dash-header{
+  margin-bottom: 30px;
+}
+
+.ws-dash-count-box-container{
+    border-right: 2px solid #ADB2B5;
+}
+
+.ws-dash-count{
+    font-size: 40px;
+    line-height: 47px;
+    font-weight: 600;
+    color: #73879C;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+}
+
+.ws-dash-panel{
+    border-radius: 0px;    
+}
+
+.ws-dash-panelheader{
+    height: 40px;
+    background: 
+}
+
+.ws-dash-panelbody{
+    padding: 0px;
+}
+
+.ws-dash-formpanelbody{
+    padding: 10px 20px;
+}
+
+.ws-dash-message:hover{
+    color: 
+}
+
+.ws-dash-table{
+    background: #fff;
+
+}
+
+.ws-dash-table-img{
+    width: 30px;
+    height: 30px;
+}
+.ws-dash-table-body tr{
+	height: 50px;    
+}
+
+.ws-dash-message:hover{
+      background: #f0f1f4;    
+}

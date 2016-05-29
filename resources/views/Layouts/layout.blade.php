@@ -67,10 +67,10 @@
                                 <li><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
                                 <li><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
                                 <li><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
-                                <li><a href="{{ URL::to('members') }}"><span>Committee</span></a>
+                                <li><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
                                   <ul class="top-ul">
-                                     <li><a href="{{ URL::to('members') }}"><span>Members</span></a></li>
-                                     <li><a href="{{ URL::to('presidents') }}"><span>Past Presidents</span></a></li>
+                                     <li><a href="{{ URL::to('committee-members') }}"><span>Members</span></a></li>
+                                     <li><a href="{{ URL::to('past-presidents') }}"><span>Past Presidents</span></a></li>
                                   </ul>            
                                 </li>
                                 <li><a href="{{ URL::to('membership') }}"><span>Membership</span></a></li>

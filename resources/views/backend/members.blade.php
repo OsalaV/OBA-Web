@@ -30,14 +30,12 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
 <th class="text-center">Image</th>  
-<th class="text-center">Full Name</th>
-<th class="text-center">Post</th>
-<th class="text-center">Year</th>
-<th class="text-center">Type</th>
-<th class="text-center">Contact</th>
-<th class="text-center">Email</th>
+<th class="text-left">Full Name</th>
+<th class="text-left">Designation</th>
+<th class="text-left">Year</th>
+<th class="text-left">Email</th>
+<th class="text-left">Contact</th>
 <th class="text-center">Published</th>
 
 
@@ -50,25 +48,25 @@
 
 @foreach($members as $member)
 <tr>
-<td class="text-center">{{$member->id}}</td>
-<td class="text-center"><img class="ws-table-img" src="{{ asset($member->imagepath) }}"></td>
+<td class="text-center"><img class="ws-table-img-40px" src="{{ asset($member->imagepath) }}"></td>
 <td class="text-left">{{$member->fullname}}</td>
-<td class="text-center">{{$member->post}}</td>
-<td class="text-center">{{$member->year}}</td>
-<td class="text-celeftnter">{{$member->type}}</td>
-<td class="text-left">{{$member->contact}}</td>
+<td class="text-left">{{$member->designation}}</td>
+<td class="text-left">{{$member->year}}</td>
 <td class="text-left">{{$member->email}}</td>
+<td class="text-left">{{$member->contact}}</td>
     
 <td class="text-center">
-<form action="{{ URL::to('members-status-publish/'.$member->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
-@if($member->status == "on")    
-<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+<form id="{{'checkform'.$member->id}}" action="{{ URL::to('members-set-status/'.$member->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($member->status == "on")
+<input id="status" data-id="{{$member->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+<input id="status" data-id="{{$member->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
-<button type="submit" class="ws-form-action-btn">Save</button>
+{{ csrf_field() }}
 </form>    
 </td>
+    
+    
 
 <td class="text-right">
 <a href="{{ URL::to('members-edit/'.$member->id) }}">
@@ -78,7 +76,7 @@
 </a>
 </td>
 
-
+@if(Session::get('DELETE') == "on")
 <td class="text-right">
 <a class="ws-open-msg" data-url="{{ URL::to('members-delete-details/'.$member->id) }}" data-message = "Are you sure you want to delete this member?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -86,7 +84,8 @@
 </span> 
 </a>
 </td>
-
+@endif
+    
 </tr>
 @endforeach
 

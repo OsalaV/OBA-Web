@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ActivityController;
-
+use App\Http\Controllers\DesignationController;
 
 use Illuminate\Support\Facades\Request;
 
@@ -21,13 +21,22 @@ use Response;
 use Auth;
 use File;
 use URL;
+use DB;
 
 class MemberController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
-          $members       = Member::all()->sortByDesc("id"); ; 
+          $members = DB::table('members')
+                    ->join('designations', 'members.designations_id', '=', 'designations.id')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
+
           $allcount      = Member::all()->count(); 
           $activecount   = Member::where('status','=','on')->count(); 
           $inactivecount = Member::whereNull('status')->count(); 
@@ -37,7 +46,9 @@ class MemberController extends Controller
     
     public function create()
     {
-          return View::make('backend/addmember', array('title' => 'Add Member'));
+          $designations = DesignationController::getdesignations();
+          
+          return View::make('backend/addmember', array('title' => 'Members | Add Member', 'designations' => $designations));
     }
     
     public function uploadImage(){
@@ -68,23 +79,23 @@ class MemberController extends Controller
          $member = new Member;
                
         
-         $member->fullname     = Input::get('fulname'); 
-         $member->post         = Input::get('post'); 
-         $member->year         = Input::get('year');
-         $member->message      = Input::get('message');
-         $member->type         = Input::get('type');  
-         $member->email        = Input::get('email');                    
-         $member->contact      = Input::get('contact'); 
-         $member->facebook     = Input::get('facebook');
-         $member->twitter      = Input::get('twitter');                  
-         $member->linkedin     = Input::get('linkedin');
-         $member->google       = Input::get('google');
+         $member->fullname        = Input::get('fulname'); 
+         $member->designations_id = Input::get('designations_id'); 
+         $member->year            = Input::get('year');         
                
          if(Input::hasFile('image')){
             $image_upload_result = $this->uploadImage();
             $member->imagepath    = $image_upload_result['imagepath'];
             $member->imagestate   = $image_upload_result['imagestate'];
          } 
+        
+         $member->message      = Input::get('message');
+         $member->email        = Input::get('email');                    
+         $member->contact      = Input::get('contact'); 
+         $member->facebook     = Input::get('facebook');
+         $member->twitter      = Input::get('twitter');                  
+         $member->linkedin     = Input::get('linkedin');
+         $member->google       = Input::get('google');
         
          if($member->save()){
             //save activity
@@ -94,19 +105,20 @@ class MemberController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
              
-            return redirect('members-add?save=success==true')->with('success', 'Member was successfully added');
+            return redirect('members-view?save=success==true')->with('success', 'Member was successfully added');
          }
          else{
-            return redirect('members-add?save=success==false')->with('success', 'Member was not successfully added');
+            return redirect('members-view?save=success==false')->with('success', 'Member was not successfully added');
          }
 
     }
     
     public function edit($id){
         
-        $member = Member::where('id' , '=', $id)->first();  
+        $member = Member::where('id' , '=', $id)->first();
+        $designations = DesignationController::getdesignations();
         
-        return View::make('backend/editmember', array('title' => 'Edit Member','member' => $member));
+        return View::make('backend/editmember', array('title' => 'Members | Edit Member','designations' => $designations, 'member' => $member));
         
         
     }
@@ -115,17 +127,16 @@ class MemberController extends Controller
         
          $member = Member::where('id' , '=', $id)->first(); 
         
-         $member->fullname     = Input::get('fulname'); 
-         $member->post         = Input::get('post'); 
-         $member->year         = Input::get('year');
-         $member->message      = Input::get('message');
-         $member->type         = Input::get('type');  
-         $member->email        = Input::get('email');                    
-         $member->contact      = Input::get('contact'); 
-         $member->facebook     = Input::get('facebook');
-         $member->twitter      = Input::get('twitter');                  
-         $member->linkedin     = Input::get('linkedin');
-         $member->google       = Input::get('google');
+         $member->fullname        = Input::get('fulname'); 
+         $member->designations_id = Input::get('designations_id'); 
+         $member->year            = Input::get('year');
+         $member->message         = Input::get('message');
+         $member->email           = Input::get('email');                    
+         $member->contact         = Input::get('contact'); 
+         $member->facebook        = Input::get('facebook');
+         $member->twitter         = Input::get('twitter');                  
+         $member->linkedin        = Input::get('linkedin');
+         $member->google          = Input::get('google');
         
         if($member->save()){
             //save activity
@@ -166,7 +177,7 @@ class MemberController extends Controller
         
     }
     
-    public function publishstatus($id){
+    public function setstatus($id){
         
         $member = Member::where('id' , '=', $id)->first(); 
         
@@ -277,7 +288,12 @@ class MemberController extends Controller
     
     public function getpublished(){
         
-         $members       = Member::where('status','=','on')->get()->sortByDesc("id");          
+         $members = DB::table('members')
+                      ->join('designations', 'members.designations_id', '=', 'designations.id')
+                      ->where('members.status' , '=', 'on')
+                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
+        
+        
         
          $allcount      = Member::all()->count(); 
          $activecount   = Member::where('status','=','on')->count(); 
@@ -289,7 +305,11 @@ class MemberController extends Controller
     
     public function getunpublished(){
         
-         $members       = Member::whereNull('status')->get()->sortByDesc("id"); 
+         $members = DB::table('members')
+                      ->join('designations', 'members.designations_id', '=', 'designations.id')
+                      ->where('members.status' , '=', NULL)
+                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
+        
          
          $allcount      = Member::all()->count(); 
          $activecount   = Member::where('status','=','on')->count(); 
@@ -297,6 +317,45 @@ class MemberController extends Controller
           
          return View::make('backend/members', array('title' => 'Members | Unpublished','members' =>  $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
+    }
+    
+    public static function gettopmembers(){
+        
+//    $principle = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Principle')->select(*)->first();
+        
+//        $president = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')
+//                     ->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'President')->select(*)->first();
+//        
+//        $generalsec= DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')
+//                     ->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'General Secratary')->select(*)->first();
+        
+//        $topmembers = array('principle' => $principle);
+//        
+//        
+//        return $topmembers;
+        
+    }
+    
+    public static function getpastpresidents(){
+        
+        $pastpresidents = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Past President')->select('*')->get();
+        
+        return $pastpresidents;
+        
+    }
+    
+    public static function getcommittee(){
+        
+       $committee = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '!=', 'Batch Representer')->select('*')->get(); 
+        
+        return $committee;
+    }
+    
+    public static function getbatchreps(){
+        
+       $batchreps = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Batch Representer')->select('*')->get(); 
+        
+        return $batchreps;
     }
 
     

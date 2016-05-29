@@ -33,7 +33,7 @@ class SliderController extends Controller
     {
           $slider = Slider::all()->sortByDesc("id");     
         
-          return View::make('backend/slidersettings', array('title' => 'DS OBA | Image Slider','sliders' => $slider));
+          return View::make('backend/slidersettings', array('title' => 'Image Slider','sliders' => $slider));
     }
     
     public function uploadImage(){
@@ -154,7 +154,13 @@ class SliderController extends Controller
     }
     
    
-    
+    public static function getsliders(){
+        
+         $slider = Slider::where('status' , '=', 'on')->get(); 
+        
+         return $slider;
+        
+    }
     
     
     

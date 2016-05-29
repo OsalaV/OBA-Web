@@ -2,23 +2,15 @@
 
 
 @section('content')
-<!--
-    <script>
-        $(document).ready(function(){
-          $('.bxslider').bxSlider({
-              mode:'fade'
-          });
-        });  
-    </script>
--->
+
 	<main>        
 		<section class="well slider-section background-white">
 		<div class="container-fluid no-padding">
 
 		<ul class="bxslider" style="padding:0px !important;">
-		  <li><img src="../images/slider/1.jpg"  /></li>
-		  <li><img src="../images/slider/2.jpg"  /></li>
-		  <li><img src="../images/slider/3.jpg"  /></li>
+          @foreach($sliders as $slider)
+		  <li><img src="{{asset($slider->imagepath)}}"  /></li>
+          @endforeach
 		</ul>    
 
 		    

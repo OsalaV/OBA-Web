@@ -30,12 +30,10 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
 <th class="text-center">Image</th>  
 <th class="text-left">Title</th>
-<th class="text-center">Description</th>
+<th class="text-left">Last Updated</th>
 <th class="text-center">Published</th>
-<!--<th class="text-center">Last Updated</th>-->
 <th></th>
 <th></th>
 </tr>
@@ -45,21 +43,23 @@
 
 @foreach($projects as $project)
 <tr>
-<td class="text-center">{{$project->id}}</td>
+
 <td class="text-center"><img class="ws-table-img" src="{{ asset($project->imagepath) }}"></td>
 <td class="text-left">{{$project->title}}</td>
-<td class="text-center">{{$project->description}}</td>
-
+<td class="text-left">{{$project->updated_at}}</td>
+    
+    
 <td class="text-center">
-<form action="{{ URL::to('projects-status-publish/'.$project->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
-@if($project->status == "on")    
-<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+<form id="{{'checkform'.$project->id}}" action="{{ URL::to('projects-set-status/'.$project->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($project->status == "on")
+<input id="status" data-id="{{$project->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+<input id="status" data-id="{{$project->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
-<button type="submit" class="ws-form-action-btn">Save</button>
+{{ csrf_field() }}
 </form>    
-</td>
+</td> 
+    
 
 
 <td class="text-center">
@@ -70,7 +70,7 @@
 </a>
 </td>
 
-
+@if(Session::get('DELETE') == "on")
 <td class="text-center">
 <a class="ws-open-msg" data-url="{{ URL::to('projects-delete-details/'.$project->id) }}" data-message = "Are you sure you want to delete this project?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -78,6 +78,7 @@
 </span> 
 </a>
 </td>
+@endif
 
 </tr>
 @endforeach

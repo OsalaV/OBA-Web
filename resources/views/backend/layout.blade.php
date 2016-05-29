@@ -113,21 +113,21 @@
 </li>
 @endif
 
-@if(Session::get('COMMITTEE') == "on")
+@if(Session::get('MEMBERS') == "on")
 <li>
 <a href="{{ URL::to('members-view') }}">
-<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Committee</span>
-<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Committee"><i class="fa fa-users fa-lg"></i></span>	
+<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Members</span>
+<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Members"><i class="fa fa-users fa-lg"></i></span>	
 </a>
 </li>
 @endif
 
 
-@if(Session::get('USERS') == "on")  
+@if(Session::get('GUESTS') == "on")  
 <li>
-<a href="{{ URL::to('users-view') }}">
-<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Users</span>
-<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Users"><i class="fa fa-user fa-lg"></i></span>	
+<a href="{{ URL::to('guests-view') }}">
+<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Guest Users</span>
+<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Guest Users"><i class="fa fa-user fa-lg"></i></span>	
 </a>
 </li>
 @endif

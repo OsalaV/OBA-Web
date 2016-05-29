@@ -32,40 +32,8 @@ class PermissionController extends Controller
     {
          $permissions = Permission::all(); 
         
-         return View::make('backend/permissions', array('title' => 'DS OBA | Admin Permissions', 'permissions' => $permissions));
+         return View::make('backend/permissions', array('title' => 'User Permissions', 'permissions' => $permissions));
     }
-    
-    public function store(){
-        
-        $permission = new Permission;
-        
-        $permission->permission      = Input::get('permission');
-        $permission->priority   = Input::get('priority');        
-        
-        
-        if($permission->save()){            
-            return redirect('permissions-view?save=success==true')->with('success', 'Permission was successfully added');
-        }
-        else{
-            return redirect('permissions-view?save=success==false')->with('error', 'Permission was not successfully added');
-        }
-        
-        
-    }
-    
-    
-    public function destroy($id){
-        
-        $permission = Permission::where('id' , '=', $id)->first(); 
-            
-        if ($permission->delete()){
-          return redirect(URL::to('permissions-view?permissions=deleted==true'))->with('success', 'Permission was successfully deleted');
-        }
-        else{
-          return redirect(URL::to('permissions-view?permissions=deleted==false'))->with('error', 'Permission was not successfully deleted');    
-        }            
-        
-    }   
     
     public static function getdefaultpermissions(){
         

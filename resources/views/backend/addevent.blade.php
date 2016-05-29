@@ -5,10 +5,12 @@
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
+</div> 
 
 <div class="col-md-8 ws-form-container">
 
+<a href="{{ URL::to('events-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Events</a> 
+    
 <form role="form" action="{{ URL::to('events-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 
@@ -29,19 +31,19 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <!-- <label class="font-main font-15px-600">Event Date</label> -->
+         <label class="font-main font-15px-600">Event Date</label> 
         <input type="date" class="form-control" name="date" placeholder="Event Date" required>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <!-- <label class="font-main font-15px-600">Starting Time</label> -->
-        <input type="text" class="form-control" name="time" placeholder="Event Time" required>
     </div>
 </div>
 </div>
 
 <div class="row">
+<div class="col-md-6">
+    <div class="form-group">
+        <!-- <label class="font-main font-15px-600">Event Time</label> -->
+        <input type="text" class="form-control" name="time" placeholder="Event Time" required>
+    </div>
+</div>
 <div class="col-md-6">
     <div class="form-group">
         <input type="text" class="form-control" name="location" placeholder="Location" required>

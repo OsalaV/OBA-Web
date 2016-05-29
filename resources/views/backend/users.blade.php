@@ -2,6 +2,8 @@
 
 @section('content')
 
+<a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>
+
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Users
 <a href="{{ URL::to('users-add') }}" class="ws-tablepage-action-btn">Add New</a>        
 </h2>
@@ -32,12 +34,18 @@
 <td class="text-left">{{$user->email}}</td>
 <td class="text-center">{{$user->contact}}</td>
 <td class="text-center">{{$user->role}}</td>
-@if($user->status == "on")    
-<td class="text-center">Active</td>
-@else
-<td class="text-center">Inactive</td>
-@endif
 
+<td class="text-center">
+<form id="{{'checkform'.$user->id}}" action="{{ URL::to('users-set-status/'.$user->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($user->status == "on")
+<input id="status" data-id="{{$user->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" data-id="{{$user->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+{{ csrf_field() }}
+</form>    
+</td> 
+    
 <td class="text-center">
 <a href="{{ URL::to('users-edit/'.$user->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">

@@ -21,8 +21,9 @@
 {{$branch->description}}
 </p>
 <p class="font-para-14-bold color-black">
-{{$branch->address_line1}} {{$branch->address_line2}}{{$branch->address_line3}}
+{{$branch->address_line1}}<br>{{$branch->address_line2}}<br>{{$branch->address_line3}}
 </p>
+
 <p class="font-para-14-bold color-black">
 {{$branch->email}} <br /> {{$branch->contact}}
 </p>

@@ -24,6 +24,12 @@ use URL;
 class BranchController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
           $branches      = Branch::all()->sortByDesc("id"); 
@@ -31,12 +37,12 @@ class BranchController extends Controller
           $activecount   = Branch::where('status','=','on')->count(); 
           $inactivecount = Branch::whereNull('status')->count(); 
           
-          return View::make('backend/branches', array('title' => 'DS OBA | Branches','branches' => $branches,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          return View::make('backend/branches', array('title' => 'Branches','branches' => $branches,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
     }
     
     public function create()
     {
-          return View::make('backend/addbranch', array('title' => 'DS OBA | Add Branch'));
+          return View::make('backend/addbranch', array('title' => 'Branches | Add Branch'));
     }
     
     public function store()
@@ -59,10 +65,10 @@ class BranchController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
             
-            return redirect('branches-add?save=success==true')->with('success', 'Branch was successfully added');
+            return redirect('branches-view?save=success==true')->with('success', 'Branch was successfully added');
         }
         else{
-            return redirect('branches-add?save=success==false')->with('error', 'Branch was not successfully added');
+            return redirect('branches-view?save=success==false')->with('error', 'Branch was not successfully added');
         }
         
     }
@@ -71,7 +77,7 @@ class BranchController extends Controller
         
         $branch = Branch::where('id' , '=', $id)->first();  
         
-        return View::make('backend/editbranch', array('title' => 'DS OBA | Edit Branch','branch' => $branch));
+        return View::make('backend/editbranch', array('title' => 'Branches | Edit Branch','branch' => $branch));
         
         
     }
@@ -127,7 +133,7 @@ class BranchController extends Controller
         
     }
     
-    public function publishstatus($id){
+    public function setstatus($id){
         
         $branch = Branch::where('id' , '=', $id)->first(); 
         
@@ -172,7 +178,7 @@ class BranchController extends Controller
     
     public function getpublished(){
         
-         $branch = Branch::where('status','=','on')->get()->sortByDesc("id"); ;          
+         $branches = Branch::where('status','=','on')->get()->sortByDesc("id"); ;          
         
          $allcount    = Branch::all()->count(); 
          $activecount = Branch::where('status','=','on')->count(); 
@@ -184,7 +190,7 @@ class BranchController extends Controller
     
     public function getunpublished(){
         
-         $branch = Branch::whereNull('status')->get()->sortByDesc("id"); 
+         $branches = Branch::whereNull('status')->get()->sortByDesc("id"); 
          
          $allcount    = Branch::all()->count(); 
          $activecount = Branch::where('status','=','on')->count(); 
@@ -193,5 +199,15 @@ class BranchController extends Controller
          return View::make('backend/branches', array('title' => 'Branches | Unpublished','branches' =>  $branches,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
+    
+     public static function getbranches(){
+        
+         $branches = Branch::where('status' , '=', 'on')->get(); 
+        
+         return $branches;
+        
+    }
+        
+
     
 }

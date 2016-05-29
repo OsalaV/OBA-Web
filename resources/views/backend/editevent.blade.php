@@ -3,6 +3,8 @@
 @section('content')
 
 <div class="col-md-8 ws-form-container">
+    
+<a href="{{ URL::to('events-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Events</a> 
 
 <form role="form" action="{{ URL::to('events-edit-details/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
@@ -11,7 +13,6 @@
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Event
 <a href="" class="ws-form-action-btn hidden-xs">Preview</a>
-<a href="{{ URL::to('activity-log-last/'.'event'.'/'.$event->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
 </h2>
     
 <div class="row">

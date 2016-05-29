@@ -33,12 +33,12 @@ class UserController extends Controller
     {
          $users = User::all()->sortByDesc("id");       
         
-         return View::make('backend/users', array('title' => 'DS OBA | Users', 'users' => $users));
+         return View::make('backend/users', array('title' => 'Users', 'users' => $users));
     }
     
     public function create()
     {
-         return View::make('backend/adduser', array('title' => 'DS OBA | Add User'));
+         return View::make('backend/adduser', array('title' => 'Users | Add User'));
     }
     
     public function store()
@@ -61,11 +61,14 @@ class UserController extends Controller
             if($default_permissions == "on"){
                 UserPermissionController::setdefaultpermissions($userid);       
             }
+            else{
+                UserPermissionController::setpermissions($userid); 
+            }
             
-            return redirect('users-add?save=success==true')->with('success', 'User was successfully added');
+            return redirect('users-view?save=success==true')->with('success', 'User was successfully added');
         }
         else{
-            return redirect('users-add?save=success==false')->with('error', 'User was not successfully added');
+            return redirect('users-view?save=success==false')->with('error', 'User was not successfully added');
         }
         
     }
@@ -75,7 +78,7 @@ class UserController extends Controller
         $user = User::where('id' , '=', $id)->first();  
         $userpermissions = UserPermissionController::getuserpermissions($id);       
         
-        return View::make('backend/edituser', array('title' => 'DS OBA | Edit User','user' => $user, 'userpermissions' => $userpermissions));
+        return View::make('backend/edituser', array('title' => 'Users | Edit User','user' => $user, 'userpermissions' => $userpermissions));
         
         
     }
@@ -98,6 +101,40 @@ class UserController extends Controller
         }        
         
     } 
+    
+    public function updatestatus($id){
+        
+        $user = User::where('id' , '=', $id)->first(); 
+                
+        $user->status  = Input::get('status');
+        
+        if($user->save()){                    
+            
+            return redirect(URL::to('users-edit/'.$id.'?status=changes==true'))->with('success', 'User status was successfully changed');   
+        }
+        else{
+            return redirect(URL::to('users-edit/'.$id.'?status=changes==false'))->with('error', 'User status was not successfully changed');            
+        }
+        
+    }
+    
+    public function setstatus($id){
+        
+        $user = User::where('id' , '=', $id)->first(); 
+                
+        $user->status  = Input::get('status');
+        
+        if($user->save()){                    
+            
+            return redirect(URL::to('users-view?status=changes==true'))->with('success', 'User status was successfully changed');   
+        }
+        else{
+            return redirect(URL::to('users-view?status=changes==false'))->with('error', 'User status was not successfully changed');            
+        }
+        
+    }
+    
+    
     
     public function updatepassword($id){
        

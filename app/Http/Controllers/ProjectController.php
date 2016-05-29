@@ -23,6 +23,12 @@ use URL;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
           $projects      = Project::all()->sortByDesc("id"); ; 
@@ -35,7 +41,7 @@ class ProjectController extends Controller
     
     public function create()
     {
-          return View::make('backend/addproject', array('title' => 'Add Project'));
+          return View::make('backend/addproject', array('title' => 'Projects | Add Project'));
     }
     
     public function uploadResource(){
@@ -111,10 +117,10 @@ class ProjectController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
             
-            return redirect('projects-add?save=success==true')->with('success', 'Project was successfully added');
+            return redirect('projects-view?save=success==true')->with('success', 'Project was successfully added');
         }
         else{
-            return redirect('projects-add?save=success==false')->with('success', 'Project was not successfully added');
+            return redirect('projects-view?save=success==false')->with('success', 'Project was not successfully added');
         }   
 
     }
@@ -123,7 +129,7 @@ class ProjectController extends Controller
         
         $project = Project::where('id' , '=', $id)->first();  
         
-        return View::make('backend/editproject', array('title' => 'Edit Project','project' => $project));
+        return View::make('backend/editproject', array('title' => 'Projects | Edit Project','project' => $project));
         
         
     }
@@ -174,7 +180,7 @@ class ProjectController extends Controller
         
     }
     
-    public function publishstatus($id){
+    public function setstatus($id){
         
         $project = Project::where('id' , '=', $id)->first(); 
         
@@ -377,6 +383,22 @@ class ProjectController extends Controller
         
         $resourcepath = $project->resourcepath;
         return response()->download($resourcepath);
+        
+    }
+    
+    public static function getprojects(){
+        
+         $porjects = Project::where('status' , '=', 'on')->get(); 
+        
+         return $porjects;
+        
+    }
+    
+    public static function getproject($id){
+        
+         $porject = Project::where('id' , '=', $id)->first(); 
+        
+         return $porject;
         
     }
     

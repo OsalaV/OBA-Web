@@ -22,32 +22,54 @@
     Route::get('auth/login', 'Auth\AuthController@getLogin');
     Route::post('auth/login', 'Auth\AuthController@authenticate');
     Route::get('auth/logout', 'Auth\AuthController@logout');
+     
+     
+    Route::get('/', ['uses' => 'IndexController@index']);
+     
+    Route::get('events', ['uses' => 'IndexController@events']);
+    Route::get('events-view/{id}', ['uses' => 'IndexController@eventsview']);
+     
+    Route::get('parade', ['uses' => 'IndexController@parade']);
+    
+    Route::get('projects', ['uses' => 'IndexController@projects']);
+    Route::get('projects-view/{id}', ['uses' => 'IndexController@projectsview']);
+     
+    Route::get('committee-members', ['uses' => 'IndexController@members']);
+    Route::get('past-presidents', ['uses' => 'IndexController@pastpresidents']);
+    
+    Route::get('contact', ['uses' => 'IndexController@contact']);
     
  });
 
  
  Route::group(['middleware' => ['web','auth']], function () {
      
-    Route::get('dashboard-view', ['uses' => 'DashboardController@index']);
-     
+    Route::get('dashboard-view', ['uses' => 'DashboardController@index']); 
      
     //routes administrators
     Route::get('users-view', ['uses' => 'UserController@index']); 
     Route::get('users-add', ['uses' => 'UserController@create']);  
     Route::post('users-add-details', ['uses' => 'UserController@store']); 
     Route::get('users-edit/{id}', ['uses' => 'UserController@edit']);  
-    Route::post('users-edit-details/{id}', ['uses' => 'UserController@update']);  
+    Route::post('users-edit-details/{id}', ['uses' => 'UserController@update']); 
+    Route::post('users-edit-status/{id}', ['uses' => 'UserController@updatestatus']);  
+    Route::post('users-set-status/{id}', ['uses' => 'UserController@setstatus']);  
     Route::post('users-edit-password/{id}', ['uses' => 'UserController@updatepassword']);
     Route::post('users-edit-permissions/{id}', ['uses' => 'UserController@updatepermissions']);  
     Route::get('users-delete-details/{id}', ['uses' => 'UserController@destroy']);
 
+    //routes guests
+    Route::get('guests-view', ['uses' => 'GuestController@index']); 
 
 
     //routes permissions
     Route::get('permissions-view', ['uses' => 'PermissionController@index']); 
-    Route::post('permissions-add-details', ['uses' => 'PermissionController@store']); 
-    Route::get('permissions-delete/{id}', ['uses' => 'PermissionController@destroy']); 
      
+    //routes designations
+    Route::get('designations-view', ['uses' => 'DesignationController@index']); 
+    Route::post('designations-add-details', ['uses' => 'DesignationController@store']); 
+    Route::post('designation-edit-details/{id}', ['uses' => 'DesignationController@update']); 
+    Route::post('designation-edit-status/{id}', ['uses' => 'DesignationController@updatestatus']);  
      
     //routs-events
     Route::get('events-view', ['uses' => 'EventController@index']);
@@ -74,6 +96,9 @@
     //routes settings 
     Route::get('settings-view', ['uses' => 'SettingController@index']);
      
+    //routes general settings 
+    Route::get('generalsettings', ['uses' => 'GeneralController@index']);
+     
     //routes slider 
     Route::get('imageslider', ['uses' => 'SliderController@index']);
     Route::post('imageslider-add-details', ['uses' => 'SliderController@store']);
@@ -88,13 +113,84 @@
 
     Route::post('branches-edit-details/{id}', ['uses' => 'BranchController@update']); 
     Route::post('branches-edit-status/{id}', ['uses' => 'BranchController@updatestatus']);
-    Route::post('branches-status-publish/{id}', ['uses' => 'BranchController@publishstatus']);
+    Route::post('branches-set-status/{id}', ['uses' => 'BranchController@setstatus']);
 
     Route::get('branches-delete-details/{id}', ['uses' => 'BranchController@destroy']);
 
     Route::get('branches-published', ['uses' => 'BranchController@getpublished']);
     Route::get('branches-unpublished', ['uses' => 'BranchController@getunpublished']);
      
+     
+    //routs-posts
+    Route::get('posts-view', ['uses' => 'PostController@index']);
+    Route::get('posts-add', ['uses' => 'PostController@create']); 
+    Route::post('posts-add-details', ['uses' => 'PostController@store']); 
+    Route::get('posts-edit/{id}', ['uses' => 'PostController@edit']);
+
+    Route::post('posts-edit-details/{id}', ['uses' => 'PostController@update']); 
+    Route::post('posts-edit-status/{id}', ['uses' => 'PostController@updatestatus']);
+    Route::post('posts-set-status/{id}', ['uses' => 'PostController@setstatus']);
+    Route::post('posts-edit-image/{id}', ['uses' => 'PostController@updateimage']); 
+
+    Route::get('posts-delete-details/{id}', ['uses' => 'PostController@destroy']);
+    Route::get('posts-delete-image/{id}', ['uses' => 'PostController@destroyimge']);
+
+    Route::get('posts-published', ['uses' => 'PostController@getpublished']);
+    Route::get('posts-unpublished', ['uses' => 'PostController@getunpublished']);
+     
+    
+    //routs-projects
+    Route::get('projects-view', ['uses' => 'ProjectController@index']);
+    Route::get('projects-add', ['uses' => 'ProjectController@create']); 
+    Route::post('projects-add-details', ['uses' => 'ProjectController@store']); 
+    Route::get('projects-edit/{id}', ['uses' => 'ProjectController@edit']);
+
+    Route::post('projects-edit-details/{id}', ['uses' => 'ProjectController@update']); 
+    Route::post('projects-edit-status/{id}', ['uses' => 'ProjectController@updatestatus']);
+    Route::post('projects-set-status/{id}', ['uses' => 'ProjectController@setstatus']);
+    Route::post('projects-edit-image/{id}', ['uses' => 'ProjectController@updateimage']); 
+    Route::post('projects-edit-resource/{id}', ['uses' => 'ProjectController@updateresource']); 
+
+    Route::get('projects-delete-details/{id}', ['uses' => 'ProjectController@destroy']); 
+    Route::get('projects-delete-image/{id}', ['uses' => 'ProjectController@destroyimge']);
+    Route::get('projects-delete-resource/{id}', ['uses' => 'ProjectController@destroyresource']);
+
+    Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
+    Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
+    Route::get('projects-download-resource/{id}', ['uses' => 'ProjectController@downloadresource']);
+     
+    
+    //routs-committee
+    Route::get('members-view', ['uses' => 'MemberController@index']);
+    Route::get('members-add', ['uses' => 'MemberController@create']);
+    Route::post('members-add-details', ['uses' => 'MemberController@store']);
+    Route::get('members-edit/{id}', ['uses' => 'MemberController@edit']);
+
+    Route::post('members-edit-details/{id}', ['uses' => 'MemberController@update']);
+    Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
+    Route::post('members-set-status/{id}', ['uses' => 'MemberController@setstatus']);
+    Route::post('members-edit-image/{id}', ['uses' => 'MemberController@updateimage']);
+
+    Route::get('members-delete-details/{id}', ['uses' => 'MemberController@destroy']); 
+    Route::get('members-delete-image/{id}', ['uses' => 'MemberController@destroyimge']);
+
+    Route::get('members-published', ['uses' => 'MemberController@getpublished']);
+    Route::get('members-unpublished', ['uses' => 'MemberController@getunpublished']); 
+    
+     
+    //routes activities
+    Route::get('activities-view', ['uses' => 'ActivityController@index']);
+    Route::get('activities-recent', ['uses' => 'ActivityController@recentactivities']);
+    Route::get('activities-posts', ['uses' => 'ActivityController@postactivities']);
+    Route::get('activities-events', ['uses' => 'ActivityController@eventactivities']);
+    Route::get('activities-projects', ['uses' => 'ActivityController@projectactivities']);
+    Route::get('activities-members', ['uses' => 'ActivityController@memberactivities']);
+    Route::get('activities-sliders', ['uses' => 'ActivityController@slideractivities']);
+    Route::get('activities-branches', ['uses' => 'ActivityController@branchactivities']);
+    Route::get('activities-resources', ['uses' => 'ActivityController@resourceactivities']);
+     
+     
+    Route::get('activities-view/{type}/{id}', ['uses' => 'ActivityController@view']);
      
      
  });

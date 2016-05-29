@@ -4,12 +4,13 @@
 
 
 <div class="col-md-8 ws-form-container">
+    
+<a href="{{ URL::to('users-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Users</a>
 
 <form role="form" action="{{ URL::to('users-edit-details/'.$user->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit User
 <button type="submit" class="ws-form-action-btn">Save User</button>
-<a href="{{ URL::to('users-view') }}" class="ws-tablepage-action-btn">Users</a>  
 </h2>
     
 <div class="row">
@@ -40,19 +41,14 @@
 
 <div class="col-md-12">
 <div class="form-group">
-<select class="form-control" name="role" required>
-<option value="" disabled selected>Select User Role</option>
-@if($user->role == "admin")
-<option value="admin" selected="selected">admin</option> 
-<option value="superadmin">superadmin</option> 
-@elseif($user->role == "superadmin")
-<option value="admin">admin</option> 
-<option value="superadmin" selected="selected">superadmin</option> 
-@else
-<option value="admin">admin</option> 
-<option value="superadmin">superadmin</option> 
-@endif
-</select>
+    
+{{ Form::select(
+    'role',
+    array('' => 'Select User Role','admin' => 'Admin', 'superadmin' => 'Super Admin'),
+    $user->role,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
     
 </div> 
 </div>
@@ -131,32 +127,28 @@
     
 <div class="panel-body ws-formpanel-body">
 
-
-<form action="{{ URL::to('users-edit-status/'.$user->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
- 
+    
+<form id="{{'checkform'.$user->id}}" action="{{ URL::to('users-edit-status/'.$user->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+    
 <div class="row">
 <div class="form-group clearfix">
 <div class="pull-left ws-form-span">
-<span class="font-main font-13px-600 color-darkblue">Set user status as active </span> </div>
+<span class="font-main font-13px-600 color-darkblue">Do you want to publish this user?</span> </div>
+    
 <div class="pull-right ws-form-check text-center">
 @if($user->status == "on")
-<input type="checkbox" name="status" checked/>
+<input id="status" data-id="{{$user->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input type="checkbox" name="status"/>
+<input id="status" data-id="{{$user->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
+{{ csrf_field() }}   
 </div>
+    
+    
 </div>    
-</div>
-  
-{{ csrf_field() }}
-    
-<div class="row">
-<div class="form-group">
-<button type="submit" class="ws-form-action-btn pull-right">Save</button>
-</div>
-</div>
-    
-</form>
+</div>  
+   
+</form> 
     
 
 </div>

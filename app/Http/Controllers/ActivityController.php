@@ -2,25 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+
 use App\User;
 use App\Http\Controllers\Controller;
+
 
 use App\Activity;
 
 use View;
+use Session;
+use Input;
+use Redirect;
+use Validator;
+use Response;
+use Auth;
+use File;
+use URL;
 use DB;
+
 
 class ActivityController extends Controller
 {
     
+    public function __construct()
+	{        
+        $this->middleware('auth');
+	}
+    
+    
     public function index()
     {
          $activities = DB::table('activities')
-                       ->join('admins', 'activities.admin_id', '=', 'admins.id')   
+                       ->join('users', 'activities.users_id', '=', 'users.id')   
                        ->select('*')
                        ->orderBy('activities.id','desc')->get();
         
-         return View::make('backend/activities', array('title' => 'DS OBA | Activities', 'activities' => $activities));
+         return View::make('backend/activities', array('title' => 'Activities', 'activities' => $activities));
     }
     
     public static function store($activity_task,$type,$id){
@@ -28,31 +46,9 @@ class ActivityController extends Controller
         $activity = new Activity;
         
         $activity->activity = $activity_task;
-        $activity->admin_id = 1;
-        //get admin id using session later
-        switch ($type) {
-            case "event":
-                $activity->events_id = $id;
-                break;
-            case "slider":
-                $activity->sliders_id = $id;
-                break;
-            case "project":
-                $activity->projects_id = $id;
-                break;
-            case "post":
-                $activity->posts_id = $id;
-                break;
-            case "member":
-                $activity->members_id = $id;
-                break;
-            case "branch":
-                $activity->branches_id = $id;
-                break;
-            case "resource":
-                $activity->resources_id = $id;
-                break;              
-        }
+        $activity->type     = $type;
+        $activity->users_id = Session::get('user')->id;
+        $activity->referenced_id = $id;
         
         
         if($activity->save()){
@@ -64,107 +60,129 @@ class ActivityController extends Controller
         
     }
     
-    public function viewlogall($type,$id){
+    public function view($type,$id){
         
-        $column = "";
-        $referenced_table  = '';
-        $referenced_column = '';
+        $url = '';
+        
         
         switch ($type) {
-            case "event":
-                $column = "activities.events_id";
-                $referenced_table = 'events';
-                $selecting_column = 'events.created_at';break;
-            case "slider":
-                $column = "activities.sliders_id";
-                $referenced_table = 'sliders';
-                $selecting_column = 'sliders.created_at';break;
-            case "project":
-                $column = "activities.projects_id";
-                $referenced_table = 'projects';
-                $selecting_column = 'projects.created_at';break;
             case "post":
-                $column = "activities.posts_id";
-                $referenced_table = 'posts';
-                $selecting_column = 'posts.created_at';break;
+                $url = 'posts-edit/'.$id;break;
+            case "event":
+                $url = 'events-edit/'.$id;break;
+            case "project":
+                $url = 'projects-edit/'.$id;break;            
             case "member":
-                $column = "activities.members_id";
-                $referenced_table = 'members';
-                $referenced_column= 'members.created_at';break;
+                $url = 'members-edit/'.$id;break; 
+            case "slider":
+                $url = 'imageslider';break;
             case "branch":
-                $column = "activities.branches_id";
-                $referenced_table = 'branches';
-                $selecting_column = 'branches.created_at';break;
+                $url = 'branches-edit/'.$id;break; 
             case "resource":
-                $column = "activities.resources_id";
-                $referenced_table = 'resources';
-                $selecting_column = 'resources.created_at';break;              
+                $url = 'resources-edit/'.$id;break; 
+            
         }
         
-        
-        $logdetails = DB::table('activities')
-                      ->join('admins', 'activities.admin_id', '=', 'admins.id')   
-                      ->where($column , '=', $id)
-                      ->select('activities.activity', 'activities.updated_at', 'admins.fullname')
-                      ->orderBy('activities.id','desc')->get();
-       
-        $hostdetails = DB::table($referenced_table)->select($selecting_column)->where('id' , '=', $id)->first();
-        
-        
-        return View::make('backend/activitylog', array('title' => 'DS OBA | Activity Log', 'type' => $type, 'id' => $id, 'logdata' => $logdetails, 'hostdata' => $hostdetails));
+        return redirect($url);
         
     }
     
-    
-    public function viewloglast($type,$id){
+    public function recentactivities()
+    {
+        $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')   
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
         
-        $column = "";
-        $referenced_table  = '';
-        $referenced_column = '';
-        
-        switch ($type) {
-            case "event":
-                $column = "activities.events_id";
-                $referenced_table = 'events';
-                $selecting_column = 'events.created_at';break;
-            case "slider":
-                $column = "activities.sliders_id";
-                $referenced_table = 'sliders';
-                $selecting_column = 'sliders.created_at';break;
-            case "project":
-                $column = "activities.projects_id";
-                $referenced_table = 'projects';
-                $selecting_column = 'projects.created_at';break;
-            case "post":
-                $column = "activities.posts_id";
-                $referenced_table = 'posts';
-                $selecting_column = 'posts.created_at';break;
-            case "member":
-                $column = "activities.members_id";
-                $referenced_table = 'members';
-                $referenced_column= 'members.created_at';break;
-            case "branch":
-                $column = "activities.branches_id";
-                $referenced_table = 'branches';
-                $selecting_column = 'branches.created_at';break;
-            case "resource":
-                $column = "activities.resources_id";
-                $referenced_table = 'resources';
-                $selecting_column = 'resources.created_at';break;              
-        }
+         return View::make('backend/activities', array('title' => 'Activities', 'activities' => $activities));
         
         
-        $logdetails = DB::table('activities')
-                      ->join('admins', 'activities.admin_id', '=', 'admins.id')  
-                      ->where($column , '=', $id)
-                      ->select('activities.activity', 'activities.updated_at', 'admins.fullname')
-                      ->orderBy('activities.id','desc')->first();
-        
-        $hostdetails = DB::table($referenced_table)->select($selecting_column)->where('id' , '=', $id)->first();
-
-        return View::make('backend/activitylog', array('title' => 'DS OBA | Activity Log', 'type' => $type, 'id' => $id, 'logdata' => $logdetails, 'hostdata' => $hostdetails));
-        
+//         $activities = DB::table('activities')
+//                       ->join('users', 'activities.users_id', '=', 'users.id')
+//                       ->where('created_at', '>=', Carbon::now()->subMonth())
+//                       ->select('*')
+//                       ->orderBy('activities.id','desc')->get();
+//        
+//         return View::make('backend/activities', array('title' => 'Activities | Recent', 'activities' => $activities));
     }
+    
+    public function postactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'post')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Posts', 'activities' => $activities));
+    }
+    
+    public function eventactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'event')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Events', 'activities' => $activities));
+    }
+    
+    public function projectactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'project')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Projects', 'activities' => $activities));
+    }
+    
+    public function memberactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'member')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Members', 'activities' => $activities));
+    }
+    
+    public function slideractivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'slider')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Sliders', 'activities' => $activities));
+    }
+    
+    public function branchactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'branch')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Branches', 'activities' => $activities));
+    }
+    
+    public function resourceactivities()
+    {
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('type', '=', 'resource')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->get();
+        
+         return View::make('backend/activities', array('title' => 'Activities | Resources', 'activities' => $activities));
+    }
+    
     
     
 }

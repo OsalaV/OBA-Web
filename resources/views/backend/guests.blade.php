@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Users
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Guest Users
 <a href="" class="ws-tablepage-action-btn">Add New</a>    
 <a href="" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
@@ -42,12 +42,12 @@
 
 <tbody class="ws-table-body">
     
-<?php foreach ($users as $user) { ?>
+
 <tr>
-<td class="text-center">{{$user->id}}</td>
-<td class="text-left">{{$user->fullname}}</td>
-<td class="text-center">{{$user->email}}</td>
-<td class="text-center">{{$user->type}}</td>
+<td class="text-center"></td>
+<td class="text-left"></td>
+<td class="text-center"></td>
+<td class="text-center"></td>
 
 
 
@@ -69,7 +69,7 @@
 </td>
 
 </tr>
-<?php } ?>
+
 
 </tbody>
 </table>

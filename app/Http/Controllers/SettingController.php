@@ -17,7 +17,7 @@ class SettingController extends Controller
     
     public function index()
     {
-          return View::make('backend/settings', array('title' => 'DS OBA | Settings'));
+          return View::make('backend/settings', array('title' => 'Settings'));
     }
     
     

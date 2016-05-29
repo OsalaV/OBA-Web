@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\MemberController;
 
 use App\Event;
 use App\Project;
 use App\Member;
 use App\Branch;
 use App\Post;
+use App\Slider;
+
 
 use View;
 
@@ -26,72 +34,62 @@ class IndexController extends Controller
      */
     public function index()
     {
-          $presidents = Member::where([['status' , '=', "on"],['type' , '=', "Committee Member"],['post' , '=', "President"],])->first();
-          $principals = Member::where([['status' , '=', "on"],['type' , '=', "Committee Member"],['post' , '=', "Principal"],])->first();
-          $secretarys  = Member::where([['status' , '=', "on"],['type' , '=', "Committee Member"],['post' , '=', "General Secretary "],])->first();
-          $posts = Post::where('status' , '=', "on")->get();
-          return View::make('index', array('title' => 'Home' , 'posts' => $posts , 'presidents' => $presidents , 'principals' => $principals , 'secretarys' => $secretarys));;
+          $sliders =  SliderController::getsliders(); 
+          $posts   =  PostController::getposts(); 
+        
+          return View::make('index', array('title' => 'Home','sliders' => $sliders,'posts' => $posts));
     }
 
     public function events()
     {
-         $events = Event::where('status' , '=', "on")->get();
-         return View::make('events', array('title' => 'Events', 'events' => $events));
+          $events   =  EventController::getevents(); 
+          return View::make('events', array('title' => 'Events', 'events' => $events));
+    }
+    
+    public function eventsview($id){
+          $event    =  EventController::getevent($id); 
+          return View::make('event', array('title' => $event->title, 'event' => $event));
     }
 
     public function parade()
     {
-          return View::make('parade', array('title' => 'Parade'));;
+          return View::make('parade', array('title' => 'Psycho Parade'));
     }
 
     public function projects()
     {
-          $projects = Project::where('status' , '=', "on")->get();
-          return View::make('projects', array('title' => 'Projects', 'projects' => $projects));;
+          $projects   =  ProjectController::getprojects(); 
+          return View::make('projects', array('title' => 'Projects', 'projects' => $projects));
     }
-
-//    public function committe()
-//    {
-//          return View::make('presidents', array('title' => 'Presidents', 'members' => $members));;
-//    }
-
-    public function membership()
-    {
-          return View::make('membership', array('title' => 'Membership'));;
-    }
-
-    public function contact()
-    {
-          $branches = Branch::where('status' , '=', "on")->get();
-          return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));;
+    
+    public function projectsview($id){
+          $project   =  ProjectController::getproject($id); 
+          return View::make('project', array('title' => $project->title, 'project' => $project));
     }
 
     public function members()
     {
-          $batchreps = Member::where([['status' , '=', "on"],['type' , '=', "Batch Representer"],])->get();
-          $members = Member::where([['status' , '=', "on"],['type' , '=', "Committee Member"],])->get();
-          return View::make('members', array('title' => 'Members', 'members' => $members, 'batchreps' =>$batchreps));;
+          $committee = MemberController::getcommittee(); 
+          $batchreps = MemberController::getbatchreps(); 
+          return View::make('members', array('title' => 'Committee', 'committee' => $committee, 'batchreps' => $batchreps));
+    }
+    
+    public function pastpresidents()
+    {
+          $presidents = MemberController::getpastpresidents(); 
+          return View::make('presidents', array('title' => 'Presidents', 'presidents' =>$presidents));
     }
 
-    public function presidents()
+    public function membership()
     {
-          $presidents = Member::where([['status' , '=', "on"],['type' , '=', "Past President"],])->get();
-          return View::make('presidents', array('title' => 'Presidents', 'presidents' =>$presidents));;
+          return View::make('membership', array('title' => 'Membership'));
     }
-    
-    public function showevent($id){
-        
-        $event = Event::where('id' , '=', $id)->first();
-        
-        return View::make('event', array('title' => $event->title, 'event' => $event));
-    }
-    
-    public function showproject($id){
-        
-        $project = Project::where('id' , '=', $id)->first();
-        
-        return View::make('project', array('title' => $project->title, 'project' => $project));
-    }
+
+    public function contact()
+    {
+          $branches   =  BranchController::getbranches(); 
+          return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));
+    }    
     
     public function showpost($id){
         

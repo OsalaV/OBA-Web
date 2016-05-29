@@ -2,6 +2,8 @@
 
 @section('content')
 
+<a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>   
+
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Branches
 <a href="{{ URL::to('branches-add') }}" class="ws-tablepage-action-btn">Add New</a>    
 <a href="" class="ws-tablepage-action-btn">Preview</a>      
@@ -31,7 +33,6 @@
 <thead class="ws-table-head">
 <tr>
 <th class="text-left">Branch</th>
-<th class="text-center">Description</th>
 <th class="text-center">Address Line 1</th>
 <th class="text-center">Address Line 2</th>
 <th class="text-center">Address Line 3</th>
@@ -48,7 +49,6 @@
 @foreach($branches as $branch)
 <tr>
 <td class="text-left">{{$branch->branch}}</td>
-<td class="text-center">{{$branch->description}}</td>
 <td class="text-center">{{$branch->address_line1}}</td>
 <td class="text-center">{{$branch->address_line2}}</td>
 <td class="text-center">{{$branch->address_line3}}</td>
@@ -56,15 +56,16 @@
 <td class="text-center">{{$branch->contact}}</td>
     
 <td class="text-center">
-<form action="{{ URL::to('branches-status-publish/'.$branch->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
-@if($branch->status == "on")    
-<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+<form id="{{'checkform'.$branch->id}}" action="{{ URL::to('branches-set-status/'.$branch->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($branch->status == "on")
+<input id="status" data-id="{{$branch->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+<input id="status" data-id="{{$branch->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
 @endif
-<button type="submit" class="ws-form-action-btn">Save</button>
+{{ csrf_field() }}
 </form>    
-</td>
+</td>    
+    
 
 <td class="text-center">
 <a href="{{ URL::to('branches-edit/'.$branch->id) }}">
@@ -74,7 +75,7 @@
 </a>
 </td>
 
-
+@if(Session::get('DELETE') == "on")
 <td class="text-center">
 <a class="ws-open-msg" data-url="{{ URL::to('branches-delete-details/'.$branch->id) }}" data-message = "Are you sure you want to delete this branch?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -82,7 +83,8 @@
 </span> 
 </a>
 </td>
-
+@endif
+    
 </tr>
 @endforeach
 

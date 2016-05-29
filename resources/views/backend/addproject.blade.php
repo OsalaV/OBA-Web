@@ -2,20 +2,14 @@
 
 @section('content')
 
-@if (session('alert-success'))
-    <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Success!</strong> {{ session('alert-success') }}
-    </div>
-@endif
-
-
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
 
 <div class="col-md-8 ws-form-container">
+    
+<a href="{{ URL::to('projects-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Projects</a>
 
 <form role="form" action="{{ URL::to('projects-add-details') }}" method="post"  class="ws-form" enctype="multipart/form-data">
     
@@ -55,7 +49,7 @@
 </div>
 </div>
     
-
+{{ csrf_field() }} 
     
 <div class="row">
 <div class="col-md-12">

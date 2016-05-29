@@ -30,12 +30,11 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th>#</th>
 <th class="text-center">Image</th>  
 <th class="text-left">Title</th>
-<th class="text-center">Description</th>
+<th class="text-left">Last Updated</th>
 <th class="text-center">Published</th>
-<!--<th class="text-center">Last Updated</th>-->
+
 <th></th>
 <th></th>
 </tr>
@@ -45,22 +44,25 @@
     
 @foreach($posts as $post)
 <tr>
-<td class="text-center">{{$post->id}}</td>
+@if($post->mediastate == "true")
 <td class="text-center"><img class="ws-table-img" src="{{ asset($post->mediapath) }}"></td>
-<td class="text-left">{{$post->title}}</td>
-<td class="text-center">{{$post->description}}</td>
-
-<td class="text-center">
-<form action="{{ URL::to('posts-status-publish/'.$post->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
-@if($post->status == "on")    
-<input class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
 @else
-<input class="ws-form-inputcheck" type="checkbox" name="status" /> 
+<td class="text-center"></td>
 @endif
-<button type="submit" class="ws-form-action-btn">Save</button>
+<td class="text-left">{{$post->title}}</td>
+<td class="text-left">{{$post->updated_at}}</td>
+    
+<td class="text-center">
+<form id="{{'checkform'.$post->id}}" action="{{ URL::to('posts-set-status/'.$post->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($post->status == "on")
+<input id="status" data-id="{{$post->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" data-id="{{$post->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+{{ csrf_field() }}
 </form>    
-</td>
-
+</td> 
+    
 <td class="text-center">
 <a href="{{ URL::to('posts-edit/'.$post->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
@@ -69,7 +71,7 @@
 </a>
 </td>
 
-
+@if(Session::get('DELETE') == "on")
 <td class="text-center">
 <a class="ws-open-msg" data-url="{{ URL::to('posts-delete-details/'.$post->id) }}" data-message = "Are you sure you want to delete this post?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
@@ -77,6 +79,7 @@
 </span> 
 </a>
 </td>
+@endif
 
 </tr>
 @endforeach

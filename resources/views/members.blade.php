@@ -12,12 +12,12 @@
 <h2 class="font-header-large color-black">COMMITTEE <small class="color-yellow">MEMBERS</small></h2>
 
 <div class="row">
-@foreach($members as $member)
+@foreach($committee as $member)
 <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="thumbnail port-thumb">
     <img class="" src="{{asset($member->imagepath)}}" alt="">
     <div>
-    <h4 class="font-sub-16"><a class="color-lightblue" href="#">{{$member->fullname}} <br /><br /> {{$member->post}}</a></h4>
+    <h4 class="font-sub-16"><a class="color-lightblue" href="#">{{$member->fullname}} <br /><br /> {{$member->designation}}</a></h4>
     <p class="font-para-14 color-darkblue">
     {{$member->email}} <br /> {{$member->contact}}
     </p>

@@ -2,10 +2,13 @@
 
 @section('content')
 
+
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
+
+<a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>  
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Image Slider 
 <a href="" class="ws-tablepage-action-btn">Preview</a>   
@@ -35,8 +38,7 @@
 <th class="text-left">Created at</th> 
 <th class="text-left">Last Updated</th>
 <th class="text-center">Publish</th>
-<th class="text-center"></th>
- 
+
 <th></th>
 
 </tr>
@@ -59,18 +61,7 @@
 @endif
 {{ csrf_field() }}
 </form>    
-</td>    
-    
-    
-    
-    
-    
-    
-<td class="text-center">
-<form role="form" class="form-inline">    
-<a href="{{ URL::to('activity-log-last/'.'slider'.'/'.$slider->id) }}" class="ws-tablepage-action-btn">Log Details</a> 
-</form>        
-</td>
+</td>        
 
 @if(Session::get('DELETE') == "on")
 <td class="text-center">

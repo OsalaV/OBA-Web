@@ -4,15 +4,14 @@
 
 
 <div class="col-md-8 ws-form-container">
+    
+<a href="{{ URL::to('users-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Users</a>
 
 <form role="form" action="{{ URL::to('users-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
-    
-
-  
+ 
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Add New User
 <button type="submit" class="ws-form-action-btn">Save User</button>
-<a href="{{ URL::to('users-view') }}" class="ws-tablepage-action-btn">Users</a>  
 </h2>
     
 <div class="row">
@@ -51,12 +50,17 @@
 
 <div class="col-md-12">
 <div class="form-group">
-<select class="form-control" name="role" required>
-<option value="" disabled selected>Select User Role</option>
-<option value="admin">admin</option> 
-<option value="superadmin">superadmin</option> 
-</select>
+
+<label class="font-main font-15px-600">Select User Role</label>
     
+{{ Form::select(
+    'role',
+    array('' => 'Select User Role','admin' => 'Admin', 'superadmin' => 'Super Admin'),
+    null,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+
 </div> 
 </div>
     

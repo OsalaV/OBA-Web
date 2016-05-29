@@ -56,6 +56,25 @@ class UserPermissionController extends Controller
         
     }
     
+    public static function setpermissions($userid){
+        
+        $permissions = PermissionController::getpermissions();
+        $permission_count = count($permissions);
+        
+        for($i=0;$i<$permission_count;$i++){
+            
+            $permission = new UserPermission;
+            
+            $permission->users_id       = $userid;
+            $permission->permissions_id = $permissions[$i]->id;
+            $permission->status         = NULL;                
+            
+            $permission->save();
+            
+        }
+        
+    }
+    
     public static function getuserpermissions($userid){
         
         $permissions = DB::table('user_permissions')
