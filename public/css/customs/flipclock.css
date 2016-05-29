@@ -49,9 +49,10 @@
     margin-bottom: 0px;
     padding-bottom: 50px;
     padding-top: 50px;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../../images/50th2.jpg);
+/*    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../../images/50th2.jpg);*/
+    background-image: url(../../images/50th2.jpg);
     min-height: auto;
-    background-attachment: fixed;
+/*    background-attachment: fixed;*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
