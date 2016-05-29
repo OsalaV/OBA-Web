@@ -43,7 +43,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 
         <section class="hidden-xs hidden-sm well banner-section background-white">
             <div class="container no-padding">
-                <h2 class="font-header-large color-black">50th Aniversary</h2>
+                <h2 class="font-header-large color-black">50th <small class="color-yellow">Aniversary</small></h2>
                 <div class="row">
 
                     <div class="col-md-9 col-sm-12 col-xs-12">
