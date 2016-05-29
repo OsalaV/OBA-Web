@@ -54,12 +54,13 @@
                     </div>
                                 
                     <div class="col-md-9 col-sm-9 header-flag-container">
-                        <div class="header-flag-yelloww"></div>
+<!--                        <div class="header-flag-yelloww"></div>-->
                             <div class="header-flag-black text-center">
                                 <h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
                             </div>
 <!--                        <div class="header-flag-yellow"></div>-->
                         
+<!--
                         <div class="hidden-xs hidden-sm header-nav-container text-left">
                             <div class="header-menu">
                             <ul class="header-nav">
@@ -78,6 +79,7 @@
                             </ul>
                             </div>
                         </div> 
+-->
                         
                     </div>
 
@@ -85,7 +87,7 @@
 
             </div>
 
-            <div class=" hidden-md hidden-lg hidden-xl header-nav-container text-left">
+            <div class=" header-nav-container text-left">
                 <div class="header-menu">
                 <ul class="header-nav">
                     <li class="active"><a href="/"><span>Home</span></a></li>
