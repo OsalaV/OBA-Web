@@ -62,8 +62,8 @@
 <div class="col-md-9 col-sm-9 header-flag-container">
 <div class="header-flag-yellow"></div>
 <div class="header-flag-black text-center">
-<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
-<h5 class ="header-tag">Country before self</h5>
+<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association <br>Country before self</h5>
+<!--<h5 class ="header-tag">Country before self</h5>-->
 </div>
 </div>
 

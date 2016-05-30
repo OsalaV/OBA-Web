@@ -12,7 +12,7 @@
 <section class="well temp-section background-white">
 <div class="container">
 <div class="row">    
-<h2 class="font-header-large color-black">OUR <small class="color-yellow">BRANCHES</small></h2>
+<h2 class="font-header-large color-black">OUR <small class="color-yellow">REACH</small></h2>
 
 <div class="row">
 @foreach($branches as $branch)    

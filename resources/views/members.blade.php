@@ -13,7 +13,7 @@
 <section class="well temp-section background-white">
 <div class="container">
 <div class="row">    
-<h2 class="font-header-large color-black">COMMITTEE <small class="color-yellow">MEMBERS</small></h2>
+<h2 class="font-header-large color-black">executive <small class="color-yellow">committee</small></h2>
 
 <div class="row">
 @foreach($committee as $member)
@@ -41,7 +41,7 @@
 </div>
     
 <div class="row">    
-<h2 class="font-header-large color-black">BATCH <small class="color-yellow">REPRESENTS</small></h2>
+<h2 class="font-header-large color-black">BATCH <small class="color-yellow">representatives</small></h2>
  
 <ul class="bxslider">
     @foreach($batchreps as $batchrep)
