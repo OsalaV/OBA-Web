@@ -16,8 +16,55 @@
 <div class="row">    
 <h2 class="font-header-large color-black">PSYCHO <small class="color-yellow">PARADE</small></h2>
 
-<img class="header-image" src="../images/parade/banner.jpg" style="height:auto;">
+<img class="header-image" src="{{asset('images/parade/banner.jpg')}}">
 </div>
+    
+    
+<div class="row ico-container">
+
+<div class="col-md-4">
+ 
+<div class="form-inline clearfix">
+<div class="event-icon-box">
+<center><i class="fa fa-calendar fa-3x event-icon"></i> </center>
+</div>
+<div class="post-title-box text-center">
+<span class="font-para-18">25th February 2017</span>
+</div>
+</div>
+    
+</div>
+    
+<div class="col-md-4">
+ 
+<div class="form-inline clearfix">
+<div class="event-icon-box">
+<center><i class="fa fa-clock-o fa-3x event-icon"></i> </center>
+</div>
+<div class="post-title-box text-center">
+<span class="font-para-18">9 AM Onwards</span>
+</div>
+</div>
+    
+</div>
+    
+<div class="col-md-4">
+ 
+<div class="form-inline clearfix">
+<div class="event-icon-box">
+<center><i class="fa fa-map-marker fa-3x event-icon"></i> </center>
+</div>
+<div class="post-title-box text-center">
+<span class="font-para-18">D.S.Senanayake College</span>
+</div>
+</div>
+    
+</div>
+    
+    
+</div>
+    
+    
 
 <div class="row"> 
 <div class="temp-section">

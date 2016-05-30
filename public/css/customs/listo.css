@@ -161,6 +161,7 @@
 
 
 /*News List----------------------------------------*/
+/*
 .news-list{
     padding: 0px;
 }
@@ -171,7 +172,7 @@
   padding-left: 100px;
   width: 32%;
 }
-
+*/
 .news-icon-box{
   width: 40px;
   height: 40px;
@@ -182,6 +183,45 @@
   font-weight: 800;
 }
 
+.ico-container{
+    padding-top: 20px;
+}
+
+.post-icon-box{
+  width: 100%;
+  height: 100px;
+/*  background: #D9A111;*/
+  line-height: 40px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 20px;
+}
+
+.event-icon-box{
+  width: 100%;
+  height: 100px;
+  line-height: 40px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 20px;
+}
+
+.event-icon{
+    color: #222533;
+}
+
+.post-title-box{
+    width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.post-icon{
+    color: #D9A111;
+}
 
 
 @media (min-width:260px){
