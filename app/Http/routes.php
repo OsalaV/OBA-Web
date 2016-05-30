@@ -27,12 +27,12 @@
     Route::get('/', ['uses' => 'IndexController@index']);
      
     Route::get('events', ['uses' => 'IndexController@events']);
-    Route::get('events-view/{id}', ['uses' => 'IndexController@eventsview']);
+    Route::get('events-show/{id}', ['uses' => 'IndexController@showevent']);
      
     Route::get('parade', ['uses' => 'IndexController@parade']);
     
     Route::get('projects', ['uses' => 'IndexController@projects']);
-    Route::get('projects-view/{id}', ['uses' => 'IndexController@projectsview']);
+    Route::get('projects-show/{id}', ['uses' => 'IndexController@showproject']);
      
     Route::get('committee-members', ['uses' => 'IndexController@members']);
     Route::get('past-presidents', ['uses' => 'IndexController@pastpresidents']);
@@ -40,6 +40,8 @@
     Route::get('membership', ['uses' => 'IndexController@membership']);
     
     Route::get('contact', ['uses' => 'IndexController@contact']);
+     
+    Route::get('posts-show/{id}', ['uses' => 'IndexController@showpost']);
     
  });
 
@@ -139,6 +141,8 @@
 
     Route::get('posts-published', ['uses' => 'PostController@getpublished']);
     Route::get('posts-unpublished', ['uses' => 'PostController@getunpublished']);
+     
+    Route::post('posts-search', ['uses' => 'PostController@search']);
      
     
     //routs-projects

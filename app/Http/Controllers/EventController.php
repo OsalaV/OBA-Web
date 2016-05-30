@@ -32,12 +32,13 @@ class EventController extends Controller
     
     public function index()
     {
-          $events = Event::all()->sortByDesc("id"); 
-          $allcount    = Event::all()->count(); 
-          $activecount = Event::where('status','=','on')->count(); 
-          $inactivecount = Event::whereNull('status')->count(); 
-          
-          return View::make('backend/events', array('title' => 'Events','events' => $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+
+        
+
+          return View::make('backend/events', array('title' => 'Events','events' => $allevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
     }
     
     public function create()
@@ -47,7 +48,7 @@ class EventController extends Controller
     
     public function uploadResource(){
         
-        $resourceUploadPath = 'uploads/events/resources/';
+        $resourceUploadPath = '/public/uploads/events/resources/';
         $resourcepath       = "";
         $resources          = Input::file('resource');    
         
@@ -68,7 +69,7 @@ class EventController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = 'uploads/events/images/';
+        $imageUploadPath = '/public/uploads/events/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -360,41 +361,40 @@ class EventController extends Controller
         
     }    
     
-    public function getpublished(){
+    public function getpublished(){    
         
-         $events = Event::where('status','=','on')->get()->sortByDesc("id"); ;          
-        
-         $allcount    = Event::all()->count(); 
-         $activecount = Event::where('status','=','on')->count(); 
-         $inactivecount = Event::whereNull('status')->count(); 
-          
-         return View::make('backend/events', array('title' => 'Events | Published','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+
+
+          return View::make('backend/events', array('title' => 'Events | Published','events' => $pubevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
         
     }
     
     public function getunpublished(){
         
-         $events = Event::whereNull('status')->get()->sortByDesc("id"); 
-         
-         $allcount    = Event::all()->count(); 
-         $activecount = Event::where('status','=','on')->count(); 
-         $inactivecount = Event::whereNull('status')->count(); 
-          
-         return View::make('backend/events', array('title' => 'Events | Unpublished','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+         $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+         $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+         $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+
+         return View::make('backend/events', array('title' => 'Events | Unpublished','events' => $unpevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
         
     }
     
     public function search(){
          
-         $searchkey = Input::get('searchkey'); 
-         
-         $events = Event::where('title','=',$searchkey)->orWhere('date','=',$searchkey)->get();          
+         $searchkey = Input::get('searchkey');      
         
-         $allcount    = Event::all()->count(); 
-         $activecount = Event::where('status','=','on')->count(); 
-         $inactivecount = Event::whereNull('status')->count(); 
-          
-         return View::make('backend/events', array('title' => 'Events','events' =>  $events,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+         $events = Event::where('title', 'LIKE', '%'.$searchkey.'%')->orWhere('date', 'LIKE', '%'.$searchkey.'%')->paginate(25); 
+        
+        
+         $allevents = Event::paginate(25);  
+         $pubevents = Event::where('status','=','on')->paginate(25); 
+         $unpevents = Event::whereNull('status')->paginate(25);         
+        
+         return View::make('backend/events', array('title' => 'Events','events' => $events, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
+        
         
     }
     

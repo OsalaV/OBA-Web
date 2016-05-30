@@ -4,20 +4,21 @@
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Events
 <a href="{{ URL::to('events-add') }}" class="ws-tablepage-action-btn">Add New</a>    
-<a href="" class="ws-tablepage-action-btn">Preview</a>      
+<a href="{{ URL::to('events') }}" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
     
 <div class="clearfix hidden-xs">
 <div class="pull-left">
 <ul class="ws-table-options">
-  <li><a href="{{ URL::to('events-view') }}">All <span>({{$count_all}})</span></a> |</li>
-  <li><a href="{{ URL::to('events-published') }}">Published <span>({{$count_active}})</span></a> |</li>
-  <li><a href="{{ URL::to('events-unpublished') }}">Unpublished <span>({{$count_inactive}})</span></a></li>
+  <li><a href="{{ URL::to('events-view') }}">All <span>({{$all->count()}})</span></a> |</li>
+  <li><a href="{{ URL::to('events-published') }}">Published <span>({{$active->count()}})</span></a> |</li>
+  <li><a href="{{ URL::to('events-unpublished') }}">Unpublished <span>({{$inactive->count()}})</span></a></li>
 </ul>  
 </div> 
 <div class="pull-right">
 <form role="form" action="{{ URL::to('events-search') }}" method="post" enctype="multipart/form-data">
 <input class="form-search-control" type="text" name="searchkey" required> 
+{{ csrf_field() }}
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
 </form>  
 </div>
@@ -92,17 +93,7 @@
 
 </div><!-- ws-table-container -->
 
-    
-<div class="ws-table-pagiation-container">
-<ul class="pagination ws-pagination-ul">
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-</ul>      
-</div>
-
+{{ $events->links() }}    
 
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\MemberController;
 
+
 use App\Event;
 use App\Project;
 use App\Member;
@@ -46,7 +47,7 @@ class IndexController extends Controller
           return View::make('events', array('title' => 'Events', 'events' => $events));
     }
     
-    public function eventsview($id){
+    public function showevent($id){
           $event    =  EventController::getevent($id); 
           return View::make('event', array('title' => $event->title, 'event' => $event));
     }
@@ -62,7 +63,7 @@ class IndexController extends Controller
           return View::make('projects', array('title' => 'Projects', 'projects' => $projects));
     }
     
-    public function projectsview($id){
+    public function showproject($id){
           $project   =  ProjectController::getproject($id); 
           return View::make('project', array('title' => $project->title, 'project' => $project));
     }
@@ -91,11 +92,10 @@ class IndexController extends Controller
           return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));
     }    
     
-    public function showpost($id){
-        
-        $post = Post::where('id' , '=', $id)->first();
-        
+    public function showpost($id){        
+        $post   =  PostController::getpost($id); 
         return View::make('post', array('title' => $post->title, 'post' => $post));
+        
     }
     
     

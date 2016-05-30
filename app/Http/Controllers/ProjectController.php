@@ -46,7 +46,7 @@ class ProjectController extends Controller
     
     public function uploadResource(){
         
-        $resourceUploadPath = 'uploads/projects/resources/';
+        $resourceUploadPath = '/public/uploads/projects/resources/';
         $resourcepath       = "";
         $resources          = Input::file('resource');    
         
@@ -67,7 +67,7 @@ class ProjectController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = 'uploads/projects/images/';
+        $imageUploadPath = '/public/uploads/projects/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         

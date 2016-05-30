@@ -6,7 +6,7 @@
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Branches
 <a href="{{ URL::to('branches-add') }}" class="ws-tablepage-action-btn">Add New</a>    
-<a href="" class="ws-tablepage-action-btn">Preview</a>      
+<a href="{{ URL::to('contact') }}" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
     
 <div class="clearfix hidden-xs">
@@ -17,12 +17,14 @@
   <li><a href="{{ URL::to('branches-unpublished') }}">Unpublished <span>({{$count_inactive}})</span></a></li>
 </ul>  
 </div> 
+<!--
 <div class="pull-right">
 <form role="form" action="#" method="post" enctype="multipart/form-data">
 <input class="form-search-control" type="text" name="searchkey" required> 
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
 </form>  
 </div>
+-->
 </div>
     
 
@@ -95,6 +97,7 @@
 </div><!-- ws-table-container -->
 
     
+<!--
 <div class="ws-table-pagiation-container">
 <ul class="pagination ws-pagination-ul">
   <li class="active"><a href="#">1</a></li>
@@ -104,6 +107,7 @@
   <li><a href="#">5</a></li>
 </ul>      
 </div>
+-->
 
 
 

@@ -10,8 +10,7 @@
 <form role="form" action="{{ URL::to('posts-edit-details/'.$post->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Post
-<a href="" class="ws-form-action-btn hidden-xs">Preview</a>
-<a href="{{ URL::to('activity-log-last/'.'post'.'/'.$post->id) }}" class="ws-form-action-btn hidden-xs">Log Details</a>
+<a href="{{ URL::to('posts-show/'.$post->id) }}" class="ws-form-action-btn hidden-xs">Preview</a>
 </h2>
     
 <div class="row">

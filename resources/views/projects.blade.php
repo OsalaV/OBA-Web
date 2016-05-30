@@ -24,7 +24,7 @@
     <div class="port-caption background-yellow-alpha port-cap-hover">
       <h3 class="font-sub-22">{{$project->title}}</h3>
       <div class="wrap">       
-        <a href="{{ URL::to('projects-view/'.$project->id) }}" class="btn-link fa-angle-right"></a>
+        <a href="{{ URL::to('projects-show/'.$project->id) }}" class="btn-link fa-angle-right"></a>
       </div>  
     </div>
   </div>              

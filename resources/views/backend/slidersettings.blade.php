@@ -11,7 +11,7 @@
 <a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>  
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Image Slider 
-<a href="" class="ws-tablepage-action-btn">Preview</a>   
+<a href="{{ URL::to('/') }}" class="ws-tablepage-action-btn">Preview</a>   
 </h2>
 
     
@@ -84,7 +84,7 @@
 
 </div>
 
-    
+{{ $sliders->links() }}    
     
     
 </div>

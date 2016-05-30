@@ -53,7 +53,7 @@ class MemberController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = 'uploads/members/images/';
+        $imageUploadPath = '/public/uploads/members/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         

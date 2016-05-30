@@ -28,7 +28,7 @@
 <div class="port-caption background-yellow-alpha port-cap-hover">      
   <div class="wrap">
   <h3 class="font-sub-22">{{$event->title}}</h3>
-  <a href="{{ URL::to('events-view/'.$event->id) }}" class="fa fa-angle-right fa-2x"></a>
+  <a href="{{ URL::to('events-show/'.$event->id) }}" class="fa fa-angle-right fa-2x"></a>
   </div>  
 </div>
 </div>

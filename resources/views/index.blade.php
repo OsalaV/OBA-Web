@@ -66,7 +66,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
   <center><i class="fa fa-star fa-2x post-icon" aria-hidden="true"></i> </center>
   </div>
   <div class="post-title-box text-center">
-  <a href="{{ URL::to('post/'.$post->id) }}" class="news-title">{{$post->title}}</a>   
+  <a href="{{ URL::to('posts-show/'.$post->id) }}" class="news-title">{{$post->title}}</a>   
   </div>
   </div>
   
@@ -93,7 +93,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 <center><i class="fa fa-star fa-2x post-icon" aria-hidden="true"></i> </center>
 </div>
 <div class="post-title-box text-center">
-<a href="{{ URL::to('post/'.$post->id) }}" class="news-title">{{$post->title}}</a>   
+<a href="{{ URL::to('posts-show/'.$post->id) }}" class="news-title">{{$post->title}}</a>   
 </div>
 </div>
     
