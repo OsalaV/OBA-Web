@@ -35,6 +35,7 @@
     Route::get('projects-show/{id}', ['uses' => 'IndexController@showproject']);
      
     Route::get('committee-members', ['uses' => 'IndexController@members']);
+    Route::get('batch-reps', ['uses' => 'IndexController@batchreps']);
     Route::get('past-presidents', ['uses' => 'IndexController@pastpresidents']);
      
     Route::get('membership', ['uses' => 'IndexController@membership']);

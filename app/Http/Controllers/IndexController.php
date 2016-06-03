@@ -75,6 +75,12 @@ class IndexController extends Controller
           return View::make('members', array('title' => 'Committee', 'committee' => $committee, 'batchreps' => $batchreps));
     }
     
+    public function batchreps()
+    {
+          $batchreps = MemberController::getbatchreps(); 
+          return View::make('batchreps', array('title' => 'Batch Representatives', 'batchreps' => $batchreps));
+    }
+    
     public function pastpresidents()
     {
           $presidents = MemberController::getpastpresidents(); 

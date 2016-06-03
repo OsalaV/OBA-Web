@@ -50,6 +50,7 @@
 </div>
 </div>
     
+<!--
 <div class="row">    
 <h2 class="font-header-large color-black">BATCH <small class="color-yellow">representatives</small></h2>
  
@@ -77,12 +78,14 @@
 
     
 </div>    
+-->
    
 </div>
 </section>
     
 </main>
 
+<!--
 <script>
 $(document).ready(function(){
 
@@ -98,5 +101,6 @@ $('.bxslider').bxSlider({
     
     
 </script>
+-->
 
 @stop
