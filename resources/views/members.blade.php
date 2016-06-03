@@ -6,34 +6,44 @@
 
 <main>      
     
-    <script type="text/javascript">      
-            var page='Member';
-        </script>
+<script type="text/javascript">      
+    var page='Member';
+</script>
 
 <section class="well temp-section background-white">
 <div class="container">
-<div class="row">    
+<div class="row committee-row">    
 <h2 class="font-header-large color-black">executive <small class="color-yellow">committee</small></h2>
 
 <div class="row">
 @foreach($committee as $member)
 <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="thumbnail port-thumb">
-    <img class="" src="{{asset($member->imagepath)}}" alt="">
-    <div>
-    <h4 class="font-sub-16"><a class="color-lightblue" href="#">{{$member->fullname}} <br /><br /> {{$member->designation}}</a></h4>
-    <p class="font-para-14 color-darkblue">
-    {{$member->email}} <br /> {{$member->contact}}
-    </p>
-    <!--<h4 class="font-sub-22"><a class="color-lightblue" href="#">President </a></h4>-->
-        <div id="div-sociali" class="sociali animated">
-              <a class="fa fa-facebook" title="" target="_blank" href="{{$member->facebook}}"></a>
-              <a class="fa fa-google-plus" title="" target="_blank" href="{{$member->google}}"></a>
-              <a class="fa fa-linkedin" title="" target="_blank" href="{{$member->linkedin}}"></a>
-              <a class="fa fa-twitter" title="" target="_blank" href="{{$member->twitter}}"></a>
-        </div> 
-    </div>  
-    </div>
+<div class="thumbnail port-thumb">
+<img class="" src="{{asset($member->imagepath)}}" alt="">
+
+<div class="text-center">
+    
+<h4 class="font-sub-16 color-darkblue">{{$member->fullname}}</h4>
+<h4 class="font-sub-16 color-lightblue">{{$member->designation}}</h4>
+
+<p class="font-para-14 color-darkblue">
+{{$member->email}}
+</p>
+
+<p class="font-para-14 color-darkblue">
+{{$member->contact}}
+</p>
+
+
+<div class="social-member">
+      <a class="fa fa-facebook" title="" target="_blank" href="{{$member->facebook}}"></a>
+      <a class="fa fa-google-plus" title="" target="_blank" href="{{$member->google}}"></a>
+      <a class="fa fa-linkedin" title="" target="_blank" href="{{$member->linkedin}}"></a>
+      <a class="fa fa-twitter" title="" target="_blank" href="{{$member->twitter}}"></a>
+</div>
+   
+</div>  
+</div>
 </div>
 @endforeach
 

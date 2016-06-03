@@ -9,7 +9,7 @@
 <form role="form" action="{{ URL::to('projects-edit-details/'.$project->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Project
-<a href="" class="ws-form-action-btn hidden-xs">Preview</a>
+<a href="{{ URL::to('projects-show/'.$project->id) }}" class="ws-form-action-btn hidden-xs">Preview</a>
 </h2>
     
 <div class="row">

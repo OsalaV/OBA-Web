@@ -32,11 +32,9 @@ class EventController extends Controller
     
     public function index()
     {
-          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-
-        
+          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
           return View::make('backend/events', array('title' => 'Events','events' => $allevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
     }
@@ -363,9 +361,9 @@ class EventController extends Controller
     
     public function getpublished(){    
         
-          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
 
           return View::make('backend/events', array('title' => 'Events | Published','events' => $pubevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
@@ -374,9 +372,9 @@ class EventController extends Controller
     
     public function getunpublished(){
         
-         $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-         $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-         $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+         $allevents = Event::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubevents = Event::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpevents = Event::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
          return View::make('backend/events', array('title' => 'Events | Unpublished','events' => $unpevents, 'all' => $allevents, 'active' => $pubevents,'inactive' => $unpevents));
         
@@ -386,7 +384,7 @@ class EventController extends Controller
          
          $searchkey = Input::get('searchkey');      
         
-         $events = Event::where('title', 'LIKE', '%'.$searchkey.'%')->orWhere('date', 'LIKE', '%'.$searchkey.'%')->paginate(25); 
+         $events = Event::where('title', 'LIKE', '%'.$searchkey.'%')->orWhere('date', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
         
         
          $allevents = Event::paginate(25);  

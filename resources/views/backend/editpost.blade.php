@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-12">
     <div class="form-group">
-        <textarea class="form-control textarea" name="description" placeholder="Write something here" required>{{$post->description}}</textarea>
+        <textarea class="form-control textarea" name="description" placeholder="Write something here" required maxlength="8000" cols="20" wrap="hard">{{$post->description}}</textarea>
     </div>
 </div>
 </div>

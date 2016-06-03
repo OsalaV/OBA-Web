@@ -33,15 +33,17 @@ class MemberController extends Controller
     
     
     public function index()
-    {
-          $members = DB::table('members')
-                    ->join('designations', 'members.designations_id', '=', 'designations.id')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
-
-          $allcount      = Member::all()->count(); 
-          $activecount   = Member::where('status','=','on')->count(); 
-          $inactivecount = Member::whereNull('status')->count(); 
+    {           
+        
+          $allmembers = DB::table('members')
+                    ->join('designations', 'members.designations_id', '=', 'designations.id')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
           
-          return View::make('backend/members', array('title' => 'Members','members' => $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+          $pubmembers = Member::where('status','=','on')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+          $unpmembers = Member::whereNull('status')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+         
+
+          return View::make('backend/members', array('title' => 'Members','members' => $allmembers, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));
+      
     }
     
     public function create()
@@ -288,34 +290,31 @@ class MemberController extends Controller
     
     public function getpublished(){
         
-         $members = DB::table('members')
+          $allmembers = Member::select('*')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+          $pubmembers = DB::table('members')
                       ->join('designations', 'members.designations_id', '=', 'designations.id')
-                      ->where('members.status' , '=', 'on')
-                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
+                      ->where('members.status' , '=', 'on')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+        
+          $unpmembers = Member::whereNull('status')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+         
+
+          return View::make('backend/members', array('title' => 'Members | Published','members' => $pubmembers, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));
         
         
-        
-         $allcount      = Member::all()->count(); 
-         $activecount   = Member::where('status','=','on')->count(); 
-         $inactivecount = Member::whereNull('status')->count(); 
-          
-         return View::make('backend/members', array('title' => 'Members | Published','members' =>  $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
         
     }
     
-    public function getunpublished(){
+    public function getunpublished(){         
         
-         $members = DB::table('members')
+          $allmembers = Member::select('*')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+          $pubmembers = Member::where('status','=','on')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+          $unpmembers = DB::table('members')
                       ->join('designations', 'members.designations_id', '=', 'designations.id')
                       ->where('members.status' , '=', NULL)
-                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->get();
-        
+                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
          
-         $allcount      = Member::all()->count(); 
-         $activecount   = Member::where('status','=','on')->count(); 
-         $inactivecount = Member::whereNull('status')->count(); 
-          
-         return View::make('backend/members', array('title' => 'Members | Unpublished','members' =>  $members,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+
+          return View::make('backend/members', array('title' => 'Members | Unpublished','members' => $unpmembers, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));
         
     }
     
@@ -346,16 +345,32 @@ class MemberController extends Controller
     
     public static function getcommittee(){
         
-       $committee = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '!=', 'Batch Representer')->select('*')->get(); 
+       $committee = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '!=', 'Batch Representative')->where('designations.designation' , '!=', 'Past President')->select('*')->orderBy('designations.id', 'asc')->get(); 
         
         return $committee;
     }
     
     public static function getbatchreps(){
         
-       $batchreps = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Batch Representer')->select('*')->get(); 
+       $batchreps = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Batch Representative')->select('*')->get(); 
         
         return $batchreps;
+    }
+    
+    public function search(){
+         
+         $searchkey = Input::get('searchkey');      
+        
+         $members = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')
+                      ->where('members.fullname', 'LIKE', '%'.$searchkey.'%')->orWhere('designations.designation', 'LIKE', '%'.$searchkey.'%')->orWhere('members.year', 'LIKE', '%'.$searchkey.'%')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+        
+        
+         $allmembers = Member::select('*')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'p');
+         $pubmembers = Member::where('status','=','on')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+         $unpmembers = Member::whereNull('status')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+        
+         return View::make('backend/members', array('title' => 'Members','members' => $members, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));         
+        
     }
 
     

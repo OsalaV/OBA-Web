@@ -32,9 +32,9 @@ class PostController extends Controller
     
     public function index()
     {        
-          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
           return View::make('backend/posts', array('title' => 'Posts','posts' => $allposts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
         
@@ -266,9 +266,9 @@ class PostController extends Controller
     
     public function getpublished(){
         
-          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
           return View::make('backend/posts', array('title' => 'Posts | Published','posts' => $pubposts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
         
@@ -276,9 +276,9 @@ class PostController extends Controller
     
     public function getunpublished(){
         
-          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
+          $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
           return View::make('backend/posts', array('title' => 'Posts | Unpublished','posts' => $unpposts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
         
@@ -307,9 +307,9 @@ class PostController extends Controller
          $posts = Post::where('title', 'LIKE', '%'.$searchkey.'%')->orWhere('created_at', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
         
         
-         $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-         $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');
-         $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'p');      
+         $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');      
         
          return View::make('backend/posts', array('title' => 'Posts','posts' => $posts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
         

@@ -7,62 +7,43 @@
 
 <main>        
     
-    <script type="text/javascript">      
-            var page='Parade';
-        </script>
+<script type="text/javascript">      
+    var page='Parade';
+</script>
 
 <section class="well temp-section background-white">
 <div class="container">
-<div class="row">    
+<div class="row parade-img-row">    
 <h2 class="font-header-large color-black">PSYCHO <small class="color-yellow">PARADE</small></h2>
 
 <img class="header-image" src="{{asset('images/parade/banner.jpg')}}">
+     
+    
 </div>
-    
-    
 <div class="row ico-container">
 
 <div class="col-md-4">
- 
-<div class="form-inline clearfix">
-<div class="event-icon-box">
-<center><i class="fa fa-calendar fa-3x event-icon"></i> </center>
-</div>
-<div class="post-title-box text-center">
-<span class="font-para-18">25th February 2017</span>
-</div>
-</div>
-    
+<center>
+<h4 class="event-tag"><i class="fa fa-calendar fa-lg"> Date</i></h4>
+</center>    
 </div>
     
 <div class="col-md-4">
- 
-<div class="form-inline clearfix">
-<div class="event-icon-box">
-<center><i class="fa fa-clock-o fa-3x event-icon"></i> </center>
-</div>
-<div class="post-title-box text-center">
-<span class="font-para-18">9 AM Onwards</span>
-</div>
-</div>
-    
+<center>
+<h4 class="event-tag"><i class="fa fa-clock-o fa-lg"> Time</i></h4>
+</center>    
 </div>
     
 <div class="col-md-4">
- 
-<div class="form-inline clearfix">
-<div class="event-icon-box">
-<center><i class="fa fa-map-marker fa-3x event-icon"></i> </center>
+<center>
+<h4 class="event-tag"><i class="fa fa-map-marker fa-lg"> Location</i></h4>
+</center>    
 </div>
-<div class="post-title-box text-center">
-<span class="font-para-18">D.S.Senanayake College</span>
-</div>
-</div>
+    
+
     
 </div>
     
-    
-</div>
     
     
 
@@ -113,5 +94,6 @@
 </section>
     
 </main>
+
 
 @stop

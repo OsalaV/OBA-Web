@@ -32,11 +32,13 @@ class ActivityController extends Controller
     
     
     public function index()
-    {
-         $activities = DB::table('activities')
-                       ->join('users', 'activities.users_id', '=', 'users.id')   
-                       ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+    {       
+        
+         $activities   = DB::table('activities')
+                         ->join('users', 'activities.users_id', '=', 'users.id')   
+                         ->select('*')
+                         ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
+        
         
          return View::make('backend/activities', array('title' => 'Activities', 'activities' => $activities));
     }
@@ -112,7 +114,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'post')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Posts', 'activities' => $activities));
     }
@@ -123,7 +125,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'event')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Events', 'activities' => $activities));
     }
@@ -134,7 +136,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'project')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Projects', 'activities' => $activities));
     }
@@ -145,7 +147,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'member')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Members', 'activities' => $activities));
     }
@@ -156,7 +158,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'slider')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Sliders', 'activities' => $activities));
     }
@@ -167,7 +169,7 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'branch')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Branches', 'activities' => $activities));
     }
@@ -178,9 +180,36 @@ class ActivityController extends Controller
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'resource')
                        ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Resources', 'activities' => $activities));
+    }
+    
+    public function search(){
+         
+         $searchkey = Input::get('searchkey');      
+        
+         $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id')
+                       ->where('users.fullname', 'LIKE', '%'.$searchkey.'%')->orWhere('activities.created_at', 'LIKE', '%'.$searchkey.'%')
+                       ->select('*')
+                       ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
+       
+        
+         return View::make('backend/activities', array('title' => 'Activities', 'activities' => $activities));
+        
+        
+    }
+    
+    public function destroy(){
+        
+        if(DB::table('activities')->truncate()){
+            return redirect(URL::to('activities-view?records=deleted==true'));
+        }
+        else{
+            return redirect(URL::to('activities-view?records=deleted==false'));
+        }
+        
     }
     
     

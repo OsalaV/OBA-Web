@@ -14,35 +14,25 @@
 <div class="container">
 
 <div class="row">    
-<h2 class="font-header-large color-black">GET <small class="color-yellow">YOUR MEMBERSHIP</small></h2>
 
-<form role="form" id="contact-form" class="contact-form">
+<div class="col-md-8">
 <div class="row">
-<div class="col-md-6">
-    <div class="form-group">
-        <input type="text" class="form-control" name="Name" autocomplete="off" id="Name" placeholder="Name" required>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <input type="email" class="form-control" name="email" autocomplete="off" id="email" placeholder="E-mail" required>
-    </div>
-</div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-    <div class="form-group">
-        <textarea class="form-control textarea" rows="3" name="Message" id="Message" placeholder="Message" required></textarea>
-    </div>
-</div>
+<h2 class="font-header-large color-black">GET <small class="color-yellow">YOUR MEMBERSHIP</small></h2> 
 </div>
     
 <div class="row">
-<div class="col-md-12">
-<button type="submit" class="btn main-btn pull-right">Send a message</button>
+<img class="membership-img" src="{{asset('images/membership-form.jpg')}}">
 </div>
+    
+<div class="row">
+<center>
+<a href="#"><img class="membership-download" src="{{asset('images/membership-down.png')}}"></a>
+</center>    
 </div>
-</form>    
+    
+    
+</div>
+    
     
 </div>
     

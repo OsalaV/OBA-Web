@@ -42,6 +42,8 @@
     Route::get('contact', ['uses' => 'IndexController@contact']);
      
     Route::get('posts-show/{id}', ['uses' => 'IndexController@showpost']);
+     
+    Route::get('user-login', ['uses' => 'IndexController@userlogin']);
     
  });
 
@@ -165,6 +167,8 @@
     Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
     Route::get('projects-download-resource/{id}', ['uses' => 'ProjectController@downloadresource']);
      
+    Route::post('projects-search', ['uses' => 'ProjectController@search']);
+     
     
     //routs-committee
     Route::get('members-view', ['uses' => 'MemberController@index']);
@@ -182,6 +186,8 @@
 
     Route::get('members-published', ['uses' => 'MemberController@getpublished']);
     Route::get('members-unpublished', ['uses' => 'MemberController@getunpublished']); 
+     
+    Route::post('members-search', ['uses' => 'MemberController@search']);
     
      
     //routes activities
@@ -195,9 +201,31 @@
     Route::get('activities-branches', ['uses' => 'ActivityController@branchactivities']);
     Route::get('activities-resources', ['uses' => 'ActivityController@resourceactivities']);
      
-     
     Route::get('activities-view/{type}/{id}', ['uses' => 'ActivityController@view']);
      
+    Route::post('activities-search', ['uses' => 'ActivityController@search']);
+    Route::get('activities-delete', ['uses' => 'ActivityController@destroy']);
+     
+     
+    //routes resources
+    Route::get('resources-view', ['uses' => 'ResourceController@index']);
+    Route::get('resources-add', ['uses' => 'ResourceController@create']); 
+    Route::post('resources-add-details', ['uses' => 'ResourceController@store']); 
+    Route::get('resources-edit/{id}', ['uses' => 'ResourceController@edit']); 
+    Route::post('resources-edit-details/{id}', ['uses' => 'ResourceController@update']); 
+    Route::post('resources-edit-status/{id}', ['uses' => 'ResourceController@updatestatus']); 
+    Route::post('resources-set-status/{id}', ['uses' => 'ResourceController@setstatus']); 
+    Route::post('resources-edit-image/{id}', ['uses' => 'ResourceController@updateimage']); 
+    Route::post('resources-edit-resource/{id}', ['uses' => 'ResourceController@updateresource']); 
+    Route::get('resources-delete-image/{id}', ['uses' => 'ResourceController@destroyimge']); 
+    Route::get('resources-delete-resource/{id}', ['uses' => 'ResourceController@destroyresource']); 
+    Route::get('resources-delete-details/{id}', ['uses' => 'ResourceController@destroy']);
+     
+    Route::get('resources-published', ['uses' => 'ResourceController@getpublished']);
+    Route::get('resources-unpublished', ['uses' => 'ResourceController@getunpublished']); 
+     
+    Route::get('resources-download-resource/{id}', ['uses' => 'ResourceController@downloadresource']); 
+    Route::post('resources-search', ['uses' => 'ResourceController@search']);
      
  });
 

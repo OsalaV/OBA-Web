@@ -32,7 +32,7 @@ class SliderController extends Controller
     
     public function index()
     {
-          $slider = Slider::paginate(5);  
+          $slider = Slider::select('*')->orderBy('id', 'desc')->paginate(5, ['*'], 'page');
         
           return View::make('backend/slidersettings', array('title' => 'Image Slider','sliders' => $slider));
     }

@@ -16,7 +16,7 @@
       
            
     <!--Fonts and Icons -->
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.4.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.6.3/css/font-awesome.min.css') }}">
 
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>

@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/animatetime.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.bxslider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.porto.css') }}">
       
 <!--Links -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/customs/fonts.css') }}">
@@ -25,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/customs/flipclock.css') }}">
         
 <!--Fonts and Icons -->
-<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.4.0/css/font-awesome.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.6.3/css/font-awesome.min.css') }}">
 
 
 <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
@@ -124,7 +125,8 @@ Developed by 2011 batch &#169; <span class="footer-year">2016</span>
 <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.animations.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
-        
+<script type="text/javascript" src="{{ asset('js/jquery.porto.js') }}"></script>
+    
 </body>
 </html>
 

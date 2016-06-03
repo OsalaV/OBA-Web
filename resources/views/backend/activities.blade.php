@@ -20,8 +20,9 @@
 </ul>  
 </div> 
 <div class="pull-right">
-<form role="form" action="{{ URL::to('events-search') }}" method="post" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('activities-search') }}" method="post" enctype="multipart/form-data">
 <input class="form-search-control" type="text" name="searchkey" required> 
+{{ csrf_field() }}
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
 </form>  
 </div>
@@ -36,17 +37,17 @@
 <tr>
 <th class="text-left">Activity</th>
 <th class="text-left">Activity Type</th>
-<th class="text-left">Created At</th>
+<th class="text-left">Last Updated</th>
 <th class="text-left">Author</th>
 <th></th>
 <th>
-
-<a class="ws-open-msg" data-url="" data-message = "Are you sure you want to delete the selected record?" data-toggle="modal" data-target="#meesageModel">
+@if($activities->count() > 0)
+<a class="ws-open-msg" data-url="{{ URL::to('activities-delete') }}" data-message = "Are you sure you want to clear this table?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-trash-o fa-lg ws-icon-Xsmall"></i>
 </span> 
 </a>
-    
+@endif
 </th>
 </tr>
 </thead>
@@ -58,7 +59,7 @@
 
 <td class="text-left">{{$activity->activity}}</td>
 <td class="text-left">{{$activity->type}}</td>
-<td class="text-left">{{$activity->created_at}}</td>
+<td class="text-left">{{$activity->updated_at}}</td>
 <td class="text-left">{{$activity->fullname}}</td>
 <td class="text-center">
 <a href="{{ URL::to('activities-view/'.$activity->type.'/'.$activity->referenced_id) }}" class="ws-tablepage-action-btn">View</a> 
@@ -75,15 +76,7 @@
 </div><!-- ws-table-container -->
 
     
-<div class="ws-table-pagiation-container">
-<ul class="pagination ws-pagination-ul">
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-</ul>      
-</div>
+{{ $activities->links() }}
 
 
 

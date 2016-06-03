@@ -7,37 +7,50 @@
 <!--*************************CONTENT*****************************-->  
 <main>       
     
-    <script type="text/javascript">      
-            var page='Project';
-        </script>
+<script type="text/javascript">      
+    var page='Project';
+</script>
 
 <section class="well temp-section background-white">
 <div class="container">
+
 <div class="row">    
 
     
-<div class="row">
-<div class="col-md-4 col-sm-12 col-xs-12">
-  <div class="thumbnail port-thumb">
-    <img src="{{asset($project->imagepath)}}" alt="">
-  </div>              
-</div>
-            
-<div class="col-md-8 col-sm-12 col-xs-12">
+<div class="col-md-8">
     
-    <h2 class="font-header-large color-black"><small class="color-black">{{$project->title}}</small></h2>
-</div>
+<div class="row post-header-row">
+<span class="font-header-25px color-black">{{$project->title}}</span>
 </div>   
     
+<div class="row post-details-row">
+<span class="post-tags"><i class="fa fa-hashtag"></i> Project conducted by DS OBA and 2011 batch</span>
+</div>
+
+    
+@if($project->imagestate == "true")
+<div class="row post-img-row">
+<img class="post-img" src="{{asset($project->imagepath)}}" alt="">           
+</div>
+@endif 
+
+    
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <p class="font-para-15 color-darkblue">
-        {{$project->description}}
-      </p>
-  </div>
+<p class="font-para-15 color-darkblue">{{$project->description}}</p>
 </div>
     
+    
+    
+    
+    
+    
+</div>   
+    
+
+    
 </div>
+    
+    
 </div>
 </section>
     

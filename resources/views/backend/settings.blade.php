@@ -48,7 +48,7 @@
 @if(Session::get('RESOURCES') == "on")
 <div class="col-md-3 col-lg-3 ws-settings-box-container">
 <center>
-<a href="{{ URL::to('branches-view') }}">
+<a href="{{ URL::to('resources-view') }}">
 <div class="ws-settings-box">
 <i class="fa fa-folder-open fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>

@@ -30,13 +30,13 @@ class ProjectController extends Controller
     
     
     public function index()
-    {
-          $projects      = Project::all()->sortByDesc("id"); ; 
-          $allcount      = Project::all()->count(); 
-          $activecount   = Project::where('status','=','on')->count(); 
-          $inactivecount = Project::whereNull('status')->count(); 
-          
-          return View::make('backend/projects', array('title' => 'Projects','projects' => $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' => $inactivecount));
+    {                
+         $allprojects = Project::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubprojects = Project::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpprojects = Project::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+
+         return View::make('backend/projects', array('title' => 'Projects','projects' => $allprojects, 'all' => $allprojects, 'active' => $pubprojects,'inactive' => $unpprojects));
+        
     }
     
     public function create()
@@ -355,25 +355,21 @@ class ProjectController extends Controller
     
     public function getpublished(){
         
-         $projects      = Project::where('status','=','on')->get()->sortByDesc("id");          
-        
-         $allcount      = Project::all()->count(); 
-         $activecount   = Project::where('status','=','on')->count(); 
-         $inactivecount = Project::whereNull('status')->count(); 
-          
-         return View::make('backend/projects', array('title' => 'Projects | Published','projects' =>  $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+         $allprojects = Project::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubprojects = Project::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpprojects = Project::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+
+         return View::make('backend/projects', array('title' => 'Projects | Published','projects' => $pubprojects, 'all' => $allprojects, 'active' => $pubprojects,'inactive' => $unpprojects));        
         
     }
     
     public function getunpublished(){
         
-         $projects      = Project::whereNull('status')->get()->sortByDesc("id"); 
-         
-         $allcount      = Project::all()->count(); 
-         $activecount   = Project::where('status','=','on')->count(); 
-         $inactivecount = Project::whereNull('status')->count(); 
-          
-         return View::make('backend/projects', array('title' => 'Projects | Unpublished','projects' =>  $projects,'count_all' => $allcount,'count_active' => $activecount,'count_inactive' =>  $inactivecount));
+         $allprojects = Project::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubprojects = Project::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpprojects = Project::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+
+         return View::make('backend/projects', array('title' => 'Projects | Unpublished','projects' => $unpprojects, 'all' => $allprojects, 'active' => $pubprojects,'inactive' => $unpprojects)); 
         
     }
     
@@ -399,6 +395,20 @@ class ProjectController extends Controller
          $porject = Project::where('id' , '=', $id)->first(); 
         
          return $porject;
+        
+    }
+    
+    public function search(){
+         
+         $searchkey = Input::get('searchkey');      
+        
+         $porjects = Project::where('title', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
+        
+         $allprojects = Project::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $pubprojects = Project::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+         $unpprojects = Project::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
+        
+         return View::make('backend/projects', array('title' => 'Projects','projects' => $porjects, 'all' => $allprojects, 'active' => $pubprojects,'inactive' => $unpprojects));         
         
     }
     

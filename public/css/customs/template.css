@@ -25,6 +25,24 @@ a:hover {
   padding: 0;
 }
 
+.bx-wrapper .bx-viewport {
+    -moz-box-shadow: 0 0 0px #ccc;
+    -webkit-box-shadow: 0 0 0px #ccc;
+    box-shadow: 0 0 0px #ccc;
+    border: 0px;
+    left: 0px;
+    background: #fff;
+}
+
+.bxslider{
+    padding: 0;
+}
+
+ .bx-wrapper img{
+    max-width: auto;
+    width: 100%;
+}
+
 .temp-section{
   border: 0px;
   outline: 0px;
@@ -840,6 +858,7 @@ a:hover {
 
 .tickets-row{
     margin-top: 40px;
+    padding: 0px;
 }
 
 
@@ -927,3 +946,244 @@ a:hover {
 .selfie-creative-btn{
 	padding: 0px;
 }
+
+.post-header-row{
+    margin-bottom: 10px;
+}
+
+.post-details-row{
+    margin-bottom: 30px;
+}
+
+.post-img-row{
+    padding: 0px 10px;
+    margin-bottom: 30px;
+}
+
+.post-share-row{
+    margin-bottom: 30px;
+}
+
+.post-img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.post-tags{
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px; 
+    font-weight: 400;  
+    color: #8d8d8d;
+}
+
+
+.post-share{
+    float: left;
+}
+
+
+.post-share [class*="fa fa-"] {
+    background-color: #333;
+    border-radius: 30px;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: auto 3px;
+    width: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+.post-share .fa-facebook:hover { 
+    background-color: #3b5998;
+}
+
+.post-share .fa-twitter:hover { 
+    background-color: #55acee;
+}
+
+.post-share .fa-google-plus:hover { 
+    background-color: #dc4e41;
+}
+
+.post-share .fa-linkedin:hover { 
+    background-color: #0077b5;
+}
+
+
+
+.membership-img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.membership-download{
+    width: 200px;
+    height: 100px;
+    max-width: 100%;
+}
+
+.event-tag{
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.73333333;
+    font-size: 12px;
+    font-weight: 600; 
+}
+
+.ico-container{
+/*    background: rgb(223,219,218);*/
+    padding: 20px;
+}
+
+.committee-row{
+    margin-bottom: 50px;
+}
+
+
+.events-public-row{
+    margin-bottom: 50px;
+}
+
+
+.social-member [class*="fa fa-"] {
+    background-color: #333;
+    border-radius: 30px;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: auto 3px;
+    width: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+/*EVENT LIST*/
+
+.timebox time {
+    display: inline-block;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(197, 44, 102);
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.timebox time > .day {
+    display: block;
+    font-size: 24pt;
+    font-weight: 100;
+    line-height: 1;
+}
+.timebox time > .month {
+    display: block;
+    font-size: 18pt;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.infobox > .info {
+    padding: 10px;
+    text-align: left;
+}
+
+.infobox > .info > .title {
+    font-size: 17pt;
+    font-weight: 700;
+    margin: 0px;
+}
+.infobox > .info > .desc {
+    font-size: 13pt;
+    font-weight: 600;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+
+
+/*ptice tabele*/
+
+
+.circle{
+  background: #ffffff;
+  padding: 35px;
+  text-align: center;
+  height: 250px;
+  width: 250px;
+  border: 8px solid #F2F2F2;
+    
+    transition: all 0.5s;
+  -moz-transition: all 0.5s; /* Firefox 4 */
+  -webkit-transition: all 0.5s; /* Safari and Chrome */
+  -o-transition: all 0.5s; /* Opera */
+ 
+}
+.circle h4{
+  margin: 0;
+  padding: 0;
+}
+.circle p{}
+.circle span{}
+.circle span.icon{
+}
+.circle span.icon i{
+  font-size: 48px;
+}
+.circle span.price-large{
+  font-size: 68px
+}
+.price-small{
+  font-size: 24px 
+}
+
+.c1:hover{
+  background: #39b3d7;
+  color: #ffffff;
+}
+.c1 .blue{
+  color: #39b3d7;
+}
+.c1:hover .blue{
+  color: #ffffff;
+}
+
+.c2:hover{
+  background: #ed9c28;
+  color: #ffffff;
+}
+.c2 .yellow{
+  color: #ed9c28;
+}
+.c2:hover .yellow{
+  color: #ffffff;
+}
+
+.c3:hover{
+  background: #47a447;
+  color: #ffffff;
+}
+.c3 .green{
+  color: #47a447;
+}
+.c3:hover .green{
+  color: #ffffff;
+}
+
+.c4:hover{
+  background: #d2322d;
+  color: #ffffff;
+}
+.c4 .red{
+  color: #d2322d;
+}
+.c4:hover .red{
+  color: #ffffff;
+}
+
+
