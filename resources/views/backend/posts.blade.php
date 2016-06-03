@@ -44,8 +44,8 @@
     
 @foreach($posts as $post)
 <tr>
-@if($post->mediastate == "true")
-<td class="text-center"><img class="ws-table-img" src="{{ asset($post->mediapath) }}"></td>
+@if($post->imagestate == "true")
+<td class="text-center"><img class="ws-table-img" src="{{ asset($post->imagepath) }}"></td>
 @else
 <td class="text-center"></td>
 @endif

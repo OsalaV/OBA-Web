@@ -20,39 +20,35 @@
      
     
 </div>
+
 <div class="row ico-container">
+  
+<div class="col-md-2 timebox">
+<time>
+<span class="day">16</span>
+<span class="month">MAR</span>
+<span class="year">2017</span>
+</time>    
+</div>
+    
+<div class="col-md-10 infobox">
+<div class="info">
+    <h2 class="title"><i class="fa fa-map-marker fa-lg hidden-xs"></i> D.S.Senanayake College, Colombo 7</h2>
+    <p class="desc"><i class="fa fa-clock-o fa-lg hidden-xs"></i> 9.00 AM</p>
+</div>    
+</div>
 
-<div class="col-md-4">
-<center>
-<h4 class="event-tag"><i class="fa fa-calendar fa-lg"> Date</i></h4>
-</center>    
-</div>
-    
-<div class="col-md-4">
-<center>
-<h4 class="event-tag"><i class="fa fa-clock-o fa-lg"> Time</i></h4>
-</center>    
-</div>
-    
-<div class="col-md-4">
-<center>
-<h4 class="event-tag"><i class="fa fa-map-marker fa-lg"> Location</i></h4>
-</center>    
-</div>
-    
-
-    
 </div>
     
     
     
 
 <div class="row"> 
-<div class="temp-section">
+<!--<div class="temp-section">-->
     
 <div class="col-sm-12 col-md-6 bar-list-container">
 
-<ul class="bar-list wow fadeInLeft" data-wow-duration='3s'>
+<ul class="bar-list">
     <li>
     <a href="#"><img class="thumb-img" src="../images/parade/1.jpg" style="height:auto;"></a>
     <a href="#"><img class="thumb-img" src="../images/parade/2.jpg" style="height:auto;"></a>
@@ -76,7 +72,7 @@
 </p>
 </div>
 
-</div>
+<!--</div>-->
 </div>
  
 <div class="row parade-social-icon-container"> 

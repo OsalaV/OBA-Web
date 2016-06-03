@@ -77,8 +77,8 @@ class PostController extends Controller
 
         if(Input::hasFile('image')){
            $image_upload_result = $this->uploadImage();
-           $post->mediapath    = $image_upload_result['imagepath'];
-           $post->mediastate   = $image_upload_result['imagestate'];
+           $post->imagepath    = $image_upload_result['imagepath'];
+           $post->imagestate   = $image_upload_result['imagestate'];
         } 
         
         $post->status  = Input::get('status');   
@@ -187,8 +187,8 @@ class PostController extends Controller
         
         if(Input::hasFile('image')){
             $image_upload_result = $this->uploadImage();
-            $post->mediapath    = $image_upload_result['imagepath'];
-            $post->mediastate   = $image_upload_result['imagestate'];
+            $post->imagepath    = $image_upload_result['imagepath'];
+            $post->imagestate   = $image_upload_result['imagestate'];
             
             if($post->save()){
                 //save activity
@@ -214,8 +214,8 @@ class PostController extends Controller
         
         $post = Post::where('id' , '=', $id)->first(); 
         
-        $imagestate = $post->mediastate;
-        $imagepath = $post->mediapath;
+        $imagestate = $post->imagepath;
+        $imagepath = $post->imagestate;
         
         if($imagestate == "true"){
             UploadController::delete_file($imagepath);
@@ -241,11 +241,11 @@ class PostController extends Controller
     public function destroyimge($id){
         $post = Post::where('id' , '=', $id)->first(); 
         
-        $imagepath = $post->mediapath;
+        $imagepath = $post->imagepath;
         
         if(UploadController::delete_file($imagepath)){
-            $post->mediapath  = "Image has been deleted";
-            $post->mediastate = "false";
+            $post->imagepath  = "Image has been deleted";
+            $post->imagestate = "false";
 
             if($post->save()){
                 //save activity

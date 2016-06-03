@@ -41,9 +41,9 @@
 <div class="porto">
 
 <div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-<div class="pf" data-pf-image="{{asset('images/events/2.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
 <div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-<div class="pf" data-pf-image="{{asset('images/events/2.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
+<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
+<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
     
     
 </div> 

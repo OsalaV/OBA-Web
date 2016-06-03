@@ -857,15 +857,21 @@ a:hover {
 
 
 .tickets-row{
-    margin-top: 40px;
+    margin-top: 25px;
     padding: 0px;
 }
 
+@media (max-width: 760px) {
+.tickets-row{
+    margin-top: 0px;
+    padding: 0px;
+}
+}
 
 .btn {
 	border: none;
 	font-family: inherit;
-	font-size: 20px;
+	font-size: 15px;
 	color: inherit;
 	border-radius: 1px;	
 	background: none;
@@ -1038,6 +1044,7 @@ a:hover {
 .ico-container{
 /*    background: rgb(223,219,218);*/
     padding: 20px;
+    margin-bottom: 25px;
 }
 
 .committee-row{
@@ -1109,13 +1116,16 @@ a:hover {
 
 /*ptice tabele*/
 
+.cir-box{
+    padding-bottom: 20px;
+}
 
 .circle{
   background: #ffffff;
-  padding: 35px;
+  padding: 28px 18px;
   text-align: center;
-  height: 250px;
-  width: 250px;
+  height: 175px;
+  width: 175px;
   border: 8px solid #F2F2F2;
     
     transition: all 0.5s;
@@ -1136,7 +1146,7 @@ a:hover {
   font-size: 48px;
 }
 .circle span.price-large{
-  font-size: 68px
+  font-size: 44px
 }
 .price-small{
   font-size: 24px 
@@ -1186,4 +1196,12 @@ a:hover {
   color: #ffffff;
 }
 
-
+.content-pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;  
+    background-color: #fff;
+    border: none;
+}

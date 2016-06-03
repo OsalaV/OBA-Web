@@ -28,9 +28,9 @@
 </div>
 
     
-@if($post->mediastate == "true")
+@if($post->imagestate == "true")
 <div class="row post-img-row">
-<img class="post-img" src="{{asset($post->mediapath)}}" alt="">           
+<img class="post-img" src="{{asset($post->imagepath)}}" alt="">           
 </div>
 @endif 
 
@@ -44,9 +44,11 @@
 </div>
 </div>
     
+ 
+
     
 <div class="row">
-<p class="font-para-15 color-darkblue">{{$post->description}}</p>
+<pre class="font-para-15 color-darkblue content-pre">{{$post->description}}</pre>
 </div>
     
     
