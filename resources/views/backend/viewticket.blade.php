@@ -73,7 +73,7 @@
 <!-- Ticket Amount -->
 <div class="price-box">
 
-        <form class="form-horizontal form-pricing" role="form">
+        <form class="forms-horizontal forms-pricing" role="form">
 
 <!--
           <div class="price-slider">
@@ -92,7 +92,7 @@
           </div>
 -->
 
-          <div class="price-form">
+          <div class="price-forms">
 
 <!--
             <div class="form-group">
@@ -113,10 +113,10 @@
             </div>
 -->
 <!--            <hr class="style">-->
-            <div class="form-group total">
+            <div class="forms-group total">
               <label for="total" class="col-sm-6 control-label"><strong>Amount (LKR): </strong></label>
               <div class="col-sm-6">
-                <input type="hidden" id="total" class="form-control">
+                <input type="hidden" id="total" class="forms-control">
                 <center><p class="price lead" id="total-label">0.00</p></center> 
               </div>
             </div>

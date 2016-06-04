@@ -732,7 +732,7 @@ a:hover {
 	/*display: inline;
 	padding: 10px 5px;*/
 	position: relative;
-	padding-bottom: 20px;
+	padding-bottom: 120px;
 }
 
 .total:before {
@@ -747,13 +747,13 @@ a:hover {
 	opacity: 0.5;
 }
 
-.form-pricing {
+.forms-pricing {
 	background: #ffffff;
 	padding: 20px;
 	border-radius: 4px;
 }
 
-.price-form {
+.price-forms {
 	background: #ffffff;
 	margin-bottom: 10px;
 	padding: 20px;
@@ -764,18 +764,18 @@ a:hover {
   	box-shadow:         0 5px 5px 0 #ccc;*/
 }
 
-.form-group {
+.forms-group {
 	margin-bottom: 0;
 }
 
-.form-group span.price {
+.forms-group span.price {
 	font-weight: 200;
 	display: inline-block;
 	color: #7f8c8d;
 	font-size: 14px;
 }
 
-.price-form label {
+.price-forms label {
 	font-weight: 200;
 	font-size: 21px;
 }
