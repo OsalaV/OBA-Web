@@ -67,6 +67,11 @@
 
     //routes guests
     Route::get('guests-view', ['uses' => 'GuestController@index']); 
+     
+    
+    //routes tickets
+    Route::get('tickets-view', ['uses' => 'TicketController@index']); 
+    Route::get('tickets-edit-view', ['uses' => 'TicketController@view']); 
 
 
     //routes permissions
