@@ -114,7 +114,7 @@ class IndexController extends Controller
     }
     
     public function userlogin(){
-        return View::make('login', array('title' => 'Login'));
+        return View::make('guestregestration', array('title' => 'Login'));
     }
     
     

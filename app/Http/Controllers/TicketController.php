@@ -35,7 +35,12 @@ class TicketController extends Controller
         return View::make('backend/tickets', array('title' => 'Tickets'));
     }
     
-    public function view()
+    public function create(){
+        return View::make('backend/addtickets', array('title' => 'Tickets | Add Tickets'));
+    }
+    
+    
+    public function edit()
     {        
         return View::make('backend/viewticket', array('title' => 'Tickets Management'));
     }

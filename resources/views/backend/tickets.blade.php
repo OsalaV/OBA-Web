@@ -2,17 +2,11 @@
 
 @section('content')
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Tickets Management
-<!--<a href="{{ URL::to('posts-add') }}" class="ws-tablepage-action-btn">Add New</a>       -->
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Tickets
 </h2>
     
 <div class="clearfix hidden-xs">
-<!--
-<div class="pull-left">
-<ul class="ws-table-options">
-</ul>  
-</div> 
--->
+
 <div class="pull-right">
 <form role="form" action="" method="post" enctype="multipart/form-data">
 <input class="form-search-control" name="searchkey" type="text" required> 
@@ -30,7 +24,6 @@
 <tr>
 <th class="text-center">Event Name</th>  
 <th class="text-left">Tatal Issued Tickets</th>
-<!--<th class="text-left">Last Updated</th>-->
 <th class="text-center">Published</th>
 
 <th></th>
@@ -49,7 +42,7 @@
 
     
 <td class="text-center">
-<a href="">
+<a href="{{ URL::to('tickets-edit') }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 

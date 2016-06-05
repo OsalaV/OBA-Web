@@ -23,4 +23,13 @@ class GuestController extends Controller
         
          return View::make('backend/guests', array('title' => 'Guests'));
     }
+    
+    public function store(){
+        
+        echo "guest store method";
+        
+        
+    }
+    
+    
 }

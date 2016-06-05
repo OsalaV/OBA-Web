@@ -72,7 +72,8 @@
     
     //routes tickets
     Route::get('tickets-view', ['uses' => 'TicketController@index']); 
-    Route::get('tickets-edit-view', ['uses' => 'TicketController@view']); 
+    Route::get('tickets-add', ['uses' => 'TicketController@create']); 
+    Route::get('tickets-edit', ['uses' => 'TicketController@edit']); 
 
 
     //routes permissions
