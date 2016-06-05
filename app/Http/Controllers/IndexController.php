@@ -37,24 +37,33 @@ class IndexController extends Controller
     {
           $sliders =  SliderController::getsliders(); 
           $posts   =  PostController::getposts(); 
+          $topmembers = MemberController::gettopmembers();
         
-          return View::make('index', array('title' => 'Home','sliders' => $sliders,'posts' => $posts));
+          return View::make('index', array('title' => 'Home','sliders' => $sliders,'posts' => $posts,'topmembers' => $topmembers));
     }
 
     public function events()
     {
-          $events   =  EventController::getevents(); 
-          return View::make('events', array('title' => 'Events', 'events' => $events));
+          $publicevents   =  EventController::getpublicevents(); 
+          $schoolevents   =  EventController::getschoolevents(); 
+          
+          return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'schoolevents' => $schoolevents));
     }
     
-    public function showevent($id){
-          $event    =  EventController::getevent($id); 
+    public function showpublicevent($id){
+          $event    =  EventController::getpublicevent($id); 
           return View::make('event', array('title' => $event->title, 'event' => $event));
+    }
+    
+    public function showschoolevent($id){
+          $event    =  EventController::getschoolevent($id); 
+          return View::make('schoolevent', array('title' => $event->title, 'event' => $event));
     }
 
     public function parade()
-    {
-          return View::make('parade', array('title' => 'Psycho Parade'));
+    {   
+          $event =  EventController::getparadedetails(); 
+          return View::make('parade', array('title' => $event->title, 'event' => $event));
     }
 
     public function projects()
@@ -84,7 +93,7 @@ class IndexController extends Controller
     public function pastpresidents()
     {
           $presidents = MemberController::getpastpresidents(); 
-          return View::make('presidents', array('title' => 'Presidents', 'presidents' =>$presidents));
+          return View::make('presidents', array('title' => 'Past Presidents', 'presidents' =>$presidents));
     }
 
     public function membership()

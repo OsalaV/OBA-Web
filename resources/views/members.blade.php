@@ -23,23 +23,30 @@
 
 <div class="text-center">
     
-<h4 class="font-sub-16 color-darkblue">{{$member->fullname}}</h4>
-<h4 class="font-sub-16 color-lightblue">{{$member->designation}}</h4>
+<h4 class="font-sub-16 color-darkblue">{{$member->fullname}}
+<br>
+<span class="font-para-14 color-lightblue">{{$member->designation}}</span>
+</h4>
 
 <p class="font-para-14 color-darkblue">
 {{$member->email}}
-</p>
-
-<p class="font-para-14 color-darkblue">
+<br>
 {{$member->contact}}
 </p>
 
-
-<div class="social-member">
-      <a class="fa fa-facebook" title="" target="_blank" href="{{$member->facebook}}"></a>
-      <a class="fa fa-google-plus" title="" target="_blank" href="{{$member->google}}"></a>
-      <a class="fa fa-linkedin" title="" target="_blank" href="{{$member->linkedin}}"></a>
-      <a class="fa fa-twitter" title="" target="_blank" href="{{$member->twitter}}"></a>
+<div class="sociali">
+@if($member->facebook != NULL)
+<a class="fa fa-facebook" title="" target="_blank" href="{{$member->facebook}}"></a>
+@endif
+@if($member->twitter != NULL)
+<a class="fa fa-twitter" title="" target="_blank" href="{{$member->twitter}}"></a>
+@endif
+@if($member->google != NULL)
+<a class="fa fa-google-plus" title="" target="_blank" href="{{$member->google}}"></a>
+@endif
+@if($member->linkedin != NULL)
+<a class="fa fa-linkedin" title="" target="_blank" href="{{$member->linkedin}}"></a>
+@endif    
 </div>
    
 </div>  

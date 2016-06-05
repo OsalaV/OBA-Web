@@ -22,28 +22,65 @@
     </div>
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-12">
+<div class="form-group">
+<label class="font-main font-15px-600">Select Event Type</label>
+    
+{{ Form::select(
+    'type',
+    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event'),
+    $event->type,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+
+</div> 
+</div>    
+</div>
+    
+<label class="font-main font-15px-600">Event Date</label> 
+<div class="row">
+<div class="col-md-3">
+<div class="form-group">
+{{ Form::select(
+    'month',
+    array('Jan' => 'January','Feb' => 'February', 'Mar' => 'March', 'Apr' => 'April', 'May' => 'May', 'June' => 'June', 'July' => 'July', 'Aug' => 'August', 'Sept' => 'September', 'Oct' => 'October', 'Nov' => 'November', 'Dec' => 'December'),
+    $event->month,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+</div> 
+</div>
+<div class="col-md-3">
+    <div class="form-group">
+        <input type="text" class="form-control" name="day" required placeholder="Day" value="{{$event->day}}">
+    </div>
+</div>
+<div class="col-md-3">
+    <div class="form-group">
+        <input type="text" class="form-control" name="year" required placeholder="Year" value="{{$event->year}}">
+    </div>
+</div>
+</div>
+    
 
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <!-- <label class="font-main font-15px-600">Event Date</label> -->
-        <input type="text" class="form-control" name="date" placeholder="Event Date" value="{{$event->date}}" required>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <!-- <label class="font-main font-15px-600">Starting Time</label> -->
         <input type="text" class="form-control" name="time" placeholder="Event Time" value="{{$event->time}}" required>
     </div>
 </div>
-</div>
-
-<div class="row">
 <div class="col-md-6">
     <div class="form-group">
         <input type="text" class="form-control" name="location" placeholder="Location" value="{{$event->location}}" required>
     </div>
 </div>
+</div>
+
+<div class="row">
+
 </div>
     
 <div class="row">
@@ -54,17 +91,124 @@
 </div>
 </div>
     
+<div class="row">
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="facebook" placeholder="Facebook Link" value="{{$event->facebook}}" >
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="twitter" placeholder="Twitter Link" value="{{$event->twitter}}" >
+    </div>
+</div>
+</div>
+    
+<div class="row">
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="linkedin" placeholder="LinkedIn Link" value="{{$event->linkedin}}" >
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="google" placeholder="Google+ Link" value="{{$event->google}}" >
+    </div>
+</div>
+</div>
+   
 {{ csrf_field() }}
     
 <div class="row">
 <div class="col-md-12">
 <button type="submit" class="ws-form-action-btn pull-right">Save Event</button>
 </div>
+</div> 
+</form>
+    
+    
+<div class="panel panel-default ws-formpanel-ticket">
+<div class="panel-heading ws-formpanel-heading clearfix">
+<span class="pull-left">Ticket Details</span>
+</div>  
+    
+<div class="panel-body ws-formpanel-body">
+<form id="{{'checkform'.$event->id}}" action="{{ URL::to('events-edit-status/'.$event->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+    
+<div class="row">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">Do you want to issue tickets for this event?</span> </div>
+    
+<div class="pull-right ws-form-check text-center">
+@if($event->ticketstate == "on")
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+{{ csrf_field() }}   
 </div>
+    
+    
+</div>    
+</div> 
+</form> 
+    
+ 
+<div class="row">
+    
+<div class="table-responsive ws-table-container">
 
+<table class="table ws-table">
+<thead class="ws-table-head">
+<tr>
+<th class="text-center">Image</th>  
+<th class="text-left">Title</th>
+<th class="text-left">Date</th>
+<th class="text-left">Time</th>
+<th class="text-left">Location</th>
+<th class="text-center">Published</th>
+
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody class="ws-table-body">
+
+
+
+
+</tbody>
+</table>
+
+</div><!-- ws-table-container -->   
+    
+    
 
     
-</form>
+    
+</div>   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+</div>    
+    
+    
+    
+    
+    
+    
     
 </div>
 

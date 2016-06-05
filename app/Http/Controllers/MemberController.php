@@ -55,7 +55,7 @@ class MemberController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/members/images/';
+        $imageUploadPath = 'uploads/members/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -293,15 +293,12 @@ class MemberController extends Controller
           $allmembers = Member::select('*')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
           $pubmembers = DB::table('members')
                       ->join('designations', 'members.designations_id', '=', 'designations.id')
-                      ->where('members.status' , '=', 'on')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+                      ->where('members.status' , '=', 'on')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
         
           $unpmembers = Member::whereNull('status')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
          
 
           return View::make('backend/members', array('title' => 'Members | Published','members' => $pubmembers, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));
-        
-        
-        
     }
     
     public function getunpublished(){         
@@ -311,7 +308,7 @@ class MemberController extends Controller
           $unpmembers = DB::table('members')
                       ->join('designations', 'members.designations_id', '=', 'designations.id')
                       ->where('members.status' , '=', NULL)
-                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+                      ->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
          
 
           return View::make('backend/members', array('title' => 'Members | Unpublished','members' => $unpmembers, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));
@@ -320,24 +317,22 @@ class MemberController extends Controller
     
     public static function gettopmembers(){
         
-//    $principle = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Principle')->select(*)->first();
+        $president = DB::table('members')->join('designations', 'members.designations_id', '=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'President')->select('*')->first();
         
-//        $president = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')
-//                     ->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'President')->select(*)->first();
-//        
-//        $generalsec= DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')
-//                     ->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'General Secratary')->select(*)->first();
+        $generalsec = DB::table('members')->join('designations', 'members.designations_id','=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'General Secretary')->select('*')->first();
         
-//        $topmembers = array('principle' => $principle);
-//        
-//        
-//        return $topmembers;
+        $treasurer = DB::table('members')->join('designations', 'members.designations_id','=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Treasurer')->select('*')->first();
+
+        
+        $topmembers = array('president' => $president,'generalsec' => $generalsec,'treasurer' => $treasurer);
+      
+        return $topmembers;
         
     }
     
     public static function getpastpresidents(){
         
-        $pastpresidents = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Past President')->select('*')->get();
+        $pastpresidents = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Past President')->select('*')->orderBy('members.year', 'desc')->get();
         
         return $pastpresidents;
         
@@ -345,14 +340,14 @@ class MemberController extends Controller
     
     public static function getcommittee(){
         
-       $committee = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '!=', 'Batch Representative')->where('designations.designation' , '!=', 'Past President')->select('*')->orderBy('designations.id', 'asc')->get(); 
+        $committee = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '!=', 'Batch Representative')->where('designations.designation' , '!=', 'Past President')->select('*')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->get(); 
         
         return $committee;
     }
     
     public static function getbatchreps(){
         
-       $batchreps = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Batch Representative')->select('*')->get(); 
+        $batchreps = DB::table('members')->join('designations', 'members.designations_id', '=', 'designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Batch Representative')->select('*')->orderBy('members.year', 'desc')->get(); 
         
         return $batchreps;
     }
@@ -365,9 +360,11 @@ class MemberController extends Controller
                       ->where('members.fullname', 'LIKE', '%'.$searchkey.'%')->orWhere('designations.designation', 'LIKE', '%'.$searchkey.'%')->orWhere('members.year', 'LIKE', '%'.$searchkey.'%')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
         
         
-         $allmembers = Member::select('*')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'p');
-         $pubmembers = Member::where('status','=','on')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
-         $unpmembers = Member::whereNull('status')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+         $allmembers = DB::table('members')
+                    ->join('designations', 'members.designations_id', '=', 'designations.id')->select('members.id','members.fullname','members.year','members.imagepath','members.email','members.contact','members.status','designations.designation')->orderBy('designations.id', 'asc')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+          
+         $pubmembers = Member::where('status','=','on')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
+         $unpmembers = Member::whereNull('status')->orderBy('members.year', 'desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/members', array('title' => 'Members','members' => $members, 'all' => $allmembers, 'active' => $pubmembers,'inactive' => $unpmembers));         
         

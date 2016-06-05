@@ -27,20 +27,55 @@
     </div>
 </div>
 </div>
-
+    
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
+<div class="form-group">
+<label class="font-main font-15px-600">Select Event Type</label>
+    
+{{ Form::select(
+    'type',
+    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event', 'parade' => 'Psycho Parade'),
+    null,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+
+</div> 
+</div>    
+</div>
+
+<label class="font-main font-15px-600">Event Date</label> 
+<div class="row">
+<div class="col-md-3">
+<div class="form-group">
+
+{{ Form::select(
+    'month',
+    array('Jan' => 'January','Feb' => 'February', 'Mar' => 'March', 'Apr' => 'April', 'May' => 'May', 'June' => 'June', 'July' => 'July', 'Aug' => 'August', 'Sept' => 'September', 'Oct' => 'October', 'Nov' => 'November', 'Dec' => 'December'),
+    null,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+    
+</div> 
+</div>
+<div class="col-md-3">
     <div class="form-group">
-         <label class="font-main font-15px-600">Event Date</label> 
-        <input type="date" class="form-control" name="date" placeholder="Event Date" required>
+        <input type="text" class="form-control" name="day" required placeholder="Day">
+    </div>
+</div>
+<div class="col-md-3">
+    <div class="form-group">
+        <input type="text" class="form-control" name="year" required placeholder="Year">
     </div>
 </div>
 </div>
+   
 
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <!-- <label class="font-main font-15px-600">Event Time</label> -->
         <input type="text" class="form-control" name="time" placeholder="Event Time" required>
     </div>
 </div>
@@ -72,10 +107,38 @@
 <div class="row">
     <div class="col-md-12">
     <div class="form-group">
-        <textarea class="form-control textarea" name="description" placeholder="Event Description" required></textarea>
+        <textarea class="form-control textarea" name="description" placeholder="Event Description" maxlength="8000" cols="20" wrap="hard" required></textarea>
     </div>
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="facebook" placeholder="Facebook Link" >
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="twitter" placeholder="Twitter Link" >
+    </div>
+</div>
+</div>
+    
+<div class="row">
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="linkedin" placeholder="LinkedIn Link" >
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <input type="url" class="form-control" name="google" placeholder="Google+ Link" >
+    </div>
+</div>
+</div>
+
+    
     
 {{ csrf_field() }}
     

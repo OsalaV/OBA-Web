@@ -82,26 +82,26 @@
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
-@if ($post->mediastate == "true" && Session::get('DELETE') == "on")
+@if ($post->imagestate == "true" && Session::get('DELETE') == "on")
 <a href="{{ URL::to('posts-delete-image/'.$post->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Image</a>
 @endif
 
 </div>
     
 <div class="panel-body ws-formpanel-body">
-@if ($post->mediastate == "true")
+@if ($post->imagestate == "true")
 <div class="row">
-<img class="ws-form-imagepreview" src="{{ asset($post->mediapath) }}">
+<img class="ws-form-imagepreview" src="{{ asset($post->imagepath) }}">
 </div>
 @else
 <div class="alert alert-warning fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Warning!</strong> {{ $post->mediapath }}
+  <strong>Warning!</strong> {{ $post->imagepath }}
 </div>
 @endif
 
     
-@if ($post->mediastate == "false" || $post->mediastate == NULL)
+@if ($post->imagestate == "false" || $post->imagestate == NULL)
 <form action="{{ URL::to('posts-edit-image/'.$post->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
  
 <div class="row">

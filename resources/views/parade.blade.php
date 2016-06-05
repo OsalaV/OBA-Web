@@ -15,9 +15,9 @@
 <div class="container">
 <div class="row parade-img-row">    
 <h2 class="font-header-large color-black">PSYCHO <small class="color-yellow">PARADE</small></h2>
-
-<img class="header-image" src="{{asset('images/parade/banner.jpg')}}">
-     
+@if($event->imagestate == 'true')
+<img class="header-image" src="{{asset($event->imagepath)}}">
+@endif    
     
 </div>
 
@@ -25,16 +25,16 @@
   
 <div class="col-md-2 timebox">
 <time>
-<span class="day">16</span>
-<span class="month">MAR</span>
-<span class="year">2017</span>
+<span class="day">{{$event->day}}</span>
+<span class="month">{{$event->month}}</span>
+<span class="year">{{$event->year}}</span>
 </time>    
 </div>
     
 <div class="col-md-10 infobox">
 <div class="info">
-    <h2 class="title"><i class="fa fa-map-marker fa-lg hidden-xs"></i> D.S.Senanayake College, Colombo 7</h2>
-    <p class="desc"><i class="fa fa-clock-o fa-lg hidden-xs"></i> 9.00 AM</p>
+    <h2 class="title"><i class="fa fa-map-marker fa-lg hidden-xs"></i> {{$event->location}}</h2>
+    <p class="desc"><i class="fa fa-clock-o fa-lg hidden-xs"></i> {{$event->time}}</p>
 </div>    
 </div>
 
@@ -65,11 +65,7 @@
     
     
 <div class="col-md-6 col-sm-12">
-<p id="para-1" class="font-para-15 color-darkblue animated">
-    Nulla nulla tellus, tincidunt vel eros gravida, cursus cursus nisl. Nullam ac magna nisi. Integer dictum sagittis vulputate. Nulla a purus felis. Nam nec egestas justo. Nunc id risus neque. Pellentesque vestibulum lectus sed ex efficitur lacinia. Sed efficitur nunc sed rhoncus tempor. Quisque ultricies
-    <br /><br />
-    Maecenas dignissim, metus a luctus lacinia, nisl purus commodo tortor, vel rutrum urna arcu non massa. Quisque tellus velit, dignissim interdum enim in, sodales suscipit purus. Curabitur et tincidunt elit. Phasellus pulvinar bibendum dapibus. Sed mollis sapien in justo tincidunt, quis venenatis orci ornare. Proin sed nisi ut diam volutpat malesuada. Nullam cursus aliquet nunc 
-</p>
+<p id="para-1" class="font-para-15 color-darkblue animated">{{$event->description}}</p>
 </div>
 
 <!--</div>-->

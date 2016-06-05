@@ -47,7 +47,7 @@ class PostController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/posts/images/';
+        $imageUploadPath = 'uploads/posts/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         

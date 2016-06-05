@@ -855,6 +855,10 @@ a:hover {
     background-color: #D9A111;
 }
 
+.fa-linkedin:hover { 
+    background-color: #D9A111;
+}
+
 
 .tickets-row{
     margin-top: 25px;
@@ -863,7 +867,7 @@ a:hover {
 
 @media (max-width: 760px) {
 .tickets-row{
-    margin-top: 0px;
+    margin-top: 10px;
     padding: 0px;
 }
 }
@@ -1205,3 +1209,5 @@ a:hover {
     background-color: #fff;
     border: none;
 }
+
+

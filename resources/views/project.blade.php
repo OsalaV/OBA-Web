@@ -24,7 +24,7 @@
 </div>   
     
 <div class="row post-details-row">
-<span class="post-tags"><i class="fa fa-hashtag"></i> Project conducted by DS OBA and 2011 batch</span>
+<span class="post-tags">{{$project->tagline}}</span>
 </div>
 
     
@@ -39,7 +39,11 @@
 <p class="font-para-15 color-darkblue">{{$project->description}}</p>
 </div>
     
-    
+@if($project->resourcestate == 'true')
+<div class="row tickets-row">					
+<a class="" href="{{ URL::to('projects-download-resource/'.$project->id) }}">Download Resource Files</a>	
+</div>
+@endif   
     
     
     

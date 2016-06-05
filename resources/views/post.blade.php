@@ -21,10 +21,11 @@
 <div class="row post-header-row">
 <span class="font-header-25px color-black">{{$post->title}}</span>
 </div>   
-    
+ 
+
 <div class="row post-details-row">
-<span class="post-tags"><i class="fa fa-calendar"></i> 26th June 2016</span>&nbsp;
-<span class="post-tags"><i class="fa fa-clock-o"></i> at 6.30 PM</span>
+<span class="post-tags"><i class="fa fa-calendar"></i> {{$post->updated_at->toFormattedDateString()}}</span>&nbsp;
+<span class="post-tags"><i class="fa fa-clock-o"></i> {{'at '.$post->updated_at->toTimeString()}}</span>
 </div>
 
     

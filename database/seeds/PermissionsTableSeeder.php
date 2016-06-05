@@ -18,6 +18,7 @@ class PermissionsTableSeeder extends Seeder
         ['permission' => 'PROJECTS','priority' => 'default','privilages' => 'Allows to view and edit projects'],
         ['permission' => 'MEMBERS','priority' => 'default','privilages' => 'Allows to view and edit members'],
         ['permission' => 'GUESTS','priority' => 'high','privilages' => 'Allows to view guest users'],
+        ['permission' => 'TICKETS','priority' => 'high','privilages' => 'Allows to view ticket transactions'],
         ['permission' => 'MESSAGES','priority' => 'default','privilages' => 'Allows to view user messages'],
         ['permission' => 'ACTIVITIES','priority' => 'high','privilages' => 'Allows to view user activities'],
         ['permission' => 'SETTINGS','priority' => 'default','privilages' => 'Allows to view settings'],

@@ -27,7 +27,8 @@
     Route::get('/', ['uses' => 'IndexController@index']);
      
     Route::get('events', ['uses' => 'IndexController@events']);
-    Route::get('events-show/{id}', ['uses' => 'IndexController@showevent']);
+    Route::get('events-show/{id}', ['uses' => 'IndexController@showpublicevent']);
+    Route::get('schoolevents-show/{id}', ['uses' => 'IndexController@showschoolevent']);
      
     Route::get('parade', ['uses' => 'IndexController@parade']);
     

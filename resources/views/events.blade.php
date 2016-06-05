@@ -16,13 +16,13 @@
 <!--<h2 class="font-header-large color-black">UPCOMMING <small class="color-yellow">EVENTS </small></h2>-->
   
 <ul class="bxslider"> 
-@foreach($events as $event)
+@foreach($pubevents as $pubevent)
 <li>
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="thumbnail port-thumb">
-<a href="{{ URL::to('events-show/'.$event->id) }}">
-<img src="{{asset($event->imagepath)}}" alt="">
+<a href="{{ URL::to('events-show/'.$pubevent->id) }}">
+<img src="{{asset($pubevent->imagepath)}}" alt="">
 </a>
 </div>
 
@@ -39,13 +39,9 @@
 <h2 class="font-header-large color-black">SCHOOL <small class="color-yellow">EVENTS </small></h2>
     
 <div class="porto">
-
-<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-<div class="pf" data-pf-image="{{asset('images/events/1.jpg')}}" data-pf-title="" data-pf-onclick=""></div>
-    
-    
+@foreach($schoolevents as $schoolevent)
+<div class="pf" data-pf-image="{{asset($schoolevent->imagepath)}}" data-pf-title="{{$schoolevent->title}}" data-pf-onclick="{{ URL::to('schoolevents-show/'.$schoolevent->id) }}"></div>
+@endforeach       
 </div> 
     
     

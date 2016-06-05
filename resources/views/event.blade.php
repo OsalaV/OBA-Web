@@ -7,7 +7,7 @@
 <!--*************************CONTENT*****************************-->  
 <main>   
 <script type="text/javascript">      
-    var page='Event';
+    var page='Events';
 </script>
 
 <section class="well temp-section background-white">
@@ -21,10 +21,18 @@
 <div class="col-md-6 parade-social-icon-container text-right"> 
     
 <div id="div-parade-social" class="parade-social animated">
-  <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
-  <a class="fa fa-twitter" title="" target="_blank" href="#"></a>
-  <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
-  <a class="fa fa-instagram" title="" target="_blank" href="#"></a>
+  @if($event->facebook != NULL)
+  <a class="fa fa-facebook" title="" target="_blank" href="{{$event->facebook}}"></a>
+  @endif
+  @if($event->twitter != NULL)
+  <a class="fa fa-twitter" title="" target="_blank" href="{{$event->twitter}}"></a>
+  @endif
+  @if($event->google != NULL)
+  <a class="fa fa-google-plus" title="" target="_blank" href="{{$event->google}}"></a>
+  @endif
+  @if($event->linkedin != NULL)
+  <a class="fa fa-linkedin" title="" target="_blank" href="{{$event->linkedin}}"></a>
+  @endif
 </div>    
     
 </div>    
@@ -38,9 +46,10 @@
   
 <div class="col-md-2 timebox">
 <time>
-<span class="day">4</span>
-<span class="month">Jul</span>
-<span class="year">2016</span>
+
+<span class="day">{{$event->day}}</span>
+<span class="month">{{$event->month}}</span>
+<span class="year">{{$event->year}}</span>
 </time>    
 </div>
     
@@ -59,8 +68,12 @@
 {{$event->description}}
 </p>
 </div>
-    
-    
+
+@if($event->resourcestate == 'true')
+<div class="row tickets-row">					
+<a class="" href="{{ URL::to('events-download-resource/'.$event->id) }}">Download Resource Files</a>	
+</div>
+@endif  
 
 <div class="row tickets-row">   
 

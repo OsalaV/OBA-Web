@@ -24,11 +24,19 @@
     </div>
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="text" class="form-control" name="tagline" autocomplete="off" placeholder="Tagline">
+    </div>
+</div>
+</div>
 
 <div class="row">
     <div class="col-md-12">
     <div class="form-group">
-        <textarea class="form-control textarea" name="description" placeholder="Project Description" required></textarea>
+        <textarea class="form-control textarea" name="description" placeholder="Project Description" required maxlength="8000" cols="20" wrap="hard"></textarea>
     </div>
 </div>
 </div>
@@ -37,7 +45,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <label class="font-main font-15px-600">Project Image (width = 370,height = 370px)</label>
+        <label class="font-main font-15px-600">Project Image</label>
         <input type="file" class="form-control" name="image[]" placeholder="Project Image" multiple="" required>
     </div>
 </div>

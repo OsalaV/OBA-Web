@@ -112,85 +112,83 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
     
 <!--end of news section-->    
 		    
-		<section class="well temp-section background-ash">
-		<div class="container no-padding">
-		<div class="row">
-		 
-		<div class="col-md-6 col-sm-6 col-xs-12">
-		<h2 class="font-header-large color-black">purposes</h2>
+<section class="well temp-section background-ash">
+<div class="container no-padding">
+<div class="row">
 
-		<p class="font-para-14 color-darkblue">
-		Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tempus est. Mauris eu augue lorem. Suspendisse sit amet vehi cula nisl, nec faucibus nisl. Proin ac fermentum orci, non semper metus. Nulla nulla tellus
-		</p>
-		    
-		<div class="num-list">
-		   <ol id="list-1">
-		      <li><p class="animated">Fusce itae orci nec velit ornare rhon</p></li>
-		      <li><p class="animated">Ecus ut tempus estauris eu augue lorem.</p></li>
-		      <li><p class="animated">Suspendisse sit amet vehicula</p></li>
-		      <li><p class="animated">Anisl, nec faucibus nislroin ac fermentum</p></li>
-		      <li><p class="animated">Horci, non semper metusulla nulla</p></li>
-		      <li><p class="animated">Dellus, tincidunt vel eros gravida, cursu</p></li>
-		      <li><p class="animated">Nullam ac magna nisi. Integer</p></li>
-		      <li><p class="animated">Dictum sagittis vulputate ulla a purus</p></li>
-		   </ol>
-		</div>
-		    
+<div class="col-md-6 col-sm-6 col-xs-12">
+<h2 class="font-header-large color-black">purposes</h2>
 
-		</div>
-		    
-		<div class="col-md-6 col-sm-6 col-xs-12">
-<!--		<h2 class="font-header-large color-black">testimonial</h2>-->
-		<blockquote class="media offs3">   
-		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../images/testimonial/1.jpg" alt="">
-		    </div>             
-		    <div class="media-body media-rp-body">              
-		      <p class="font-para-14 color-darkblue">       
-		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul      
-		      </p>
-		      <cite class="color-lightblue">
-		        Susantha Dissanayake<br />
-		        President
-		      </cite>
-		    </div>
-		</blockquote>
-		    
-		<blockquote class="media offs3">   
-		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../images/testimonial/2.jpg" alt="">
-		    </div>             
-		    <div class="media-body media-rp-body">              
-		      <p class="font-para-14 color-darkblue">       
-		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
-		      </p>
-		      <cite class="color-lightblue">
-		        Shiraj Inimankada<br />
-		        General Secretary
-		      </cite>
-		    </div>
-		</blockquote>
-		    
-		<blockquote class="media offs3">   
-		    <div class="media-left media-rp-left">
-		      <img class="img-circle" src="../images/testimonial/3.jpg" alt="">
-		    </div>             
-		    <div class="media-body media-rp-body">              
-		      <p class="font-para-14 color-darkblue">       
-		        Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tem pus est. Mauris eu aug ue lorem. Suspendisse sit amet vehi cul        
-		      </p>
-		      <cite class="color-lightblue">
-		        Pasad Weerasekera<br />
-		        Treasurer
-		      </cite>
-		    </div>
-		</blockquote>
-		    
-		</div>
-		</div>
-		</div>
-		</section>    
-		<!--end of purpose section--> 
+<p class="font-para-14 color-darkblue">
+Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tempus est. Mauris eu augue lorem. Suspendisse sit amet vehi cula nisl, nec faucibus nisl. Proin ac fermentum orci, non semper metus. Nulla nulla tellus
+</p>
+
+<div class="num-list">
+   <ol id="list-1">
+      <li><p class="animated">Fusce itae orci nec velit ornare rhon</p></li>
+      <li><p class="animated">Ecus ut tempus estauris eu augue lorem.</p></li>
+      <li><p class="animated">Suspendisse sit amet vehicula</p></li>
+      <li><p class="animated">Anisl, nec faucibus nislroin ac fermentum</p></li>
+      <li><p class="animated">Horci, non semper metusulla nulla</p></li>
+      <li><p class="animated">Dellus, tincidunt vel eros gravida, cursu</p></li>
+      <li><p class="animated">Nullam ac magna nisi. Integer</p></li>
+      <li><p class="animated">Dictum sagittis vulputate ulla a purus</p></li>
+   </ol>
+</div>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+
+<blockquote class="media offs3">   
+    <div class="media-left media-rp-left">
+      <img class="img-circle" src="{{asset($topmembers['president']->imagepath)}}" alt="">
+    </div>             
+    <div class="media-body media-rp-body">              
+      <p class="font-para-14 color-darkblue">       
+        {{$topmembers['president']->message }}
+      </p>
+      <cite class="color-lightblue">
+        {{$topmembers['president']->fullname}}<br />
+        {{$topmembers['president']->designation}}
+      </cite>
+    </div>
+</blockquote>
+
+<blockquote class="media offs3">   
+    <div class="media-left media-rp-left">
+      <img class="img-circle" src="{{asset($topmembers['generalsec']->imagepath)}}" alt="">
+    </div>             
+    <div class="media-body media-rp-body">              
+      <p class="font-para-14 color-darkblue">       
+        {{$topmembers['generalsec']->message }}        
+      </p>
+      <cite class="color-lightblue">
+        {{$topmembers['generalsec']->fullname}}<br />
+        {{$topmembers['generalsec']->designation}}
+      </cite>
+    </div>
+</blockquote>
+
+<blockquote class="media offs3">   
+    <div class="media-left media-rp-left">
+      <img class="img-circle" src="{{asset($topmembers['treasurer']->imagepath)}}" alt="">
+    </div>             
+    <div class="media-body media-rp-body">              
+      <p class="font-para-14 color-darkblue">       
+        {{$topmembers['treasurer']->message }}         
+      </p>
+      <cite class="color-lightblue">
+        {{$topmembers['treasurer']->fullname}}<br />
+        {{$topmembers['treasurer']->designation}}
+      </cite>
+    </div>
+</blockquote>
+
+</div>
+</div>
+</div>
+</section>    
+<!--end of purpose section--> 
 		    
 </main>
 

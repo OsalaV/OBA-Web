@@ -7,7 +7,6 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ActivityController;
 
 use Illuminate\Support\Facades\Request;
-//use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Slider;
 
@@ -39,7 +38,7 @@ class SliderController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/sliderimages/';
+        $imageUploadPath = 'uploads/sliderimages/';
         $files           = Input::file('sliderimages');
         
         $images_result = UploadController::upload($files,$imageUploadPath);

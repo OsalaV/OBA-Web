@@ -46,7 +46,7 @@ class EventController extends Controller
     
     public function uploadResource(){
         
-        $resourceUploadPath = '/public/uploads/events/resources/';
+        $resourceUploadPath = 'uploads/events/resources/';
         $resourcepath       = "";
         $resources          = Input::file('resource');    
         
@@ -67,7 +67,7 @@ class EventController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/events/images/';
+        $imageUploadPath = 'uploads/events/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -92,11 +92,19 @@ class EventController extends Controller
         
         $event = new Event;
         
-        $event->title         = Input::get('title'); 
-        $event->date          = Input::get('date'); 
+        $event->title         = Input::get('title');
+        $event->type          = Input::get('type');
+        $event->month         = Input::get('month'); 
+        $event->day           = Input::get('day'); 
+        $event->year          = Input::get('year'); 
         $event->time          = Input::get('time');
         $event->location      = Input::get('location');                  
         $event->description   = Input::get('description'); 
+        $event->facebook      = Input::get('facebook');
+        $event->twitter       = Input::get('twitter');
+        $event->linkedin      = Input::get('linkedin');
+        $event->google        = Input::get('google');
+        
         
         if(Input::hasFile('image')){
             $image_upload_result = $this->uploadImage();
@@ -109,8 +117,7 @@ class EventController extends Controller
             $event->resourcepath  = $resource_upload_result['resourcepath'];
             $event->resourcestate = $resource_upload_result['resourcestate'];
         }
-         
-
+        
         if($event->save()){
             //save activity
             $activity_task = "Event : ".$event->title." has been added";
@@ -140,11 +147,18 @@ class EventController extends Controller
         
         $event = Event::where('id' , '=', $id)->first(); 
         
-        $event->title        = Input::get('title'); 
-        $event->date         = Input::get('date'); 
-        $event->time         = Input::get('time');
-        $event->location     = Input::get('location');                  
-        $event->description  = Input::get('description');
+        $event->title         = Input::get('title');
+        $event->type          = Input::get('type');
+        $event->month         = Input::get('month'); 
+        $event->day           = Input::get('day'); 
+        $event->year          = Input::get('year'); 
+        $event->time          = Input::get('time');
+        $event->location      = Input::get('location');                  
+        $event->description   = Input::get('description'); 
+        $event->facebook      = Input::get('facebook');
+        $event->twitter       = Input::get('twitter');
+        $event->linkedin      = Input::get('linkedin');
+        $event->google        = Input::get('google');
         
         if($event->save()){
             //save activity
@@ -405,17 +419,41 @@ class EventController extends Controller
         
     }
     
-    public static function getevents(){
+    public static function getpublicevents(){
         
-         $events = Event::where('status' , '=', 'on')->get(); 
+         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->get(); 
         
          return $events;
         
     }
     
-    public static function getevent($id){
+    public static function getschoolevents(){
         
-         $event = Event::where('id' , '=', $id)->first(); 
+         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'private')->get(); 
+        
+         return $events;
+        
+    }
+    
+    public static function getpublicevent($id){
+        
+         $event = Event::where('id' , '=', $id)->where('type' , '=', 'public')->first(); 
+        
+         return $event;
+        
+    }
+    
+    public static function getschoolevent($id){
+        
+         $event = Event::where('id' , '=', $id)->where('type' , '=', 'private')->first(); 
+        
+         return $event;
+        
+    }
+    
+    public static function getparadedetails(){
+        
+         $event = Event::where('type' , '=', 'parade')->first(); 
         
          return $event;
         

@@ -46,7 +46,7 @@ class ProjectController extends Controller
     
     public function uploadResource(){
         
-        $resourceUploadPath = '/public/uploads/projects/resources/';
+        $resourceUploadPath = 'uploads/projects/resources/';
         $resourcepath       = "";
         $resources          = Input::file('resource');    
         
@@ -67,7 +67,7 @@ class ProjectController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/projects/images/';
+        $imageUploadPath = 'uploads/projects/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -93,6 +93,7 @@ class ProjectController extends Controller
         $project = new Project;
         
         $project->title        = Input::get('title');                  
+        $project->tagline      = Input::get('tagline');                  
         $project->description  = Input::get('description');   
         
              
@@ -138,7 +139,8 @@ class ProjectController extends Controller
         
         $project = Project::where('id' , '=', $id)->first(); 
         
-        $project->title        = Input::get('title');                   
+        $project->title        = Input::get('title');
+        $project->tagline      = Input::get('tagline');      
         $project->description  = Input::get('description');
         
         if($project->save()){

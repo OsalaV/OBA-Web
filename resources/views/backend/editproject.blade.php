@@ -19,11 +19,19 @@
     </div>
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="text" class="form-control" name="tagline" autocomplete="off" placeholder="Tagline" value="{{$project->tagline}}">
+    </div>
+</div>
+</div>
 
 <div class="row">
     <div class="col-md-12">
     <div class="form-group">
-        <textarea class="form-control textarea" name="description" placeholder="Project Description" required>{{$project->description}}</textarea>
+        <textarea class="form-control textarea" name="description" placeholder="Project Description" required maxlength="8000" cols="20" wrap="hard">{{$project->description}}</textarea>
     </div>
 </div>
 </div>
