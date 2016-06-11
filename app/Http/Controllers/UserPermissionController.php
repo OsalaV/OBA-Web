@@ -26,7 +26,7 @@ class UserPermissionController extends Controller
     
     public function __construct()
 	{        
-        $this->middleware('auth');
+        $this->middleware('admin');
 	}
     
     public static function setdefaultpermissions($userid){
@@ -50,6 +50,25 @@ class UserPermissionController extends Controller
                 $permission->permissions_id = $permissions[$i]->id;
             }
             
+            $permission->save();
+            
+        }
+        
+    }
+    
+    public static function setfullpermissions($userid){
+        
+        $permissions = PermissionController::getpermissions();
+        $permission_count = count($permissions);
+        
+        for($i=0;$i<$permission_count;$i++){
+            
+            $permission = new UserPermission;
+            
+            $permission->users_id       = $userid;
+            $permission->permissions_id = $permissions[$i]->id;
+            $permission->status         = "on";
+                
             $permission->save();
             
         }

@@ -58,7 +58,7 @@
   <li><a href="#">Edit My Profile</a></li>
   <li class="divider"></li>
 -->
-  <li><a href="{{ URL::to('auth/logout') }}">Log Out</a></li>
+  <li><a href="{{ URL::to('admin-logout') }}">Log Out</a></li>
 </ul>
 </div><!-- ws-navpanel-right -->     
 </div><!-- ws-nav-container -->

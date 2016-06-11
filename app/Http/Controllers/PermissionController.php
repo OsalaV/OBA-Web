@@ -25,14 +25,14 @@ class PermissionController extends Controller
     
     public function __construct()
 	{        
-        $this->middleware('auth');
+        $this->middleware('admin');
 	}
     
     public function index()
     {
          $permissions = Permission::all(); 
         
-         return View::make('backend/permissions', array('title' => 'User Permissions', 'permissions' => $permissions));
+         return View::make('backend/permissions', array('title' => 'Admin Permissions', 'permissions' => $permissions));
     }
     
     public static function getdefaultpermissions(){

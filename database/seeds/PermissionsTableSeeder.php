@@ -27,8 +27,8 @@ class PermissionsTableSeeder extends Seeder
         ['permission' => 'BRANCHES','priority' => 'default','privilages' => 'Allows to view and edit branches'],
         ['permission' => 'RESOURCES','priority' => 'default','privilages' => 'Allows to view and edit resources'],
         ['permission' => 'DESIGNATIONS','priority' => 'high','privilages' => 'Allows to view and edit member designations'],
-        ['permission' => 'USERS','priority' => 'high','privilages' => 'Allows to view and edit users'],
-        ['permission' => 'USER PERMISSIONS','priority' => 'high','privilages' => 'Allows to view and edit user permissions'],
+        ['permission' => 'ADMINS','priority' => 'high','privilages' => 'Allows to view and edit admin'],
+        ['permission' => 'ADMIN PERMISSIONS','priority' => 'high','privilages' => 'Allows to view and edit admin permissions'],
         ['permission' => 'DELETE','priority' => 'default','privilages' => 'Allows to delete records and resources'],
         ]);
         

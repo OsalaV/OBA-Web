@@ -20,7 +20,7 @@
 <div class="row">
 <div class="col-md-12">
     <div class="form-group">
-        <input type="text" class="form-control" name="title" autocomplete="off" placeholder="Project Title" required>
+        <input type="text" class="form-control" name="title" placeholder="Project Title" required>
     </div>
 </div>
 </div>
@@ -28,7 +28,7 @@
 <div class="row">
 <div class="col-md-12">
     <div class="form-group">
-        <input type="text" class="form-control" name="tagline" autocomplete="off" placeholder="Tagline">
+        <input type="text" class="form-control" name="tagline" placeholder="Tagline">
     </div>
 </div>
 </div>

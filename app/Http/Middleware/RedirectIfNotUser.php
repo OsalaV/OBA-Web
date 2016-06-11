@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class RedirectIfNotUser
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, $guard = 'user')
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('user-profile');
+        if (!Auth::guard($guard)->check()) {
+            return redirect('login');
         }
 
         return $next($request);

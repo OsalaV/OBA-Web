@@ -83,7 +83,7 @@
 <div class="panel-heading ws-formpanel-heading clearfix">
 <span class="pull-left">Image Settings</span>
 @if ($post->imagestate == "true" && Session::get('DELETE') == "on")
-<a href="{{ URL::to('posts-delete-image/'.$post->id) }}" class="ws-form-action-btn-red pull-right hidden-xs">Delete Image</a>
+<a class="ws-form-action-btn-red pull-right hidden-xs ws-open-msg" data-url="{{ URL::to('posts-delete-image/'.$post->id) }}" data-message = "Are you sure you want to delete this image?" data-toggle="modal" data-target="#meesageModel">Delete Image</a>  
 @endif
 
 </div>

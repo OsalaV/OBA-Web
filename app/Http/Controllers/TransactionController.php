@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\User;
 
 use Session;
 use View;
@@ -21,20 +17,17 @@ use File;
 use URL;
 use Hash;
 
-class DashboardController extends Controller
+class TransactionController extends Controller
 {
     
     public function __construct()
 	{        
-        $this->middleware('admin');
+        $this->middleware('auth');
 	}
     
-    
-    public function index()
-    {
-        return View::make('backend/dashboard', array('title' => 'Dashboard'));
+    public function index(){
+        return View::make('backend/users', array('title' => 'Users', 'users' => $users));
     }
-    
     
     
     

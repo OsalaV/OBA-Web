@@ -60,7 +60,7 @@
 <td class="text-left">{{$activity->activity}}</td>
 <td class="text-left">{{$activity->type}}</td>
 <td class="text-left">{{$activity->updated_at}}</td>
-<td class="text-left">{{$activity->fullname}}</td>
+<td class="text-left">{{$activity->firstname.' '.$activity->lastname}}</td>
 <td class="text-center">
 <a href="{{ URL::to('activities-view/'.$activity->type.'/'.$activity->referenced_id) }}" class="ws-tablepage-action-btn">View</a> 
 </td>

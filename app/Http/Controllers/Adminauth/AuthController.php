@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Adminauth;
 
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserPermissionController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -41,7 +42,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-//     protected $redirectTo = 'events';
+    
+	protected $guard = 'admin';
     
     
     
@@ -71,75 +73,53 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    public function showLogin()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+//        if(view()->exists('auth.adminlogin')) {
+//            return view('auth.adminlogin');
+//        }       
+        
+        return view('auth.adminlogin');
     }
     
-    public function storeuser(){
-        
-        $user = new User;
-        
-        $user->firstname        = Input::get('firstname');
-        $user->lastname         = Input::get('lastname'); 
-        $user->email            = Input::get('email'); 
-        $user->password         = Hash::make(Input::get('password'));
-        $user->month            = Input::get('month'); 
-        $user->day              = Input::get('day'); 
-        $user->year             = Input::get('year'); 
-        $user->nic              = Input::get('nic'); 
-        $user->address          = Input::get('address');
-        $user->contact          = Input::get('contact'); 
- 
-        
-        if($user->save()){ 
-            return redirect('login')->with('success', 'You have been successfuly registerd with us. Please login to continue this process.');
-        }
-        else{
-            return redirect('login')->with('message', 'There are some problems with your registration. Please Try again.');
-        }
-        
-    }
     
     public function authenticate()
     {
         $email    = Input::get('email');
         $password = Input::get('password');
         
-        if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
             
-            $user = Auth::guard('user')->user();              
+            $user = Auth::guard('admin')->user();          
+ 
             
-            if($user->role == "user"){
-                Session::put('user',$user);    
-                return redirect('user-profile'); 
+            if($user->role == "admin" || $user->role == "superadmin"){
+                Session::put('user',$user);  
+                $this->setpermissionstosession($user->id);
+                return redirect('dashboard-view'); 
             }
             else{                 
-                return redirect('login?auth=attempt==failed');
+                return redirect('admin-login?auth=attempt==failed');
             }
             
         }
         else{
-            return redirect('login?auth=attempt==failed');
+            return redirect('admin-login?auth=attempt==failed');
         }
     }
     
     public function logout(){
-        Auth::guard('user')->logout();
+        Auth::guard('admin')->logout();
         Session::flush();
-        return redirect('login?logout=success==true');
+        return redirect('admin-login?logout=success==true');
     }
     
-    
+    private function setpermissionstosession($userid){
+        
+        $userpermissions = UserPermissionController::getuserpermissions($userid);             
+        foreach($userpermissions as $userpermission){
+        Session::put($userpermission->permission, $userpermission->status);   
+        }        
+    }
     
 }

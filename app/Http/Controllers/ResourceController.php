@@ -28,7 +28,7 @@ class ResourceController extends Controller
     
     public function __construct()
 	{        
-        $this->middleware('auth');
+        $this->middleware('admin');
 	}
     
     
@@ -48,7 +48,7 @@ class ResourceController extends Controller
     
     public function uploadResource(){
         
-        $resourceUploadPath = '/public/uploads/resources/resources/';
+        $resourceUploadPath = 'uploads/resources/resources/';
         $resourcepath       = "";
         $resources          = Input::file('resource');    
         
@@ -69,7 +69,7 @@ class ResourceController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = '/public/uploads/resources/images/';
+        $imageUploadPath = 'uploads/resources/images/';
         $imagepath       = "";
         $files           = Input::file('image');
         

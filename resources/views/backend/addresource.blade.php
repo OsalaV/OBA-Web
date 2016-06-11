@@ -20,7 +20,7 @@
 <div class="row">
 <div class="col-md-12">
     <div class="form-group">
-        <input type="text" class="form-control" name="resource" autocomplete="off" placeholder="Resource Name" required>
+        <input type="text" class="form-control" name="resource" placeholder="Resource Name" required>
     </div>
 </div>
 </div>

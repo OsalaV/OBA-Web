@@ -130,7 +130,7 @@
 <center>
 
 <div class="selfie-creative-btn">						
-<a class="btn btn-1 btn-1c" href="{{ URL::to('user-login') }}">Grab your tickets now</a>	
+<a class="btn btn-1 btn-1c" href="{{ URL::to('login') }}">Grab your tickets now</a>	
 </div>
    
     

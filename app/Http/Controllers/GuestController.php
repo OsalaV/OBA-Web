@@ -7,26 +7,40 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Guest;
+use App\User;
 
+use Session;
 use View;
+use Input;
+use Redirect;
+use Validator;
+use Response;
+use Auth;
+use File;
+use URL;
+use Hash;
 
 class GuestController extends Controller
 {
     public function __construct()
 	{        
-        $this->middleware('auth');
+        $this->middleware('admin');
 	}
     
     public function index()
     {
-        
-         return View::make('backend/guests', array('title' => 'Guests'));
+         $users = User::where('role' , '=', 'user')->orderBy('id', 'desc')->paginate(25, ['*'], 'page'); 
+         return View::make('backend/guests', array('title' => 'Guests', 'users' => $users));
     }
     
-    public function store(){
+    public function search(){
+         
+         $searchkey = Input::get('searchkey');      
         
-        echo "guest store method";
+         $users = User::where('nic', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
+       
+        
+         return View::make('backend/guests', array('title' => 'Guests','users' => $users));
         
         
     }

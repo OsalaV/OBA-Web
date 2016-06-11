@@ -4,7 +4,7 @@
 
 <a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">User Permissions       
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Admin Permissions       
 </h2>
 
 <div class="table-responsive ws-table-container">
