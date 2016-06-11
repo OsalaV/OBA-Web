@@ -459,5 +459,28 @@ class EventController extends Controller
         
     }
     
+    public function setticketstate($id){
+        
+        $event = Event::where('id' , '=', $id)->first(); 
+        
+                
+        $event->ticketstate  = Input::get('ticketstate');
+        
+        if($event->save()){
+            //save activity
+//            $activity_task = "Event : ".$event->title." status has been changed";
+//            $activity_type = "event";
+//            $connection_id = $event->id;
+//            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            return redirect(URL::to('tickets-view?status=changes==true'))->with('success', 'Event ticket status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('tickets-view?status=changes==false'))->with('error', 'Event ticket status was not successfully edited');           
+        }
+        
+    }
+    
     
 }

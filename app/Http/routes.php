@@ -237,7 +237,6 @@
     Route::get('permissions-view', ['uses' => 'PermissionController@index']); 
     
     
-     
  });
 
 

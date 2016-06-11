@@ -9,9 +9,9 @@
 
 <div class="col-md-8 ws-form-container">
 
-<a href="{{ URL::to('tickets-edit') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Tickets</a> 
+<a href="{{ URL::to('tickets-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Tickets</a> 
     
-<form role="form" action="{{ URL::to('') }}" method="post" class="ws-form" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('tickets-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 
   
@@ -24,7 +24,7 @@
 <div class="row">
 <div class="col-md-12">
 <div class="form-group">
-<input type="hidden" class="form-control" name="events_id" required>
+<input type="hidden" class="form-control" name="events_id" value="{{$ticket->id}}" required>
 </div> 
 </div>    
 </div>
