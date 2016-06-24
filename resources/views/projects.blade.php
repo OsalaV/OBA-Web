@@ -21,7 +21,8 @@
 
 <div class="porto">
   @foreach($projects as $project)   
-  <div class="pf" data-pf-image="{{asset($project->imagepath)}}" data-pf-title="{{$project->title}}" data-pf-onclick="{{ URL::to('projects-show/'.$project->id) }}"></div>
+  <?php $encrypted = Crypt::encrypt($project->title); ?>
+  <div class="pf" data-pf-image="{{asset($project->imagepath)}}" data-pf-title="{{$project->title}}" data-pf-onclick="{{ URL::to('projects-show/'.$encrypted) }}"></div>
   @endforeach
 </div> 
     
@@ -38,8 +39,8 @@
 <script>
 $(document).ready(function () {
   $('.porto').porto({
-      columns        : 3,
-      margin         : 8,
+      columns        : 4,
+      margin         : 5,
       captionMode    : "title",
       background     : "rgba(252, 184, 18, 0.8)", 
       onclickAction  : "url",

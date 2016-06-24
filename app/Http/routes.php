@@ -27,34 +27,47 @@
     Route::get('admin-logout', 'Adminauth\AuthController@logout');
      
      
-    Route::get('/', ['uses' => 'IndexController@index']);
-     
+    Route::get('/', ['uses' => 'IndexController@index']);     
     Route::get('events', ['uses' => 'IndexController@events']);
-    Route::get('events-show/{id}', ['uses' => 'IndexController@showpublicevent']);
-    Route::get('schoolevents-show/{id}', ['uses' => 'IndexController@showschoolevent']);
      
-    Route::get('parade', ['uses' => 'IndexController@parade']);
+     
+    Route::get('events-show', ['uses' => 'IndexController@showpublicevent']);
+    Route::get('schoolevents-show/{title}', ['uses' => 'IndexController@showschoolevent']);
+     
+    Route::get('psycho-parade', ['uses' => 'IndexController@psychoparade']);
     
     Route::get('projects', ['uses' => 'IndexController@projects']);
-    Route::get('projects-show/{id}', ['uses' => 'IndexController@showproject']);
+    Route::get('projects-show/{title}', ['uses' => 'IndexController@showproject']);
      
     Route::get('committee-members', ['uses' => 'IndexController@members']);
-    Route::get('batch-reps', ['uses' => 'IndexController@batchreps']);
+    Route::get('batch-representatives', ['uses' => 'IndexController@batchreps']);
     Route::get('past-presidents', ['uses' => 'IndexController@pastpresidents']);
      
     Route::get('membership', ['uses' => 'IndexController@membership']);
+    Route::get('download-resource/{id}', ['uses' => 'IndexController@downloadresource']);
+    Route::get('download-events-resource/{id}', ['uses' => 'IndexController@downloadeventresource']);
+    Route::get('download-projects-resource/{id}', ['uses' => 'IndexController@downloadprojectresource']);
     
     Route::get('contact', ['uses' => 'IndexController@contact']);
      
-    Route::get('posts-show/{id}', ['uses' => 'IndexController@showpost']);
+    Route::get('posts-show', ['uses' => 'IndexController@showpost']);
      
+    Route::get('auth-tickets/{id}', ['uses' => 'IndexController@authtickets']);
 
     
  });
 
  Route::group(['middleware' => ['web','user']], function () {
      
-    Route::get('user-profile', ['uses' => 'UserController@index']); 
+    Route::get('user-home', ['uses' => 'UserController@index']); 
+    Route::get('user-profile', ['uses' => 'UserController@userprofile']);
+    Route::get('user-cart', ['uses' => 'CartController@index']);
+    Route::get('user-delete-cart/{id}', ['uses' => 'CartController@deletefromcart']); 
+     
+    Route::post('user-save/{id}', ['uses' => 'UserController@updateuser']);
+     
+    Route::post('user-addto-cart', ['uses' => 'CartController@addtocart']);
+    Route::post('user-update-cart', ['uses' => 'CartController@updatecart']);
     
      
  });
@@ -88,6 +101,7 @@
     Route::get('events-delete-details/{id}', ['uses' => 'EventController@destroy']); 
     Route::get('events-delete-image/{id}', ['uses' => 'EventController@destroyimge']);
     Route::get('events-delete-resource/{id}', ['uses' => 'EventController@destroyresource']);
+    Route::get('events-delete-albumimage/{id}', ['uses' => 'EventController@destroyalbumimge']);
     Route::get('events-published', ['uses' => 'EventController@getpublished']); 
     Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
     Route::get('events-download-resource/{id}', ['uses' => 'EventController@downloadresource']);
@@ -96,7 +110,9 @@
     Route::post('events-edit-details/{id}', ['uses' => 'EventController@update']);
     Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
     Route::post('events-set-status/{id}', ['uses' => 'EventController@setstatus']); 
+    Route::post('events-set-ticketstate/{id}', ['uses' => 'EventController@setticketstate']);
     Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
+    Route::post('events-edit-albumimages', ['uses' => 'EventController@updatealbumimages']); 
     Route::post('events-edit-resource/{id}', ['uses' => 'EventController@updateresource']);
     Route::post('events-search', ['uses' => 'EventController@search']);
      
@@ -108,6 +124,7 @@
     Route::get('projects-delete-details/{id}', ['uses' => 'ProjectController@destroy']); 
     Route::get('projects-delete-image/{id}', ['uses' => 'ProjectController@destroyimge']);
     Route::get('projects-delete-resource/{id}', ['uses' => 'ProjectController@destroyresource']);
+    Route::get('projects-delete-albumimage/{id}', ['uses' => 'ProjectController@destroyalbumimge']);
     Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
     Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
     Route::get('projects-download-resource/{id}', ['uses' => 'ProjectController@downloadresource']);
@@ -118,6 +135,7 @@
     Route::post('projects-edit-status/{id}', ['uses' => 'ProjectController@updatestatus']);
     Route::post('projects-set-status/{id}', ['uses' => 'ProjectController@setstatus']);
     Route::post('projects-edit-image/{id}', ['uses' => 'ProjectController@updateimage']); 
+    Route::post('projects-edit-albumimages', ['uses' => 'ProjectController@updatealbumimages']);
     Route::post('projects-edit-resource/{id}', ['uses' => 'ProjectController@updateresource']); 
     Route::post('projects-search', ['uses' => 'ProjectController@search']); 
      
@@ -235,6 +253,19 @@
      
     //routes permissions
     Route::get('permissions-view', ['uses' => 'PermissionController@index']); 
+     
+     
+    //routes tickets
+    Route::get('tickets-view', ['uses' => 'TicketController@index']); 
+    Route::get('tickets-show/{id}', ['uses' => 'TicketController@show']); 
+    Route::get('tickets-add/{id}', ['uses' => 'TicketController@create']); 
+    Route::get('tickets-edit/{id}', ['uses' => 'TicketController@edit']); 
+    
+    Route::post('tickets-add-details', ['uses' => 'TicketController@store']);
+    Route::post('tickets-edit-details/{id}', ['uses' => 'TicketController@update']);
+    Route::post('tickets-edit-tickets/{id}', ['uses' => 'TicketController@updatetickets']);
+    Route::post('tickets-edit-status/{id}', ['uses' => 'TicketController@updatestatus']);
+    Route::post('tickets-search', ['uses' => 'TicketController@search']);
     
     
  });

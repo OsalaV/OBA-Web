@@ -19,18 +19,25 @@
 
 <div class="row">
 @foreach($presidents as $president) 
-<div class="col-md-6 col-sm-6 col-xs-12"> 
-<div class="col-md-6 col-sm-6 col-xs-12 thumbnail port-thumb"> 
-<img class="" src="{{asset($president->imagepath)}}" alt="">
+<div class="col-md-3 col-sm-6 col-xs-12">
+
+<div class="text-center">
+<img src="{{asset($president->imagepath)}}" alt="">
 </div>
-<div class="col-md-6 col-sm-6 col-xs-12">             
-<p class="font-sub-16">{{$president->fullname}}
+    
+<div class="text-center">
+    
+<h4 class="font-sub-16 color-darkblue">{{$president->fullname}}
 <br>
 <span class="font-para-14 color-lightblue">{{$president->year}}</span>
+</h4>
+
+<p class="font-para-14 color-darkblue">
+{{$president->email}}
+<br>
+{{$president->contact}}
 </p>
 
-<p class="font-para-14 color-darkblue">{{$president->email}}<br />{{$president->contact}}</p>
-    
 <div class="sociali">
 @if($president->facebook != NULL)
 <a class="fa fa-facebook" title="" target="_blank" href="{{$president->facebook}}"></a>
@@ -45,8 +52,9 @@
 <a class="fa fa-linkedin" title="" target="_blank" href="{{$president->linkedin}}"></a>
 @endif    
 </div>
-    
-</div>
+   
+</div>  
+
 </div>
 @endforeach      
 </div>

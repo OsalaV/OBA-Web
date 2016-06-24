@@ -18,9 +18,10 @@
 <div class="row">
 @foreach($batchreps as $batchrep)
 <div class="col-md-3 col-sm-6 col-xs-12">
-<div class="thumbnail port-thumb">
+<div class="text-center">
 <img class="" src="{{asset($batchrep->imagepath)}}" alt="">
-
+</div>
+    
 <div class="text-center">
     
 <h4 class="font-sub-16 color-darkblue">{{$batchrep->fullname}}
@@ -50,7 +51,7 @@
 </div>
    
 </div>  
-</div>
+
 </div>
 @endforeach
 

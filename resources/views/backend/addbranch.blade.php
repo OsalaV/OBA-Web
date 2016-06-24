@@ -58,11 +58,11 @@
 </div>
         
 <div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <textarea class="form-control textarea" name="description" placeholder="Branch Description"></textarea>
-        </div>
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="text" class="form-control" name="website" placeholder="Website">
     </div>
+</div>
 </div>
     
 {{ csrf_field() }} 

@@ -45,7 +45,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <label class="font-main font-15px-600">Project Image</label>
+        <label class="font-main font-15px-600">Project Cover Image</label>
         <input type="file" class="form-control" name="image[]" placeholder="Project Image" multiple="" required>
     </div>
 </div>
@@ -54,6 +54,18 @@
         <label class="font-main font-15px-600">Resource Files</label>
         <input type="file" class="form-control" name="resource[]" placeholder="Resources" multiple="">
     </div>
+</div>
+</div>
+    
+<div class="row">
+<div class="col-md-12">
+  
+<div class="form-group">
+<label class="font-main font-15px-600">Add images to this project   
+</label>
+<input type="file" class="form-control" name="projectimages[]" multiple="">
+</div> 
+
 </div>
 </div>
     

@@ -18,9 +18,11 @@
 <div class="row">
 @foreach($committee as $member)
 <div class="col-md-3 col-sm-6 col-xs-12">
-<div class="thumbnail port-thumb">
-<img class="" src="{{asset($member->imagepath)}}" alt="">
 
+<div class="text-center">
+<img class="" src="{{asset($member->imagepath)}}" alt="">
+</div>
+    
 <div class="text-center">
     
 <h4 class="font-sub-16 color-darkblue">{{$member->fullname}}
@@ -50,64 +52,18 @@
 </div>
    
 </div>  
-</div>
+
 </div>
 @endforeach
 
 </div>
 </div>
-    
-<!--
-<div class="row">    
-<h2 class="font-header-large color-black">BATCH <small class="color-yellow">representatives</small></h2>
- 
-<ul class="bxslider">
-    @foreach($batchreps as $batchrep)
-    <li>
-        <div class="thumbnail port-thumb">
-            <img class="" src="{{asset($batchrep->imagepath)}}" alt="">
-            <div class="hidden-xs">
-                <h4 class="font-sub-16"><a class="color-lightblue" href="#">{{$batchrep->fullname}}</a></h4>
-                <p class="font-para-14 color-darkblue">
-                {{$batchrep->year}} <br /> {{$batchrep->email}} <br /> {{$batchrep->contact}} 
-                </p>
-            </div>  
-        </div>
-        <div id="div-sociali" class="sociali animated">
-              <a class="fa fa-facebook" title="" target="_blank" href="{{$batchrep->facebook}}"></a>
-              <a class="fa fa-google-plus" title="" target="_blank" href="{{$batchrep->google}}"></a>
-              <a class="fa fa-linkedin" title="" target="_blank" href="{{$batchrep->linkedin}}"></a>
-              <a class="fa fa-twitter" title="" target="_blank" href="{{$batchrep->twitter}}"></a>
-        </div> 
-    </li>
-    @endforeach
-</ul> 
 
-    
-</div>    
--->
    
 </div>
 </section>
     
 </main>
 
-<!--
-<script>
-$(document).ready(function(){
-
-$('.bxslider').bxSlider({
-  minSlides: 5,
-  maxSlides: 5,
-  slideWidth: 600,
-  slideMargin: 10
-});
-
-});
-
-    
-    
-</script>
--->
 
 @stop

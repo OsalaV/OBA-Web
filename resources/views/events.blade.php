@@ -7,24 +7,29 @@
 <main>        
     
 <script type="text/javascript">      
-    var page='Events';
+var page='Events';
 </script>
 
 <section class="well temp-section background-white">
 <div class="container">
 <div class="row events-public-row">    
-<!--<h2 class="font-header-large color-black">UPCOMMING <small class="color-yellow">EVENTS </small></h2>-->
   
 <ul class="bxslider"> 
 @foreach($pubevents as $pubevent)
 <li>
 <div class="row">
 <div class="col-md-12 col-sm-12 col-xs-12">
-<div class="thumbnail port-thumb">
-<a href="{{ URL::to('events-show/'.$pubevent->id) }}">
+
+<form id="{{'publiceventform'.$pubevent->id}}" action="{{ URL::to('events-show') }}" method="get" enctype="multipart/form-data">
+{{ csrf_field() }}
+<input type="hidden" name="postid" value="{{$pubevent->id}}" />
+    
+<a id="publicevent" data-id="{{$pubevent->id}}" class="cursor-pointer">
 <img src="{{asset($pubevent->imagepath)}}" alt="">
 </a>
-</div>
+    
+</form> 
+
 
 </div>
 </div>
@@ -34,19 +39,21 @@
 </ul> 
 </div>
     
-
-<div class="row">    
+@if(count($schoolevents) != 0)
+<div class="row">  
+    
 <h2 class="font-header-large color-black">SCHOOL <small class="color-yellow">EVENTS </small></h2>
     
 <div class="porto">
 @foreach($schoolevents as $schoolevent)
-<div class="pf" data-pf-image="{{asset($schoolevent->imagepath)}}" data-pf-title="{{$schoolevent->title}}" data-pf-onclick="{{ URL::to('schoolevents-show/'.$schoolevent->id) }}"></div>
+<?php $encrypted = Crypt::encrypt($schoolevent->title); ?>
+<div class="pf" data-pf-image="{{asset($schoolevent->imagepath)}}" data-pf-title="{{$schoolevent->title}}" data-pf-onclick="{{ URL::to('schoolevents-show/'.$encrypted) }}"></div>
 @endforeach       
 </div> 
     
     
 </div>
-    
+@endif    
     
     
     

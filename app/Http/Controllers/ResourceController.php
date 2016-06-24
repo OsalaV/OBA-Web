@@ -95,6 +95,7 @@ class ResourceController extends Controller
         $resource = new Resource;
         
         $resource->resource      = Input::get('resource'); 
+        $resource->type          = Input::get('type'); 
         $resource->description   = Input::get('description');         
         
         if(Input::hasFile('image')){
@@ -138,7 +139,8 @@ class ResourceController extends Controller
         
         $resource = Resource::where('id' , '=', $id)->first(); 
         
-        $resource->resource     = Input::get('resource');                        
+        $resource->resource     = Input::get('resource');   
+        $resource->type         = Input::get('type'); 
         $resource->description  = Input::get('description');
         
         if($resource->save()){
@@ -402,6 +404,13 @@ class ResourceController extends Controller
         
          return View::make('backend/resources', array('title' => 'Resources','resources' => $resources, 'all' => $allresources, 'active' => $pubresources,'inactive' => $unpresources));
         
+        
+    }
+    
+    public static function getmembershipform(){  
+        
+         $resource = Resource::where('type' , '=', 'membershipform')->first(); 
+         return $resource;
         
     }
     

@@ -8,7 +8,7 @@
 <main>        
     
 <script type="text/javascript">      
-    var page='Parade';
+var page='Parade';
 </script>
 
 <section class="well temp-section background-white">
@@ -44,31 +44,24 @@
     
 
 <div class="row"> 
-<!--<div class="temp-section">-->
-    
-<div class="col-sm-12 col-md-6 bar-list-container">
 
-<ul class="bar-list">
-    <li>
-    <a href="#"><img class="thumb-img" src="../images/parade/1.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/2.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/3.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/4.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/5.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/6.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/7.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/8.jpg" style="height:auto;"></a>
-    <a href="#"><img class="thumb-img" src="../images/parade/9.jpg" style="height:auto;"></a>
-    </li>
-  </ul>
+@if(count($eventimages) != 0)   
+<div class="col-md-6"  style="margin-bottom:20px;">
+
+<div class="porto">
+@foreach($eventimages as $eventimage)
+<div class="pf" data-pf-image="{{asset($eventimage->img_path)}}"></div>
+@endforeach       
 </div>
     
+    
+</div>
+@endif    
     
 <div class="col-md-6 col-sm-12">
 <p id="para-1" class="font-para-15 color-darkblue animated">{{$event->description}}</p>
 </div>
 
-<!--</div>-->
 </div>
  
 <div class="row parade-social-icon-container"> 
@@ -86,6 +79,18 @@
 </section>
     
 </main>
+
+
+<script>
+$(document).ready(function () {
+  $('.porto').porto({
+      columns        : 4,
+      margin         : 2,
+      background     : "transparent"
+  });
+});
+</script>
+
 
 
 @stop

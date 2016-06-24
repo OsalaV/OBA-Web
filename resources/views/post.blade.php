@@ -8,7 +8,7 @@
 <main>    
     
 <script type="text/javascript">      
-        var page='Post';
+var page='Home';
 </script>
 
 <section class="well temp-section background-white">

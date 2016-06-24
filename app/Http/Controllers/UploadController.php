@@ -25,7 +25,7 @@ class UploadController extends Controller {
             $validator = Validator::make(array('file'=> $files[$i]), $rules);
             
             if($validator->passes()){     
-                $filename = rand(11111,99999).'.'.$files[$i]->getClientOriginalExtension();
+                $filename = rand(11111,99999999).'.'.$files[$i]->getClientOriginalExtension();
                 $upload_success = $files[$i]->move($destinationPath, $filename);
                 
                 if($upload_success){

@@ -111,6 +111,20 @@
     </div>
 </div>
 </div>
+ 
+    
+<div class="row">
+<div class="col-md-12">
+  
+<div class="form-group">
+<label class="font-main font-15px-600">Add images to this event   
+</label>
+<input type="file" class="form-control" name="eventimages[]" multiple="">
+</div> 
+
+</div>
+</div>   
+    
     
 <div class="row">
 <div class="col-md-6">
@@ -128,7 +142,7 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <input type="url" class="form-control" name="linkedin" placeholder="LinkedIn Link" >
+        <input type="url" class="form-control" name="instagram" placeholder="Instagram Link" >
     </div>
 </div>
 <div class="col-md-6">

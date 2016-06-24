@@ -19,17 +19,29 @@
 <div class="row">
 <h2 class="font-header-large color-black">GET <small class="color-yellow">YOUR MEMBERSHIP</small></h2> 
 </div>
-    
+ 
+
 <div class="row">
-<img class="membership-img" src="{{asset('images/membership-form.jpg')}}">
+
+<div class="row">
+<img class="membership-img" src="{{asset($membership->imagepath)}}">
 </div>
-    
+  
+@if($membership->status == 'on')
 <div class="row">
 <center>
-<a href="#"><img class="membership-download" src="{{asset('images/membership-down.png')}}"></a>
+<?php $encrypted = Crypt::encrypt($membership->id); ?>
+<a href="{{ URL::to('download-resource/'.$encrypted) }}"><img class="membership-download" src="{{asset('images/icons/membership-down.png')}}"></a>
 </center>    
 </div>
+@else
+<div class="row">
+<p class="ws-tag-label">Membership application and renewal form is currently unavailable.</p>    
+</div>
+@endif   
     
+</div>
+
     
 </div>
     

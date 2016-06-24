@@ -5,9 +5,9 @@
 @section('content')
 
 <main> 
-    <script type="text/javascript">      
-            var page='Contact';
-        </script>
+<script type="text/javascript">      
+var page='Contact';
+</script>
 
 <section class="well temp-section background-white">
 <div class="container">
@@ -19,7 +19,7 @@
 <div class="col-md-3 col-sm-6 col-xs-12">
 <div class="thumbnail port-thumb">
 <div>
-<h4 class="font-sub-22"><a class="color-lightblue" href="#">{{$branch->branch}}</a></h4>
+<h4 class="font-sub-22"><a class="color-lightblue" href="{{ URL::to($branch->website) }}">{{$branch->branch}}</a></h4>
 <p class="font-para-14 color-darkblue">
 {{$branch->description}}
 </p>
@@ -66,7 +66,7 @@
     
 <div class="row">
 <div class="col-md-12">
-<button type="submit" class="btn main-btn pull-right">Send a message</button>
+<button type="submit" class="btn main-btn pull-right">Send</button>
 </div>
 </div>
 </form>    

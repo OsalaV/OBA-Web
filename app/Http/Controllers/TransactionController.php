@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\User;
+use App\Transaction;
+
 use Session;
 use View;
 use Input;
@@ -22,13 +25,38 @@ class TransactionController extends Controller
     
     public function __construct()
 	{        
-        $this->middleware('auth');
+        $this->middleware('user');
 	}
     
     public function index(){
-        return View::make('backend/users', array('title' => 'Users', 'users' => $users));
+
     }
     
+    public static function createtransaction(){
+        
+        $transaction = new Transaction;
+        
+        $transaction->users_id = Session::get('user')->id;
+        
+        $transaction->save();
+        
+        Session::put('transactionid',$transaction->id);  
+        
+    }
     
+    public static function removedummytransactions(){
+        
+        $userid = Session::get('user')->id;
+        
+        $transactions = Transaction::where('users_id' , '=', $userid)->whereNull('transactionstate')->get(); 
+        
+        if ($transactions->count()) { 
+            foreach($transactions as $transaction){
+                $transaction->delete();
+            }
+        }
+        
+        
+    }
     
 }

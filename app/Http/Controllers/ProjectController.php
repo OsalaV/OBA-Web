@@ -10,6 +10,7 @@ use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Request;
 
 use App\Project;
+use App\ProjectImage;
 
 use Session;
 use View;
@@ -67,7 +68,7 @@ class ProjectController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = 'uploads/projects/images/';
+        $imageUploadPath = 'uploads/projects/covers/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -77,6 +78,25 @@ class ProjectController extends Controller
             $imageFiles  =  $images_result['filepaths'];
             $imagepath   =  end($imageFiles);
             return array('imagestate' => 'true' ,'imagepath' => $imagepath);
+        }
+        else{  
+            $imageErrors = $images_result['error'];
+            return array('imagestate' => 'false' ,'imagepath' => $imageErrors);
+        }
+        
+    }
+    
+    public function uploadImageAlbum(){
+        
+        $imageUploadPath = 'uploads/projects/images/';
+        $imagepath       = "";
+        $files           = Input::file('projectimages');
+        
+        $images_result = UploadController::upload($files,$imageUploadPath);
+        
+        if($images_result['upload']){
+            $imageFiles  =  $images_result['filepaths'];  
+            return array('imagestate' => 'true' ,'imagepath' => $imageFiles);
         }
         else{  
             $imageErrors = $images_result['error'];
@@ -118,6 +138,11 @@ class ProjectController extends Controller
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
             
+            if(Input::hasFile('projectimages')){
+                $album_upload_result  = $this->uploadImageAlbum();  
+                $this->storeimages($album_upload_result,$project->id);
+            }
+            
             return redirect('projects-view?save=success==true')->with('success', 'Project was successfully added');
         }
         else{
@@ -125,12 +150,57 @@ class ProjectController extends Controller
         }   
 
     }
+    
+    public function storeimages($album_upload_result,$id){
+        
+        if($album_upload_result['imagestate'] == "true"){
+            
+            $uploadedFiles = $album_upload_result['imagepath'];
+            $file_count = count($uploadedFiles);
+            $save_count = 0;
+            
+            for($i=0; $i<$file_count;$i++){
+                 $image = new ProjectImage;                 
+                 $image->img_path    = $uploadedFiles[$i];
+                 $image->img_state   = $album_upload_result['imagestate'];
+                 $image->projects_id   = $id;
+                 $image->save();
+            }
+            
+            return true;
+            
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
+    public function updatealbumimages(){
+
+        $id = Input::get('projects_id'); 
+        
+        if(Input::hasFile('projectimages')){
+            $album_upload_result  = $this->uploadImageAlbum();  
+            if($this->storeimages($album_upload_result,$id)){
+                return redirect(URL::to('projects-edit/'.$id.'?albumimage=updated==true'));
+            }
+            else{
+                return redirect(URL::to('projects-edit/'.$id.'?albumimage=updated==false'));
+            }
+        }
+        else{
+            return redirect(URL::to('projects-edit/'.$id.'?albumimage=updated==false'));
+        }
+        
+    } 
      
     public function edit($id){
         
-        $project = Project::where('id' , '=', $id)->first();  
+        $project = Project::where('id' , '=', $id)->first();
+        $projectimages = ProjectImage::where('projects_id' , '=', $project->id)->get();
         
-        return View::make('backend/editproject', array('title' => 'Projects | Edit Project','project' => $project));
+        return View::make('backend/editproject', array('title' => 'Projects | Edit Project','project' => $project, 'projectimages' => $projectimages));
         
         
     }
@@ -328,6 +398,25 @@ class ProjectController extends Controller
         
     }
     
+    public function destroyalbumimge($id){
+        
+        $project = ProjectImage::where('id' , '=', $id)->first(); 
+        
+        $imagepath = $project->img_path;
+        $projectid = $project->projects_id;
+        
+        if(UploadController::delete_file($imagepath)){
+            
+            if($project->delete()){    
+                return redirect(URL::to('projects-edit/'.$projectid.'?albumimage=deleted==true'))->with('success', 'Project album image was successfully deleted');
+            }
+            else{
+                return redirect(URL::to('projects-edit/'.$projectid.'?albumimage=deleted==false'))->with('error', 'Project album image was not successfully deleted');
+            }
+        }
+        
+    }
+    
     public function destroyresource($id){
         $project = Project::where('id' , '=', $id)->first(); 
         
@@ -392,12 +481,17 @@ class ProjectController extends Controller
         
     }
     
-    public static function getproject($id){
+    public static function getproject($title){
         
-         $porject = Project::where('id' , '=', $id)->first(); 
+         $porject = Project::where('title' , '=', $title)->first(); 
         
          return $porject;
         
+    }
+    
+    public static function getprojectimages($id){
+        $projectimages = ProjectImage::where('projects_id' , '=', $id)->where('img_state' , '=', 'true')->get();
+        return $projectimages;
     }
     
     public function search(){

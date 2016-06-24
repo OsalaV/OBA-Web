@@ -46,6 +46,76 @@
 </form>
     
     
+    
+<div class="row ws-imgpanel">
+    
+<div class="panel panel-default">
+<div class="panel-heading ws-formpanel-heading clearfix">
+<span class="pull-left">Project Images</span>
+</div>
+    
+    
+<div class="panel-heading ws-formpanel-heading">
+
+<form action="{{ URL::to('projects-edit-albumimages') }}" method="post" class="ws-form" enctype="multipart/form-data">
+ 
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">Add new images</label>
+        <input type="file" class="form-control" name="projectimages[]" multiple="" required>
+        <input type="hidden" name="projects_id" value="{{$project->id}}" required>
+    </div>
+</div>    
+</div>
+
+{{ csrf_field() }} 
+    
+<div class="row">
+<div class="form-group" style="padding-right:15px;">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+</div>
+    
+    
+    
+    
+<div class="panel-body ws-formpanel-body">
+
+
+<div class="row">
+@foreach($projectimages as $projectimage)
+<div class="col-md-3 ws-imgpreview-bx">
+
+@if(Session::get('DELETE') == "on")
+<a class="ws-open-msg pull-right" href="{{ URL::to('projects-delete-albumimage/'.$projectimage->id) }}" >
+<span class="ws-fonts-15px-red ws-span-small">
+<i class="fa fa-times fa-lg ws-icon-Xsmall"></i>
+</span> 
+</a>
+@endif
+    
+<img class="ws-form-imagepreview" src="{{ asset($projectimage->img_path) }}">  
+    
+</div>    
+@endforeach    
+
+</div>
+   
+
+</div>
+</div>    
+    
+</div>
+    
+    
+    
+    
+    
 </div>
     
     

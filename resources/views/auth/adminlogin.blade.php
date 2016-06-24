@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DS OBA | Login</title>
+    
+    <link rel="icon" href="{{asset('images/icons/favicon.ico')}}" type="image/x-icon">
 
     <!--Bootstrap -->
 
@@ -31,7 +33,7 @@
 
 <div class="container">
 <div class="card card-container">
-<img id="profile-img" class="profile-img-card" src="{{asset('images/icons/logo.png')}}" />
+<img id="profile-img" class="profile-img-card" src="{{asset('images/icons/logo-black.png')}}" />
 <p id="profile-name" class="profile-name-card">D.S. SENANAYAKE COLLEGE OBA</p>
     
 <form action="{{ URL::to('admin-auth') }}" method="post" class="form-signin" enctype="multipart/form-data">

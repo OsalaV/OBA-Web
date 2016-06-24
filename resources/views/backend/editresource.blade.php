@@ -23,6 +23,24 @@
 </div>
     
 <div class="row">
+
+<div class="col-md-12">
+<div class="form-group">
+    
+{{ Form::select(
+    'type',
+    array('' => 'Select Resource Type','advertisement' => 'Advertisement', 'banner' => 'Banner', 'membershipform' => 'Membership Form', 'others' => 'Others'),
+    $resource->type,
+    array('class' => 'form-control','required' => 'required')
+    ) 
+}}
+
+</div> 
+</div>
+    
+</div>
+    
+<div class="row">
     <div class="col-md-12">
     <div class="form-group">        
         <textarea class="form-control textarea" name="description" placeholder="Description" maxlength="8000" cols="20" wrap="hard">{{$resource->description}}</textarea>

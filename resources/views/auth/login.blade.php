@@ -8,7 +8,7 @@
 <meta name="format-detection" content="telephone=no"/>
 <title>Login</title>
     
-<link rel="icon" href="../Resources/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{asset('images/icons/favicon.ico')}}" type="image/x-icon">
 
 
 <!--Bootstrap -->
@@ -55,7 +55,7 @@
 <div class="col-md-3 col-sm-3 header-logo-container hidden-xs">
 <div class="navbar-header header-brand-container background-yellow text-center" >
 <div class="navbar-brand header-brand">
-<a href=""><img class="header-logo" src="{{asset('images/logo.png')}}"></a>
+<a href=""><img class="header-logo" src="{{asset('images/icons/logo.png')}}"></a>
 </div>
 </div>
 </div>
@@ -63,25 +63,27 @@
 <div class="col-md-9 col-sm-9 header-flag-container">
 <div class="header-flag-yellow"></div>
 <div class="header-flag-black text-center">
-<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association <br>Country before self</h5>
-<!--<h5 class ="header-tag">Country before self</h5>-->
+<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
+<h5 class ="header-flag-text-small">Country before self</h5>
 </div>
 </div>
 
 
 </div>
 </div>
-
+   
+</header>
+    
 <div class=" header-nav-container text-left">
 <div class="header-menu">
 <ul class="header-nav">
 <li id="Home" class=""><a href="/"><span>Home</span></a></li>
 <li id="Events" class=""><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
-<li id="Parade" class=""><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
+<li id="Parade" class=""><a href="{{ URL::to('psycho-parade') }}"><span>Psycho Parade</span></a></li>
 <li id="Projects" class=""><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
 <li id="Member" class=""><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
     <ul class="top-ul">
-    <li><a href="{{ URL::to('batch-reps') }}"><span>Batch Representatives</span></a></li>
+    <li><a href="{{ URL::to('batch-representatives') }}"><span>Batch Representatives</span></a></li>
     <li><a href="{{ URL::to('past-presidents') }}"><span>Past Presidents</span></a></li>
     </ul>            
 </li>
@@ -89,10 +91,7 @@
 <li id="Contact" class=""><a href="{{ URL::to('contact') }}"><span>Contact Us</span></a></li>
 </ul>
 </div>
-</div> 
-    
-    
-</header>
+</div>
 
 <main>      
     
@@ -100,16 +99,38 @@
 
 <section class="well temp-section background-white">
 <div class="container">
+    
+
+    
+    
 
 <div class="row">    
 
 <div class="col-md-4 ws-form-wrapper">
+    
+@if(Session::has('success'))
+<div class="row post-header-row">
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('success')}}
+</div>
+</div>
+@endif
+    
+@if(Session::has('error'))
+<div class="row post-header-row">   
+<div class="alert alert-danger fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('error')}}
+</div>    
+</div>
+@endif
 
     
 <div class="row">
 <!--<center>-->
 <span class="font-header-25px color-black">Sign in</span><br>
-<span class="post-tags">Sign in to continue to payments</span>
+<!--<span class="post-tags">Sign in to continue to payments</span>-->
 <!--</center>-->
 
 <form id="contact-form" action="{{ URL::to('user-auth') }}" method="post" class="contact-form animated" enctype="multipart/form-data"> 
@@ -144,7 +165,7 @@
 <div class="col-md-2 ws-form-wrapper"></div>
 
 <div class="col-md-6 ws-form-wrapper">
-
+  
     
 <div class="row">
 <!--<center>-->

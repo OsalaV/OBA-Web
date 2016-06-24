@@ -50,7 +50,7 @@ class BranchController extends Controller
         $branch = new Branch;
         
         $branch->branch        = Input::get('branch');            
-        $branch->description   = Input::get('description'); 
+        $branch->website       = Input::get('website'); 
         $branch->address_line1 = Input::get('address_line1'); 
         $branch->address_line2 = Input::get('address_line2'); 
         $branch->address_line3 = Input::get('address_line3'); 
@@ -87,7 +87,7 @@ class BranchController extends Controller
         $branch = Branch::where('id' , '=', $id)->first(); 
         
         $branch->branch        = Input::get('branch');            
-        $branch->description   = Input::get('description'); 
+        $branch->website       = Input::get('website');  
         $branch->address_line1 = Input::get('address_line1'); 
         $branch->address_line2 = Input::get('address_line2'); 
         $branch->address_line3 = Input::get('address_line3'); 

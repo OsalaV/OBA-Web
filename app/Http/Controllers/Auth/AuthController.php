@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Controllers\TransactionController;
 
 
 
@@ -103,10 +104,10 @@ class AuthController extends Controller
  
         
         if($user->save()){ 
-            return redirect('login')->with('success', 'You have been successfuly registerd with us. Please login to continue this process.');
+            return redirect('login')->with('success', 'You have been successfuly registerd with us. Please login to continue.');
         }
         else{
-            return redirect('login')->with('message', 'There are some problems with your registration. Please Try again.');
+            return redirect('login')->with('error', 'There are some problems with your registration. Please Try again.');
         }
         
     }
@@ -121,23 +122,26 @@ class AuthController extends Controller
             $user = Auth::guard('user')->user();              
             
             if($user->role == "user"){
-                Session::put('user',$user);    
-                return redirect('user-profile'); 
+                Session::put('user',$user);  
+                TransactionController::removedummytransactions();
+                TransactionController::createtransaction();
+                return redirect('user-home'); 
             }
             else{                 
-                return redirect('login?auth=attempt==failed');
+                return redirect('login?auth=attempt==failed')->with('error', 'Your Email and/or Password are not recognized. Please try again');
             }
             
         }
         else{
-            return redirect('login?auth=attempt==failed');
+            return redirect('login?auth=attempt==failed')->with('error', 'Your Email and/or Password are not recognized. Please try again');
         }
     }
     
     public function logout(){
+        TransactionController::removedummytransactions();
         Auth::guard('user')->logout();
         Session::flush();
-        return redirect('login?logout=success==true');
+        return redirect('login?logout=success==true')->with('success', 'You are now logged out ');;
     }
     
     

@@ -46,7 +46,7 @@
 	height: 100%;
 	padding: 0px;
     margin: 0px;
-    background: url('../images/icons/preloader.gif') no-repeat;
+    background: url('../../images/icons/preloader.gif') no-repeat;
     background-position: center;
 }
 
@@ -57,7 +57,7 @@
 	height: auto;
     padding: 0px;
     margin: 0px;
-    background: url('../images/icons/preloader.gif') no-repeat;
+    background: url('../../images/icons/preloader.gif') no-repeat;
     background-position: center;
 }
 
@@ -119,7 +119,7 @@
 .pf-icon{
   width: 50px;
   height: 50px;
-  background-image: url(../images/icons/pficon.png);
+  background-image: url(../../images/icons/pficon.png);
   -webkit-background-size:cover;
   -moz-background-size:cover;
   -o-background-size:cover;
@@ -265,7 +265,7 @@
     width: 100%;
     height: 100%;
     max-width: 100%; 
-    background: url('../images/icons/preloader.gif') no-repeat;
+    background: url('../../images/icons/preloader.gif') no-repeat;
     background-position: center;
     display: none;
 }
@@ -274,7 +274,7 @@
     width: 100%;
     height: 70vh;   
     max-width: 100%;
-    background: url('../images/icons/preloader.gif') no-repeat;
+    background: url('../../images/icons/preloader.gif') no-repeat;
     background-position: center; 
     display: none;
 }
@@ -329,7 +329,7 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background-image: url('../images/icons/close.png');
+    background-image: url('../../images/icons/close.png');
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
@@ -394,7 +394,7 @@
     margin: 0px;
     width: 35px;
     height: 35px;
-    background-image: url('../images/icons/prev.png');
+    background-image: url('../../images/icons/prev.png');
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
@@ -408,7 +408,7 @@
     margin: 0px;
     width: 35px;
     height: 35px;
-    background-image: url('../images/icons/next.png');
+    background-image: url('../../images/icons/next.png');
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;

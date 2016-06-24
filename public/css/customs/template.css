@@ -169,7 +169,14 @@ a:hover {
     font-size: 40px;
     line-height: 1.27272727;
     font-family: Old English Text MT;
+}
 
+.header-flag-text-small{
+    color: #000;
+    font-size: 30px;
+    line-height: 1.27272727;
+    font-family: Old English Text MT;
+    padding: 0px;
 }
 
 @media (min-width: 260px){    
@@ -181,12 +188,20 @@ a:hover {
         font-size: 20px;       
     }
     
+    .header-flag-text-small{       
+        font-size: 18px;       
+    }
+    
 }
 
 @media (min-width: 480px){    
     
     .header-flag-text{       
         font-size: 25px;       
+    }
+    
+    .header-flag-text-small{       
+        font-size: 22px;       
     }
     
 }
@@ -199,6 +214,10 @@ a:hover {
 
      .header-flag-text{       
         font-size: 30px;       
+    }
+    
+    .header-flag-text-small{       
+        font-size: 25px;       
     }
 
     .header-logo{
@@ -966,7 +985,7 @@ a:hover {
 }
 
 .post-img-row{
-    padding: 0px 10px;
+    padding: 0px;
     margin-bottom: 30px;
 }
 
@@ -1121,6 +1140,7 @@ a:hover {
 /*ptice tabele*/
 
 .cir-box{
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -1156,6 +1176,7 @@ a:hover {
   font-size: 24px 
 }
 
+/*
 .c1:hover{
   background: #39b3d7;
   color: #ffffff;
@@ -1166,6 +1187,7 @@ a:hover {
 .c1:hover .blue{
   color: #ffffff;
 }
+*/
 
 .c2:hover{
   background: #ed9c28;
@@ -1208,6 +1230,7 @@ a:hover {
  word-wrap: break-word;  
     background-color: #fff;
     border: none;
+    padding: 0px;
 }
 
 .color-red{
@@ -1239,9 +1262,190 @@ a:hover {
     color: #fff;
 }
 
+.active-blue{
+    background: #0073aa;
+    color: #fff;
+}
+
+.user-table-row{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.header-pad-0px{
+    padding: 0px;
+}
+
+.ws-form-action-btn-green{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: relative;
+    top: -3px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+}
+
+.ws-form-action-btn-green:hover{
+    background: #208F5C;
+    color: #fff;
+}
+
+.table-list{
+    list-style:none;
+}
+
+.table-list li a{
+    cursor: pointer;
+}
+
+
+/*====================================================================================*/
+/*Ticket CSS*/
+/*====================================================================================*/
 
 
 
+.ws-price-forms {
+	background: #ffffff;
+	margin-bottom: 0px;
+	padding: 20px;
+	border: 1px solid #eeeeee;
+	border-radius: 4px;
+	-moz-box-shadow:    0 5px 5px 0 #ccc;
+  	-webkit-box-shadow: 0 5px 5px 0 #ccc;
+  	box-shadow:         0 5px 5px 0 #ccc;
+}
 
+.ws-tag-label {
+	font-weight: 600;
+	font-size: 18px;
+    margin-top: 20px;
+/*    line-height: 60px;*/
+}
+
+
+.ws-price-label{
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 60px;
+}
+
+
+
+.card-img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.summary-box{
+    padding: 0px 50px;
+}
+
+@media (max-width: 760px) {
+.summary-box{
+    padding: 0px 10px;
+}
+}
+
+#CheckoutButton {
+    background-color: rgb(59,60,62);
+    line-height: 45px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #fff;
+    transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+    cmoz-transition: 0.4s;
+    -webkit-transition: 0.4s;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+}
+
+#CheckoutButton:hover{
+    background-color: #CE4318;
+}
+
+.cart-tag{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.ws-fonts-15px-red{
+    color: #d2322d;
+    cursor: pointer;
+}
+
+.cart-update{
+    color: rgb(150,150,150);
+    cursor: pointer;
+}
+
+.cart-update:hover{
+    color: rgb(100,100,100);
+}
+
+/*====================================================================================*/
+/*Message Modal CSS*/
+/*====================================================================================*/
+
+.ws-open-msg{
+    cursor: pointer;
+}
+
+.ws-msgmodal-header{
+    border: none;
+}
+
+.ws-msgmodal-body{
+    padding-top: 10px;
+    margin-bottom: 25px;
+}
+
+.ws-tablepage-action-btn{
+    margin-left: 4px;
+    padding: 4px 8px;
+    position: relative;
+    top: -3px;
+    text-decoration: none;
+    border: none;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0073aa;
+
+}
+
+.ws-tablepage-action-btn:hover {
+    background: #0073aa;
+    color: #fff;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+.member-img{
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    max-width: 100%;*/
+    padding: 10px;
+}
 
 

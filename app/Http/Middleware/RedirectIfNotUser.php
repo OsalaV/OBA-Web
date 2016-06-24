@@ -20,7 +20,7 @@ class RedirectIfNotUser
         if (!Auth::guard($guard)->check()) {
             return redirect('login');
         }
-
+    
         return $next($request);
     }
 }

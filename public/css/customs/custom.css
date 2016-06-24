@@ -506,6 +506,31 @@ a:hover {
     margin-bottom: 30px;    
 }
 
+.ws-imgpanel{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.ws-postform input[type=submit] {
+    width: 25px;
+    height: 25px;
+    background:transparent; 
+    border:0 none;
+    cursor:pointer;
+    
+}
+
+.ws-postform > .ws-input-go{
+    background-image: url('../../images/icons/right/3.png');
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    -webkit-background-position:center;
+    -moz-background-position:center;
+    -o-background-position:center;
+}
+
 @media only screen and (max-width : 991px) {
     .ws-formpanel-container{
         margin-top: 0px;
@@ -571,6 +596,12 @@ a:hover {
 .ws-form-imagepreview{
     width: 100%;
     height: 100%;
+    max-width: 100%;
+}
+
+.ws-imgpreview-bx{
+    padding: 0px 2px;
+    margin-bottom: 5px;
 }
 
 .ws-form .textarea{ 

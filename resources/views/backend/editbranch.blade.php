@@ -56,11 +56,11 @@
 </div>
     
 <div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <textarea class="form-control textarea" name="description" placeholder="Branch Description">{{$branch->description}}</textarea>
-        </div>
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="text" class="form-control" name="website" placeholder="Website" value="{{$branch->website}}">
     </div>
+</div>
 </div>
     
 {{ csrf_field() }} 

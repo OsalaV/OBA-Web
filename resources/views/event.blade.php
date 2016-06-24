@@ -9,12 +9,47 @@
 <script type="text/javascript">      
     var page='Events';
 </script>
-
+    
+    
 <section class="well temp-section background-white">
 <div class="container">
+    
+@if(Session::has('success'))
+<div class="row post-header-row">
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('success')}}
+  <a href="{{ URL::to('user-cart') }}" class="user-action-btn user-action-btn-blue">View Cart Now</a> 
+</div> 
+</div>
+@endif
+    
+@if(Session::has('error'))
+<div class="row post-header-row">    
+<div class="alert alert-danger fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('error')}}
+</div> 
+</div>
+@endif
+    
+    
+@if(Session::has('user'))
+<div class="row post-header-row">
+<span class="font-header-25px color-black">
+{{'Welcome '.Session::get('user')->firstname}}
+<a href="{{ URL::to('user-home') }}" class="user-action-btn user-action-btn-blue active-blue">Events</a>
+<a href="{{ URL::to('user-profile') }}" class="user-action-btn user-action-btn-blue">My Profile</a> 
+<a href="{{ URL::to('user-cart') }}" class="user-action-btn user-action-btn-blue">My Cart</a> 
+<a href="{{ URL::to('user-logout') }}" class="user-action-btn user-action-btn-blue">Logout</a> 
+</span>
+</div>
+@endif
+    
+    
 <div class="row">   
  
-<div class="col-md-6">
+<div class="col-md-6 header-pad-0px">
 <h2 class="font-header-large color-black"><small class="color-black">{{$event->title}}</small></h2>
 </div> 
 
@@ -70,73 +105,98 @@
 </div>
 
 @if($event->resourcestate == 'true')
-<div class="row tickets-row">					
-<a class="" href="{{ URL::to('events-download-resource/'.$event->id) }}">Download Resource Files</a>	
+<div class="row tickets-row">	
+<?php $encrypted = Crypt::encrypt($event->id); ?>
+<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
 </div>
 @endif  
 
+
+@if($event->ticketstate == 'on')
+    
 <div class="row tickets-row">   
 
+@foreach($tickets as $ticket)
+    
+<style>
+{{".".$ticket->category}}:hover{
+  background: {{$ticket->color}};
+  color: #ffffff;
+}
+{{".".$ticket->category}} .fontcolor{
+  color: {{$ticket->color}};
+}
+{{".".$ticket->category}}:hover .fontcolor{
+  color: #ffffff;
+}   
+</style>
+    
 <div class="col-sm-6 col-md-3 cir-box">
 <center>
-<div class="circle c1 img-circle">
-      <h4 class="blue">Basic Plan</h4>
-      <span class="price-large blue">500</span>
+<div class="circle {{$ticket->category}} img-circle">
+      <h4 class="fontcolor">{{$ticket->category}}</h4>
+      <span class="price-large fontcolor">{{round($ticket->price)}}</span>
       <br>
       <span class="price-small">LKR</span>
   </div>    
 </center>
+ 
+@if(Session::has('user'))
+<div class="tickets-row">
+<center>
+<form action="{{ URL::to('user-addto-cart') }}" method="post" class="contact-form animated" enctype="multipart/form-data">
+    
+
+   
+<div class="form-group">    
+{{ Form::selectRange(
+    'qty',
+    1,10,
+    null,
+    array('class' => 'form-control')
+    ) 
+}}
+</div>
+
+    
+<div class="form-group"> 
+<input type="hidden" class="form-control" name="tickets_id" required value="{{$ticket->id}}">
 </div>
     
-          
-<div class="col-sm-6 col-md-3 cir-box">
-<center>
-<div class="circle c2 img-circle">
-      <h4 class="yellow">Starter Plan</h4>
-      <span class="price-large yellow">1000</span>
-      <br>
-      <span class="price-small">LKR</span>
+<div class="form-group"> 
+<input type="hidden" class="form-control" name="events_id" required value="{{$event->id}}">
 </div>
-</center>
-</div>
-          
-<div class="col-sm-6 col-md-3 cir-box">
-<center>
-<div class="circle c3 img-circle">
-      <h4 class="green">Premier Plan</h4>      
-      <span class="price-large green">2000</span>
-      <br>
-      <span class="price-small">LKR</span>      
-</div>
-</center>
-</div>
-          
-<div class="col-sm-6 col-md-3 cir-box">
-<center>
-<div class="circle c4 img-circle">
-      <h4 class="red">Deluxe Plan</h4>
-      <span class="price-large red">10000</span>
-      <br>
-      <span class="price-small">LKR</span>
-</div>
-</center>
-</div>
+ 
+{{ csrf_field() }} 
     
+<div class="tickets-row">
+<button type="submit" class="ws-form-action-btn-green">Add to Cart</button>
+</div>
+
+    
+</form>
+</center>
+</div>
+@endif
+    
+    
+</div>
+@endforeach      
 </div>
     
 
-
+@if(!Session::has('user'))
 <div class="row tickets-row"> 
 <center>
-
 <div class="selfie-creative-btn">						
-<a class="btn btn-1 btn-1c" href="{{ URL::to('login') }}">Grab your tickets now</a>	
+<a class="btn btn-1 btn-1c" href="{{ URL::to('auth-tickets/'.$event->id) }}">Grab your tickets now</a>	
 </div>
-   
-    
-</center>    
-    
+</center>
 </div>
+@endif   
+    
+    
+@endif 
 
 
     

@@ -8,8 +8,9 @@
 <div class="clearfix hidden-xs">
 
 <div class="pull-right">
-<form role="form" action="" method="post" enctype="multipart/form-data">
-<input class="form-search-control" name="searchkey" type="text" required> 
+<form role="form" action="{{ URL::to('tickets-search') }}" method="post" enctype="multipart/form-data">
+<input class="form-search-control" type="text" name="searchkey" required> 
+{{ csrf_field() }}
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
 </form>  
 </div>
@@ -22,9 +23,9 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th class="text-center">Event Name</th>  
-<!--<th class="text-left">Tatal Issued Tickets</th>-->
-<th class="text-center">Published</th>
+<th class="text-left"></th> 
+<th class="text-left">Event Name</th>  
+<th class="text-center">Tickets Availability</th>
 
 <th></th>
 <th></th>
@@ -35,7 +36,8 @@
     
 @foreach($pubevents as $pubevent)
 <tr>
-<td class="text-center">{{$pubevent->title}}</td>
+<td class="text-left"></td>
+<td class="text-left">{{$pubevent->title}}</td>
 
 <td class="text-center">
 <form id="{{'checkform'.$pubevent->id}}" action="{{ URL::to('events-set-ticketstate/'.$pubevent->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
@@ -51,7 +53,7 @@
 
     
 <td class="text-center">
-<a href="{{ URL::to('tickets-edit/'.$pubevent->id) }}">
+<a href="{{ URL::to('tickets-show/'.$pubevent->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-eye fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -66,6 +68,8 @@
 </table>
 
 </div><!-- ws-table-container -->
+
+{{ $pubevents->links() }} 
 
 
 @stop

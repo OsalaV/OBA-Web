@@ -39,11 +39,27 @@
 <p class="font-para-15 color-darkblue">{{$project->description}}</p>
 </div>
     
-@if($project->resourcestate == 'true')
-<div class="row tickets-row">					
-<a class="" href="{{ URL::to('projects-download-resource/'.$project->id) }}">Download Resource Files</a>	
+
+@if(count($projectimages) != 0)
+<div class="row tickets-row">
+    
+<div class="porto">
+@foreach($projectimages as $projectimage)
+<div class="pf" data-pf-image="{{asset($projectimage->img_path)}}"></div>
+@endforeach       
 </div>
-@endif   
+    
+    
+</div>   
+@endif
+
+    
+@if($project->resourcestate == 'true')
+<div class="row tickets-row">	
+<?php $encrypted = Crypt::encrypt($project->id); ?>
+<a href="{{ URL::to('download-projects-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
+</div>
+@endif 
     
     
     
@@ -60,6 +76,17 @@
     
 </main>
 <!--*************************CONTENT*****************************--> 
+
+
+<script>
+$(document).ready(function () {
+  $('.porto').porto({
+      columns        : 4,
+      margin         : 2,
+      background     : "transparent"
+  });
+});
+</script>
 
 
 @stop

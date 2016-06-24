@@ -8,7 +8,7 @@
 <meta name="format-detection" content="telephone=no"/>
 <title>{{$title}}</title>
     
-<link rel="icon" href="../Resources/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{asset('images/icons/favicon.ico')}}" type="image/x-icon">
 
 
 <!--Bootstrap -->
@@ -34,7 +34,7 @@
 <script type="text/javascript" src="{{ asset('js/rd-smoothscroll.min.js') }}"></script>
 
 <script type="text/javascript">      
-    var page='Home';
+var page='Home';
 </script> 
     
 </head>
@@ -55,7 +55,7 @@
 <div class="col-md-3 col-sm-3 header-logo-container hidden-xs">
 <div class="navbar-header header-brand-container background-yellow text-center" >
 <div class="navbar-brand header-brand">
-<a href=""><img class="header-logo" src="{{asset('images/logo.png')}}"></a>
+<a href=""><img class="header-logo" src="{{asset('images/icons/logo.png')}}"></a>
 </div>
 </div>
 </div>
@@ -63,8 +63,8 @@
 <div class="col-md-9 col-sm-9 header-flag-container">
 <div class="header-flag-yellow"></div>
 <div class="header-flag-black text-center">
-<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association <br>Country before self</h5>
-<!--<h5 class ="header-tag">Country before self</h5>-->
+<h5 class ="header-flag-text">D.S.Senanayake College Old Boys Association</h5>
+<h5 class ="header-flag-text-small">Country before self</h5>
 </div>
 </div>
 
@@ -72,16 +72,18 @@
 </div>
 </div>
 
+</header>
+    
 <div class=" header-nav-container text-left">
 <div class="header-menu">
 <ul class="header-nav">
 <li id="Home" class=""><a href="/"><span>Home</span></a></li>
 <li id="Events" class=""><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
-<li id="Parade" class=""><a href="{{ URL::to('parade') }}"><span>Psycho Parade</span></a></li>
+<li id="Parade" class=""><a href="{{ URL::to('psycho-parade') }}"><span>Psycho Parade</span></a></li>
 <li id="Projects" class=""><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
 <li id="Member" class=""><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
     <ul class="top-ul">
-    <li><a href="{{ URL::to('batch-reps') }}"><span>Batch Representatives</span></a></li>
+    <li><a href="{{ URL::to('batch-representatives') }}"><span>Batch Representatives</span></a></li>
     <li><a href="{{ URL::to('past-presidents') }}"><span>Past Presidents</span></a></li>
     </ul>            
 </li>
@@ -92,7 +94,6 @@
 </div> 
     
     
-</header>
 
 @yield('content')
        
@@ -126,6 +127,9 @@ Developed by 2011 batch &#169; <span class="footer-year">2016</span>
 <script type="text/javascript" src="{{ asset('js/jquery.animations.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.porto.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ws-updatecart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ws-formsubmit.js') }}"></script>
     
 </body>
 </html>

@@ -10,7 +10,8 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\MemberController;
-
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ResourceController;
 
 use App\Event;
 use App\Project;
@@ -18,11 +19,20 @@ use App\Member;
 use App\Branch;
 use App\Post;
 use App\Slider;
+use App\Resource;
 
 
+use Session;
 use View;
-
-
+use Input;
+use Redirect;
+use Validator;
+use Response;
+use Auth;
+use File;
+use URL;
+use Hash;
+use Crypt;
 
 
 class IndexController extends Controller
@@ -35,8 +45,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-          $sliders =  SliderController::getsliders(); 
-          $posts   =  PostController::getposts(); 
+          $sliders    = SliderController::getsliders(); 
+          $posts      = PostController::getposts(); 
           $topmembers = MemberController::gettopmembers();
         
           return View::make('index', array('title' => 'Home','sliders' => $sliders,'posts' => $posts,'topmembers' => $topmembers));
@@ -50,20 +60,30 @@ class IndexController extends Controller
           return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'schoolevents' => $schoolevents));
     }
     
-    public function showpublicevent($id){
+    public function showpublicevent(){
+          
+          $id = Input::get('postid');        
+        
           $event    =  EventController::getpublicevent($id); 
-          return View::make('event', array('title' => $event->title, 'event' => $event));
+          $tickets  =  TicketController::getticketdetails($id); 
+          return View::make('event', array('title' => $event->title, 'event' => $event, 'tickets' => $tickets));
     }
     
-    public function showschoolevent($id){
-          $event    =  EventController::getschoolevent($id); 
-          return View::make('schoolevent', array('title' => $event->title, 'event' => $event));
+    public function showschoolevent($encrypted){
+          
+          $title = Crypt::decrypt($encrypted);
+        
+          $event       =  EventController::getschoolevent($title); 
+          $eventimages =  EventController::geteventimages($event->id);
+          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages));
+        
     }
 
-    public function parade()
+    public function psychoparade()
     {   
-          $event =  EventController::getparadedetails(); 
-          return View::make('parade', array('title' => $event->title, 'event' => $event));
+          $event       =  EventController::getparadedetails(); 
+          $eventimages =  EventController::geteventimages($event->id);
+          return View::make('parade', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages));
     }
 
     public function projects()
@@ -72,9 +92,13 @@ class IndexController extends Controller
           return View::make('projects', array('title' => 'Projects', 'projects' => $projects));
     }
     
-    public function showproject($id){
-          $project   =  ProjectController::getproject($id); 
-          return View::make('project', array('title' => $project->title, 'project' => $project));
+    public function showproject($encrypted){
+        
+          $title = Crypt::decrypt($encrypted);
+        
+          $project       =  ProjectController::getproject($title); 
+          $projectimages =  ProjectController::getprojectimages($project->id);
+          return View::make('project', array('title' => $project->title, 'project' => $project, 'projectimages' => $projectimages));
     }
 
     public function members()
@@ -82,6 +106,40 @@ class IndexController extends Controller
           $committee = MemberController::getcommittee(); 
           $batchreps = MemberController::getbatchreps(); 
           return View::make('members', array('title' => 'Committee', 'committee' => $committee, 'batchreps' => $batchreps));
+    }
+    
+    public function downloadprojectresource($encrypted){
+        
+        $id = Crypt::decrypt($encrypted);
+        
+        $project = Project::where('id' , '=', $id)->first(); 
+        
+        $resourcepath = $project->resourcepath;
+        return response()->download($resourcepath);
+        
+    }
+    
+    public function downloadeventresource($encrypted){
+        
+        $id = Crypt::decrypt($encrypted);
+        
+        $event = Event::where('id' , '=', $id)->first(); 
+        
+        $resourcepath = $event->resourcepath;
+        return response()->download($resourcepath);
+        
+    }
+    
+    
+    public function downloadresource($encrypted){
+        
+        $id = Crypt::decrypt($encrypted);
+        
+        $resource = Resource::where('id' , '=', $id)->first(); 
+        
+        $resourcepath = $resource->resourcepath;
+        return response()->download($resourcepath);
+        
     }
     
     public function batchreps()
@@ -98,7 +156,8 @@ class IndexController extends Controller
 
     public function membership()
     {
-          return View::make('membership', array('title' => 'Membership'));
+          $membership = ResourceController::getmembershipform();
+          return View::make('membership', array('title' => 'Membership', 'membership' => $membership));
     }
 
     public function contact()
@@ -107,7 +166,9 @@ class IndexController extends Controller
           return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));
     }    
     
-    public function showpost($id){        
+    public function showpost(){    
+        
+        $id = Input::get('postid');        
         $post   =  PostController::getpost($id); 
         return View::make('post', array('title' => $post->title, 'post' => $post));
         
@@ -116,6 +177,23 @@ class IndexController extends Controller
     public function userlogin(){
         return View::make('guestregestration', array('title' => 'Login'));
     }
+    
+    public function authtickets($id){
+        
+        if (Session::has('user')) {
+            return redirect(URL::to('events-show/'.$id)); 
+        }
+        else{
+            return redirect(URL::to('login')); 
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
     

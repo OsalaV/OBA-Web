@@ -30,6 +30,7 @@ class PermissionsTableSeeder extends Seeder
         ['permission' => 'ADMINS','priority' => 'high','privilages' => 'Allows to view and edit admin'],
         ['permission' => 'ADMIN PERMISSIONS','priority' => 'high','privilages' => 'Allows to view and edit admin permissions'],
         ['permission' => 'DELETE','priority' => 'default','privilages' => 'Allows to delete records and resources'],
+        ['permission' => 'TICKET SETTINGS','priority' => 'high','privilages' => 'Allows to change number of tickets'],
         ]);
         
         

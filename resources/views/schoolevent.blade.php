@@ -8,7 +8,7 @@
 <main>    
     
 <script type="text/javascript">      
-        var page='Events';
+var page='Events';
 </script>
 
 <section class="well temp-section background-white">
@@ -54,8 +54,26 @@
 <pre class="font-para-15 color-darkblue content-pre">{{$event->description}}</pre>
 </div>
     
+@if($event->resourcestate == 'true')
+<div class="row tickets-row">	
+<?php $encrypted = Crypt::encrypt($event->id); ?>
+<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
+</div>
+@endif   
+    
+ 
+@if(count($eventimages) != 0)
+<div class="row tickets-row">
+    
+<div class="porto">
+@foreach($eventimages as $eventimage)
+<div class="pf" data-pf-image="{{asset($eventimage->img_path)}}"></div>
+@endforeach       
+</div>
     
     
+</div>   
+@endif
     
     
     
@@ -69,6 +87,21 @@
     
 </main>
 <!--*************************CONTENT*****************************--> 
+
+
+
+<script>
+$(document).ready(function () {
+  $('.porto').porto({
+      columns        : 4,
+      margin         : 2,
+      background     : "transparent"
+  });
+});
+</script>
+
+
+
 
 
 @stop

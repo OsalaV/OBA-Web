@@ -9,6 +9,7 @@ use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Request;
 
 use App\Event;
+use App\EventImage;
 
 
 use Session;
@@ -67,7 +68,7 @@ class EventController extends Controller
     
     public function uploadImage(){
         
-        $imageUploadPath = 'uploads/events/images/';
+        $imageUploadPath = 'uploads/events/covers/';
         $imagepath       = "";
         $files           = Input::file('image');
         
@@ -85,10 +86,30 @@ class EventController extends Controller
         
     }
     
+    public function uploadImageAlbum(){
+        
+        $imageUploadPath = 'uploads/events/images/';
+        $imagepath       = "";
+        $files           = Input::file('eventimages');
+        
+        $images_result = UploadController::upload($files,$imageUploadPath);
+        
+        if($images_result['upload']){
+            $imageFiles  =  $images_result['filepaths'];  
+            return array('imagestate' => 'true' ,'imagepath' => $imageFiles);
+        }
+        else{  
+            $imageErrors = $images_result['error'];
+            return array('imagestate' => 'false' ,'imagepath' => $imageErrors);
+        }
+        
+    }
+    
     public function store()
     {
         $resource_upload_result;
         $image_upload_result;
+        $album_upload_result;
         
         $event = new Event;
         
@@ -102,7 +123,7 @@ class EventController extends Controller
         $event->description   = Input::get('description'); 
         $event->facebook      = Input::get('facebook');
         $event->twitter       = Input::get('twitter');
-        $event->linkedin      = Input::get('linkedin');
+        $event->instagram     = Input::get('instagram');
         $event->google        = Input::get('google');
         
         
@@ -118,6 +139,7 @@ class EventController extends Controller
             $event->resourcestate = $resource_upload_result['resourcestate'];
         }
         
+        
         if($event->save()){
             //save activity
             $activity_task = "Event : ".$event->title." has been added";
@@ -125,6 +147,12 @@ class EventController extends Controller
             $connection_id = $event->id;
             ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
+            
+            if(Input::hasFile('eventimages')){
+                $album_upload_result  = $this->uploadImageAlbum();  
+                $this->storeimages($album_upload_result,$event->id);
+            }
+            
             
             return redirect('events-view?save=success==true')->with('success', 'Event was successfully added');
         }
@@ -134,11 +162,56 @@ class EventController extends Controller
         
     }
     
+    public function storeimages($album_upload_result,$id){
+        
+        if($album_upload_result['imagestate'] == "true"){
+            
+            $uploadedFiles = $album_upload_result['imagepath'];
+            $file_count = count($uploadedFiles);
+            $save_count = 0;
+            
+            for($i=0; $i<$file_count;$i++){
+                 $image = new EventImage;                 
+                 $image->img_path    = $uploadedFiles[$i];
+                 $image->img_state   = $album_upload_result['imagestate'];
+                 $image->events_id   = $id;
+                 $image->save();
+            }
+            
+            return true;
+            
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
+    public function updatealbumimages(){
+
+        $id = Input::get('events_id'); 
+        
+        if(Input::hasFile('eventimages')){
+            $album_upload_result  = $this->uploadImageAlbum();  
+            if($this->storeimages($album_upload_result,$id)){
+                return redirect(URL::to('events-edit/'.$id.'?albumimage=updated==true'));
+            }
+            else{
+                return redirect(URL::to('events-edit/'.$id.'?albumimage=updated==false'));
+            }
+        }
+        else{
+            return redirect(URL::to('events-edit/'.$id.'?albumimage=updated==false'));
+        }
+        
+    } 
+    
     public function edit($id){
         
         $event = Event::where('id' , '=', $id)->first();  
+        $eventimages = EventImage::where('events_id' , '=', $event->id)->get();
         
-        return View::make('backend/editevent', array('title' => 'Events | Edit Event','event' => $event));
+        return View::make('backend/editevent', array('title' => 'Events | Edit Event','event' => $event, 'eventimages' => $eventimages));
         
         
     }
@@ -345,6 +418,25 @@ class EventController extends Controller
         
     }
     
+    public function destroyalbumimge($id){
+        
+        $event = EventImage::where('id' , '=', $id)->first(); 
+        
+        $imagepath = $event->img_path;
+        $eventid = $event->events_id;
+        
+        if(UploadController::delete_file($imagepath)){
+            
+            if($event->delete()){    
+                return redirect(URL::to('events-edit/'.$eventid.'?albumimage=deleted==true'))->with('success', 'Event album image was successfully deleted');
+            }
+            else{
+                return redirect(URL::to('events-edit/'.$eventid.'?albumimage=deleted==false'))->with('error', 'Event album image was not successfully deleted');
+            }
+        }
+        
+    }
+    
     public function destroyresource($id){
         $event = Event::where('id' , '=', $id)->first(); 
         
@@ -435,6 +527,11 @@ class EventController extends Controller
         
     }
     
+    public static function geteventimages($id){
+        $eventimages = EventImage::where('events_id' , '=', $id)->where('img_state' , '=', 'true')->get();
+        return $eventimages;
+    }
+    
     public static function getpublicevent($id){
         
          $event = Event::where('id' , '=', $id)->where('type' , '=', 'public')->first(); 
@@ -443,9 +540,9 @@ class EventController extends Controller
         
     }
     
-    public static function getschoolevent($id){
+    public static function getschoolevent($title){
         
-         $event = Event::where('id' , '=', $id)->where('type' , '=', 'private')->first(); 
+         $event = Event::where('title' , '=', $title)->where('type' , '=', 'private')->first(); 
         
          return $event;
         
@@ -466,13 +563,14 @@ class EventController extends Controller
                 
         $event->ticketstate  = Input::get('ticketstate');
         
-        if($event->save()){
+        if($event->save()){    
             //save activity
-//            $activity_task = "Event : ".$event->title." status has been changed";
-//            $activity_type = "event";
-//            $connection_id = $event->id;
-//            ActivityController::store($activity_task,$activity_type,$connection_id);
+            $activity_task = "Event : ".$event->title." ticket state has been changed";
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
             //save activity
+            
             
             return redirect(URL::to('tickets-view?status=changes==true'))->with('success', 'Event ticket status was successfully edited');
         }
