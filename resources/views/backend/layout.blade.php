@@ -122,14 +122,14 @@
 </li>
 @endif
     
-
+@if(Session::get('TRANSACTIONS') == "on") 
 <li>
-<a href="{{ URL::to('tickets-view') }}">
-<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Tickets</span>
-<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Tickets"><i class="fa fa-ticket fa-lg"></i></span>	
+<a href="{{ URL::to('transactions-view') }}">
+<span class="ws-body-list-title font-main font-15px-600 color-white pull-left hidden-xs">Transactions</span>
+<span class="ws-body-list-icon font-main font-15px-600 color-white pull-right text-center hidden-sm" title="Tickets"><i class="fa fa-exchange fa-lg"></i></span>	
 </a>
 </li>
-    
+@endif    
     
 @if(Session::get('GUESTS') == "on")  
 <li>
@@ -226,7 +226,7 @@
 <script type="text/javascript" src="{{ asset('js/ws-pagination.js') }}"></script>     
 <script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/ws-cbox.js') }}"></script>    
-    
+<script type="text/javascript" src="{{ asset('js/ws-formsubmit.js') }}"></script>   
     
     
     

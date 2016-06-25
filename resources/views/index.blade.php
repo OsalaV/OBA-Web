@@ -5,10 +5,11 @@
 <main> 
         
 <script type="text/javascript">      
-    var page='Home';
+var page='Home';
 </script>
         
-    
+ 
+@if(count($sliders) > 0)
 <section class="well slider-section background-white">
 <div class="container-fluid no-padding">
 
@@ -20,6 +21,7 @@
     
 </div>
 </section>
+@endif
 <!--end of slider section-->
     
 		    
@@ -52,7 +54,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 </div>
 </section>
 
-    
+@if(count($posts) > 0)  
 <section class="well temp-section background-white hidden-xs hidden-sm">
 <div class="container no-padding">
 <div class="row">
@@ -80,7 +82,10 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
           $t_string    = $t_txt;
       }
       
-      $d_txt = $post->description;
+      $paragraphs  = explode("[para]",$post->description); 
+
+      $d_txt = $paragraphs[1];
+      
       $d_len = strlen($d_txt);
       if($d_len > 150){
           $d_stringCut = substr($d_txt, 0, 150);
@@ -91,12 +96,11 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
       }
     
   ?>
-  <form id="{{'postform'.$post->id}}" action="{{ URL::to('posts-show') }}" method="get" enctype="multipart/form-data">
-  {{ csrf_field() }}
-  <input type="hidden" name="postid" value="{{$post->id}}" />
-  <a id="post" data-id="{{$post->id}}" class="news-title">{{$t_string}}</a>
+  
+  
+  <a href="{{ URL::to('posts-show/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
   <p class="post-desc">{{$d_string}}</p>
-  </form>
+  
 
   </div>
       
@@ -113,8 +117,10 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 </div>
 </div>
 </section>
+@endif
     
-        
+    
+@if(count($posts) > 0)    
 <section class="well temp-section background-white hidden-md hidden-lg">
 <div class="container-fluid no-padding">
 <div class="row">
@@ -147,7 +153,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 </div>
 </div>
 </section>
-    
+@endif    
     
     
     
@@ -178,6 +184,7 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
 </div>
 </div>
 
+@if(count($topmembers) > 0)
 <div class="col-md-6 col-sm-6 col-xs-12">
 
 <blockquote class="media offs3">   
@@ -226,6 +233,7 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
 </blockquote>
 
 </div>
+@endif    
 </div>
 </div>
 </section>    

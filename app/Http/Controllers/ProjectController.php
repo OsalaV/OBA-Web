@@ -140,7 +140,10 @@ class ProjectController extends Controller
             
             if(Input::hasFile('projectimages')){
                 $album_upload_result  = $this->uploadImageAlbum();  
-                $this->storeimages($album_upload_result,$project->id);
+                if($this->storeimages($album_upload_result,$project->id)){
+                    $project->albumstate = 'true';
+                    $project->save();
+                }
             }
             
             return redirect('projects-view?save=success==true')->with('success', 'Project was successfully added');
@@ -347,11 +350,16 @@ class ProjectController extends Controller
         $resourcestate = $project->resourcestate;
         $resourcepath = $project->resourcepath;
         
+        $albumstate = $project->albumstate;
+        
         if($imagestate == "true"){
         UploadController::delete_file($imagepath);
         }
         if($resourcestate == "true"){
         UploadController::delete_file($resourcepath);
+        }
+        if($albumstate == "true"){
+        $this->destroyalbum($project->id);
         }
         
     
@@ -414,6 +422,16 @@ class ProjectController extends Controller
                 return redirect(URL::to('projects-edit/'.$projectid.'?albumimage=deleted==false'))->with('error', 'Project album image was not successfully deleted');
             }
         }
+        
+    }
+    
+    public function destroyalbum($id){
+        
+        $images = ProjectImage::where('projects_id' , '=', $id)->get(); 
+        foreach($images as $image){
+            $imagepath = $image->img_path;
+            UploadController::delete_file($imagepath);
+        }        
         
     }
     

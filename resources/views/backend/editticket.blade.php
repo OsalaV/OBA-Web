@@ -32,6 +32,15 @@
     </div>
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-12">
+<label class="font-main font-15px-600">Available Tickets</label> 
+    <div class="form-group">
+        <input type="text" class="form-control" name="no_of_left" required readonly value="{{$ticket->no_of_left}}">
+    </div>
+</div>
+</div>
 
     
 <div class="row">

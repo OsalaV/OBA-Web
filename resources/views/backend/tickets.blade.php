@@ -8,7 +8,7 @@
 <div class="clearfix hidden-xs">
 
 <div class="pull-right">
-<form role="form" action="{{ URL::to('tickets-search') }}" method="post" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('tickets-search') }}" method="get" enctype="multipart/form-data">
 <input class="form-search-control" type="text" name="searchkey" required> 
 {{ csrf_field() }}
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
@@ -55,7 +55,7 @@
 <td class="text-center">
 <a href="{{ URL::to('tickets-show/'.$pubevent->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
-<i class="fa fa-eye fa-lg ws-icon-Xsmall"></i>
+<i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 
 </a>
 </td>

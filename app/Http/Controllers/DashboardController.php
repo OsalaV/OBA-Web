@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ActivityController;
 
 use App\User;
 
@@ -32,7 +33,8 @@ class DashboardController extends Controller
     
     public function index()
     {
-        return View::make('backend/dashboard', array('title' => 'Dashboard'));
+        $recentactivities = ActivityController::getrecent();
+        return View::make('backend/dashboard', array('title' => 'Dashboard', 'recentactivities' => $recentactivities));
     }
     
     

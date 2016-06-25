@@ -45,7 +45,7 @@ var page='Parade';
 
 <div class="row"> 
 
-@if(count($eventimages) != 0)   
+@if(count($eventimages) > 0)   
 <div class="col-md-6"  style="margin-bottom:20px;">
 
 <div class="porto">
@@ -57,9 +57,17 @@ var page='Parade';
     
 </div>
 @endif    
+   
+    
+<?php    
+$description = $event->description;    
+$paragraphs  = explode("[para]",$description);    
+?>
     
 <div class="col-md-6 col-sm-12">
-<p id="para-1" class="font-para-15 color-darkblue animated">{{$event->description}}</p>
+@foreach($paragraphs as $paragraph)
+<p id="para-1" class="font-para-15 color-darkblue animated">{{$paragraph}}</p>
+@endforeach    
 </div>
 
 </div>

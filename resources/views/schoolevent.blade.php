@@ -48,11 +48,17 @@ var page='Events';
 -->
     
  
-
-    
+<?php    
+$description = $event->description;    
+$paragraphs  = explode("[para]",$description);    
+?>
+   
 <div class="row">
-<pre class="font-para-15 color-darkblue content-pre">{{$event->description}}</pre>
+@foreach($paragraphs as $paragraph)
+<p class="font-para-15 color-darkblue">{{$paragraph}}</p>
+@endforeach
 </div>
+ 
     
 @if($event->resourcestate == 'true')
 <div class="row tickets-row">	

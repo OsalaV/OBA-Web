@@ -2,18 +2,35 @@
 
 @section('content')
 
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Info!</strong> Use [para] tag before adding a new paragraph in description.
+  <br>
+  <strong>Info!</strong> Image resolution should be 960 X 370 px.
+</div>
+
 <div class="col-md-8 ws-form-container">
     
 <a href="{{ URL::to('events-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Events</a> 
 
-<form role="form" action="{{ URL::to('events-edit-details/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
-
-  
-    
+@if($event->type == 'parade')
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Event
-<a href="{{ URL::to('events-show/'.$event->id) }}" class="ws-form-action-btn hidden-xs">Preview</a>
+<a href="{{ URL::to('psycho-parade') }}" class="ws-form-action-btn hidden-xs">Preview</a>
 </h2>
+@elseif($event->type == 'public')
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Event
+<a href="{{ URL::to('events-public/'.str_replace(' ', '_', $event->title)) }}" class="ws-form-action-btn hidden-xs">Preview</a>
+</h2>
+@else
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Event
+<a href="{{ URL::to('events-school/'.str_replace(' ', '_', $event->title)) }}" class="ws-form-action-btn hidden-xs">Preview</a>
+</h2>
+@endif
+    
+    
+    
+<form role="form" action="{{ URL::to('events-edit-details/'.$event->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
     
 <div class="row">
 <div class="col-md-12">
@@ -30,7 +47,7 @@
     
 {{ Form::select(
     'type',
-    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event'),
+    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event', 'parade' => 'Psycho Parade'),
     $event->type,
     array('class' => 'form-control','required' => 'required')
     ) 

@@ -33,11 +33,18 @@ class GuestController extends Controller
          return View::make('backend/guests', array('title' => 'Guests', 'users' => $users));
     }
     
+    public function edit($id){
+        
+        $user = User::where('id' , '=', $id)->first();  
+        
+        return View::make('backend/editguests', array('title' => 'Guests | Edit Guest','user' => $user));
+    }
+    
     public function search(){
          
          $searchkey = Input::get('searchkey');      
         
-         $users = User::where('nic', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
+         $users = User::where('nic', 'LIKE', '%'.$searchkey.'%')->orWhere('firstname', 'LIKE', '%'.$searchkey.'%')->orWhere('lastname', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
        
         
          return View::make('backend/guests', array('title' => 'Guests','users' => $users));

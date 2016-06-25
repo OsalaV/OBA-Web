@@ -2,16 +2,28 @@
 
 @section('content')
 
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Info!</strong> Use [para] tag before adding a new paragraph in description.
+  <br>
+  <strong>Info!</strong> Image resolution should be 960 X 370 px.
+</div>
 
 <div class="col-md-8 ws-form-container">
     
-<a href="{{ URL::to('posts-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Posts</a> 
+<a href="{{ URL::to('posts-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Posts</a>
+   
+    
+<form id="{{'postform'.$post->id}}" action="{{ URL::to('posts-show') }}" method="get" enctype="multipart/form-data">
+{{ csrf_field() }}
+<input type="hidden" name="postid" value="{{$post->id}}" />    
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Post
+<a id="post" data-id="{{$post->id}}" class="ws-form-action-btn hidden-xs">Preview</a>
+</h2>     
+</form>
+
 
 <form role="form" action="{{ URL::to('posts-edit-details/'.$post->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
-    
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Edit Post
-<a href="{{ URL::to('posts-show/'.$post->id) }}" class="ws-form-action-btn hidden-xs">Preview</a>
-</h2>
     
 <div class="row">
 <div class="col-md-12">
@@ -108,7 +120,7 @@
 <div class="col-md-12">
     <div class="form-group">
         <label class="font-main font-15px-600">Add new image</label>
-        <input type="file" class="form-control" name="image[]" multiple="">
+        <input type="file" class="form-control" name="image[]" multiple="" required>
     </div>
 </div>    
 </div>

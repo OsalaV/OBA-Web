@@ -60,18 +60,18 @@ class IndexController extends Controller
           return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'schoolevents' => $schoolevents));
     }
     
-    public function showpublicevent(){
+    public function showpublicevent($title){
           
-          $id = Input::get('postid');        
+          $title = str_replace('_', ' ', $title);
         
-          $event    =  EventController::getpublicevent($id); 
-          $tickets  =  TicketController::getticketdetails($id); 
+          $event    =  EventController::getpublicevent($title); 
+          $tickets  =  TicketController::getticketdetails($event->id); 
           return View::make('event', array('title' => $event->title, 'event' => $event, 'tickets' => $tickets));
     }
     
-    public function showschoolevent($encrypted){
+    public function showschoolevent($title){
           
-          $title = Crypt::decrypt($encrypted);
+          $title = str_replace('_', ' ', $title);
         
           $event       =  EventController::getschoolevent($title); 
           $eventimages =  EventController::geteventimages($event->id);
@@ -92,9 +92,9 @@ class IndexController extends Controller
           return View::make('projects', array('title' => 'Projects', 'projects' => $projects));
     }
     
-    public function showproject($encrypted){
+    public function showproject($title){
         
-          $title = Crypt::decrypt($encrypted);
+          $title = str_replace('_', ' ', $title);
         
           $project       =  ProjectController::getproject($title); 
           $projectimages =  ProjectController::getprojectimages($project->id);
@@ -166,10 +166,10 @@ class IndexController extends Controller
           return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));
     }    
     
-    public function showpost(){    
+    public function showpost($title){    
         
-        $id = Input::get('postid');        
-        $post   =  PostController::getpost($id); 
+        $title = str_replace('_', ' ', $title);   
+        $post   =  PostController::getpost($title); 
         return View::make('post', array('title' => $post->title, 'post' => $post));
         
     }

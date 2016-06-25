@@ -41,7 +41,7 @@
 <th class="text-left">Author</th>
 <th></th>
 <th>
-@if($activities->count() > 0)
+@if(count($activities) > 0)
 <a class="ws-open-msg" data-url="{{ URL::to('activities-delete') }}" data-message = "Are you sure you want to clear this table?" data-toggle="modal" data-target="#meesageModel">
 <span class="ws-fonts-15px-red ws-span-small">
 <i class="fa fa-trash-o fa-lg ws-icon-Xsmall"></i>

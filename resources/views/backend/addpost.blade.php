@@ -4,7 +4,9 @@
 
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Info!</strong> Indicates a neutral informative change or action.
+  <strong>Info!</strong> Use [para] tag before adding a new paragraph in description.
+  <br>
+  <strong>Info!</strong> Image resolution should be 960 X 370 px.
 </div>
 
 <div class="col-md-8 ws-form-container">
@@ -54,7 +56,6 @@
 
 <div class="col-md-6">
 <div class="form-group">
-<label class="font-main font-15px-600">Add Photo/Video (width = 960,height = 370px)</label>
 </div>
 </div>
 </div>

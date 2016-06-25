@@ -21,8 +21,7 @@
 
 <div class="porto">
   @foreach($projects as $project)   
-  <?php $encrypted = Crypt::encrypt($project->title); ?>
-  <div class="pf" data-pf-image="{{asset($project->imagepath)}}" data-pf-title="{{$project->title}}" data-pf-onclick="{{ URL::to('projects-show/'.$encrypted) }}"></div>
+  <div class="pf" data-pf-image="{{asset($project->imagepath)}}" data-pf-title="{{$project->title}}" data-pf-onclick="{{ URL::to('projects/'.str_replace(' ', '_', $project->title)) }}"></div>
   @endforeach
 </div> 
     

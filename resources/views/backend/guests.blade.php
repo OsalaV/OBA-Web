@@ -7,16 +7,10 @@
     
 <div class="clearfix hidden-xs">
 <div class="pull-left">
-<!--
-<ul class="ws-table-options">
-  <li><a href="">All <span>(11)</span></a> |</li>
-  <li><a href="">Published <span>(1)</span></a> |</li>
-  <li><a href="">Unpublished <span>(1)</span></a></li>
-</ul>  
--->
+
 </div> 
 <div class="pull-right">
-<form role="form" action="{{ URL::to('guests-search') }}" method="post" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('guests-search') }}" method="get" enctype="multipart/form-data">
 <input class="form-search-control" type="text" name="searchkey" required> 
 {{ csrf_field() }}
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">
@@ -53,7 +47,7 @@
 <td class="text-center">{{$user->contact}}</td>
     
 <td class="text-center">
-<a href="">
+<a href="{{ URL::to('guests-edit/'.$user->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 

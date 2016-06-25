@@ -85,7 +85,8 @@ class DesignationController extends Controller
     public static function getdesignations(){
         
       
-        $designations = Designation::all(['id', 'designation'])->pluck('designation', 'id');
+//        $designations = Designation::all(['id', 'designation'])->pluck('designation', 'id');
+        $designations = Designation::where('status' , '=', 'on')->pluck('designation', 'id');
         
         return $designations;
         

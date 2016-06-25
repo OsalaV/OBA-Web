@@ -29,15 +29,13 @@ class PostController extends Controller
         $this->middleware('admin');
 	}
     
-    
     public function index()
     {        
           $allposts = Post::select('*')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
           $pubposts = Post::where('status','=','on')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
           $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');
 
-          return View::make('backend/posts', array('title' => 'Posts','posts' => $allposts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
-        
+          return View::make('backend/posts', array('title' => 'Posts','posts' => $allposts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));        
     }
     
     public function create()
@@ -214,8 +212,8 @@ class PostController extends Controller
         
         $post = Post::where('id' , '=', $id)->first(); 
         
-        $imagestate = $post->imagepath;
-        $imagepath = $post->imagestate;
+        $imagepath  = $post->imagepath;
+        $imagestate = $post->imagestate;
         
         if($imagestate == "true"){
             UploadController::delete_file($imagepath);
@@ -239,6 +237,7 @@ class PostController extends Controller
     }
     
     public function destroyimge($id){
+        
         $post = Post::where('id' , '=', $id)->first(); 
         
         $imagepath = $post->imagepath;
@@ -284,22 +283,6 @@ class PostController extends Controller
         
     }
     
-    public static function getposts(){
-        
-         $posts = Post::where('status' , '=', 'on')->get(); 
-        
-         return $posts;
-        
-    }
-    
-    public static function getpost($id){
-        
-         $post = Post::where('id' , '=', $id)->first(); 
-        
-         return $post;
-        
-    }
-    
     public function search(){
          
          $searchkey = Input::get('searchkey');      
@@ -312,8 +295,23 @@ class PostController extends Controller
          $unpposts = Post::whereNull('status')->orderBy('id', 'desc')->paginate(25, ['*'], 'page');      
         
          return View::make('backend/posts', array('title' => 'Posts','posts' => $posts, 'all' => $allposts, 'active' => $pubposts,'inactive' => $unpposts));
+    }
+    
+    public static function getposts(){
         
+         $posts = Post::where('status' , '=', 'on')->orderBy('id','desc')->get(); 
+        
+         return $posts;
         
     }
+    
+    public static function getpost($title){
+        
+         $post = Post::where('title' , '=', $title)->first(); 
+        
+         return $post;        
+    }
+    
+    
     
 }

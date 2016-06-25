@@ -5,7 +5,9 @@
 
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <p><strong>Info!</strong> Member Image size should be 270 x 290 px</p>
+  <strong>Info!</strong> Use [para] tag before adding a new paragraph in description.
+  <br>
+  <strong>Info!</strong> Image resolution should be 960 X 370 px.
 </div>
 
 <div class="col-md-8 ws-form-container">

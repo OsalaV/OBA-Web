@@ -18,19 +18,20 @@ class PermissionsTableSeeder extends Seeder
         ['permission' => 'PROJECTS','priority' => 'default','privilages' => 'Allows to view and edit projects'],
         ['permission' => 'MEMBERS','priority' => 'default','privilages' => 'Allows to view and edit members'],
         ['permission' => 'GUESTS','priority' => 'high','privilages' => 'Allows to view guest users'],
-        ['permission' => 'TICKETS','priority' => 'high','privilages' => 'Allows to view ticket transactions'],
+        ['permission' => 'TRANSACTIONS','priority' => 'high','privilages' => 'Allows to view and process user transcations'],
         ['permission' => 'MESSAGES','priority' => 'default','privilages' => 'Allows to view user messages'],
         ['permission' => 'ACTIVITIES','priority' => 'high','privilages' => 'Allows to view user activities'],
         ['permission' => 'SETTINGS','priority' => 'default','privilages' => 'Allows to view settings'],
         ['permission' => 'GENERAL SETTINGS','priority' => 'default','privilages' => 'Allows to view and edit general settings'],
         ['permission' => 'IMAGE SLIDER','priority' => 'default','privilages' => 'Allows to view and edit image slider'],
+        ['permission' => 'TICKETS','priority' => 'high','privilages' => 'Allows to view and edit tickets'],
+        ['permission' => 'TICKET SETTINGS','priority' => 'high','privilages' => 'Allows to change number of tickets'],
         ['permission' => 'BRANCHES','priority' => 'default','privilages' => 'Allows to view and edit branches'],
         ['permission' => 'RESOURCES','priority' => 'default','privilages' => 'Allows to view and edit resources'],
         ['permission' => 'DESIGNATIONS','priority' => 'high','privilages' => 'Allows to view and edit member designations'],
         ['permission' => 'ADMINS','priority' => 'high','privilages' => 'Allows to view and edit admin'],
         ['permission' => 'ADMIN PERMISSIONS','priority' => 'high','privilages' => 'Allows to view and edit admin permissions'],
-        ['permission' => 'DELETE','priority' => 'default','privilages' => 'Allows to delete records and resources'],
-        ['permission' => 'TICKET SETTINGS','priority' => 'high','privilages' => 'Allows to change number of tickets'],
+        ['permission' => 'DELETE','priority' => 'default','privilages' => 'Allows to delete records and resources']
         ]);
         
         

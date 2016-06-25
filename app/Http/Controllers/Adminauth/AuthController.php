@@ -99,19 +99,19 @@ class AuthController extends Controller
                 return redirect('dashboard-view'); 
             }
             else{                 
-                return redirect('admin-login?auth=attempt==failed');
+                return redirect('admin-login?auth=attempt==failed')->with('error', 'Your Email and/or Password are not recognized. Please try again');
             }
             
         }
         else{
-            return redirect('admin-login?auth=attempt==failed');
+            return redirect('admin-login?auth=attempt==failed')->with('error', 'Your Email and/or Password are not recognized. Please try again');
         }
     }
     
     public function logout(){
         Auth::guard('admin')->logout();
         Session::flush();
-        return redirect('admin-login?logout=success==true');
+        return redirect('admin-login?logout=success==true')->with('success', 'You are now logged out');
     }
     
     private function setpermissionstosession($userid){

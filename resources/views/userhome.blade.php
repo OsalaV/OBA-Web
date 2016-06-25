@@ -26,7 +26,7 @@
 </span>
 </div>   
  
- 
+@if(count($events) > 0)
 <div class="row user-table-row">
  
 <ul class="bxslider"> 
@@ -58,7 +58,31 @@
     
     
 </div>
+@else
 
+<div class="row post-header-row">    
+<p class="ws-tag-label"><strong>There are events recently</strong></p>
+
+    
+<p class="">You can select any kind of tickets that are available in the events.</p>
+<p class="">Each category allows you to select maximum 10 tickets.</p>    
+<p class="">You can use any kind of payment method to buy this tickets.</p>
+    
+<p class="ws-tag-label"><strong>Thank You!!!</strong></p>
+    
+<div class="post-header-row">
+<span class="font-header-25px color-black">
+<a href="{{ URL::to('user-logout') }}" class="user-action-btn user-action-btn-blue">Logout Now</a> 
+</span>
+</div>
+    
+    
+    
+</div>    
+
+    
+    
+@endif
 
     
  

@@ -45,14 +45,17 @@ var page='Home';
 </div>
 </div>
     
- 
-
     
+<?php    
+$description = $post->description;    
+$paragraphs  = explode("[para]",$description);    
+?>
+   
 <div class="row">
-<pre class="font-para-15 color-darkblue content-pre">{{$post->description}}</pre>
-</div>
-    
-    
+@foreach($paragraphs as $paragraph)
+<p class="font-para-15 color-darkblue">{{$paragraph}}</p>
+@endforeach
+</div>   
     
     
     

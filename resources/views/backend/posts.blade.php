@@ -15,7 +15,7 @@
 </ul>  
 </div> 
 <div class="pull-right">
-<form role="form" action="{{ URL::to('posts-search') }}" method="post" enctype="multipart/form-data">
+<form role="form" action="{{ URL::to('posts-search') }}" method="get" enctype="multipart/form-data">
 <input class="form-search-control" name="searchkey" type="text" required> 
 {{ csrf_field() }} 
 <input type="submit" id="search-submit" class="button form-search-btn" value="Search">

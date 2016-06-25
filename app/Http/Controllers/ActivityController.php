@@ -36,7 +36,13 @@ class ActivityController extends Controller
         
          $activities   = DB::table('activities')
                          ->join('users', 'activities.users_id', '=', 'users.id')   
-                         ->select('*')
+                         ->select('activities.activity',
+                                  'activities.type',
+                                  'activities.updated_at',
+                                  'users.firstname',
+                                  'users.lastname',
+                                  'activities.referenced_id'
+                                 )
                          ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
         
@@ -91,21 +97,24 @@ class ActivityController extends Controller
     
     public function recentactivities()
     {
+        
+        $today     = Carbon::now();         
+        $yesterday = Carbon::yesterday();        
+        
         $activities = DB::table('activities')
-                       ->join('users', 'activities.users_id', '=', 'users.id')   
-                       ->select('*')
-                       ->orderBy('activities.id','desc')->get();
+                       ->join('users', 'activities.users_id', '=', 'users.id') 
+                       ->whereBetween('activities.updated_at', array($yesterday, $today))
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
+                       ->orderBy('activities.updated_at','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities', 'activities' => $activities));
-        
-        
-//         $activities = DB::table('activities')
-//                       ->join('users', 'activities.users_id', '=', 'users.id')
-//                       ->where('created_at', '>=', Carbon::now()->subMonth())
-//                       ->select('*')
-//                       ->orderBy('activities.id','desc')->get();
-//        
-//         return View::make('backend/activities', array('title' => 'Activities | Recent', 'activities' => $activities));
+
     }
     
     public function postactivities()
@@ -113,7 +122,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'post')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Posts', 'activities' => $activities));
@@ -124,7 +139,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'event')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Events', 'activities' => $activities));
@@ -135,7 +156,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'project')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Projects', 'activities' => $activities));
@@ -146,7 +173,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'member')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Members', 'activities' => $activities));
@@ -157,7 +190,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'slider')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Sliders', 'activities' => $activities));
@@ -168,7 +207,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'branch')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Branches', 'activities' => $activities));
@@ -179,7 +224,13 @@ class ActivityController extends Controller
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
                        ->where('type', '=', 'resource')
-                       ->select('*')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
         
          return View::make('backend/activities', array('title' => 'Activities | Resources', 'activities' => $activities));
@@ -191,8 +242,16 @@ class ActivityController extends Controller
         
          $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id')
-                       ->where('users.fullname', 'LIKE', '%'.$searchkey.'%')->orWhere('activities.created_at', 'LIKE', '%'.$searchkey.'%')
-                       ->select('*')
+                       ->where('users.firstname', 'LIKE', '%'.$searchkey.'%')
+                       ->orWhere('users.lastname', 'LIKE', '%'.$searchkey.'%')    
+                       ->orWhere('activities.updated_at', 'LIKE', '%'.$searchkey.'%')
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
                        ->orderBy('activities.id','desc')->paginate(25, ['*'], 'page');
        
         
@@ -210,6 +269,28 @@ class ActivityController extends Controller
             return redirect(URL::to('activities-view?records=deleted==false'));
         }
         
+    }
+    
+    public static function getrecent()
+    {
+        //get recent activities into dashboard   
+        $today     = Carbon::now();         
+        $yesterday = Carbon::yesterday();        
+        
+        $activities = DB::table('activities')
+                       ->join('users', 'activities.users_id', '=', 'users.id') 
+                       ->whereBetween('activities.updated_at', array($yesterday, $today))
+                       ->select('activities.activity',
+                                'activities.type',
+                                'activities.updated_at',
+                                'users.firstname',
+                                'users.lastname',
+                                'activities.referenced_id'
+                                )
+                       ->orderBy('activities.updated_at','desc')->take(10)->get();
+        
+         return $activities;
+
     }
     
     

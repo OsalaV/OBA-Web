@@ -28,16 +28,13 @@
      
      
     Route::get('/', ['uses' => 'IndexController@index']);     
-    Route::get('events', ['uses' => 'IndexController@events']);
-     
-     
-    Route::get('events-show', ['uses' => 'IndexController@showpublicevent']);
-    Route::get('schoolevents-show/{title}', ['uses' => 'IndexController@showschoolevent']);
-     
+    Route::get('events', ['uses' => 'IndexController@events']); 
+    Route::get('events-public/{title}', ['uses' => 'IndexController@showpublicevent']);
+    Route::get('events-school/{title}', ['uses' => 'IndexController@showschoolevent']);     
     Route::get('psycho-parade', ['uses' => 'IndexController@psychoparade']);
     
     Route::get('projects', ['uses' => 'IndexController@projects']);
-    Route::get('projects-show/{title}', ['uses' => 'IndexController@showproject']);
+    Route::get('projects/{title}', ['uses' => 'IndexController@showproject']);
      
     Route::get('committee-members', ['uses' => 'IndexController@members']);
     Route::get('batch-representatives', ['uses' => 'IndexController@batchreps']);
@@ -50,7 +47,7 @@
     
     Route::get('contact', ['uses' => 'IndexController@contact']);
      
-    Route::get('posts-show', ['uses' => 'IndexController@showpost']);
+    Route::get('posts-show/{title}', ['uses' => 'IndexController@showpost']);
      
     Route::get('auth-tickets/{id}', ['uses' => 'IndexController@authtickets']);
 
@@ -85,13 +82,14 @@
     Route::get('posts-delete-image/{id}', ['uses' => 'PostController@destroyimge']);
     Route::get('posts-published', ['uses' => 'PostController@getpublished']);
     Route::get('posts-unpublished', ['uses' => 'PostController@getunpublished']);
+    Route::get('posts-search', ['uses' => 'PostController@search']);
      
     Route::post('posts-add-details', ['uses' => 'PostController@store']); 
     Route::post('posts-edit-details/{id}', ['uses' => 'PostController@update']); 
     Route::post('posts-edit-status/{id}', ['uses' => 'PostController@updatestatus']);
     Route::post('posts-set-status/{id}', ['uses' => 'PostController@setstatus']);
     Route::post('posts-edit-image/{id}', ['uses' => 'PostController@updateimage']); 
-    Route::post('posts-search', ['uses' => 'PostController@search']);
+    
      
      
     //routs-events
@@ -105,6 +103,7 @@
     Route::get('events-published', ['uses' => 'EventController@getpublished']); 
     Route::get('events-unpublished', ['uses' => 'EventController@getunpublished']);
     Route::get('events-download-resource/{id}', ['uses' => 'EventController@downloadresource']);
+    Route::get('events-search', ['uses' => 'EventController@search']);
      
     Route::post('events-add-details', ['uses' => 'EventController@store']);   
     Route::post('events-edit-details/{id}', ['uses' => 'EventController@update']);
@@ -114,7 +113,7 @@
     Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
     Route::post('events-edit-albumimages', ['uses' => 'EventController@updatealbumimages']); 
     Route::post('events-edit-resource/{id}', ['uses' => 'EventController@updateresource']);
-    Route::post('events-search', ['uses' => 'EventController@search']);
+    
      
      
     //routs-projects
@@ -128,6 +127,7 @@
     Route::get('projects-published', ['uses' => 'ProjectController@getpublished']); 
     Route::get('projects-unpublished', ['uses' => 'ProjectController@getunpublished']);
     Route::get('projects-download-resource/{id}', ['uses' => 'ProjectController@downloadresource']);
+    Route::get('projects-search', ['uses' => 'ProjectController@search']); 
      
     
     Route::post('projects-add-details', ['uses' => 'ProjectController@store']); 
@@ -137,7 +137,7 @@
     Route::post('projects-edit-image/{id}', ['uses' => 'ProjectController@updateimage']); 
     Route::post('projects-edit-albumimages', ['uses' => 'ProjectController@updatealbumimages']);
     Route::post('projects-edit-resource/{id}', ['uses' => 'ProjectController@updateresource']); 
-    Route::post('projects-search', ['uses' => 'ProjectController@search']); 
+    
      
      
     //routs-members
@@ -148,6 +148,7 @@
     Route::get('members-delete-image/{id}', ['uses' => 'MemberController@destroyimge']);
     Route::get('members-published', ['uses' => 'MemberController@getpublished']);
     Route::get('members-unpublished', ['uses' => 'MemberController@getunpublished']); 
+    Route::get('members-search', ['uses' => 'MemberController@search']);
      
      
     Route::post('members-add-details', ['uses' => 'MemberController@store']);
@@ -155,14 +156,14 @@
     Route::post('members-edit-status/{id}', ['uses' => 'MemberController@updatestatus']);
     Route::post('members-set-status/{id}', ['uses' => 'MemberController@setstatus']);
     Route::post('members-edit-image/{id}', ['uses' => 'MemberController@updateimage']);
-    Route::post('members-search', ['uses' => 'MemberController@search']);
+    
      
      
      
     //routes guest users
     Route::get('guests-view', ['uses' => 'GuestController@index']); 
-     
-    Route::post('guests-search', ['uses' => 'GuestController@search']);
+    Route::get('guests-edit/{id}', ['uses' => 'GuestController@edit']);
+    Route::get('guests-search', ['uses' => 'GuestController@search']);
      
      
     //routes activities
@@ -220,6 +221,7 @@
     Route::get('resources-published', ['uses' => 'ResourceController@getpublished']);
     Route::get('resources-unpublished', ['uses' => 'ResourceController@getunpublished']);      
     Route::get('resources-download-resource/{id}', ['uses' => 'ResourceController@downloadresource']); 
+    Route::get('resources-search', ['uses' => 'ResourceController@search']);
      
     
     Route::post('resources-add-details', ['uses' => 'ResourceController@store']); 
@@ -228,7 +230,7 @@
     Route::post('resources-set-status/{id}', ['uses' => 'ResourceController@setstatus']); 
     Route::post('resources-edit-image/{id}', ['uses' => 'ResourceController@updateimage']); 
     Route::post('resources-edit-resource/{id}', ['uses' => 'ResourceController@updateresource']); 
-    Route::post('resources-search', ['uses' => 'ResourceController@search']);
+    
      
      
     //routes designations
@@ -256,16 +258,17 @@
      
      
     //routes tickets
-    Route::get('tickets-view', ['uses' => 'TicketController@index']); 
+    Route::get('tickets', ['uses' => 'TicketController@index']); 
     Route::get('tickets-show/{id}', ['uses' => 'TicketController@show']); 
     Route::get('tickets-add/{id}', ['uses' => 'TicketController@create']); 
     Route::get('tickets-edit/{id}', ['uses' => 'TicketController@edit']); 
+    Route::get('tickets-search', ['uses' => 'TicketController@search']);
     
     Route::post('tickets-add-details', ['uses' => 'TicketController@store']);
     Route::post('tickets-edit-details/{id}', ['uses' => 'TicketController@update']);
     Route::post('tickets-edit-tickets/{id}', ['uses' => 'TicketController@updatetickets']);
     Route::post('tickets-edit-status/{id}', ['uses' => 'TicketController@updatestatus']);
-    Route::post('tickets-search', ['uses' => 'TicketController@search']);
+    
     
     
  });

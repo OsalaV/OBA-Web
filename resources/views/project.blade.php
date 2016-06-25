@@ -8,7 +8,7 @@
 <main>       
     
 <script type="text/javascript">      
-    var page='Project';
+var page='Project';
 </script>
 
 <section class="well temp-section background-white">
@@ -33,14 +33,20 @@
 <img class="post-img" src="{{asset($project->imagepath)}}" alt="">           
 </div>
 @endif 
-
     
+<?php    
+$description = $project->description;    
+$paragraphs  = explode("[para]",$description);    
+?>
+   
 <div class="row">
-<p class="font-para-15 color-darkblue">{{$project->description}}</p>
-</div>
+@foreach($paragraphs as $paragraph)
+<p class="font-para-15 color-darkblue">{{$paragraph}}</p>
+@endforeach
+</div>   
     
 
-@if(count($projectimages) != 0)
+@if(count($projectimages) > 0)
 <div class="row tickets-row">
     
 <div class="porto">

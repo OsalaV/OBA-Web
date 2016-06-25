@@ -31,7 +31,8 @@ class UserPermissionsTableSeeder extends Seeder
         ['users_id' => '1','permissions_id' => '16','status' => 'on'],
         ['users_id' => '1','permissions_id' => '17','status' => 'on'],        
         ['users_id' => '1','permissions_id' => '18','status' => 'on'],
-        ['users_id' => '1','permissions_id' => '19','status' => 'on']       
+        ['users_id' => '1','permissions_id' => '19','status' => 'on'],      
+        ['users_id' => '1','permissions_id' => '20','status' => 'on']      
         ]);
         
         

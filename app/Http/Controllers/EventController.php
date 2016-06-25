@@ -137,8 +137,8 @@ class EventController extends Controller
             $resource_upload_result = $this->uploadResource();
             $event->resourcepath  = $resource_upload_result['resourcepath'];
             $event->resourcestate = $resource_upload_result['resourcestate'];
-        }
-        
+        }        
+    
         
         if($event->save()){
             //save activity
@@ -150,7 +150,10 @@ class EventController extends Controller
             
             if(Input::hasFile('eventimages')){
                 $album_upload_result  = $this->uploadImageAlbum();  
-                $this->storeimages($album_upload_result,$event->id);
+                if($this->storeimages($album_upload_result,$event->id)){
+                    $event->albumstate    = 'true';
+                    $event->save();
+                }
             }
             
             
@@ -230,7 +233,7 @@ class EventController extends Controller
         $event->description   = Input::get('description'); 
         $event->facebook      = Input::get('facebook');
         $event->twitter       = Input::get('twitter');
-        $event->linkedin      = Input::get('linkedin');
+        $event->instagram     = Input::get('instagram');
         $event->google        = Input::get('google');
         
         if($event->save()){
@@ -367,13 +370,18 @@ class EventController extends Controller
         $imagepath  = $event->imagepath;
                 
         $resourcestate = $event->resourcestate;
-        $resourcepath = $event->resourcepath;
+        $resourcepath  = $event->resourcepath;
+        
+        $albumstate    = $event->albumstate;
         
         if($imagestate == "true"){
         UploadController::delete_file($imagepath);
         }
         if($resourcestate == "true"){
         UploadController::delete_file($resourcepath);
+        }
+        if($albumstate == "true"){
+        $this->destroyalbum($event->id);
         }
             
         if ($event->delete()){
@@ -437,6 +445,16 @@ class EventController extends Controller
         
     }
     
+    public function destroyalbum($id){
+        
+        $images = EventImage::where('events_id' , '=', $id)->get(); 
+        foreach($images as $image){
+            $imagepath = $image->img_path;
+            UploadController::delete_file($imagepath);
+        }        
+        
+    }
+    
     public function destroyresource($id){
         $event = Event::where('id' , '=', $id)->first(); 
         
@@ -490,7 +508,7 @@ class EventController extends Controller
          
          $searchkey = Input::get('searchkey');      
         
-         $events = Event::where('title', 'LIKE', '%'.$searchkey.'%')->orWhere('date', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
+         $events = Event::where('title', 'LIKE', '%'.$searchkey.'%')->orderBy('id', 'desc')->paginate(25); 
         
         
          $allevents = Event::paginate(25);  
@@ -532,9 +550,9 @@ class EventController extends Controller
         return $eventimages;
     }
     
-    public static function getpublicevent($id){
+    public static function getpublicevent($title){
         
-         $event = Event::where('id' , '=', $id)->where('type' , '=', 'public')->first(); 
+         $event = Event::where('title' , '=', $title)->where('type' , '=', 'public')->first(); 
         
          return $event;
         
@@ -572,10 +590,10 @@ class EventController extends Controller
             //save activity
             
             
-            return redirect(URL::to('tickets-view?status=changes==true'))->with('success', 'Event ticket status was successfully edited');
+            return redirect(URL::to('tickets?status=changes==true'))->with('success', 'Event ticket status was successfully edited');
         }
         else{
-            return redirect(URL::to('tickets-view?status=changes==false'))->with('error', 'Event ticket status was not successfully edited');           
+            return redirect(URL::to('tickets?status=changes==false'))->with('error', 'Event ticket status was not successfully edited');           
         }
         
     }

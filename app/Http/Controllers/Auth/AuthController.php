@@ -141,7 +141,7 @@ class AuthController extends Controller
         TransactionController::removedummytransactions();
         Auth::guard('user')->logout();
         Session::flush();
-        return redirect('login?logout=success==true')->with('success', 'You are now logged out ');;
+        return redirect('login?logout=success==true')->with('success', 'You are now logged out');
     }
     
     

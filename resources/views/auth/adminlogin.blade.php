@@ -32,6 +32,26 @@
 <!--===========================================================================================-->
 
 <div class="container">
+    
+@if(Session::has('success'))
+<div class="row post-header-row">
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('success')}}
+</div>
+</div>
+@endif
+    
+@if(Session::has('error'))
+<div class="row post-header-row">   
+<div class="alert alert-danger fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  {{Session::get('error')}}
+</div>    
+</div>
+@endif
+    
+    
 <div class="card card-container">
 <img id="profile-img" class="profile-img-card" src="{{asset('images/icons/logo-black.png')}}" />
 <p id="profile-name" class="profile-name-card">D.S. SENANAYAKE COLLEGE OBA</p>

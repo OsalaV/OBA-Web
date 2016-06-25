@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{ URL::to('tickets-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Tickets</a>
+<a href="{{ URL::to('tickets') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Tickets</a>
 
 <h2 class="font-main font-uppercase font-25px-600 color-darkblue">{{$event->title}}
 <a href="{{ URL::to('tickets-add/'.$event->id) }}" class="ws-tablepage-action-btn">Add New</a>       
