@@ -20,7 +20,7 @@
 <div class="col-md-3 col-sm-6 col-xs-12">
 
 <div class="text-center">
-<img class="" src="{{asset($member->imagepath)}}" alt="">
+<img class="img-circle" src="{{asset($member->imagepath)}}" alt="">
 </div>
     
 <div class="text-center">
