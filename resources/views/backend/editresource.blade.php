@@ -29,7 +29,7 @@
     
 {{ Form::select(
     'type',
-    array('' => 'Select Resource Type','advertisement' => 'Advertisement', 'banner' => 'Banner', 'membershipform' => 'Membership Form', 'others' => 'Others'),
+    array('' => 'Select Resource Type','platinum' => 'Platinum Advertisement','gold' => 'Gold Advertisement','silver' => 'Silver Advertisement', 'banner' => 'Banner', 'membershipform' => 'Membership Form', 'others' => 'Others'),
     $resource->type,
     array('class' => 'form-control','required' => 'required')
     ) 

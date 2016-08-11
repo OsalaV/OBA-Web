@@ -69,7 +69,7 @@ $paragraphs  = explode("[para]",$description);
     
  
 @if(count($eventimages) != 0)
-<div class="row tickets-row">
+<div class="tickets-row">
     
 <div class="porto">
 @foreach($eventimages as $eventimage)
@@ -86,28 +86,34 @@ $paragraphs  = explode("[para]",$description);
 </div>   
     
 <div class="col-md-4">
+  
+   
     
-    <div style="height:400px;background-color: green;margin-top:92px">
-        <div style="padding-top:150px">
-            <center>
-                <h1 style="font-weight: bold; color: white">Platinum </h1>
-            </center>
-        </div>
+    <div class="row add-img-row" style="margin-top:90px">
+    @if($platinum->status == 'on')
+    <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
+    @else
+    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
+    @endif
     </div>
-    <div style="height:300px;background-color: blue;">
-        <div style="padding-top:100px">
-            <center>
-                <h1 style="font-weight: bold; color: white">Gold</h1>
-            </center>
-        </div>
+    
+    <div class="row add-img-row">      
+    @if($gold->status == 'on')
+    <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">  
+    @else
+    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
+    @endif
     </div>
-    <div style="height:200px;background-color: red;">
-        <div style="padding-top:60px">
-            <center>
-                <h1 style="font-weight: bold; color: white">Silver</h1>
-            </center>
-        </div>
+    
+    <div class="row add-img-row">    
+    @if($silver->status == 'on')
+    <img class="post-img" src="{{asset($silver->imagepath)}}" alt=""> 
+    @else
+    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
+    @endif
     </div>
+    
+   
     
 </div> 
     

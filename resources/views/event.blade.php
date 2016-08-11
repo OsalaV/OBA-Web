@@ -13,6 +13,7 @@
     
 <section class="well temp-section background-white">
 <div class="container">
+<!--<div class="col-md-8">-->
     
 @if(Session::has('success'))
 <div class="row post-header-row">
@@ -200,7 +201,7 @@
 
 
     
-
+<!--</div>-->
 </div>
 </section>
     

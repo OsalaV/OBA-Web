@@ -75,7 +75,10 @@ class IndexController extends Controller
         
           $event       =  EventController::getschoolevent($title); 
           $eventimages =  EventController::geteventimages($event->id);
-          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages));
+          $platinumadd =  ResourceController::getpaltinumadd();
+          $goldadd     =  ResourceController::getgoldadd();
+          $silveradd   =  ResourceController::getsilveradd();
+          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
         
     }
 

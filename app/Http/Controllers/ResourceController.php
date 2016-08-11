@@ -414,4 +414,25 @@ class ResourceController extends Controller
         
     }
     
+    public static function getpaltinumadd(){  
+        
+         $resource = Resource::where('type' , '=', 'platinum')->first(); 
+         return $resource;
+        
+    }
+    
+    public static function getgoldadd(){  
+        
+         $resource = Resource::where('type' , '=', 'gold')->first(); 
+         return $resource;
+        
+    }
+    
+    public static function getsilveradd(){  
+        
+         $resource = Resource::where('type' , '=', 'silver')->first(); 
+         return $resource;
+        
+    }
+    
 }
