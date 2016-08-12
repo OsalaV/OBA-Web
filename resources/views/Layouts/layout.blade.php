@@ -79,7 +79,7 @@ var page='Home';
 <ul class="header-nav">
 <li id="Home" class=""><a href="/"><span>Home</span></a></li>
 <li id="Events" class=""><a href="{{ URL::to('events') }}"><span>Events</span></a></li>
-<li id="Parade" class=""><a href="{{ URL::to('psycho-parade') }}"><span>Psycho Parade</span></a></li>
+<!--<li id="Parade" class=""><a href="{{ URL::to('psycho-parade') }}"><span>Psycho Parade</span></a></li>-->
 <li id="Projects" class=""><a href="{{ URL::to('projects') }}"><span>Projects</span></a></li>
 <li id="Member" class=""><a href="{{ URL::to('committee-members') }}"><span>Committee</span></a>
     <ul class="top-ul">

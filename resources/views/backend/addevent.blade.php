@@ -37,7 +37,7 @@
     
 {{ Form::select(
     'type',
-    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event', 'parade' => 'Psycho Parade'),
+    array('' => 'Select Event Type','public' => 'Public Event', 'private' => 'Shool Event'),
     null,
     array('class' => 'form-control','required' => 'required')
     ) 

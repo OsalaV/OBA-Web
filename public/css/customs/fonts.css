@@ -24,6 +24,16 @@
   margin-bottom: 5px;
 }
 
+.font-header-30px{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 1.11111111;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+
 .font-footer{
     line-height: 1.73333333;
     font-family: 'Raleway', sans-serif;

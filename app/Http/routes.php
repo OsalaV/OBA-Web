@@ -31,7 +31,7 @@
     Route::get('events', ['uses' => 'IndexController@events']); 
     Route::get('events-public/{title}', ['uses' => 'IndexController@showpublicevent']);
     Route::get('events-school/{title}', ['uses' => 'IndexController@showschoolevent']);     
-    Route::get('psycho-parade', ['uses' => 'IndexController@psychoparade']);
+    //Route::get('psycho-parade', ['uses' => 'IndexController@psychoparade']);
     
     Route::get('projects', ['uses' => 'IndexController@projects']);
     Route::get('projects/{title}', ['uses' => 'IndexController@showproject']);

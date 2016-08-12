@@ -18,14 +18,31 @@ var page='Events';
     
 <div class="col-md-8">
     
-<div class="row post-header-row">
-<span class="font-header-25px color-black">{{$event->title}}</span>
-</div>   
- 
 
-<div class="row post-details-row">
-<span class="post-tags"><i class="fa fa-calendar"></i> {{$event->month.' '.$event->day.', '.$event->year}}</span>&nbsp;
-<span class="post-tags"><i class="fa fa-clock-o"></i> {{'at '.$event->time}}</span>
+<div class="row">   
+ 
+<div class="col-md-6 header-pad-0px">
+<span class="font-header-30px color-black">{{$event->title}}</span>
+</div> 
+
+<div class="col-md-6 parade-social-icon-container text-right"> 
+    
+<div id="div-parade-social" class="parade-social animated">
+  @if($event->facebook != NULL)
+  <a class="fa fa-facebook" title="" target="_blank" href="{{$event->facebook}}"></a>
+  @endif
+  @if($event->twitter != NULL)
+  <a class="fa fa-twitter" title="" target="_blank" href="{{$event->twitter}}"></a>
+  @endif
+  @if($event->google != NULL)
+  <a class="fa fa-google-plus" title="" target="_blank" href="{{$event->google}}"></a>
+  @endif
+  @if($event->instagram != NULL)
+  <a class="fa fa-instagram" title="" target="_blank" href="{{$event->instagram}}"></a>
+  @endif
+</div>    
+    
+</div>    
 </div>
 
     
@@ -34,19 +51,26 @@ var page='Events';
 <img class="post-img" src="{{asset($event->imagepath)}}" alt="">           
 </div>
 @endif 
-
-<!--
-<div class="row post-share-row text-left">
-<div class="post-share">
-  <span class="font-para-15 color-darkblue hidden-xs">Share this post </span>
-  <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
-  <a class="fa fa-twitter" title="" target="_blank" href="#"></a>
-  <a class="fa fa-google-plus" title="" target="_blank" href="#"></a>
-  <a class="fa fa-linkedin" title="" target="_blank" href="#"></a>
-</div>
-</div>
--->
     
+<div class="row ico-container">
+  
+<div class="col-md-2 timebox">
+<time>
+
+<span class="day">{{$event->day}}</span>
+<span class="month">{{$event->month}}</span>
+<span class="year">{{$event->year}}</span>
+</time>    
+</div>
+    
+<div class="col-md-10 infobox">
+<div class="info">
+    <h2 class="title"><i class="fa fa-map-marker fa-lg hidden-xs"></i> {{$event->location}}</h2>
+    <p class="desc"><i class="fa fa-clock-o fa-lg hidden-xs"></i> {{$event->time}}</p>
+</div>    
+</div>
+
+</div>
  
 <?php    
 $description = $event->description;    
@@ -86,10 +110,8 @@ $paragraphs  = explode("[para]",$description);
 </div>   
     
 <div class="col-md-4">
-  
-   
     
-    <div class="row add-img-row" style="margin-top:90px">
+    <div class="row add-img-row" style="margin-top:70px">
     @if($platinum->status == 'on')
     <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
     @else
