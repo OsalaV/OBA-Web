@@ -111,6 +111,7 @@ $paragraphs  = explode("[para]",$description);
     
 <div class="col-md-4">
     
+    @if($platinum != NULL)    
     <div class="row add-img-row" style="margin-top:70px">
     @if($platinum->status == 'on')
     <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
@@ -118,24 +119,46 @@ $paragraphs  = explode("[para]",$description);
     <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
     @endif
     </div>
+    @else
+    <div class="row add-img-row" style="margin-top:70px">    
+    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
+    </div>
+    @endif
     
-    <div class="row add-img-row">      
+    
+    @if($gold != NULL)    
+    <div class="row add-img-row">
     @if($gold->status == 'on')
-    <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">  
+    <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">   
     @else
     <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
     @endif
     </div>
-    
+    @else
     <div class="row add-img-row">    
+    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
+    </div>
+    @endif
+    
+    
+    @if($silver != NULL)    
+    <div class="row add-img-row">
     @if($silver->status == 'on')
-    <img class="post-img" src="{{asset($silver->imagepath)}}" alt=""> 
+    <img class="post-img" src="{{asset($silver->imagepath)}}" alt="">   
     @else
     <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
     @endif
     </div>
+    @else
+    <div class="row add-img-row">    
+    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
+    </div>
+    @endif
     
-   
+    
+    
+    
+
     
 </div> 
     

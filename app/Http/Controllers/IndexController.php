@@ -78,7 +78,11 @@ class IndexController extends Controller
           $platinumadd =  ResourceController::getpaltinumadd();
           $goldadd     =  ResourceController::getgoldadd();
           $silveradd   =  ResourceController::getsilveradd();
+
+        
           return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
+        
+
         
     }
 

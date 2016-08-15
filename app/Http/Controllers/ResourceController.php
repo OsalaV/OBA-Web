@@ -416,7 +416,7 @@ class ResourceController extends Controller
     
     public static function getpaltinumadd(){  
         
-         $resource = Resource::where('type' , '=', 'platinum')->first(); 
+         $resource = Resource::where('type' , '=', 'platinum')->first();          
          return $resource;
         
     }
