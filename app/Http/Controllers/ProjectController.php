@@ -114,7 +114,8 @@ class ProjectController extends Controller
         
         $project->title        = Input::get('title');                  
         $project->tagline      = Input::get('tagline');                  
-        $project->description  = Input::get('description');   
+        $project->description  = Input::get('description');  
+        $project->video         = Input::get('video');  
         
              
         if(Input::hasFile('image')){
@@ -215,6 +216,7 @@ class ProjectController extends Controller
         $project->title        = Input::get('title');
         $project->tagline      = Input::get('tagline');      
         $project->description  = Input::get('description');
+        $project->video         = Input::get('video');  
         
         if($project->save()){
             //save activity

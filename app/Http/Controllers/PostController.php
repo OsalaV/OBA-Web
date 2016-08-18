@@ -72,6 +72,7 @@ class PostController extends Controller
 
         $post->title        = Input::get('title');               
         $post->description  = Input::get('description');   
+        $post->video        = Input::get('video');   
 
         if(Input::hasFile('image')){
            $image_upload_result = $this->uploadImage();
@@ -114,6 +115,7 @@ class PostController extends Controller
         
         $post->title        = Input::get('title');                 
         $post->description  = Input::get('description');
+        $post->video        = Input::get('video');
         
         if($post->save()){
             //save activity

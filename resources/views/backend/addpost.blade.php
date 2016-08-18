@@ -51,6 +51,15 @@
 </div> 
 </div>
 </div>
+    
+<div class="row">
+<div class="col-md-12">
+<div class="form-group">
+<label class="font-main font-15px-600">Add a video to this event   </label>
+    <input type="url" class="form-control" name="video" placeholder="Embeded Youtube Link" >
+</div>
+</div>
+</div>
  
 <div class="row">
 

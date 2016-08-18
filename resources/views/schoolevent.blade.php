@@ -16,7 +16,7 @@ var page='Events';
 <div class="row">    
 
     
-<div class="col-md-8">
+<div class="col-md-8"  style="margin-bottom:40px">
     
 
 <div class="row">   
@@ -161,6 +161,12 @@ $paragraphs  = explode("[para]",$description);
 
     
 </div> 
+
+<div style="padding-left:2px">
+            
+    <iframe width="90%" height="515" src="{{asset($event->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
+    
+</div>
     
 </div>
 </div>

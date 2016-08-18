@@ -17,7 +17,7 @@ var page='Project';
 <div class="row">    
 
     
-<div class="col-md-8">
+<div class="col-md-8" style="margin-bottom:40px">
     
 <div class="row post-header-row">
 <span class="font-header-25px color-black">{{$project->title}}</span>
@@ -68,11 +68,13 @@ $paragraphs  = explode("[para]",$description);
 @endif 
     
     
+</div>  
     
+<div>
     
-</div>   
-    
+    <iframe width="90%" height="515" src="{{asset($project->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
 
+</div>  
     
 </div>
     

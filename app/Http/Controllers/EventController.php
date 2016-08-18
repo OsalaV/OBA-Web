@@ -125,6 +125,7 @@ class EventController extends Controller
         $event->twitter       = Input::get('twitter');
         $event->instagram     = Input::get('instagram');
         $event->google        = Input::get('google');
+        $event->video         = Input::get('video');
         
         
         if(Input::hasFile('image')){
@@ -235,6 +236,7 @@ class EventController extends Controller
         $event->twitter       = Input::get('twitter');
         $event->instagram     = Input::get('instagram');
         $event->google        = Input::get('google');
+        $event->video         = Input::get('video');
         
         if($event->save()){
             //save activity

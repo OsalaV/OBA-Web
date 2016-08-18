@@ -16,7 +16,7 @@ var page='Home';
 <div class="row">    
 
     
-<div class="col-md-8">
+<div class="col-md-8" style="margin-bottom:40px">
     
 <div class="row post-header-row">
 <span class="font-header-25px color-black">{{$post->title}}</span>
@@ -57,12 +57,14 @@ $paragraphs  = explode("[para]",$description);
 @endforeach
 </div>   
     
-    
-    
-    
+
 </div>   
     
+<div>
+    
+    <iframe width="90%" height="515" src="{{asset($post->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
 
+</div>  
     
 </div>
 </div>
