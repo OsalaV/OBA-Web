@@ -44,10 +44,19 @@ $paragraphs  = explode("[para]",$description);
 <p class="font-para-15 color-darkblue">{{$paragraph}}</p>
 @endforeach
 </div>   
+
+@if($project->resourcestate == 'true')
+<div class="row tickets-row">	
+<?php $encrypted = Crypt::encrypt($project->id); ?>
+<h4 class="font-para-15 color-darkblue">You can download all resource files from here
+<a href="{{ URL::to('download-projects-resource/'.$encrypted) }}" class="ws-form-action-btn-green">Download</a>
+</h4>
+</div>
+@endif 
     
 
 @if(count($projectimages) > 0)
-<div class="row tickets-row">
+<div class="tickets-row">
     
 <div class="porto">
 @foreach($projectimages as $projectimage)
@@ -60,21 +69,23 @@ $paragraphs  = explode("[para]",$description);
 @endif
 
     
-@if($project->resourcestate == 'true')
-<div class="row tickets-row">	
-<?php $encrypted = Crypt::encrypt($project->id); ?>
-<a href="{{ URL::to('download-projects-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
-</div>
-@endif 
-    
-    
-</div>  
-    
-<div>
-    
-    <iframe width="90%" height="515" src="{{asset($project->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
 
+<!--video div-->
+@if($project->video != NULL)
+<div class="row tickets-row">  
+<div class="embed-responsive embed-responsive-16by9">
+            
+    <iframe class="embed-responsive-item" src="{{asset($project->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
+    
+</div>
+</div>   
+@endif
+    
+
+    
+    
 </div>  
+
     
 </div>
     
@@ -91,7 +102,8 @@ $(document).ready(function () {
   $('.porto').porto({
       columns        : 4,
       margin         : 2,
-      background     : "transparent"
+      background     : "rgba(0,0,0,.6)",
+      captionFit     : true
   });
 });
 </script>

@@ -87,7 +87,9 @@ $paragraphs  = explode("[para]",$description);
 @if($event->resourcestate == 'true')
 <div class="row tickets-row">	
 <?php $encrypted = Crypt::encrypt($event->id); ?>
-<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
+<h4 class="font-para-15 color-darkblue">You can download all resource files from here
+<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green">Download</a>
+</h4>
 </div>
 @endif   
     
@@ -104,7 +106,17 @@ $paragraphs  = explode("[para]",$description);
     
 </div>   
 @endif
+  
+<!--video div-->
+@if($event->video != NULL)
+<div class="row tickets-row">  
+<div class="embed-responsive embed-responsive-16by9">
+            
+    <iframe class="embed-responsive-item" src="{{asset($event->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
     
+</div>
+</div>   
+@endif
     
     
 </div>   
@@ -162,11 +174,7 @@ $paragraphs  = explode("[para]",$description);
     
 </div> 
 
-<div style="padding-left:2px">
-            
-    <iframe width="90%" height="515" src="{{asset($event->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
-    
-</div>
+
     
 </div>
 </div>
@@ -182,7 +190,8 @@ $(document).ready(function () {
   $('.porto').porto({
       columns        : 4,
       margin         : 2,
-      background     : "transparent"
+      background     : "rgba(0,0,0,.6)",
+      captionFit     : true
   });
 });
 </script>

@@ -55,16 +55,23 @@ $paragraphs  = explode("[para]",$description);
 @foreach($paragraphs as $paragraph)
 <p class="font-para-15 color-darkblue">{{$paragraph}}</p>
 @endforeach
+</div>
+    
+
+<!--video div-->
+@if($post->video != NULL)
+<div class="row tickets-row">  
+<div class="embed-responsive embed-responsive-16by9">
+            
+    <iframe class="embed-responsive-item" src="{{asset($post->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
+    
+</div>
 </div>   
+@endif
     
 
 </div>   
-    
-<div>
-    
-    <iframe width="90%" height="515" src="{{asset($post->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
 
-</div>  
     
 </div>
 </div>
