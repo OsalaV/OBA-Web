@@ -12,6 +12,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\SponserController;
 
 use App\Event;
 use App\Project;
@@ -55,42 +56,28 @@ class IndexController extends Controller
     public function events()
     {
           $publicevents   =  EventController::getpublicevents(); 
-          $schoolevents   =  EventController::getschoolevents(); 
+          $events   =  EventController::getallevents(); 
           
-          return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'schoolevents' => $schoolevents));
+          return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'events' => $events));
     }
-    
-    public function showpublicevent($title){
-          
-          $title = str_replace('_', ' ', $title);
         
-          $event    =  EventController::getpublicevent($title); 
-          $tickets  =  TicketController::getticketdetails($event->id); 
-          return View::make('event', array('title' => $event->title, 'event' => $event, 'tickets' => $tickets));
-    }
-    
-    public function showschoolevent($title){
+    public function showevent($title){
           
           $title = str_replace('_', ' ', $title);
         
-          $event       =  EventController::getschoolevent($title); 
+          $event       =  EventController::getevent($title); 
           $eventimages =  EventController::geteventimages($event->id);
-          $platinumadd =  ResourceController::getpaltinumadd();
-          $goldadd     =  ResourceController::getgoldadd();
-          $silveradd   =  ResourceController::getsilveradd();
+          $tickets     =  TicketController::getticketdetails($event->id); 
+          
+          $platinumadd =  SponserController::getPlatinumSponser($event->id);
+          $goldadd     =  SponserController::getGoldSponser($event->id);
+          $silveradd   =  SponserController::getSilverSponser($event->id);
 
         
-          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
+          return View::make('event', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages, 'tickets' => $tickets, 'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
         
 
         
-    }
-
-    public function psychoparade()
-    {   
-          $event       =  EventController::getparadedetails(); 
-          $eventimages =  EventController::geteventimages($event->id);
-          return View::make('parade', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages));
     }
 
     public function projects()

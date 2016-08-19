@@ -30,7 +30,7 @@
     Route::get('/', ['uses' => 'IndexController@index']);     
     Route::get('events', ['uses' => 'IndexController@events']); 
     Route::get('events-public/{title}', ['uses' => 'IndexController@showpublicevent']);
-    Route::get('events-school/{title}', ['uses' => 'IndexController@showschoolevent']);     
+    Route::get('events/{title}', ['uses' => 'IndexController@showevent']);     
     //Route::get('psycho-parade', ['uses' => 'IndexController@psychoparade']);
     
     Route::get('projects', ['uses' => 'IndexController@projects']);
@@ -113,6 +113,9 @@
     Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
     Route::post('events-edit-albumimages', ['uses' => 'EventController@updatealbumimages']); 
     Route::post('events-edit-resource/{id}', ['uses' => 'EventController@updateresource']);
+     
+    //routs-sponsers
+    Route::post('events-edit-sponser/{id}', ['uses' => 'SponserController@updateSponser']);
     
      
      

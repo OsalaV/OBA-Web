@@ -219,6 +219,229 @@
 </div>
     
     
+<div class="row ws-imgpanel">
+    
+<div class="panel panel-default">
+<div class="panel-heading ws-formpanel-heading clearfix">
+<span class="pull-left">Event Sponsers</span>
+</div>
+    
+    
+<div class="panel-heading ws-formpanel-heading col-md-4">
+
+<form action="{{ URL::to('events-edit-sponser/'.$platinumsponser->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
+   
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">PLATINUM SPONSER (390x400)</label>
+    </div>
+</div>    
+</div>
+    
+<div class="row ws-imgpreview-bxadd">    
+@if ($platinumsponser->imagestate == "true")
+<img class="ws-form-imagepreview" src="{{ asset($platinumsponser->imagepath) }}">
+@else
+<img class="ws-form-imagepreview" src="{{ asset('images/icons/img-preview.png') }}">
+@endif
+</div>   
+
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="file" class="form-control" name="image[]" multiple="">
+    </div>
+</div>    
+</div>   
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">Valid Period</label>
+        <input type="text" class="form-control" name="valid_period" value="{{$platinumsponser->valid_period}}">
+    </div>
+</div>    
+</div>
+    
+<div class="row">
+<div class="col-md-12">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">Do you want to publish this sponser?</span> </div>
+    
+<div class="pull-right ws-form-check text-center">
+@if($platinumsponser->status == "on")
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+</div>
+    
+    
+</div>
+</div>
+</div>
+
+
+{{ csrf_field() }} 
+    
+<div class="row">
+<div class="form-group" style="padding-right:15px;">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+</div>
+    
+<div class="panel-heading ws-formpanel-heading col-md-4">
+
+<form action="{{ URL::to('events-edit-sponser/'.$goldsponser->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
+   
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">GOLD SPONSER<br> (390x300)</label>
+    </div>
+</div>    
+</div>
+    
+<div class="row ws-imgpreview-bxadd">   
+@if ($goldsponser->imagestate == "true")
+<img class="ws-form-imagepreview" src="{{ asset($goldsponser->imagepath) }}">
+@else
+<img class="ws-form-imagepreview" src="{{ asset('images/icons/img-preview.png') }}">
+@endif
+</div>
+    
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="file" class="form-control" name="image[]" multiple="">
+    </div>
+</div>    
+</div>   
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">Valid Period</label>
+        <input type="text" class="form-control" name="valid_period" value="{{$goldsponser->valid_period}}">
+    </div>
+</div>    
+</div>
+    
+<div class="row">
+<div class="col-md-12">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">Do you want to publish this sponser?</span> </div>
+    
+<div class="pull-right ws-form-check text-center">
+@if($goldsponser->status == "on")
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+</div>
+    
+    
+</div>
+</div>
+</div>
+
+
+{{ csrf_field() }} 
+    
+<div class="row">
+<div class="form-group" style="padding-right:15px;">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+</div> 
+    
+<div class="panel-heading ws-formpanel-heading col-md-4">
+
+<form action="{{ URL::to('events-edit-sponser/'.$silversponser->id) }}" method="post" class="ws-form" enctype="multipart/form-data">
+   
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">SILVER SPONSER<br> (390x200)</label>
+    </div>
+</div>    
+</div>
+    
+<div class="row ws-imgpreview-bxadd">   
+@if ($silversponser->imagestate == "true")
+<img class="ws-form-imagepreview" src="{{ asset($silversponser->imagepath) }}">
+@else
+<img class="ws-form-imagepreview" src="{{ asset('images/icons/img-preview.png') }}">
+@endif
+</div>
+    
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <input type="file" class="form-control" name="image[]" multiple="">
+    </div>
+</div>    
+</div>   
+    
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+        <label class="font-main font-15px-600">Valid Period</label>
+        <input type="text" class="form-control" name="valid_period" value="{{$silversponser->valid_period}}">
+    </div>
+</div>    
+</div>
+    
+<div class="row">
+<div class="col-md-12">
+<div class="form-group clearfix">
+<div class="pull-left ws-form-span">
+<span class="font-main font-13px-600 color-darkblue">Do you want to publish this sponser?</span> </div>
+    
+<div class="pull-right ws-form-check text-center">
+@if($silversponser->status == "on")
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" checked /> 
+@else
+<input id="status" class="ws-form-inputcheck" type="checkbox" name="status" /> 
+@endif
+</div>
+    
+    
+</div>
+</div>
+</div>
+
+
+{{ csrf_field() }} 
+    
+<div class="row">
+<div class="form-group" style="padding-right:15px;">
+<button type="submit" class="ws-form-action-btn pull-right">Save</button>
+</div>
+</div>
+    
+</form>
+    
+</div> 
+    
+    
+
+</div>    
+    
+</div>
     
   
 </div>

@@ -5,18 +5,15 @@
 @section('content')
 
 <!--*************************CONTENT*****************************-->  
-<main>    
-    
+<main>   
 <script type="text/javascript">      
-var page='Events';
+    var page='Events';
 </script>
-
+    
+    
 <section class="well temp-section background-white">
 <div class="container">
-<div class="row">    
-
-    
-<div class="col-md-8"  style="margin-bottom:40px">
+<div class="col-md-8">
     
 @if(Session::has('success'))
 <div class="row post-header-row">
@@ -51,14 +48,13 @@ var page='Events';
 @endif
     
     
-    
 <div class="row">   
  
-<div class="col-md-12 header-pad-0px">
-<span class="font-header-30px color-black">{{$event->title}}</span>
+<div class="col-md-6 header-pad-0px">
+<h2 class="font-header-30px color-black"><small class="font-header-30px color-black">{{$event->title}}</small></h2>
 </div> 
 
-<div class="col-md-12 parade-social-icon-container text-right"> 
+<div class="col-md-6 parade-social-icon-container text-right"> 
     
 <div id="div-parade-social" class="parade-social animated">
   @if($event->facebook != NULL)
@@ -70,21 +66,18 @@ var page='Events';
   @if($event->google != NULL)
   <a class="fa fa-google-plus" title="" target="_blank" href="{{$event->google}}"></a>
   @endif
-  @if($event->instagram != NULL)
-  <a class="fa fa-instagram" title="" target="_blank" href="{{$event->instagram}}"></a>
+  @if($event->linkedin != NULL)
+  <a class="fa fa-linkedin" title="" target="_blank" href="{{$event->linkedin}}"></a>
   @endif
 </div>    
     
 </div>    
 </div>
-
     
-@if($event->imagestate == "true")
-<div class="row post-img-row">
-<img class="post-img" src="{{asset($event->imagepath)}}" alt="">           
+<div class="row">
+<img class="header-image" src="{{asset($event->imagepath)}}">  
 </div>
-@endif 
-    
+
 <div class="row ico-container">
   
 <div class="col-md-2 timebox">
@@ -104,56 +97,22 @@ var page='Events';
 </div>
 
 </div>
- 
-<?php    
-$description = $event->description;    
-$paragraphs  = explode("[para]",$description);    
-?>
-   
-<div class="row">
-@foreach($paragraphs as $paragraph)
-<p class="font-para-15 color-darkblue">{{$paragraph}}</p>
-@endforeach
-</div>
- 
+
     
+<div class="row"> 
+<p id="para-1" class="font-para-15 color-darkblue animated">
+{{$event->description}}
+</p>
+</div>
+
 @if($event->resourcestate == 'true')
 <div class="row tickets-row">	
 <?php $encrypted = Crypt::encrypt($event->id); ?>
-<h4 class="font-para-15 color-darkblue">You can download all resource files from here
-<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green">Download</a>
-</h4>
+<a href="{{ URL::to('download-events-resource/'.$encrypted) }}" class="ws-form-action-btn-green pull-left">Download Resource Files</a>
 </div>
-@endif   
-    
- 
-@if(count($eventimages) != 0)
-<div class="tickets-row">
-    
-<div class="porto">
-@foreach($eventimages as $eventimage)
-<div class="pf" data-pf-image="{{asset($eventimage->img_path)}}"></div>
-@endforeach       
-</div>
-    
-    
-</div>   
-@endif
-  
-<!--video div-->
-@if($event->video != NULL)
-<div class="row tickets-row">  
-<div class="embed-responsive embed-responsive-16by9">
-            
-    <iframe class="embed-responsive-item" src="{{asset($event->video)}}" frameborder="0" autohide="1" modestbranding="1" rel="0" theme="light" allowfullscreen></iframe>
-    
-</div>
-</div>   
-@endif
-    
-    
-<!--tickets div   -->
- 
+@endif  
+
+
 @if($event->ticketstate == 'on')
     
 <div class="row tickets-row">   
@@ -239,73 +198,6 @@ $paragraphs  = explode("[para]",$description);
     
     
 @endif 
-    
-    
-    
-    
-    
-    
-    
-</div>   
-    
-<div class="col-md-4">
-    
-    <div class="ws-spon-box">
-        <span class="ws-spon-text">Sponsored By</span>
-        <hr class="ws-hr">
-    </div>
-    
-    
-    @if($platinum != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($platinum->status == 'on')
-    <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
-    </div>
-    @endif
-    
-    
-    @if($gold != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($gold->status == 'on')
-    <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
-    </div>
-    @endif
-    
-    
-    @if($silver != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($silver->status == 'on')
-    <img class="post-img" src="{{asset($silver->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
-    </div>
-    @endif
-    
-    
-    
-    
-
-    
-</div> 
 
 
     
@@ -315,20 +207,6 @@ $paragraphs  = explode("[para]",$description);
     
 </main>
 <!--*************************CONTENT*****************************--> 
-
-
-
-<script>
-$(document).ready(function () {
-  $('.porto').porto({
-      columns        : 4,
-      margin         : 2,
-      background     : "rgba(0,0,0,.6)",
-      captionFit     : true
-  });
-});
-</script>
-
 
 
 

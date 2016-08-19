@@ -17,7 +17,6 @@
 <h2 class="font-header-large color-black">OUR <small class="color-yellow">PROJECTS</small></h2>
 </div>
     
-<div class="row">
 
 <div class="porto">
   @foreach($projects as $project)   
@@ -25,7 +24,10 @@
   @endforeach
 </div> 
     
-</div>   
+    
+<div class="row">  
+{{ $projects->links() }} 
+</div>
 
 
     

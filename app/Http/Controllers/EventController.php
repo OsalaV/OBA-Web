@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Request;
 
 use App\Event;
 use App\EventImage;
-
+use App\Sponser;
 
 use Session;
 use View;
@@ -157,6 +157,10 @@ class EventController extends Controller
                 }
             }
             
+            SponserController::store("Platinum",$event->id);
+            SponserController::store("Gold",$event->id);
+            SponserController::store("Silver",$event->id);
+            
             
             return redirect('events-view?save=success==true')->with('success', 'Event was successfully added');
         }
@@ -214,8 +218,11 @@ class EventController extends Controller
         
         $event = Event::where('id' , '=', $id)->first();  
         $eventimages = EventImage::where('events_id' , '=', $event->id)->get();
-        
-        return View::make('backend/editevent', array('title' => 'Events | Edit Event','event' => $event, 'eventimages' => $eventimages));
+        $paltinumSpo = SponserController::getPlatinumSponser($event->id);
+        $goldSpo     = SponserController::getGoldSponser($event->id);
+        $silverSpo   = SponserController::getSilverSponser($event->id);
+    
+        return View::make('backend/editevent', array('title' => 'Events | Edit Event','event' => $event, 'eventimages' => $eventimages, 'platinumsponser' => $paltinumSpo, 'goldsponser' => $goldSpo, 'silversponser' => $silverSpo));
         
         
     }
@@ -531,6 +538,13 @@ class EventController extends Controller
         
     }
     
+    public static function getallevents(){
+        
+         $events = Event::where('status','=','on')->orderBy('updated_at', 'desc')->paginate(12, ['*'], 'page');        
+         return $events;        
+        
+    }
+    
     public static function getpublicevents(){
         
          $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->get(); 
@@ -560,18 +574,9 @@ class EventController extends Controller
         
     }
     
-    public static function getschoolevent($title){
+    public static function getevent($title){
         
-         $event = Event::where('title' , '=', $title)->where('type' , '=', 'private')->first(); 
-        
-         return $event;
-        
-    }
-    
-    public static function getparadedetails(){
-        
-         $event = Event::where('type' , '=', 'parade')->first(); 
-        
+         $event = Event::where('title' , '=', $title)->first();         
          return $event;
         
     }
@@ -601,4 +606,5 @@ class EventController extends Controller
     }
     
     
+   
 }

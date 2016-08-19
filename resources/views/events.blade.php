@@ -13,6 +13,7 @@ var page='Events';
 <section class="well temp-section background-white">
 <div class="container">
   
+<!--
 @if(count($pubevents) > 0)
 <div class="row events-public-row">   
 <ul class="bxslider"> 
@@ -37,25 +38,26 @@ var page='Events';
 </ul> 
 </div>
 @endif   
+-->
     
     
     
-@if(count($schoolevents) > 0)
-<div class="row">  
-    
-<h2 class="font-header-large color-black">SCHOOL <small class="color-yellow">EVENTS </small></h2>
-    
-<div class="porto">
-@foreach($schoolevents as $schoolevent)
+@if(count($events) > 0)
+<div class="row">      
+<h2 class="font-header-large color-black">OUR <small class="color-yellow">EVENTS </small></h2>
+</div>    
 
-<div class="pf" data-pf-image="{{asset($schoolevent->imagepath)}}" data-pf-title="{{$schoolevent->title}}" data-pf-onclick="{{ URL::to('events-school/'.str_replace(' ', '_', $schoolevent->title)) }}"></div>
+<div class="porto">
+@foreach($events as $event)
+<div class="pf" data-pf-image="{{asset($event->imagepath)}}" data-pf-title="{{$event->title}}" data-pf-onclick="{{ URL::to('events/'.str_replace(' ', '_', $event->title)) }}"></div>
 @endforeach       
 </div> 
-    
-    
-</div>
+
 @endif    
     
+<div class="row">  
+{{ $events->links() }} 
+</div>
     
     
 </div>

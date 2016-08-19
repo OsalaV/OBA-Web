@@ -600,6 +600,18 @@ a:hover {
     max-width: 100%;
 }
 
+.ws-imgpreview-bxadd{
+    padding: 0px 15px;
+    margin-bottom: 10px;
+    height: 200px;
+}
+
+.ws-form-imagepreviewadd{
+    width: 100%;
+    height: 50%;
+    max-width: 100%;
+}
+
 .ws-imgpreview-bx{
     padding: 0px 2px;
     margin-bottom: 5px;

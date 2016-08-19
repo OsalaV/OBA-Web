@@ -840,7 +840,7 @@ a:hover {
 
 /*social-icon css*/
 .parade-social-icon-container{
-    padding-top: 20px;
+/*    padding-top: 20px;*/
     padding-bottom: 20px;
 }
 
@@ -1451,6 +1451,41 @@ a:hover {
 /*    height: 100%;*/
 /*    max-width: 100%;*/
     padding: 10px;
+}
+
+.ws-spon-box{
+    margin-top: 64px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.ws-spon-text{
+    font-family: 'MoPFserrat','Open Sans', sans-serif;
+    line-height: 1.73333333;
+    font-weight: 500;
+    font-size: 18px;  
+    color: black;
+}
+
+.ws-hr{
+    margin: 5px 0px 20px 0px;
+    padding: 0px;
+}
+
+@media (max-width: 768px) {
+    .col-wsm-4{
+        width:33.33333333%;
+        position:relative;min-height:1px;padding-right:20px;padding-left:20px;
+        float:left;
+    }   
+}
+
+@media (max-width: 540px) {
+    .col-wsm-4{
+        width:100%;
+        position:relative;min-height:1px;padding-right:25px;padding-left:50px;
+        float:left;
+    }   
 }
 
 

@@ -495,7 +495,7 @@ class ProjectController extends Controller
     
     public static function getprojects(){
         
-         $porjects = Project::where('status' , '=', 'on')->get(); 
+         $porjects = Project::where('status','=','on')->orderBy('updated_at', 'desc')->paginate(12, ['*'], 'page');
         
          return $porjects;
         
