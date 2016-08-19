@@ -307,6 +307,14 @@ class PostController extends Controller
         
     }
     
+    public static function getrecentposts(){
+        
+         $posts = Post::where('status' , '=', 'on')->orderBy('id','desc')->take(10)->get(); 
+        
+         return $posts;
+        
+    }
+    
     public static function getpost($title){
         
          $post = Post::where('title' , '=', $title)->first(); 

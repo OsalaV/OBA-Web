@@ -45,6 +45,25 @@
     
 </div>
     
+<div class="col-md-4">
+    <div style="margin-top:70px;background-color:#1DE9B6">
+        <ul style="padding-top:30px;padding-bottom:30px">
+            <h3>Required :</h3>
+            <li>
+              <h5>Copy of the National Identity Card (NIC).</h5>
+            </li>
+            <li>
+              <h5>Copy of the Character Certificate/Leaving Certificate.</h5>
+            </li>
+            <li>
+              <h5>Two passport size photographs (colour).</h5>
+            </li>
+            <li>
+              <h5>Life membership fee 2,250.00 LKR.</h5>
+            </li>
+        </ul>
+    </div>
+</div>    
     
 </div>
     

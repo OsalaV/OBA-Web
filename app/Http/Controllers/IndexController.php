@@ -67,6 +67,7 @@ class IndexController extends Controller
         
           $event       =  EventController::getevent($title); 
           $eventimages =  EventController::geteventimages($event->id);
+
           $tickets     =  TicketController::getticketdetails($event->id); 
           
           $platinumadd =  SponserController::getPlatinumSponser($event->id);
@@ -75,9 +76,10 @@ class IndexController extends Controller
 
         
           return View::make('event', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages, 'tickets' => $tickets, 'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
-        
 
-        
+          
+          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
+
     }
 
     public function projects()
@@ -164,7 +166,9 @@ class IndexController extends Controller
         
         $title = str_replace('_', ' ', $title);   
         $post   =  PostController::getpost($title); 
-        return View::make('post', array('title' => $post->title, 'post' => $post));
+        $posts      = PostController::getrecentposts();
+
+        return View::make('post', array('title' => $post->title, 'post' => $post, 'posts' => $posts));
         
     }
     
