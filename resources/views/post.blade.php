@@ -72,17 +72,19 @@ $paragraphs  = explode("[para]",$description);
 
 </div>   
  
-<div class="col-md-4" style="margin-top:91px">
-     <div style="margin-left:5px;margin-right:5px;background-color:#1DE9B6">
-        <ul style="padding-top:30px;padding-bottom:30px">
-            @foreach($posts as $post)
-            <li>
-<!--              <input type="hidden" name="postid" value="{{$post->id}}" />-->
-              <a href="{{ URL::to('posts-show/'.$post->title) }}">{{$post->title}}</a>
-            </li>
-            @endforeach
-        </ul>
-     </div>
+<div class="col-md-4 ws-side-bx-container">
+         
+<div class="side-list">
+    <span class="font-para-15 color-darkblue">Recent Posts</span>
+    <ul id="list-2">
+      <hr>
+      @foreach($posts as $post)
+      <li><p class="animated"><a href="{{ URL::to('posts/'.$post->title) }}">{{$post->title}}</a></p></li>
+      <hr>
+      @endforeach 
+    </ul>
+</div>
+
 </div>
     
 </div>

@@ -22,6 +22,35 @@
 /*Numberd List----------------------------------------*/
 
 
+
+.side-list{ width:100%; }
+.side-list ul { 
+    font-style:italic; 
+    font-family: 'Raleway', sans-serif; 
+    font-size:24px; color:#000000;  
+    font-weight: 600;  
+}
+.side-list ul li {list-style-type: none; }
+.side-list ul li p { 
+    padding:8px;  
+    line-height: 1.73333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;     
+    border-left: 2px solid #D9A111; 
+    color: #222533;
+}
+
+.side-list ul li p a{
+    color: #222533;
+}
+
+.side-list ul li p a:hover{
+    color: #D9A111; 
+}
+
+
+
 /*Porto List----------------------------------------*/
 .port-thumb {
   position: relative;

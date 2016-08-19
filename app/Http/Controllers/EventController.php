@@ -547,7 +547,7 @@ class EventController extends Controller
     
     public static function getpublicevents(){
         
-         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->get(); 
+         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->orderBy('updated_at', 'desc')->paginate(12, ['*'], 'page'); 
         
          return $events;
         

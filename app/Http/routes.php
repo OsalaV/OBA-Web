@@ -47,7 +47,7 @@
     
     Route::get('contact', ['uses' => 'IndexController@contact']);
      
-    Route::get('posts-show/{title}', ['uses' => 'IndexController@showpost']);
+    Route::get('posts/{title}', ['uses' => 'IndexController@showpost']);
      
     Route::get('auth-tickets/{id}', ['uses' => 'IndexController@authtickets']);
 

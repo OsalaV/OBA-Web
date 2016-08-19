@@ -528,4 +528,12 @@ class ProjectController extends Controller
         
     }
     
+    public static function getrecentprojects(){
+        
+         $porjects = Project::where('status' , '=', 'on')->orderBy('id','desc')->take(10)->get(); 
+        
+         return $porjects;
+        
+    }
+    
 }

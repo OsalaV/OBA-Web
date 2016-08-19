@@ -94,7 +94,9 @@ class IndexController extends Controller
         
           $project       =  ProjectController::getproject($title); 
           $projectimages =  ProjectController::getprojectimages($project->id);
-          return View::make('project', array('title' => $project->title, 'project' => $project, 'projectimages' => $projectimages));
+          $projects      =  ProjectController::getrecentprojects();
+        
+          return View::make('project', array('title' => $project->title, 'project' => $project, 'projectimages' => $projectimages, 'projects' => $projects));
     }
 
     public function members()
@@ -165,8 +167,8 @@ class IndexController extends Controller
     public function showpost($title){    
         
         $title = str_replace('_', ' ', $title);   
-        $post   =  PostController::getpost($title); 
-        $posts      = PostController::getrecentposts();
+        $post   = PostController::getpost($title); 
+        $posts  = PostController::getrecentposts();
 
         return View::make('post', array('title' => $post->title, 'post' => $post, 'posts' => $posts));
         

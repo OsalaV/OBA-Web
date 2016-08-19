@@ -246,66 +246,71 @@ $paragraphs  = explode("[para]",$description);
     
     
     
-</div>   
+</div>
     
-<div class="col-md-4">
+<div class="col-md-4 ws-side-bx-container">
+         
+<div class="side-list">
     
-    <div class="ws-spon-box">
-        <span class="ws-spon-text">Sponsored By</span>
-        <hr class="ws-hr">
-    </div>
+<span class="font-para-15 color-darkblue">Sponsored By</span>
+
+
+@if($platinum != NULL)    
+<div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+@if($platinum->status == 'on')
+<img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
+@else
+<img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
+@endif
+</div>
+@else
+<div class="row add-img-row">    
+<img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
+</div>
+@endif
+
+
+@if($gold != NULL)    
+<div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+@if($gold->status == 'on')
+<img class="post-img" src="{{asset($gold->imagepath)}}" alt="">   
+@else
+<img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
+@endif
+</div>
+@else
+<div class="row add-img-row">    
+<img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
+</div>
+@endif
+
+
+@if($silver != NULL)    
+<div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+@if($silver->status == 'on')
+<img class="post-img" src="{{asset($silver->imagepath)}}" alt="">   
+@else
+<img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
+@endif
+</div>
+@else
+<div class="row add-img-row">    
+<img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
+</div>
+@endif
     
     
-    @if($platinum != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($platinum->status == 'on')
-    <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/platinum-cover.png')}}" alt="">  
-    </div>
-    @endif
+</div>
+
+</div>
     
     
-    @if($gold != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($gold->status == 'on')
-    <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/gold-cover.png')}}" alt="">  
-    </div>
-    @endif
     
-    
-    @if($silver != NULL)    
-    <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
-    @if($silver->status == 'on')
-    <img class="post-img" src="{{asset($silver->imagepath)}}" alt="">   
-    @else
-    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
-    @endif
-    </div>
-    @else
-    <div class="row add-img-row">    
-    <img class="post-img" src="{{asset('images/icons/silver-cover.png')}}" alt="">  
-    </div>
-    @endif
     
     
     
     
 
-    
-</div> 
 
 
     

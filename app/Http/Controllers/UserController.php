@@ -36,7 +36,7 @@ class UserController extends Controller
             $user = Session::get('user');
             if($user->role == 'user'){
                 $username = $user->firstname.' '.$user->lastname;
-                $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->where('ticketstate' , '=', 'on')->orderBy('id', 'desc')->get(); 
+                $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->orderBy('updated_at', 'desc')->paginate(12, ['*'], 'page'); 
                 return View::make('userhome', array('title' => $username, 'events' => $events));
             }
             else{

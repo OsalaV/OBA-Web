@@ -6,7 +6,10 @@
 
 <!--*************************CONTENT*****************************-->  
 <main>    
-    
+  
+<script type="text/javascript">      
+var page='Events';
+</script>
 
 
 <section class="well temp-section background-white">
@@ -14,7 +17,7 @@
 <div class="row">    
 
     
-<div class="col-md-8">
+<div class="col-md-12">
     
 <div class="row post-header-row">
 <span class="font-header-25px color-black">
@@ -28,40 +31,23 @@
  
 @if(count($events) > 0)
 <div class="row user-table-row">
- 
-<ul class="bxslider"> 
+    
+<div class="porto">
 @foreach($events as $pubevent)
-<li>
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-    
-    
-<form id="{{'publiceventform'.$pubevent->id}}" action="{{ URL::to('events-show') }}" method="get" enctype="multipart/form-data">
-{{ csrf_field() }}
-<input type="hidden" name="postid" value="{{$pubevent->id}}" />
-    
-<a id="publicevent" data-id="{{$pubevent->id}}" class="cursor-pointer">
-<img src="{{asset($pubevent->imagepath)}}" alt="">
-</a>
-    
-</form> 
-    
-    
-    
-
+<div class="pf" data-pf-image="{{asset($pubevent->imagepath)}}" data-pf-title="{{$pubevent->title}}" data-pf-onclick="{{ URL::to('events/'.str_replace(' ', '_', $pubevent->title)) }}"></div>
+@endforeach       
 </div>
 </div>
-
-</li>
-@endforeach
-</ul> 
     
-    
+<div class="row">  
+{{ $events->links() }} 
 </div>
+    
+    
 @else
 
 <div class="row post-header-row">    
-<p class="ws-tag-label"><strong>There are events recently</strong></p>
+<p class="ws-tag-label"><strong>There are no recent events</strong></p>
 
     
 <p class="">You can select any kind of tickets that are available in the events.</p>
@@ -107,15 +93,16 @@
 
 
 <script>
-$(document).ready(function(){
-
-$('.bxslider').bxSlider({
-  minSlides: 1,
-  maxSlides: 1,
-  pager: false
+$(document).ready(function () {
+  $('.porto').porto({
+      columns        : 4,
+      margin         : 5,
+      captionMode    : "title",
+      background     : "rgba(252, 184, 18, 0.8)", 
+      onclickAction  : "url",
+      linkTarget     : "same"
+  });
 });
-
-}); 
 </script>
 
 

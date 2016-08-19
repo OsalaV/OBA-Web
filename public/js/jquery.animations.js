@@ -65,7 +65,12 @@ $('#contact-form').waypoint(function() {
     $('#contact-form').addClass('fadeInUp');
 }, { offset: '100%' });
 
-
+//animate num-list (list-1)
+$('#list-2 li p').css('opacity', 0);
+ 
+$('#list-2 li p').waypoint(function() {
+    $('#list-2 li p').addClass('fadeInRight');
+}, { offset: '75%' });
 
 
 

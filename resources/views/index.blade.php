@@ -98,7 +98,7 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
   ?>
   
   
-  <a href="{{ URL::to('posts-show/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
+  <a href="{{ URL::to('posts/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
   <p class="post-desc">{{$d_string}}</p>
   
 
@@ -132,13 +132,39 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 <div class="form-inline clearfix">
 <div class="post-title-box text-center">
 
-<div class="post-title-box-inner">    
-<form id="{{'postform'.$post->id}}" action="{{ URL::to('posts-show') }}" method="get" enctype="multipart/form-data">
-{{ csrf_field() }}
-<input type="hidden" name="postid" value="{{$post->id}}" />
-<a id="post" data-id="{{$post->id}}" class="news-title">{{$post->title}}</a>
-<p class="post-desc">{{$post->description}}</p>
-</form>
+<div class="post-title-box-inner">  
+    
+<?php 
+      
+      $t_txt = $post->title;
+      $t_len = strlen($t_txt);
+      
+      if($t_len > 64){
+          $t_stringCut = substr($t_txt, 0, 64);
+          $t_string    = substr($t_stringCut, 0, strrpos($t_stringCut, ' ')).'...';    
+      }
+      else{
+          $t_string    = $t_txt;
+      }
+      
+      $paragraphs  = explode("[para]",$post->description); 
+
+      $d_txt = $paragraphs[1];
+      
+      $d_len = strlen($d_txt);
+      if($d_len > 150){
+          $d_stringCut = substr($d_txt, 0, 150);
+          $d_string    = substr($d_stringCut, 0, strrpos($d_stringCut, ' ')).'...';
+      }
+      else{
+          $d_string    = $d_txt;
+      }
+    
+  ?>
+    
+    
+<a href="{{ URL::to('posts/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
+<p class="post-desc">{{$d_string}}</p>
 </div>    
     
 </div>
@@ -154,6 +180,8 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 </div>
 </section>
 @endif    
+    
+
     
     
     

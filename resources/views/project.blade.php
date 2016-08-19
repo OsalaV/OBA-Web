@@ -85,6 +85,24 @@ $paragraphs  = explode("[para]",$description);
     
     
 </div>  
+    
+    
+<div class="col-md-4 ws-side-bx-container">
+         
+<div class="side-list">
+    <span class="font-para-15 color-darkblue">Recent Projects</span>
+   <ul id="list-2">
+      <hr>
+      @foreach($projects as $project)
+      <li><p class="animated"><a href="{{ URL::to('projects/'.$project->title) }}">{{$project->title}}</a></p></li>
+      <hr>
+      @endforeach 
+   </ul>
+</div>
+
+</div>
+    
+    
 
     
 </div>
