@@ -78,8 +78,8 @@ class IndexController extends Controller
           $platinumadd =  ResourceController::getpaltinumadd();
           $goldadd     =  ResourceController::getgoldadd();
           $silveradd   =  ResourceController::getsilveradd();
-
         
+          
           return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
         
 
@@ -177,7 +177,9 @@ class IndexController extends Controller
         
         $title = str_replace('_', ' ', $title);   
         $post   =  PostController::getpost($title); 
-        return View::make('post', array('title' => $post->title, 'post' => $post));
+        $posts      = PostController::getrecentposts();
+
+        return View::make('post', array('title' => $post->title, 'post' => $post, 'posts' => $posts));
         
     }
     

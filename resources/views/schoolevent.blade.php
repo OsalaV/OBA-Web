@@ -168,10 +168,6 @@ $paragraphs  = explode("[para]",$description);
     @endif
     
     
-    
-    
-
-    
 </div> 
 
 
