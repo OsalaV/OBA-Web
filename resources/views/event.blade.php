@@ -229,20 +229,35 @@ $paragraphs  = explode("[para]",$description);
 
 @if(!Session::has('user'))
 <div class="row tickets-row"> 
+
 <center>
-<div class="selfie-creative-btn">						
-<a class="btn btn-1 btn-1c" href="{{ URL::to('auth-tickets/'.$event->id) }}">Grab your tickets now</a>	
-</div>
-</center>
+<a href="{{ URL::to('auth-tickets/'.$event->id) }}" class="btn ws-btn-p btn-warning hidden-xs">Grab your tickets now
+</a>
+    
+<a href="{{ URL::to('auth-tickets/'.$event->id) }}" class="btn ws-btn-p btn-warning hidden-sm hidden-md hidden-lg">Tickets</a>
+    
+</center>   
+    
+    
+    
+    
+    
 </div>
 @endif   
-    
     
 @endif 
     
     
+@if($event->ticketstate == NULL && $event->type == 'public')
+<div class="row" style="margin-top:40px;">
+<div class="col-md-12 header-pad-0px">
+<span class="font-header-30px color-black">Tickets will be available soon...</span>
     
+<!--<h5 class="font-header-large color-black">Tickets <small class="color-yellow">will be available soon...</small></h5>-->
     
+</div>     
+</div>    
+@endif   
     
     
     
