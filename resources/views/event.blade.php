@@ -264,14 +264,26 @@ $paragraphs  = explode("[para]",$description);
 </div>
     
 <div class="col-md-4 ws-side-bx-container">
-         
+  
+<span class="font-para-15 color-darkblue">Sponsored By</span>
+    
 <div class="side-list">
     
-<span class="font-para-15 color-darkblue">Sponsored By</span>
 
 
-@if($platinum != NULL)    
+
+@if($platinum != NULL)  
+
 <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+
+<div class="ws-ribbon">
+<div class="ws-ribbon-inner">
+    <span class="ws-ribbon-label">PLATINUM
+        <br>
+        SPONSER</span>
+</div>
+</div>
+    
 @if($platinum->status == 'on')
 <img class="post-img" src="{{asset($platinum->imagepath)}}" alt="">   
 @else
@@ -287,6 +299,15 @@ $paragraphs  = explode("[para]",$description);
 
 @if($gold != NULL)    
 <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+    
+<div class="ws-ribbon">
+<div class="ws-ribbon-inner">
+    <span class="ws-ribbon-label">GOLD
+        <br>
+        SPONSER</span>
+</div>
+</div>
+    
 @if($gold->status == 'on')
 <img class="post-img" src="{{asset($gold->imagepath)}}" alt="">   
 @else
@@ -299,9 +320,17 @@ $paragraphs  = explode("[para]",$description);
 </div>
 @endif
 
-
+    
+    
 @if($silver != NULL)    
 <div class="row add-img-row col-lg-12 col-md-12 col-sm-4 col-wsm-4">
+<div class="ws-ribbon">
+<div class="ws-ribbon-inner">
+    <span class="ws-ribbon-label">SILVER
+        <br>
+        SPONSER</span>
+</div>
+</div>
 @if($silver->status == 'on')
 <img class="post-img" src="{{asset($silver->imagepath)}}" alt="">   
 @else
