@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/animatetime.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.bxslider.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.porto.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/common/scrollbar.css') }}">
       
 <!--Links -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/customs/fonts.css') }}">
@@ -93,7 +94,9 @@ var page='Home';
 </div>
 </div> 
     
-    
+<a class="scrolldn" href="#"></a>
+
+<a class="scrollup" href="#"></a>
 
 @yield('content')
        
@@ -120,7 +123,32 @@ Developed by 2011 batch &#169; <span class="footer-year">2016</span>
    
 </div><!--temp-body-->
         
-  
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 1000) {
+                $('.scrollup').fadeIn();
+                $('.scrolldn').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+                $('.scrolldn').fadeOut();
+            }
+        });
+ 
+        $('.scrollup').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 1000);
+            return false;
+        });
+
+        $('.scrolldn').click(function(){
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+            return false;
+        });
+    });
+</script>
+    
+    
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
