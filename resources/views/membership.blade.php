@@ -23,7 +23,8 @@
     
 <div class="row">
 <div class="col-md-12 col-sm-12">
-  <p id="para-2" class="font-para-15 color-darkblue animated">
+  <!-- id="para-2"-->
+  <p class="font-para-15 color-darkblue animated">
     D.S. Senanayake College, situated in Colombo 07 (Cinnamon Gardens) is one of the premiere educational institutes in Sri Lanka. With the short span of history it has been able to gain many achievements of excellence both in the academic and non academic fields , locally and internationally to be proud as a truly multi-ethnic, multi-religious College which has proudly created unblemished and prestigious record of excellence in academia , sport and community leadership culminating being an institute of highly innovative and patriotic individuals to the motherland. School has current enrollment of over 6000 students with an academic staff over 275. It is among the most sought after schools in Colombo. The school is listed among theNational Schools, which come under the administration of the Ministry of Education, thus has direct funding from the ministry.
   </p>
 </div>
@@ -71,7 +72,8 @@
          
 <div class="num-list">
    <span class="font-para-15 color-darkblue">Required :</span>
-   <ol id="list-2">
+   <!--id="list-2"-->
+   <ol>
       <hr>
       <li><p class="animated">Copy of the National Identity Card (NIC)</p></li>
       <li><p class="animated">Copy of the Character Certificate/Leaving Certificate</p></li>

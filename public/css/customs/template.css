@@ -1583,7 +1583,16 @@ a:hover {
     text-align: center;
 }
 
+.ws-contact-block{
+    padding-left: 50px;
+}
 
+@media only screen and (max-width : 991px) {
+    
+    .ws-contact-block{
+        margin-top: 20px;
+        padding-left: 15px;
+    }   
 
-
+}
 
