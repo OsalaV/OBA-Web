@@ -273,7 +273,8 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
     $(document).ready(function(){
       $('.bxslider').bxSlider({
           mode:'fade',
-          pager: false
+          pager: false,
+          auto: true
       });
     });
 </script>
