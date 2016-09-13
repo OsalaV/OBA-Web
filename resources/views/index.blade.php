@@ -274,7 +274,9 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
       $('.bxslider').bxSlider({
           mode:'fade',
           pager: false,
-          auto: true
+          auto: true,
+          autoControls: true
+
       });
     });
 </script>
