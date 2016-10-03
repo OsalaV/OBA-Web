@@ -192,24 +192,13 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 <div class="row">
 
 <div class="col-md-6 col-sm-6 col-xs-12">
-<h2 class="font-header-large color-black">purposes</h2>
+    
+<img class="post-img" src="{{asset('images/icons/RIT.png')}}">
 
-<p class="font-para-14 color-darkblue">
+<p class="font-para-14 color-darkblue font-para14-margin">
 Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tempus est. Mauris eu augue lorem. Suspendisse sit amet vehi cula nisl, nec faucibus nisl. Proin ac fermentum orci, non semper metus. Nulla nulla tellus
 </p>
 
-<div class="num-list">
-   <ol id="list-1">
-      <li><p class="animated">Fusce itae orci nec velit ornare rhon</p></li>
-      <li><p class="animated">Ecus ut tempus estauris eu augue lorem.</p></li>
-      <li><p class="animated">Suspendisse sit amet vehicula</p></li>
-      <li><p class="animated">Anisl, nec faucibus nislroin ac fermentum</p></li>
-      <li><p class="animated">Horci, non semper metusulla nulla</p></li>
-      <li><p class="animated">Dellus, tincidunt vel eros gravida, cursu</p></li>
-      <li><p class="animated">Nullam ac magna nisi. Integer</p></li>
-      <li><p class="animated">Dictum sagittis vulputate ulla a purus</p></li>
-   </ol>
-</div>
 </div>
 
 @if(count($topmembers) > 0)
@@ -223,10 +212,12 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
       <p class="font-para-14 color-darkblue">       
         {{$topmembers['president']->message }}
       </p>
-      <cite class="color-lightblue">
-        {{$topmembers['president']->fullname}}<br />
-        {{$topmembers['president']->designation}}
-      </cite>
+      <p class="color-lightblue font-para-nopad-18">
+        {{$topmembers['president']->fullname}}
+      </p>
+      <p class="color-parablue font-para-nopad">
+        {{$topmembers['president']->designation}}  
+      </p>
     </div>
 </blockquote>
 
@@ -238,10 +229,12 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
       <p class="font-para-14 color-darkblue">       
         {{$topmembers['generalsec']->message }}        
       </p>
-      <cite class="color-lightblue">
-        {{$topmembers['generalsec']->fullname}}<br />
-        {{$topmembers['generalsec']->designation}}
-      </cite>
+      <p class="color-lightblue font-para-nopad-18">
+        {{$topmembers['generalsec']->fullname}}
+      </p>
+      <p class="color-parablue font-para-nopad">
+        {{$topmembers['generalsec']->designation}}  
+      </p>
     </div>
 </blockquote>
 
@@ -253,10 +246,12 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
       <p class="font-para-14 color-darkblue">       
         {{$topmembers['treasurer']->message }}         
       </p>
-      <cite class="color-lightblue">
-        {{$topmembers['treasurer']->fullname}}<br />
-        {{$topmembers['treasurer']->designation}}
-      </cite>
+      <p class="color-lightblue font-para-nopad-18">
+        {{$topmembers['treasurer']->fullname}}
+      </p>
+      <p class="color-parablue font-para-nopad">
+        {{$topmembers['treasurer']->designation}}  
+      </p>
     </div>
 </blockquote>
 

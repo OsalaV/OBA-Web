@@ -152,3 +152,28 @@
 .background-darkblue-alpha{
     background: rgba(34, 37, 51, 0.8);
 }
+
+/*add this lines server*/
+.color-parablue{
+    color: #31708f;
+}
+
+.font-para-nopad{
+    padding: 0px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;  
+    margin: 0px;
+}
+
+.font-para-nopad-18{
+    font-size: 18px;
+    font-weight: normal;
+    padding: 0px;
+    font-family: 'Raleway', sans-serif; 
+    margin: 0px;    
+}
+
+.font-para14-margin{
+    margin-top: 20px;
+}
