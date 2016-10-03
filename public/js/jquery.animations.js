@@ -59,11 +59,11 @@ $('#div-parade-social').waypoint(function() {
 
 
 //animate contact form (contact-form)
-$('#contact-form').css('opacity', 0);
- 
-$('#contact-form').waypoint(function() {
-    $('#contact-form').addClass('fadeInUp');
-}, { offset: '100%' });
+//$('#contact-form').css('opacity', 0);
+// 
+//$('#contact-form').waypoint(function() {
+//    $('#contact-form').addClass('fadeInUp');
+//}, { offset: '100%' });
 
 //animate num-list (list-1)
 $('#list-2 li p').css('opacity', 0);
