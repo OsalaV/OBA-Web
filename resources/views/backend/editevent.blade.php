@@ -223,9 +223,29 @@
     
 <div class="panel panel-default">
 <div class="panel-heading ws-formpanel-heading clearfix">
-<span class="pull-left">Event Sponsers</span>
-</div>
+<span class="pull-left">Event Sponsers &nbsp;&nbsp;</span>
+
+<form id="{{'checkform'.$event->id}}" action="{{ URL::to('events-set-sponserstate/'.$event->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
     
+
+<div class="form-group">    
+<div class="text-center">
+@if($event->sponserstate == "on")
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="sponserstate" checked /> 
+@else
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="sponserstate" /> 
+@endif
+{{ csrf_field() }}   
+</div>    
+    
+</div> 
+</form> 
+
+
+</div>
+  
+<!--  sdkmd-->
+       
     
 <div class="panel-heading ws-formpanel-heading col-md-4">
 

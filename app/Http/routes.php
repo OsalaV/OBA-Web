@@ -110,6 +110,7 @@
     Route::post('events-edit-status/{id}', ['uses' => 'EventController@updatestatus']); 
     Route::post('events-set-status/{id}', ['uses' => 'EventController@setstatus']); 
     Route::post('events-set-ticketstate/{id}', ['uses' => 'EventController@setticketstate']);
+    Route::post('events-set-sponserstate/{id}', ['uses' => 'EventController@setsponsertstate']);
     Route::post('events-edit-image/{id}', ['uses' => 'EventController@updateimage']); 
     Route::post('events-edit-albumimages', ['uses' => 'EventController@updatealbumimages']); 
     Route::post('events-edit-resource/{id}', ['uses' => 'EventController@updateresource']);

@@ -263,6 +263,8 @@ $paragraphs  = explode("[para]",$description);
     
 </div>
     
+
+@if($event->sponserstate != NULL)  
 <div class="col-md-4 ws-side-bx-container">
   
 <span class="font-para-15 color-darkblue">Sponsored By</span>
@@ -347,7 +349,7 @@ $paragraphs  = explode("[para]",$description);
 </div>
 
 </div>
-    
+@endif  
     
     
     

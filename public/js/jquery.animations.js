@@ -5,6 +5,30 @@ $('#sec-1').waypoint(function() {
     $('#sec-1').addClass('fadeInUp');
 }, { offset: '100%' });
 
+//animate block 1 (block-1)
+$('#block-1').css('opacity', 0);
+ 
+$('#block-1').waypoint(function() {
+    $('#block-1').addClass('fadeInUp');
+}, { offset: '100%' });
+
+//animate block 2 (block-2)
+$('#block-2').css('opacity', 0);
+ 
+$('#block-2').waypoint(function() {
+    $('#block-2').addClass('fadeInUp');
+}, { offset: '100%' });
+
+//animate block 1 (block-3)
+$('#block-3').css('opacity', 0);
+ 
+$('#block-3').waypoint(function() {
+    $('#block-3').addClass('fadeInUp');
+}, { offset: '100%' });
+
+//----------------blocks-----------------------------------
+
+
 
 //animate num-list (list-1)
 $('#list-1 li p').css('opacity', 0);
@@ -25,7 +49,7 @@ $('#para-1').waypoint(function() {
 $('#para-2').css('opacity', 0);
  
 $('#para-2').waypoint(function() {
-    $('#para-2').addClass('fadeInLeft');
+    $('#para-2').addClass('fadeInUp');
 }, { offset: '100%' });
 
 //animate welcome paragraph 2 (para-3)

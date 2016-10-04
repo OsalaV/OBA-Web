@@ -175,5 +175,9 @@
 }
 
 .font-para14-margin{
-    margin-top: 20px;
+    margin-top: 20px;    
+}
+
+.font-para-margin-bottom{
+    margin-bottom: 30px;
 }

@@ -23,37 +23,8 @@ var page='Home';
 </section>
 @endif
 <!--end of slider section-->
-    
-		    
-<section class="well temp-section background-ash">
-<div class="container no-padding">
-<h2 class="font-header-large color-black">WELCOME TO <small class="color-yellow">OLD BOYS ASSOCIATION!</small></h2>
-<div class="row">
-<div class="col-md-12 col-sm-12">
-  <p id="para-2" class="font-para-15 color-darkblue animated">
-    D.S. Senanayake College, situated in Colombo 07 (Cinnamon Gardens) is one of the premiere educational institutes in Sri Lanka. With the short span of history it has been able to gain many achievements of excellence both in the academic and non academic fields , locally and internationally to be proud as a truly multi-ethnic, multi-religious College which has proudly created unblemished and prestigious record of excellence in academia , sport and community leadership culminating being an institute of highly innovative and patriotic individuals to the motherland. School has current enrollment of over 6000 students with an academic staff over 275. It is among the most sought after schools in Colombo. The school is listed among theNational Schools, which come under the administration of the Ministry of Education, thus has direct funding from the ministry.<br><br>D.S Senanayake College provides education to students from Grade 1 to 13 in Sinhala, Tamil & English Mediums. It also provides Mathematics, Science, Commerce & Arts fields for the Advance Level Examinations. The School is fully equipped with Modern Classrooms, Multiple Science Laboratories and Computer Laboratories, Ground & Sports Complex for sports activities. It also has more than 35 Clubs, Societies & Associations engaged in all types of co-curricular activities. There are wide range of sporting activities, be it the track, field or water.
-But the most wonderful side of this tale is the success of D.S Senanayake College is that the rapid growth of this establishment in such a short period of 45 years. It was the sole commitment of the administration of the school, teachers, parents and students & the past pupils working together to achieve a common goal. Their path was always not cleared. It was a harsh climb to the top, with a lot of sweat, blood & tears in the path that we walked by. Because as our founding Principal Mr. R. I. T. Alles says ” D.S was not built of the pocket of the rich man, but of the hand of the humble poor man.” 
-  </p>
-</div>
-</div>
-</div>
-</section>
-<!--end of welcome section-->   
-		    
-
-<section class="hidden-xs hidden-sm well banner-section background-white">
-<div class="container no-padding">
-<h2 class="font-header-large color-black">50th <small class="color-yellow">Anniversary</small></h2>
-<div class="row">
-
-<div class="col-md-9 col-sm-12 col-xs-12">
-<div class="clock-builder-output"></div> 
-</div>
-    
-</div>
-</div>
-</section>
-
+   
+   
 @if(count($posts) > 0)  
 <section class="well temp-section background-white hidden-xs hidden-sm">
 <div class="container no-padding">
@@ -185,26 +156,68 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
     
     
     
-<!--end of news section-->    
+<!--end of news section--> 
+   
+   
+    
 		    
 <section class="well temp-section background-ash">
 <div class="container no-padding">
+<h2 class="font-header-large color-black">WELCOME TO <small class="color-yellow">OLD BOYS ASSOCIATION!</small></h2>
+<div class="row">
+<div class="col-md-12 col-sm-12">
+  <p id="" class="font-para-15 color-darkblue">
+    D.S. Senanayake College, situated in Colombo 07 (Cinnamon Gardens) is one of the premiere educational institutes in Sri Lanka. With the short span of history it has been able to gain many achievements of excellence both in the academic and non academic fields , locally and internationally to be proud as a truly multi-ethnic, multi-religious College which has proudly created unblemished and prestigious record of excellence in academia , sport and community leadership culminating being an institute of highly innovative and patriotic individuals to the motherland. School has current enrollment of over 6000 students with an academic staff over 275. It is among the most sought after schools in Colombo. The school is listed among theNational Schools, which come under the administration of the Ministry of Education, thus has direct funding from the ministry.<br><br>D.S Senanayake College provides education to students from Grade 1 to 13 in Sinhala, Tamil & English Mediums. It also provides Mathematics, Science, Commerce & Arts fields for the Advance Level Examinations. The School is fully equipped with Modern Classrooms, Multiple Science Laboratories and Computer Laboratories, Ground & Sports Complex for sports activities. It also has more than 35 Clubs, Societies & Associations engaged in all types of co-curricular activities. There are wide range of sporting activities, be it the track, field or water.
+But the most wonderful side of this tale is the success of D.S Senanayake College is that the rapid growth of this establishment in such a short period of 45 years. It was the sole commitment of the administration of the school, teachers, parents and students & the past pupils working together to achieve a common goal. Their path was always not cleared. It was a harsh climb to the top, with a lot of sweat, blood & tears in the path that we walked by. Because as our founding Principal Mr. R. I. T. Alles says ” D.S was not built of the pocket of the rich man, but of the hand of the humble poor man.” 
+  </p>
+</div>
+</div>
+</div>
+</section>
+<!--end of welcome section-->   
+		    
+
+<section class="hidden-xs hidden-sm well banner-section background-white">
+<div class="container no-padding">
+<h2 class="font-header-large color-black">50th <small class="color-yellow">Anniversary</small></h2>
+<div class="row">
+
+<div class="col-md-9 col-sm-12 col-xs-12">
+<div class="clock-builder-output"></div> 
+</div>
+    
+</div>
+</div>
+</section>
+
+<!--post section here   -->
+        
+        
+		    
+<section class="well temp-section background-ash">
+<div class="container-fluid no-padding">
 <div class="row">
 
 <div class="col-md-6 col-sm-6 col-xs-12">
     
 <img class="post-img" src="{{asset('images/icons/RIT.png')}}">
 
-<p class="font-para-14 color-darkblue font-para14-margin">
-Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rhoncus ut tempus est. Mauris eu augue lorem. Suspendisse sit amet vehi cula nisl, nec faucibus nisl. Proin ac fermentum orci, non semper metus. Nulla nulla tellus
+<center>
+<p id="" class="font-para-14 color-darkblue font-para14-margin animated">
+The school under him glowed in the country as a role model for studies, discipline of students, unity and diversity. The school’s teachers under his leadership excelled in mentoring and nurturing all the students who came under their care. His charisma is an inspiration to students, teachers, parents and everyone alike he touched upon during his long profile as an educationist until his departure
 </p>
+<p class="color-lightblue font-para-nopad-18">Ralph Ignatius Thomas Alles</p>
+<p class="color-parablue font-para-nopad font-para-margin-bottom">Founder</p>
+
+
+</center>
 
 </div>
 
 @if(count($topmembers) > 0)
 <div class="col-md-6 col-sm-6 col-xs-12">
 
-<blockquote class="media offs3">   
+<blockquote id="block-1" class="media offs3 animated">   
     <div class="media-left media-rp-left">
       <img class="img-circle" src="{{asset($topmembers['president']->imagepath)}}" alt="">
     </div>             
@@ -221,7 +234,7 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
     </div>
 </blockquote>
 
-<blockquote class="media offs3">   
+<blockquote id="block-2" class="media offs3 animated">   
     <div class="media-left media-rp-left">
       <img class="img-circle" src="{{asset($topmembers['generalsec']->imagepath)}}" alt="">
     </div>             
@@ -238,7 +251,7 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
     </div>
 </blockquote>
 
-<blockquote class="media offs3">   
+<blockquote id="block-3" class="media offs3 animated">   
     <div class="media-left media-rp-left">
       <img class="img-circle" src="{{asset($topmembers['treasurer']->imagepath)}}" alt="">
     </div>             
@@ -270,7 +283,7 @@ Curabitur eu lorem ac lacus laoreet auctor. Fusce vitae orci nec velit ornare rh
           mode:'fade',
           pager: false,
           auto: true,
-          autoControls: true
+          controls: false
 
       });
     });
@@ -300,7 +313,12 @@ $('.bxslider-posts').bxSlider({
   maxSlides: 3,
   slideWidth: 600,
   slideMargin: 10,
-  pager: false
+  pager: false,
+  auto: true,
+  controls: false,
+  speed: 3000,
+  pause: 0,
+  autoHover: true
 });
 
 });

@@ -605,6 +605,30 @@ class EventController extends Controller
         
     }
     
+    public function setsponsertstate($id){
+        
+        $event = Event::where('id' , '=', $id)->first(); 
+        
+                
+        $event->sponserstate  = Input::get('sponserstate');
+        
+        if($event->save()){    
+            //save activity
+            $activity_task = "Event : ".$event->title." sponser state has been changed";
+            $activity_type = "event";
+            $connection_id = $event->id;
+            ActivityController::store($activity_task,$activity_type,$connection_id);
+            //save activity
+            
+            
+            return redirect(URL::to('events-edit/'.$id.'?status=changes==true'))->with('success', 'Event sponser status was successfully edited');
+        }
+        else{
+            return redirect(URL::to('events-edit/'.$id.'?status=changes==false'))->with('error', 'Event sponser status was not successfully edited');           
+        }
+        
+    }
+    
     
    
 }
