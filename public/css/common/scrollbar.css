@@ -13,6 +13,7 @@
     text-indent: -9999px;
     background: url(../../images/icons/icon_top.png) no-repeat;
     outline: 0;
+    z-index: 100000;
 }
 .scrolldn {
     width: 40px;

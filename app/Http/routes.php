@@ -205,6 +205,7 @@
     Route::get('branches-add', ['uses' => 'BranchController@create']);     
     Route::get('branches-edit/{id}', ['uses' => 'BranchController@edit']);
     Route::get('branches-delete-details/{id}', ['uses' => 'BranchController@destroy']);
+    Route::get('branches-delete-image/{id}', ['uses' => 'BranchController@destroyimge']);
     Route::get('branches-published', ['uses' => 'BranchController@getpublished']);
     Route::get('branches-unpublished', ['uses' => 'BranchController@getunpublished']);
 
@@ -212,6 +213,7 @@
     Route::post('branches-edit-details/{id}', ['uses' => 'BranchController@update']); 
     Route::post('branches-edit-status/{id}', ['uses' => 'BranchController@updatestatus']);
     Route::post('branches-set-status/{id}', ['uses' => 'BranchController@setstatus']);
+    Route::post('branches-edit-image/{id}', ['uses' => 'BranchController@updateimage']);
      
      
      

@@ -435,4 +435,18 @@ class ResourceController extends Controller
         
     }
     
+    public static function getfeturedvideo(){  
+        
+         $resource = Resource::where('type' , '=', 'fetvideo')->first(); 
+         return $resource;
+        
+    }
+    
+    public static function getannualreport(){  
+        
+         $resource = Resource::where('type' , '=', 'annualreport')->first(); 
+         return $resource;
+        
+    }
+    
 }

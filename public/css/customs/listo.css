@@ -23,7 +23,7 @@
 
 
 
-.side-list{ width:100%; }
+.side-list{ width:100%; padding: 0px; }
 .side-list ul { 
     font-style:italic; 
     font-family: 'Raleway', sans-serif; 
@@ -261,6 +261,7 @@
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     font-weight: normal;
+    word-break: normal;
 }
 
 .post-icon{
@@ -368,4 +369,13 @@
     }
 }
 /*News List----------------------------------------*/
+
+
+
+
+
+
+
+
+
 

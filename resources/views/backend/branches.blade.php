@@ -4,7 +4,7 @@
 
 <a href="{{ URL::to('settings-view') }}" class="ws-tablepage-action-btn"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>   
 
-<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Branches
+<h2 class="font-main font-uppercase font-25px-600 color-darkblue">Branches | Committees
 <a href="{{ URL::to('branches-add') }}" class="ws-tablepage-action-btn">Add New</a>    
 <a href="{{ URL::to('contact') }}" class="ws-tablepage-action-btn">Preview</a>      
 </h2>
@@ -34,10 +34,9 @@
 <table class="table ws-table">
 <thead class="ws-table-head">
 <tr>
-<th class="text-left">Branch</th>
-<th class="text-center">Address Line 1</th>
-<th class="text-center">Address Line 2</th>
-<th class="text-center">Address Line 3</th>
+<th class="text-left">Branch | Committee</th>
+<th class="text-left">Type</th>
+<th class="text-center">Address</th>
 <th class="text-center">Email</th>
 <th class="text-center">Contact</th>
 <th class="text-center">Published</th>
@@ -51,9 +50,8 @@
 @foreach($branches as $branch)
 <tr>
 <td class="text-left">{{$branch->branch}}</td>
-<td class="text-center">{{$branch->address_line1}}</td>
-<td class="text-center">{{$branch->address_line2}}</td>
-<td class="text-center">{{$branch->address_line3}}</td>
+<td class="text-center">{{$branch->type}}</td>
+<td class="text-center">{{$branch->address_line1." ".$branch->address_line2." ".$branch->address_line3}}</td>
 <td class="text-center">{{$branch->email}}</td>
 <td class="text-center">{{$branch->contact}}</td>
     

@@ -51,14 +51,19 @@ class IndexController extends Controller
           $topmembers = MemberController::gettopmembers();
         
           return View::make('index', array('title' => 'Home','sliders' => $sliders,'posts' => $posts,'topmembers' => $topmembers));
+        
+//        return View::make('commingsoon');
+        
+        
     }
 
     public function events()
     {
-          $publicevents   =  EventController::getpublicevents(); 
-          $events   =  EventController::getallevents(); 
+          $events         =  EventController::getallevents(); 
+          $recentevents   =  EventController::getrecentevents(); 
+          $feturedvideo   =  ResourceController::getfeturedvideo(); 
           
-          return View::make('events', array('title' => 'Events', 'pubevents' => $publicevents, 'events' => $events));
+          return View::make('events', array('title' => 'Events', 'events' => $events, 'recentevents' => $recentevents, 'feturedvideo' => $feturedvideo));
     }
         
     public function showevent($title){
@@ -67,6 +72,7 @@ class IndexController extends Controller
         
           $event       =  EventController::getevent($title); 
           $eventimages =  EventController::geteventimages($event->id);
+          $recentevents=  EventController::getrecentevents(); 
 
           $tickets     =  TicketController::getticketdetails($event->id); 
           
@@ -75,10 +81,7 @@ class IndexController extends Controller
           $silveradd   =  SponserController::getSilverSponser($event->id);
 
         
-          return View::make('event', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages, 'tickets' => $tickets, 'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
-
-          
-          return View::make('schoolevent', array('title' => $event->title, 'event' => $event, 'eventimages' => $eventimages,'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
+          return View::make('event', array('title' => $event->title,'event' => $event, 'recentevents' => $recentevents, 'eventimages' => $eventimages, 'tickets' => $tickets, 'platinum' => $platinumadd,'gold' => $goldadd,'silver' => $silveradd));
 
     }
 
@@ -127,13 +130,10 @@ class IndexController extends Controller
         return response()->download($resourcepath);
         
     }
-    
-    
-    public function downloadresource($encrypted){
         
-        $id = Crypt::decrypt($encrypted);
+    public function downloadresource($type){
         
-        $resource = Resource::where('id' , '=', $id)->first(); 
+        $resource = Resource::where('type' , '=', $type)->first(); 
         
         $resourcepath = $resource->resourcepath;
         return response()->download($resourcepath);
@@ -154,14 +154,17 @@ class IndexController extends Controller
 
     public function membership()
     {
-          $membership = ResourceController::getmembershipform();
-          return View::make('membership', array('title' => 'Membership', 'membership' => $membership));
+          $membership   = ResourceController::getmembershipform();
+          $annualreport = ResourceController::getannualreport();
+        
+          return View::make('membership', array('title' => 'Membership', 'membership' => $membership, 'annualreport' => $annualreport));
     }
 
     public function contact()
     {
-          $branches   =  BranchController::getbranches(); 
-          return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches));
+          $branches     =  BranchController::getbranches(); 
+          $committees   =  BranchController::getcommittees(); 
+          return View::make('contact', array('title' => 'Contact Us', 'branches' => $branches, 'committees' => $committees));
     }    
     
     public function showpost($title){    

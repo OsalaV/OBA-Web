@@ -181,3 +181,26 @@
 .font-para-margin-bottom{
     margin-bottom: 30px;
 }
+
+.font-normal{
+    font-style: normal;
+}
+
+/*new fonts*/
+.font-para-nopad-20{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0px;
+    font-family: 'Raleway', sans-serif; 
+    margin: 0px;
+    margin-top: 15px;
+}
+
+.font-para-contact{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0px;
+    font-family: 'Raleway', sans-serif; 
+    margin: 0px;    
+}
+

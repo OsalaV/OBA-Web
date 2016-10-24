@@ -34,8 +34,52 @@
 
 <div class="row ws-dash-container">
  
-<div class="col-md-4 col-lg-4">
+<div class="col-md-8 col-lg-8">
  
+<div class="panel panel-default ws-dash-panel">
+<div class="panel-heading ws-dash-panelheader">
+<a href="{{ URL::to('activities-recent') }}">
+<span class="font-main font-15px-600 color-darkblue"><i class="fa fa-check"></i> &nbsp;Recent Activities &nbsp;&nbsp;</span>
+</a>
+</div>
+    
+<div class="panel-body ws-dash-panelbody">
+
+<table class="table ws-dash-table">
+
+    
+@foreach($recentactivities as $recent)
+<tr>   
+<td class="text-center"><img class="ws-dash-table-img" src="{{asset('images/icons/ok-square.png')}}"></td>
+<td class="text-left">
+<a href="{{ URL::to('activities-view/'.$recent->type.'/'.$recent->referenced_id) }}" class="ws-dash-message">
+<span class="font-main font-15px-600 color-darkblue">{{$recent->activity}}</span><br>
+<span class="font-main font-12px-400 color-ashblue">
+{{$recent->updated_at.' by '.$recent->firstname.' '.$recent->lastname}}
+</span>    
+</a>
+</td>
+</tr> 
+@endforeach
+    
+
+</table>
+
+    
+
+</div>
+</div> 
+    
+ 
+    
+</div><!--col-md-4-->
+  
+    
+    
+    
+    
+<div class="col-md-4 col-lg-4">
+    
 <div class="panel panel-default ws-dash-panel">
 <div class="panel-heading ws-dash-panelheader">
 <span class="font-main font-15px-600 color-darkblue"><i class="fa fa-envelope-o"></i> &nbsp;Messages &nbsp;&nbsp;<span class="badge">5</span></span>
@@ -112,167 +156,10 @@ Lorem Ipsum is simply dummy text
 </div>
 </div>
  
-<div class="panel panel-default ws-dash-panel">
-<div class="panel-heading ws-dash-panelheader">
-<a href="{{ URL::to('activities-recent') }}">
-<span class="font-main font-15px-600 color-darkblue"><i class="fa fa-check"></i> &nbsp;Recent Activities &nbsp;&nbsp;</span>
-</a>
-</div>
-    
-<div class="panel-body ws-dash-panelbody">
-
-<table class="table ws-dash-table">
-
-    
-@foreach($recentactivities as $recent)
-<tr>   
-<td class="text-center"><img class="ws-dash-table-img" src="{{asset('images/icons/ok-square.png')}}"></td>
-<td class="text-left">
-<a href="{{ URL::to('activities-view/'.$recent->type.'/'.$recent->referenced_id) }}" class="ws-dash-message">
-<span class="font-main font-15px-600 color-darkblue">{{$recent->activity}}</span><br>
-<span class="font-main font-12px-400 color-ashblue">
-{{$recent->updated_at.' by '.$recent->firstname.' '.$recent->lastname}}
-</span>    
-</a>
-</td>
-</tr> 
-@endforeach
-    
-
-</table>
-
-    
-
-</div>
-</div> 
-    
-    
-</div><!--col-md-4-->
-  
-    
-    
-    
-    
-<div class="col-md-8 col-lg-8">
-    
-<div class="panel panel-default ws-dash-panel">
-    
-<div class="panel-heading ws-dash-panelheader">
-<a href="{{ URL::to('posts-add') }}">    
-<span class="font-main font-15px-600 color-darkblue"><i class="fa fa-rss"></i> &nbsp;Quick Post &nbsp;&nbsp;</span>
-</a>
-</div>
-
-<div class="alert alert-info fade in">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Info!</strong> Use [para] tag before adding a new paragraph in description.
-  <br>
-  <strong>Info!</strong> Image resolution should be 960 X 370 px.
-</div>
-    
-<div class="panel-body ws-dash-formpanelbody">
-
-<form role="form" action="{{ URL::to('posts-add-details') }}" method="post" class="ws-form" enctype="multipart/form-data">
-    
-<div class="row">
-<div class="col-md-12">
-    <div class="form-group">
-        <input type="text" class="form-control" name="title" placeholder="Title" required>
-    </div>
-</div>
-</div>
-    
-<div class="row">
-    <div class="col-md-12">
-    <div class="form-group">
-        <textarea class="form-control textarea" name="description" placeholder="Write something here"></textarea>
-    </div>
-</div>
-</div>
-    
-<div class="row">
-<div class="col-md-6">
-    <div class="form-group">        
-        <input type="file" class="form-control" name="image[]" multiple="">
-    </div>
-</div>
-<div class="col-md-6">
-<div class="form-group">
-
-<span class="font-main font-15px-600 color-darkblue">Publish this post &nbsp;
-<input type="checkbox" name="status"/>
-</span> 
-     
-</div> 
-</div>
-</div>
-    
-
-    
-    
-    
-{{ csrf_field() }}
-    
-<div class="row">
-<div class="col-md-12">
-<button type="submit" class="ws-form-action-btn pull-right">Post</button>
-</div>
-</div>
-</form>
-
-</div>
-</div> 
-
-<div class="row ws-dash-container">
-<div class="col-md-6 col-lg-6">
-<div class="panel panel-default ws-dash-panel">
-<div class="panel-heading ws-dash-panelheader">
-<a href="{{ URL::to('settings-view') }}">
-<span class="font-main font-15px-600 color-darkblue"><i class="fa fa-wrench"></i> &nbsp;Quick Settings &nbsp;&nbsp;</span>
-</a>
-</div>
-    
-<div class="panel-body ws-dash-panelbody">
-
-<table class="table ws-dash-table">
-
-<tr>   
-<td class="text-center"><img class="ws-dash-table-img" src="{{asset('images/icons/settings.png')}}"></td>
-<td class="text-left">
-<a href="{{ URL::to('generalsettings') }}" class="ws-dash-message">
-<span class="font-main font-15px-600 color-darkblue">General Settings</span><br>
-<span class="font-main font-12px-400 color-ashblue">
-Change general settings   
-</span>    
-</a>
-</td>
-</tr>  
-    
-<tr>   
-<td class="text-center"><img class="ws-dash-table-img" src="{{asset('images/icons/settings.png')}}"></td>
-<td class="text-left">
-<a href="{{ URL::to('imageslider') }}" class="ws-dash-message">
-<span class="font-main font-15px-600 color-darkblue">Image Slider</span><br>
-<span class="font-main font-12px-400 color-ashblue">
-Change image slider settings     
-</span>    
-</a>
-</td>
-</tr>
-    
 
 
-</table>
 
-    
 
-</div>
-</div>    
-    
-    
-</div>
-</div>
-    
 </div><!--col-md-8-->
     
 </div><!--ws-dash-container-->

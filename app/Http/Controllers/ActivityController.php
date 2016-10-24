@@ -279,7 +279,7 @@ class ActivityController extends Controller
         
         $activities = DB::table('activities')
                        ->join('users', 'activities.users_id', '=', 'users.id') 
-                       ->whereBetween('activities.updated_at', array($yesterday, $today))
+                       ->whereBetween('activities.updated_at', array($yesterday, $today))->where('type', '=', 'event')->orWhere('type', '=', 'project')->orWhere('type', '=', 'post')->orWhere('type', '=', 'member')
                        ->select('activities.activity',
                                 'activities.type',
                                 'activities.updated_at',

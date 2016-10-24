@@ -11,12 +11,14 @@
     <!--Bootstrap -->
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/common/bootstrap.min.css') }}">
+    
     <link rel="stylesheet" type="text/css" href="{{asset('css/customs/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/customs/customfonts.css') }}">
-      
-           
+    
     <!--Fonts and Icons -->
     <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.6.3/css/font-awesome.min.css') }}">
+    
+    
 
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
@@ -221,13 +223,14 @@
    
 <!-- js files -->
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
+<!--<script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>-->
 <script type="text/javascript" src="{{ asset('js/ws-sidebar.js') }}"></script>   
 <script type="text/javascript" src="{{ asset('js/ws-pagination.js') }}"></script>     
 <script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/ws-cbox.js') }}"></script>    
 <script type="text/javascript" src="{{ asset('js/ws-formsubmit.js') }}"></script>   
-    
+     
+
     
     
 </body>

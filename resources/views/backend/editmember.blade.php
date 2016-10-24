@@ -67,12 +67,12 @@
 <div class="row">
 <div class="col-md-6">
     <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Email" value="{{$member->email}}" required>
+        <input type="email" class="form-control" name="email" placeholder="Email" value="{{$member->email}}">
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
-        <input type="text" class="form-control" name="contact" placeholder="Contact Number" value="{{$member->contact}}" required>
+        <input type="text" class="form-control" name="contact" placeholder="Contact Number" value="{{$member->contact}}">
     </div>
 </div>
 </div>

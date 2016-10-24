@@ -317,6 +317,9 @@ class MemberController extends Controller
     
     public static function gettopmembers(){
         
+        $seniorpresident = DB::table('members')->join('designations', 'members.designations_id','=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Senior President')->select('*')->first();
+        
+        
         $president = DB::table('members')->join('designations', 'members.designations_id', '=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'President')->select('*')->first();
         
         $generalsec = DB::table('members')->join('designations', 'members.designations_id','=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'General Secretary')->select('*')->first();
@@ -324,7 +327,7 @@ class MemberController extends Controller
         $treasurer = DB::table('members')->join('designations', 'members.designations_id','=','designations.id')->where('members.status' , '=', 'on')->where('designations.designation' , '=', 'Treasurer')->select('*')->first();
 
         
-        $topmembers = array('president' => $president,'generalsec' => $generalsec,'treasurer' => $treasurer);
+        $topmembers = array('seniorpresident' => $seniorpresident,'president' => $president,'generalsec' => $generalsec,'treasurer' => $treasurer);
       
         return $topmembers;
         

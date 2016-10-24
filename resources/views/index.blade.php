@@ -23,8 +23,10 @@ var page='Home';
 </section>
 @endif
 <!--end of slider section-->
-   
-   
+  
+
+     
+<!--post-->
 @if(count($posts) > 0)  
 <section class="well temp-section background-white hidden-xs hidden-sm">
 <div class="container no-padding">
@@ -38,39 +40,21 @@ var page='Home';
   <div class="post-title-box text-center">
   
   
-  <div class="post-title-box-inner">
-      
-  <?php 
-      
-      $t_txt = $post->title;
-      $t_len = strlen($t_txt);
-      
-      if($t_len > 64){
-          $t_stringCut = substr($t_txt, 0, 64);
-          $t_string    = substr($t_stringCut, 0, strrpos($t_stringCut, ' ')).'...';    
-      }
-      else{
-          $t_string    = $t_txt;
-      }
-      
-      $paragraphs  = explode("[para]",$post->description); 
+  <div class="post-title-box-inner text-left">  
+  <a href="{{ URL::to('posts/'.str_replace(' ', '_', $post->title)) }}" class="news-title">{{$post->title}}</a>
+  
+  <div id="{{'post'.$post->id}}" class="post-desc" data-desc="{{$post->description}}"></div>
+  <script>
+     var id = "#post"+{{$post->id}};
+     var desc = $(id).data("desc");
 
-      $d_txt = $paragraphs[1];
-      
-      $d_len = strlen($d_txt);
-      if($d_len > 150){
-          $d_stringCut = substr($d_txt, 0, 150);
-          $d_string    = substr($d_stringCut, 0, strrpos($d_stringCut, ' ')).'...';
-      }
-      else{
-          $d_string    = $d_txt;
-      }
+     var res       = desc.substr(0, 175);
+     var lastIndex = res.lastIndexOf(" ");
     
-  ?>
-  
-  
-  <a href="{{ URL::to('posts/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
-  <p class="post-desc">{{$d_string}}</p>
+     var para = res.substring(0, lastIndex);
+     
+     $(id).append(para+'... <br><span><a href="{{ URL::to('posts/'.str_replace(' ', '_', $post->title)) }}">Read More</a></span>');
+  </script>
   
 
   </div>
@@ -89,6 +73,8 @@ var page='Home';
 </div>
 </section>
 @endif
+   
+   
     
     
 @if(count($posts) > 0)    
@@ -103,39 +89,24 @@ var page='Home';
 <div class="form-inline clearfix">
 <div class="post-title-box text-center">
 
-<div class="post-title-box-inner">  
-    
-<?php 
-      
-      $t_txt = $post->title;
-      $t_len = strlen($t_txt);
-      
-      if($t_len > 64){
-          $t_stringCut = substr($t_txt, 0, 64);
-          $t_string    = substr($t_stringCut, 0, strrpos($t_stringCut, ' ')).'...';    
-      }
-      else{
-          $t_string    = $t_txt;
-      }
-      
-      $paragraphs  = explode("[para]",$post->description); 
+<div class="post-title-box-inner text-left">  
 
-      $d_txt = $paragraphs[1];
-      
-      $d_len = strlen($d_txt);
-      if($d_len > 150){
-          $d_stringCut = substr($d_txt, 0, 150);
-          $d_string    = substr($d_stringCut, 0, strrpos($d_stringCut, ' ')).'...';
-      }
-      else{
-          $d_string    = $d_txt;
-      }
+<a href="{{ URL::to('posts/'.str_replace(' ', '_', $post->title))}}" class="news-title">{{$post->title}}</a>
+
+<p id="{{'postmv'.$post->id}}" class="post-desc" data-desc="{{$post->description}}"></p>
+<script>
+     var id = "#postmv"+{{$post->id}};
+     var desc = $(id).data("desc");
+
+     var res       = desc.substr(0, 175);
+     var lastIndex = res.lastIndexOf(" ");
     
-  ?>
-    
-    
-<a href="{{ URL::to('posts/'.str_replace(' ', '_', $t_txt)) }}" class="news-title">{{$t_string}}</a>
-<p class="post-desc">{{$d_string}}</p>
+     var para = res.substring(0, lastIndex);
+     
+     $(id).append(para+'... <br><span><a href="{{ URL::to('posts/'.str_replace(' ', '_', $post->title)) }}">Read More</a></span>');
+  </script>
+
+
 </div>    
     
 </div>
@@ -177,13 +148,13 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
 <!--end of welcome section-->   
 		    
 
-<section class="hidden-xs hidden-sm well banner-section background-white">
+<section id="bannersection" class="well banner-section background-white banner_1">
 <div class="container no-padding">
 <h2 class="font-header-large color-black">50th <small class="color-yellow">Anniversary</small></h2>
 <div class="row">
 
-<div class="col-md-9 col-sm-12 col-xs-12">
-<div class="clock-builder-output"></div> 
+<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="clock-builder-output hidden-xs hidden-sm"></div> 
 </div>
     
 </div>
@@ -194,87 +165,87 @@ But the most wonderful side of this tale is the success of D.S Senanayake Colleg
         
         
 		    
-<section class="well temp-section background-ash">
-<div class="container-fluid no-padding">
+<section class="well temp-section background-ash background-mob-white">
+<div class="container no-padding">
 <div class="row">
-
-<div class="col-md-6 col-sm-6 col-xs-12">
-    
-<img class="post-img" src="{{asset('images/icons/RIT.png')}}">
-
-<center>
-<p id="" class="font-para-14 color-darkblue font-para14-margin animated">
-The school under him glowed in the country as a role model for studies, discipline of students, unity and diversity. The school’s teachers under his leadership excelled in mentoring and nurturing all the students who came under their care. His charisma is an inspiration to students, teachers, parents and everyone alike he touched upon during his long profile as an educationist until his departure
-</p>
-<p class="color-lightblue font-para-nopad-18">Ralph Ignatius Thomas Alles</p>
-<p class="color-parablue font-para-nopad font-para-margin-bottom">Founder</p>
-
-
-</center>
-
+<div class="col-md-12">
+    <div class="testimonial">
+        <div class="pic">
+            <img src="{{asset('images/icons/RIT.png')}}" alt="">
+        </div>
+        <div class="testimonial-content">
+            <p class="description color-darkblue">
+                    The school under him glowed in the country as a role model for studies, discipline of students, unity and diversity. The school’s teachers under his leadership excelled in mentoring and nurturing all the students who came under their care. His charisma is an inspiration to students, teachers, parents and everyone alike he touched upon during his long profile as an educationist until his departure
+            </p>
+            <h3 class="testimonial-title color-darkblue">Ralph Ignatius Thomas Alles
+                <small class="post">Founder</small>
+            </h3>
+        </div>
+        <div  class="clearfix"></div>
+    </div>
 </div>
 
-@if(count($topmembers) > 0)
-<div class="col-md-6 col-sm-6 col-xs-12">
-
-<blockquote id="block-1" class="media offs3 animated">   
-    <div class="media-left media-rp-left">
-      <img class="img-circle" src="{{asset($topmembers['president']->imagepath)}}" alt="">
-    </div>             
-    <div class="media-body media-rp-body">              
-      <p class="font-para-14 color-darkblue">       
-        {{$topmembers['president']->message }}
-      </p>
-      <p class="color-lightblue font-para-nopad-18">
-        {{$topmembers['president']->fullname}}
-      </p>
-      <p class="color-parablue font-para-nopad">
-        {{$topmembers['president']->designation}}  
-      </p>
-    </div>
-</blockquote>
-
-<blockquote id="block-2" class="media offs3 animated">   
-    <div class="media-left media-rp-left">
-      <img class="img-circle" src="{{asset($topmembers['generalsec']->imagepath)}}" alt="">
-    </div>             
-    <div class="media-body media-rp-body">              
-      <p class="font-para-14 color-darkblue">       
-        {{$topmembers['generalsec']->message }}        
-      </p>
-      <p class="color-lightblue font-para-nopad-18">
-        {{$topmembers['generalsec']->fullname}}
-      </p>
-      <p class="color-parablue font-para-nopad">
-        {{$topmembers['generalsec']->designation}}  
-      </p>
-    </div>
-</blockquote>
-
-<blockquote id="block-3" class="media offs3 animated">   
-    <div class="media-left media-rp-left">
-      <img class="img-circle" src="{{asset($topmembers['treasurer']->imagepath)}}" alt="">
-    </div>             
-    <div class="media-body media-rp-body">              
-      <p class="font-para-14 color-darkblue">       
-        {{$topmembers['treasurer']->message }}         
-      </p>
-      <p class="color-lightblue font-para-nopad-18">
-        {{$topmembers['treasurer']->fullname}}
-      </p>
-      <p class="color-parablue font-para-nopad">
-        {{$topmembers['treasurer']->designation}}  
-      </p>
-    </div>
-</blockquote>
-
-</div>
-@endif    
 </div>
 </div>
 </section>    
-<!--end of purpose section--> 
-		    
+<!--founder testimonial-->
+
+
+<section class="well temp-section background-white background-mob-ash">
+<div class="container no-padding">
+<div class="row">
+
+<div class="col-md-6 col-sm-12 col-xs-12">
+    <div id="block-2" class="ws-mem-testimonial animated">
+        <div class="ws-mem-pic">
+            <img src="{{asset($topmembers['president']->imagepath)}}" alt="">
+        </div>
+        <div class="ws-mem-testimonial-review"> 
+            <h4 class="ws-mem-testimonial-title">{{$topmembers['president']->fullname}}
+            <small>{{$topmembers['president']->designation}} </small>
+            </h4>           
+            <p>{{$topmembers['president']->message }}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6 col-sm-12 col-xs-12">
+    <div id="block-3" class="ws-mem-testimonial animated">
+        <div class="ws-mem-pic">
+            <img src="{{asset($topmembers['generalsec']->imagepath)}}" alt="">
+        </div>
+        <div class="ws-mem-testimonial-review">
+            <h4 class="ws-mem-testimonial-title">{{$topmembers['generalsec']->fullname}}
+            <small>{{$topmembers['generalsec']->designation}} </small>
+            </h4> 
+            <p>{{$topmembers['generalsec']->message }}</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-sm-12 col-xs-12">
+    <div id="block-4" class="ws-mem-testimonial animated">
+        <div class="ws-mem-pic">
+            <img src="{{asset($topmembers['treasurer']->imagepath)}}" alt="">
+        </div>
+        <div class="ws-mem-testimonial-review">  
+            <h4 class="ws-mem-testimonial-title">{{$topmembers['treasurer']->fullname}}
+            <small>{{$topmembers['treasurer']->designation}} </small>
+            </h4>          
+            <p>{{$topmembers['treasurer']->message }}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+</section>		
+<!--members testimonial-->		    
+		        
+		            
+		                    
 </main>
 
 <script type="text/javascript"> 
@@ -316,8 +287,8 @@ $('.bxslider-posts').bxSlider({
   pager: false,
   auto: true,
   controls: false,
-  speed: 3000,
-  pause: 0,
+  speed: 1000,
+  pause: 3000,
   autoHover: true
 });
 
@@ -327,6 +298,26 @@ $('.bxslider-posts').bxSlider({
     
 </script>
 
+<script>
+    
+$(document).ready(function(){
+    
+    setInterval(function() {
+       var section = $('#bannersection');
+       if(section.hasClass('banner_1'))
+       {
+           section.removeClass('banner_1');
+           section.addClass('banner_2');
+       }
+      else {        
+           section.removeClass('banner_2');
+           section.addClass('banner_1');
+      }
+    }, 6000);
+    
+});
+
+</script>
 
 
 @stop

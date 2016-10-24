@@ -114,7 +114,6 @@ class EventController extends Controller
         $event = new Event;
         
         $event->title         = Input::get('title');
-        $event->type          = Input::get('type');
         $event->month         = Input::get('month'); 
         $event->day           = Input::get('day'); 
         $event->year          = Input::get('year'); 
@@ -232,7 +231,6 @@ class EventController extends Controller
         $event = Event::where('id' , '=', $id)->first(); 
         
         $event->title         = Input::get('title');
-        $event->type          = Input::get('type');
         $event->month         = Input::get('month'); 
         $event->day           = Input::get('day'); 
         $event->year          = Input::get('year'); 
@@ -545,33 +543,16 @@ class EventController extends Controller
         
     }
     
-    public static function getpublicevents(){
+    public static function getrecentevents(){
         
-         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'public')->orderBy('updated_at', 'desc')->paginate(12, ['*'], 'page'); 
-        
-         return $events;
-        
-    }
-    
-    public static function getschoolevents(){
-        
-         $events = Event::where('status' , '=', 'on')->where('type' , '=', 'private')->get(); 
-        
-         return $events;
+         $events = Event::where('status','=','on')->orderBy('updated_at', 'desc')->paginate(4, ['*'], 'page');        
+         return $events;        
         
     }
     
     public static function geteventimages($id){
         $eventimages = EventImage::where('events_id' , '=', $id)->where('img_state' , '=', 'true')->get();
         return $eventimages;
-    }
-    
-    public static function getpublicevent($title){
-        
-         $event = Event::where('title' , '=', $title)->where('type' , '=', 'public')->first(); 
-        
-         return $event;
-        
     }
     
     public static function getevent($title){

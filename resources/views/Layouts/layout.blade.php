@@ -18,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.bxslider.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/jquery.porto.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/common/scrollbar.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/common/remodal.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/common/remodal-default-theme.css') }}">
       
 <!--Links -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/customs/fonts.css') }}">
@@ -28,6 +30,9 @@
         
 <!--Fonts and Icons -->
 <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.6.3/css/font-awesome.min.css') }}">
+
+
+<!--<link href="/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" />-->
 
 
 <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.js') }}"></script>
@@ -158,6 +163,17 @@ Developed by 2011 batch &#169; <span class="footer-year">2016</span>
 <script type="text/javascript" src="{{ asset('js/ws-updatecart.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/ws-modal.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/ws-formsubmit.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/remodal.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ws-member-modal.js') }}"></script>
+<script src="{{ asset('js/pace.min.js') }}"></script>
+<script>
+
+    Pace.on("done", function(){
+        $(".cover").show(2000);
+    });
+    
+</script>   
+
     
 </body>
 </html>

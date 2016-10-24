@@ -32,7 +32,7 @@
     
 {{ Form::select(
     'type',
-    array('' => 'Select Resource Type','platinum' => 'Platinum Advertisement','gold' => 'Gold Advertisement','silver' => 'Silver Advertisement', 'banner' => 'Banner', 'membershipform' => 'Membership Form', 'others' => 'Others'),
+    array('' => 'Select Resource Type', 'fetvideo' => 'Featured Video', 'membershipform' => 'Membership Form', 'annualreport' => 'Annual Report'),
     null,
     array('class' => 'form-control','required' => 'required')
     ) 

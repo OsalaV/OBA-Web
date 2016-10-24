@@ -55,7 +55,7 @@
 <i class="fa fa-university fa-5x ws-settings-i" aria-hidden="true"></i>  
 </div>
 </a>
-<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Branches</span>
+<span class="font-main font-15px-600 color-darkblue ws-settings-titile">Branches | Committees</span>
 </center>
 </div>
 @endif  

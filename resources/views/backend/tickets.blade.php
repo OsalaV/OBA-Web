@@ -34,17 +34,17 @@
 
 <tbody class="ws-table-body">
     
-@foreach($pubevents as $pubevent)
+@foreach($events as $event)
 <tr>
 <td class="text-left"></td>
-<td class="text-left">{{$pubevent->title}}</td>
+<td class="text-left">{{$event->title}}</td>
 
 <td class="text-center">
-<form id="{{'checkform'.$pubevent->id}}" action="{{ URL::to('events-set-ticketstate/'.$pubevent->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
-@if($pubevent->ticketstate == "on")
-<input id="status" data-id="{{$pubevent->id}}" class="ws-form-inputcheck" type="checkbox" name="ticketstate" checked /> 
+<form id="{{'checkform'.$event->id}}" action="{{ URL::to('events-set-ticketstate/'.$event->id) }}" method="post" class="form-inline" enctype="multipart/form-data">
+@if($event->ticketstate == "on")
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="ticketstate" checked /> 
 @else
-<input id="status" data-id="{{$pubevent->id}}" class="ws-form-inputcheck" type="checkbox" name="ticketstate" /> 
+<input id="status" data-id="{{$event->id}}" class="ws-form-inputcheck" type="checkbox" name="ticketstate" /> 
 @endif
 {{ csrf_field() }}
 </form>    
@@ -53,7 +53,7 @@
 
     
 <td class="text-center">
-<a href="{{ URL::to('tickets-show/'.$pubevent->id) }}">
+<a href="{{ URL::to('tickets-show/'.$event->id) }}">
 <span class="ws-fonts-15px-darkblue ws-span-small">
 <i class="fa fa-pencil fa-lg ws-icon-Xsmall"></i>
 </span> 
@@ -69,7 +69,7 @@
 
 </div><!-- ws-table-container -->
 
-{{ $pubevents->links() }} 
+{{ $events->links() }} 
 
 
 @stop

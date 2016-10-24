@@ -35,9 +35,9 @@ class TicketController extends Controller
     
     public function index()
     {        
-        $publicevents = Event::where('type' , '=', 'public')->orderBy('id', 'desc')->paginate(25); 
+        $events = Event::select('*')->orderBy('id', 'desc')->paginate(25); 
         
-        return View::make('backend/tickets', array('title' => 'Tickets', 'pubevents' => $publicevents));
+        return View::make('backend/tickets', array('title' => 'Tickets', 'events' => $events));
     }
     
     public function show($id)
